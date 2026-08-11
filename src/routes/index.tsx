@@ -1,24 +1,39 @@
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Landing } from "@/components/site/Landing";
+import { getSiteContent } from "@/lib/site.functions";
+
+const contentQuery = queryOptions({
+  queryKey: ["site-content", "no"],
+  queryFn: () => getSiteContent({ data: { locale: "no" } }),
+});
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "QuestPulse | Løpende innsikt i organisasjonen" },
+      {
+        name: "description",
+        content:
+          "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
+      },
+      { property: "og:title", content: "QuestPulse | Løpende innsikt i organisasjonen" },
+      {
+        property: "og:description",
+        content: "People Intelligence for norske virksomheter. Se det tidligere. Handle bedre.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "nb_NO" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "alternate", hrefLang: "en", href: "/en" }],
+  }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const { data } = useSuspenseQuery(contentQuery);
+  return <Landing locale="no" content={data} />;
 }
