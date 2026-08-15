@@ -217,9 +217,9 @@ export function RoleShowcase({
   lead,
 }: {
   locale: Locale;
-  eyebrow?: string;
+  eyebrow?: string | undefined;
   title: string;
-  lead?: string;
+  lead?: string | undefined;
 }) {
   const [role, setRole] = useState<RoleKey>("employee");
   const text = copy[locale];
