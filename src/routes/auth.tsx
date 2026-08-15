@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -10,10 +10,10 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
-  validateSearch: (search: Record<string, unknown>) => {
+  validateSearch: (search: Record<string, unknown>): { next?: string } => {
     const next = typeof search["next"] === "string" ? search["next"] : "";
     // Only same-origin relative paths are allowed as a return target.
-    return { next: next.startsWith("/") && !next.startsWith("//") ? next : "" };
+    return next.startsWith("/") && !next.startsWith("//") ? { next } : {};
   },
   head: () => ({
     meta: [
@@ -30,7 +30,6 @@ export const Route = createFileRoute("/auth")({
 });
 
 function AuthPage() {
-  const navigate = useNavigate();
   const { next } = Route.useSearch();
   const returnTo = next || "/admin";
   const [mode, setMode] = useState<"signin" | "signup">("signin");
