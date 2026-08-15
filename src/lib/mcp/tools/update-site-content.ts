@@ -31,15 +31,32 @@ export default defineTool({
       return { content: [{ type: "text", text: `No content stored for locale '${locale}'.` }], isError: true };
     }
 
-    const merged = { ...(current.data.data as Record<string, unknown>), ...sections };
+    const before = current.data.data as Record<string, unknown>;
+    const merged = { ...before, ...sections };
     const { data, error } = await supabase
       .from("site_content")
       .update({ data: merged })
       .eq("locale", locale)
       .select("locale,updated_at");
 
+    const blocked = !error && (!data || data.length === 0);
+    await recordMcpAudit(ctx, {
+      tool: "update_site_content",
+      args: { locale, sections: Object.keys(sections) },
+      changes: error || blocked
+        ? null
+        : {
+            locale,
+            sections: Object.fromEntries(
+              Object.keys(sections).map((key) => [key, { before: before[key] ?? null, after: sections[key] }]),
+            ),
+          },
+      success: !error && !blocked,
+      error: error?.message ?? (blocked ? "Update was blocked — account is not an admin." : null),
+    });
+
     if (error) return { content: [{ type: "text", text: error.message }], isError: true };
-    if (!data || data.length === 0) {
+    if (blocked) {
       return {
         content: [{ type: "text", text: "Update was blocked — this account does not have admin access." }],
         isError: true,
@@ -47,7 +64,8 @@ export default defineTool({
     }
     return {
       content: [{ type: "text", text: `Updated sections: ${Object.keys(sections).join(", ")}` }],
-      structuredContent: { locale, updatedAt: data[0]!.updated_at, updatedSections: Object.keys(sections) },
+      structuredContent: { locale, updatedAt: data![0]!.updated_at, updatedSections: Object.keys(sections) },
     };
+
   },
 });
