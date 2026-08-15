@@ -193,17 +193,8 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
         </section>
       </main>
 
-      <footer className="bg-navy py-12 text-navy-foreground">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="font-display text-lg">{content.brand.name}</p>
-            <p className="mt-1 max-w-md text-sm text-navy-foreground/60">{content.footer.text}</p>
-          </div>
-          <p className="text-xs text-navy-foreground/50">
-            &copy; {new Date().getFullYear()} Digital Coach Hub AS. {content.footer.rights}
-          </p>
-        </div>
-      </footer>
+      <SiteFooter locale={locale} content={content} />
+
     </div>
   );
 }
