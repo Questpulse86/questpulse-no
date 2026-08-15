@@ -1,5 +1,5 @@
 import { auth, defineMcp } from "@lovable.dev/mcp-js";
-import type { AnyToolDefinition } from "@lovable.dev/mcp-js";
+import type { ToolDefinition } from "@lovable.dev/mcp-js";
 import listLeadsTool from "./tools/list-leads";
 import getSiteContentTool from "./tools/get-site-content";
 import updateSiteContentTool from "./tools/update-site-content";
@@ -16,5 +16,5 @@ export default defineMcp({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",
   }),
-  tools: [listLeadsTool, getSiteContentTool, updateSiteContentTool] as AnyToolDefinition[],
+  tools: [listLeadsTool, getSiteContentTool, updateSiteContentTool] as unknown as ToolDefinition[],
 });
