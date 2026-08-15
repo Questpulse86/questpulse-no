@@ -56,6 +56,45 @@ export type Database = {
         }
         Relationships: []
       }
+      mcp_audit_log: {
+        Row: {
+          arguments: Json
+          changes: Json | null
+          client_id: string | null
+          created_at: string
+          error: string | null
+          id: string
+          success: boolean
+          tool_name: string
+          user_email: string | null
+          user_id: string | null
+        }
+        Insert: {
+          arguments?: Json
+          changes?: Json | null
+          client_id?: string | null
+          created_at?: string
+          error?: string | null
+          id?: string
+          success?: boolean
+          tool_name: string
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          arguments?: Json
+          changes?: Json | null
+          client_id?: string | null
+          created_at?: string
+          error?: string | null
+          id?: string
+          success?: boolean
+          tool_name?: string
+          user_email?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       site_content: {
         Row: {
           data: Json

@@ -58,9 +58,14 @@ export const getAdminOverview = createServerFn({ method: "GET" })
     if (!isAdmin) return { isAdmin: false as const };
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const [{ data: rows }, { data: leads }] = await Promise.all([
+    const [{ data: rows }, { data: leads }, { data: audit }] = await Promise.all([
       supabaseAdmin.from("site_content").select("locale, data"),
       supabaseAdmin.from("leads").select("*").order("created_at", { ascending: false }).limit(200),
+      supabaseAdmin
+        .from("mcp_audit_log")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(200),
     ]);
 
     const stored = Object.fromEntries((rows ?? []).map((r) => [r.locale, r.data]));
@@ -71,7 +76,9 @@ export const getAdminOverview = createServerFn({ method: "GET" })
         en: mergeContent("en", stored["en"] ?? null),
       },
       leads: leads ?? [],
+      audit: audit ?? [],
     };
+
   });
 
 export const saveSiteContent = createServerFn({ method: "POST" })

@@ -45,7 +45,7 @@ function AdminPage() {
   const fetchOverview = useServerFn(getAdminOverview);
   const save = useServerFn(saveSiteContent);
   const [locale, setLocale] = useState<Locale>("no");
-  const [tab, setTab] = useState<"content" | "leads">("content");
+  const [tab, setTab] = useState<"content" | "leads" | "audit">("content");
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
@@ -124,6 +124,14 @@ function AdminPage() {
             >
               Henvendelser ({overview.data.leads.length})
             </Button>
+            <Button
+              size="sm"
+              variant={tab === "audit" ? "default" : "outline"}
+              onClick={() => setTab("audit")}
+            >
+              Agentlogg ({overview.data.audit.length})
+            </Button>
+
             <Button size="sm" variant="ghost" onClick={signOut}>
               Logg ut
             </Button>
@@ -173,7 +181,8 @@ function AdminPage() {
               ))}
             </div>
           </>
-        ) : (
+        ) : tab === "leads" ? (
+
           <div className="overflow-x-auto rounded-md border border-border bg-card">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border text-xs tracking-wider text-muted-foreground uppercase">
@@ -219,11 +228,100 @@ function AdminPage() {
               </tbody>
             </table>
           </div>
+        ) : (
+          <AuditTable rows={overview.data.audit} />
         )}
+
       </main>
     </div>
   );
 }
+
+type AuditRow = {
+  id: string;
+  created_at: string;
+  user_email: string | null;
+  user_id: string | null;
+  client_id: string | null;
+  tool_name: string;
+  arguments: unknown;
+  changes: unknown;
+  success: boolean;
+  error: string | null;
+};
+
+const TOOL_LABELS: Record<string, string> = {
+  list_leads: "Leste henvendelser",
+  get_site_content: "Leste innhold",
+  update_site_content: "Endret innhold",
+};
+
+function AuditTable({ rows }: { rows: AuditRow[] }) {
+  return (
+    <div className="overflow-x-auto rounded-md border border-border bg-card">
+      <table className="w-full text-left text-sm">
+        <thead className="border-b border-border text-xs tracking-wider text-muted-foreground uppercase">
+          <tr>
+            <th className="px-4 py-3">Tidspunkt</th>
+            <th className="px-4 py-3">Bruker</th>
+            <th className="px-4 py-3">Verktøy</th>
+            <th className="px-4 py-3">Parametre</th>
+            <th className="px-4 py-3">Endringer</th>
+            <th className="px-4 py-3">Resultat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.length === 0 ? (
+            <tr>
+              <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
+                Ingen agentaktivitet registrert ennå.
+              </td>
+            </tr>
+          ) : (
+            rows.map((row) => (
+              <tr key={row.id} className="border-b border-border align-top last:border-0">
+                <td className="px-4 py-3 whitespace-nowrap text-muted-foreground">
+                  {new Date(row.created_at).toLocaleString("nb-NO")}
+                </td>
+                <td className="px-4 py-3">
+                  {row.user_email ?? row.user_id ?? "Ukjent"}
+                  {row.client_id ? (
+                    <p className="mt-1 text-xs text-muted-foreground">Klient: {row.client_id}</p>
+                  ) : null}
+                </td>
+                <td className="px-4 py-3">{TOOL_LABELS[row.tool_name] ?? row.tool_name}</td>
+                <td className="px-4 py-3">
+                  <pre className="max-w-xs overflow-x-auto text-xs text-muted-foreground">
+                    {JSON.stringify(row.arguments)}
+                  </pre>
+                </td>
+                <td className="px-4 py-3">
+                  {row.changes ? (
+                    <details>
+                      <summary className="cursor-pointer text-xs text-muted-foreground">
+                        Vis endringer
+                      </summary>
+                      <pre className="mt-2 max-w-sm overflow-x-auto text-xs">
+                        {JSON.stringify(row.changes, null, 2)}
+                      </pre>
+                    </details>
+                  ) : (
+                    <span className="text-xs text-muted-foreground">Ingen</span>
+                  )}
+                </td>
+                <td className="px-4 py-3">
+                  {row.success ? "OK" : (row.error ?? "Feilet")}
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
 
 function FieldEditor({
   path,
