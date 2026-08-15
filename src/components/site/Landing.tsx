@@ -1,8 +1,11 @@
+import heroImage from "@/assets/hero-questpulse.jpg";
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { LeadForm } from "@/components/site/LeadForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
 import type { Locale, SiteContent } from "@/lib/site-content";
+
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="qp-eyebrow">{children}</p>;
@@ -45,7 +48,18 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 </Button>
               </div>
             </div>
-            <div className="flex items-end">
+            <div className="flex flex-col justify-end gap-8">
+              <img
+                src={heroImage}
+                alt={
+                  locale === "no"
+                    ? "Organisatoriske signaler visualisert som løpende kurver"
+                    : "Organisational signals visualised as continuous curves"
+                }
+                width={1600}
+                height={1200}
+                className="w-full rounded-md border border-navy-foreground/15 object-cover shadow-lg"
+              />
               <blockquote className="border-l-2 border-teal pl-6">
                 <p className="font-display text-2xl leading-snug text-navy-foreground sm:text-3xl">
                   {content.hero.short}
@@ -55,6 +69,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 </footer>
               </blockquote>
             </div>
+
           </div>
         </section>
 
