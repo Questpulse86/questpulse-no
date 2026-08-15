@@ -45,7 +45,7 @@ export default defineTool({
     }
     return {
       content: [{ type: "text", text: `Updated sections: ${Object.keys(sections).join(", ")}` }],
-      structuredContent: { locale, updatedAt: data[0].updated_at, updatedSections: Object.keys(sections) },
+      structuredContent: { locale, updatedAt: data[0]!.updated_at, updatedSections: Object.keys(sections) },
     };
   },
 });
