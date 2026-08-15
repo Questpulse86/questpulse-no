@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type * as React from "react";
 
 import type { Locale } from "@/lib/site-content";
 
@@ -110,22 +111,22 @@ const copy: Record<Locale, Record<RoleKey, RoleCopy>> = {
 };
 
 function EmployeeScene() {
-  const dots = [
-    [26, 32],
-    [58, 24],
-    [92, 40],
-    [40, 62],
-    [74, 70],
-    [110, 62],
+  const dots: Array<{ x: number; y: number }> = [
+    { x: 26, y: 32 },
+    { x: 58, y: 24 },
+    { x: 92, y: 40 },
+    { x: 40, y: 62 },
+    { x: 74, y: 70 },
+    { x: 110, y: 62 },
   ];
   return (
     <svg viewBox="0 0 320 200" className="h-full w-full" role="presentation">
       <rect x="16" y="14" width="180" height="172" rx="10" className="qp-scene-panel" />
-      {dots.map(([x, y], index) => (
+      {dots.map((dot, index) => (
         <circle
-          key={`${x}-${y}`}
-          cx={x + 30}
-          cy={y + 40}
+          key={`${dot.x}-${dot.y}`}
+          cx={dot.x + 30}
+          cy={dot.y + 40}
           r="7"
           className="qp-scene-dot"
           style={{ animationDelay: `${index * 0.12}s` }}
@@ -202,7 +203,7 @@ function BoardScene() {
   );
 }
 
-const scenes: Record<RoleKey, () => JSX.Element> = {
+const scenes: Record<RoleKey, () => React.ReactElement> = {
   employee: EmployeeScene,
   leader: LeaderScene,
   hr: HrScene,
