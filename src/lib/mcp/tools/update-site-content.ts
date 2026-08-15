@@ -1,6 +1,8 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
 import { supabaseForUser } from "../supabase";
+import { recordMcpAudit } from "../audit";
+
 
 export default defineTool({
   name: "update_site_content",
