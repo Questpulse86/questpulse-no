@@ -171,3 +171,171 @@
   height: 3px;
   background: var(--teal);
 }
+
+/* Rollebryter: bevegelse som viser hva hver rolle ser. */
+@keyframes qp-scene-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qp-scene-point {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes qp-dot-hold {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes qp-bar-rise {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes qp-row-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes qp-line-draw {
+  from {
+    stroke-dashoffset: 420;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes qp-marker-in {
+  0% {
+    opacity: 0;
+    r: 0;
+  }
+  100% {
+    opacity: 1;
+    r: 8;
+  }
+}
+
+.qp-scene-enter {
+  animation: qp-scene-enter 0.45s ease-out both;
+}
+
+.qp-scene-point {
+  animation: qp-scene-point 0.4s ease-out both;
+}
+
+.qp-scene-panel {
+  fill: color-mix(in oklab, var(--navy) 6%, transparent);
+  stroke: color-mix(in oklab, var(--navy) 16%, transparent);
+  stroke-width: 1;
+}
+
+.qp-scene-dot {
+  fill: var(--teal);
+  animation: qp-dot-hold 2.6s ease-in-out infinite;
+}
+
+.qp-scene-blocked {
+  stroke: color-mix(in oklab, var(--navy) 22%, transparent);
+  stroke-width: 6;
+}
+
+.qp-scene-cross {
+  stroke: color-mix(in oklab, var(--navy) 30%, transparent);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+}
+
+.qp-scene-axis {
+  stroke: color-mix(in oklab, var(--navy) 18%, transparent);
+  stroke-width: 1.5;
+}
+
+.qp-scene-bar {
+  fill: color-mix(in oklab, var(--navy) 22%, transparent);
+  animation: qp-bar-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.qp-scene-bar-active {
+  fill: var(--teal);
+}
+
+.qp-scene-chip {
+  fill: color-mix(in oklab, var(--teal) 18%, transparent);
+}
+
+.qp-scene-row {
+  animation: qp-row-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.qp-scene-fill {
+  fill: color-mix(in oklab, var(--navy) 20%, transparent);
+}
+
+.qp-scene-fill-active {
+  fill: var(--teal);
+}
+
+.qp-scene-band {
+  fill: color-mix(in oklab, var(--teal) 10%, transparent);
+}
+
+.qp-scene-line {
+  stroke: var(--teal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  animation: qp-line-draw 1.4s ease-out both;
+}
+
+.qp-scene-marker {
+  fill: var(--navy);
+  animation: qp-marker-in 0.4s ease-out 0.9s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qp-scene-enter,
+  .qp-scene-point,
+  .qp-scene-dot,
+  .qp-scene-bar,
+  .qp-scene-row,
+  .qp-scene-line,
+  .qp-scene-marker {
+    animation: none;
+  }
+
+  .qp-scene-line {
+    stroke-dasharray: none;
+  }
+}
