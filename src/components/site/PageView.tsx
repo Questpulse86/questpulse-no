@@ -109,6 +109,11 @@ function Section({
       <section className="border-y border-border bg-card">
         <div className="mx-auto max-w-6xl px-5 py-24">
           {header}
+          {section.visual === "flow" ? (
+            <div className="mt-12">
+              <StepFlow locale={locale} />
+            </div>
+          ) : null}
           <ol className="mt-14 grid gap-10 md:grid-cols-3">
             {section.items.map((item, index) => (
               <li key={item.title}>
