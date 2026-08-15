@@ -227,7 +227,10 @@ function AdminPage() {
               </tbody>
             </table>
           </div>
+        ) : (
+          <AuditTable rows={overview.data.audit} />
         )}
+
       </main>
     </div>
   );
