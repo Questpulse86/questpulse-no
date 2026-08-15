@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-label="QuestPulse logo">
+  <rect width="1000" height="1000" fill="#13212F"/>
+  <g transform="translate(75 75) scale(.85)">
+    <polygon points="98.8,242.2 406,60 583.5,161.1 98.8,456.9" fill="#FFFFFF"/>
+    <polygon points="583.5,232.7 853.5,395.8 853.5,683 583.5,505.5" fill="#1A9A8E"/>
+    <polygon points="98.8,533.2 582.5,822.2 402.2,939.6 98.8,750.7" fill="#FFFFFF"/>
+    <polygon points="654.1,660.1 901.2,816.5 763.8,908.1 654.1,838.5" fill="#FFFFFF"/>
+  </g>
+</svg>
