@@ -124,6 +124,14 @@ function AdminPage() {
             >
               Henvendelser ({overview.data.leads.length})
             </Button>
+            <Button
+              size="sm"
+              variant={tab === "audit" ? "default" : "outline"}
+              onClick={() => setTab("audit")}
+            >
+              Agentlogg ({overview.data.audit.length})
+            </Button>
+
             <Button size="sm" variant="ghost" onClick={signOut}>
               Logg ut
             </Button>
