@@ -1,4 +1,6 @@
 import { LeadForm } from "@/components/site/LeadForm";
+import { RoleShowcase } from "@/components/site/RoleShowcase";
+
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { pageContent, pagePaths, type PageKey, type PageSection } from "@/lib/page-content";
@@ -49,7 +51,19 @@ function Section({
     );
   }
 
+  if (section.kind === "roles") {
+    return (
+      <RoleShowcase
+        locale={locale}
+        eyebrow={section.eyebrow}
+        title={section.title}
+        lead={section.lead}
+      />
+    );
+  }
+
   if (section.kind === "contact") {
+
     return (
       <section id="kontakt" className="border-t border-border bg-card">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-[0.85fr_1.15fr]">

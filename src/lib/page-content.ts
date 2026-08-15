@@ -5,7 +5,8 @@ export type PageSection =
   | { kind: "cards"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | { kind: "steps"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
-  | { kind: "contact"; eyebrow?: string; title: string; lead?: string };
+  | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
+  | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
 export type PageItem = { title: string; text: string };
 
@@ -284,27 +285,10 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       },
       sections: [
         {
-          kind: "cards",
+          kind: "roles",
           eyebrow: "Verdi per rolle",
-          title: "Hva de ulike rollene får",
-          items: [
-            {
-              title: "For HR",
-              text: "Bedre oversikt mellom de større undersøkelsene, tydeligere prioritering av innsats, og bedre støtte til lederne i oppfølgingen. HR slipper å bygge bildet manuelt hver gang noen spør.",
-            },
-            {
-              title: "For lederen",
-              text: "Innsikt i eget team uten å måtte tolke rådata. Støtte til å velge hva som bør gjøres først, og mulighet til å se om handlingene faktisk virket.",
-            },
-            {
-              title: "For ledelse og styre",
-              text: "Organisatorisk risiko satt i samme format som annen risiko: tidlig, dokumentert og etterprøvbart. Bedre beslutningsgrunnlag før tallene slår inn i regnskapet.",
-            },
-            {
-              title: "For den ansatte",
-              text: "Et privat sted for refleksjon, med verdi tilbake. Trygghet for at individuelle svar ikke deles, og tilgang i kjente arbeidsverktøy.",
-            },
-          ],
+          title: "Samme underlag, ulikt utsnitt",
+          lead: "Velg en rolle og se hva den faktisk får tilgang til. Enkeltsvar stopper der de hører hjemme, og hvert nivå får det som kan handles på.",
         },
         {
           kind: "dark",
@@ -780,27 +764,10 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       },
       sections: [
         {
-          kind: "cards",
+          kind: "roles",
           eyebrow: "Value per role",
-          title: "What each role gets",
-          items: [
-            {
-              title: "For HR",
-              text: "Better overview between the larger surveys, clearer prioritisation of effort, and better support for leaders in follow-up. No more rebuilding the picture manually every time someone asks.",
-            },
-            {
-              title: "For the leader",
-              text: "Insight into your own team without interpreting raw data. Support for choosing what to do first, and the ability to see whether actions worked.",
-            },
-            {
-              title: "For executives and the board",
-              text: "Organisational risk in the same format as other risk: early, documented and verifiable. A better basis for decisions before the numbers hit the accounts.",
-            },
-            {
-              title: "For the employee",
-              text: "A private space for reflection, with value in return. Assurance that individual answers are not shared, and access in familiar tools.",
-            },
-          ],
+          title: "One shared basis, different views",
+          lead: "Pick a role and see what it actually gets access to. Individual answers stop where they belong, and each level gets what it can act on.",
         },
         {
           kind: "dark",
