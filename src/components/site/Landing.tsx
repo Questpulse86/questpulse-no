@@ -128,7 +128,23 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 </li>
               ))}
             </ol>
+            <div className="mt-14">
+              <ImagePlaceholder
+                ratio="16/9"
+                label={
+                  locale === "no"
+                    ? "Skjermbilde av lederdashboard"
+                    : "Screenshot of the leadership dashboard"
+                }
+                hint={
+                  locale === "no"
+                    ? "Anbefalt format: 1600 x 900 px"
+                    : "Recommended format: 1600 x 900 px"
+                }
+              />
+            </div>
           </div>
+
         </section>
 
         {/* Compliance */}
