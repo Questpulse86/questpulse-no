@@ -10,6 +10,11 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
+  validateSearch: (search: Record<string, unknown>) => {
+    const next = typeof search["next"] === "string" ? search["next"] : "";
+    // Only same-origin relative paths are allowed as a return target.
+    return { next: next.startsWith("/") && !next.startsWith("//") ? next : "" };
+  },
   head: () => ({
     meta: [
       { title: "Logg inn | QuestPulse" },
@@ -26,6 +31,8 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
+  const { next } = Route.useSearch();
+  const returnTo = next || "/admin";
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [busy, setBusy] = useState(false);
 
@@ -41,7 +48,7 @@ function AuthPage() {
         : await supabase.auth.signUp({
             email,
             password,
-            options: { emailRedirectTo: `${window.location.origin}/admin` },
+            options: { emailRedirectTo: `${window.location.origin}${returnTo}` },
           });
     setBusy(false);
     if (error) {
@@ -51,19 +58,19 @@ function AuthPage() {
     if (mode === "signup") {
       toast.success("Konto opprettet. Sjekk e-posten din om bekreftelse kreves.");
     }
-    void navigate({ to: "/admin" });
+    window.location.href = returnTo;
   }
 
   async function signInWithGoogle() {
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
+      redirect_uri: `${window.location.origin}${returnTo}`,
     });
     if (result.error) {
       toast.error("Google-innlogging feilet");
       return;
     }
     if (result.redirected) return;
-    void navigate({ to: "/admin" });
+    window.location.href = returnTo;
   }
 
   return (
