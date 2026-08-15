@@ -31,6 +31,13 @@ export default defineTool({
     if (inquiryType) query = query.eq("inquiry_type", inquiryType);
 
     const { data, error } = await query;
+    await recordMcpAudit(ctx, {
+      tool: "list_leads",
+      args: { limit: limit ?? 20, inquiryType: inquiryType ?? null },
+      changes: null,
+      success: !error,
+      error: error?.message ?? null,
+    });
     if (error) return { content: [{ type: "text", text: error.message }], isError: true };
     return {
       content: [{ type: "text", text: JSON.stringify(data ?? [], null, 2) }],
@@ -38,3 +45,4 @@ export default defineTool({
     };
   },
 });
+
