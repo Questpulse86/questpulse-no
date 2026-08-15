@@ -1,4 +1,7 @@
+import { Link } from "@tanstack/react-router";
+
 import heroImage from "@/assets/hero-questpulse.jpg";
+
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { LeadForm } from "@/components/site/LeadForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -168,6 +171,54 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
             </div>
           </div>
         </section>
+
+        {/* Demo */}
+        <section id="demo" className="border-y border-border bg-card">
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <Eyebrow>{locale === "no" ? "Interaktiv demo" : "Interactive demo"}</Eyebrow>
+              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">
+                {locale === "no"
+                  ? "Se hva hvert nivå faktisk får se"
+                  : "See exactly what each level is shown"}
+              </h2>
+              <p className="mt-5 text-muted-foreground">
+                {locale === "no"
+                  ? "Bytt mellom toppleder, avdelingsleder, teamleder og medarbeider. Ledernivåene ser kun aggregerte tall. Medarbeiderens rom er privat og deles aldri med leder eller HR."
+                  : "Switch between executive, department leader, team leader and employee. Leadership levels see aggregated figures only. The employee space stays private."}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button asChild size="lg">
+                  <Link to="/demo">{locale === "no" ? "Se demoen" : "Se demoen"}</Link>
+                </Button>
+                <span className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
+                  {locale === "no" ? "Fiktive eksempeldata" : "Fictional sample data"}
+                </span>
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-background p-6 shadow-sm">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { id: "H1", navn: locale === "no" ? "Toppleder" : "Executive" },
+                  { id: "H2", navn: locale === "no" ? "Avdelingsleder" : "Department leader" },
+                  { id: "H3", navn: locale === "no" ? "Teamleder" : "Team leader" },
+                  { id: "H4", navn: locale === "no" ? "Medarbeider" : "Employee" },
+                ].map((r) => (
+                  <div key={r.id} className="rounded-md border border-border bg-card p-4">
+                    <p className="text-[11px] font-bold text-teal">{r.id}</p>
+                    <p className="mt-1 text-sm font-semibold text-navy">{r.navn}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-xs text-muted-foreground">
+                {locale === "no"
+                  ? "Organizational Health Index, tidlige varsler, hotspots og neste beste lederhandling."
+                  : "Organizational Health Index, early warnings, hotspots and next best leadership action."}
+              </p>
+            </div>
+          </div>
+        </section>
+
 
         {/* Roles */}
         <section id="roller" className="bg-navy py-24 text-navy-foreground">
