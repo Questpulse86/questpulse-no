@@ -181,7 +181,8 @@ function AdminPage() {
               ))}
             </div>
           </>
-        ) : (
+        ) : tab === "leads" ? (
+
           <div className="overflow-x-auto rounded-md border border-border bg-card">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border text-xs tracking-wider text-muted-foreground uppercase">
