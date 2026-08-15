@@ -119,7 +119,7 @@ export function StepFlow({ locale }: { locale: Locale }) {
               role="button"
               tabIndex={0}
               aria-pressed={selected === index}
-              aria-label={text.steps[index].title}
+              aria-label={text.steps[index]!.title}
               onMouseEnter={() => setSelected(index)}
               onFocus={() => setSelected(index)}
               onClick={() => setSelected(index)}
@@ -134,7 +134,7 @@ export function StepFlow({ locale }: { locale: Locale }) {
               <circle cx={node.x} cy={node.y} r="13" className="qp-flow-node-ring" />
               <circle cx={node.x} cy={node.y} r="6" className="qp-flow-node-dot" />
               <text x={node.x} y={node.y - 26} className="qp-flow-node-label">
-                {index + 1}. {text.steps[index].title}
+                {index + 1}. {text.steps[index]!.title}
               </text>
             </g>
           ))}
@@ -155,10 +155,10 @@ export function StepFlow({ locale }: { locale: Locale }) {
           aria-live="polite"
         >
           <p className="qp-eyebrow">
-            {selected + 1}. {text.steps[selected].title}
+            {selected + 1}. {text.steps[selected]!.title}
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            {text.steps[selected].text}
+            {text.steps[selected]!.text}
           </p>
         </div>
 
