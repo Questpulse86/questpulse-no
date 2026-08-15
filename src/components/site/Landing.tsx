@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router";
-
 import { LeadForm } from "@/components/site/LeadForm";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
 import type { Locale, SiteContent } from "@/lib/site-content";
 
@@ -9,42 +9,10 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 export function Landing({ locale, content }: { locale: Locale; content: SiteContent }) {
-  const other = locale === "no" ? "en" : "no";
-
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <Link to={locale === "no" ? "/" : "/en"} className="flex items-baseline gap-2">
-            <span className="font-display text-xl font-bold text-navy">{content.brand.name}</span>
-            <span className="hidden text-xs tracking-widest text-teal-deep uppercase sm:inline">
-              {content.brand.category}
-            </span>
-          </Link>
-          <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
-            <a href="#hvordan" className="transition-colors hover:text-navy">
-              {content.nav.how}
-            </a>
-            <a href="#roller" className="transition-colors hover:text-navy">
-              {content.nav.forWho}
-            </a>
-            <a href="#sikkerhet" className="transition-colors hover:text-navy">
-              {content.nav.security}
-            </a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Link
-              to={other === "no" ? "/" : "/en"}
-              className="text-xs font-semibold tracking-widest text-muted-foreground uppercase transition-colors hover:text-navy"
-            >
-              {other === "no" ? "NO" : "EN"}
-            </Link>
-            <Button asChild size="sm">
-              <a href="#kontakt">{content.nav.cta}</a>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader locale={locale} content={content} altHref={locale === "no" ? "/en" : "/"} />
+
 
       <main>
         {/* Hero */}
