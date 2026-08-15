@@ -1,4 +1,6 @@
 import { LeadForm } from "@/components/site/LeadForm";
+import { RoleShowcase } from "@/components/site/RoleShowcase";
+
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { pageContent, pagePaths, type PageKey, type PageSection } from "@/lib/page-content";
