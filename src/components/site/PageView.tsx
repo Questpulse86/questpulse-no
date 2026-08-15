@@ -72,7 +72,13 @@ function Section({
             <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{section.title}</h2>
             {section.lead ? <p className="mt-5 text-muted-foreground">{section.lead}</p> : null}
             <p className="mt-8 text-sm text-muted-foreground">
-              linda@dchub.no
+              <a className="story-link" href="mailto:hei@questpulse.no">
+                hei@questpulse.no
+              </a>
+              <br />
+              <a className="story-link" href="mailto:support@questpulse.no">
+                support@questpulse.no
+              </a>
               <br />
               Digital Coach Hub AS
             </p>

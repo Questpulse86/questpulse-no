@@ -231,7 +231,13 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.contact.title}</h2>
               <p className="mt-5 text-muted-foreground">{content.contact.lead}</p>
               <p className="mt-8 text-sm text-muted-foreground">
-                linda@dchub.no
+                <a className="story-link" href="mailto:hei@questpulse.no">
+                  hei@questpulse.no
+                </a>
+                <br />
+                <a className="story-link" href="mailto:support@questpulse.no">
+                  support@questpulse.no
+                </a>
                 <br />
                 Digital Coach Hub AS
               </p>
