@@ -1,5 +1,6 @@
 import { LeadForm } from "@/components/site/LeadForm";
 import { RoleShowcase } from "@/components/site/RoleShowcase";
+import { StepFlow } from "@/components/site/StepFlow";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
