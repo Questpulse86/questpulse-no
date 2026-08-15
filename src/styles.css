@@ -494,3 +494,37 @@
     stroke-dashoffset: 0;
   }
 }
+
+/* Demo: signalfarger for risikonivå (kun i QuestPulse-demoen) */
+:root {
+  --signal-low: var(--teal-deep);
+  --signal-low-soft: oklch(0.9337 0.0298 186.27);
+  --signal-mid: oklch(0.5798 0.1095 73.02);
+  --signal-mid-soft: oklch(0.9542 0.0332 84.57);
+  --signal-high: oklch(0.5195 0.1493 26.76);
+  --signal-high-soft: oklch(0.9425 0.0263 27.5);
+}
+
+@theme inline {
+  --color-signal-low: var(--signal-low);
+  --color-signal-mid: var(--signal-mid);
+  --color-signal-high: var(--signal-high);
+}
+
+@keyframes qp-demo-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qp-demo-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in { animation: qp-demo-fade-in 0.35s ease both; }
+.animate-scale-in { animation: qp-demo-scale-in 0.3s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-scale-in { animation: none; }
+}
