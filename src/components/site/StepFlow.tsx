@@ -11,7 +11,6 @@ const labels = {
     nodes: ["Løpende innsikt", "Tydelig prioritering", "Dokumentert effekt"],
     before: "Handlingsrom",
     after: "Konsekvens",
-    late: "Uten løpende innsikt oppdages utviklingen her",
   },
   en: {
     caption: "Illustration: development over time. No actual data.",
@@ -21,7 +20,6 @@ const labels = {
     nodes: ["Continuous insight", "Clear prioritisation", "Documented effect"],
     before: "Room to act",
     after: "Consequence",
-    late: "Without continuous insight the change surfaces here",
   },
 } as const;
 
@@ -49,9 +47,9 @@ export function StepFlow({ locale }: { locale: Locale }) {
   }, []);
 
   const nodePositions = [
-    { x: 120, y: 176 },
-    { x: 420, y: 118 },
-    { x: 730, y: 96 },
+    { x: 130, y: 203 },
+    { x: 420, y: 137 },
+    { x: 730, y: 104 },
   ];
 
   return (
@@ -107,7 +105,7 @@ export function StepFlow({ locale }: { locale: Locale }) {
           </text>
         </svg>
         <figcaption className="mt-5 text-xs text-muted-foreground">
-          {text.caption} {text.late}.
+          {text.caption}
         </figcaption>
       </figure>
     </div>
