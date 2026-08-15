@@ -204,7 +204,24 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               </article>
             ))}
           </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            <ImagePlaceholder
+              ratio="3/2"
+              label={locale === "no" ? "Portrett av Linda Karlsen" : "Portrait of Linda Karlsen"}
+              hint={locale === "no" ? "Anbefalt format: 1200 x 800 px" : "Recommended: 1200 x 800 px"}
+            />
+            <ImagePlaceholder
+              ratio="3/2"
+              label={
+                locale === "no"
+                  ? "Situasjonsbilde fra kundemøte"
+                  : "Situational photo from a client meeting"
+              }
+              hint={locale === "no" ? "Anbefalt format: 1200 x 800 px" : "Recommended: 1200 x 800 px"}
+            />
+          </div>
         </section>
+
 
         {/* Contact */}
         <section id="kontakt" className="border-t border-border bg-card">
