@@ -165,6 +165,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "steps",
           eyebrow: "Trestegsmodellen",
           title: "Fra signal til dokumentert effekt",
+          visual: "flow",
           items: [
             {
               title: "1. Løpende innsikt",
@@ -644,6 +645,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "steps",
           eyebrow: "The three-step model",
           title: "From signal to documented effect",
+          visual: "flow",
           items: [
             {
               title: "1. Continuous insight",
