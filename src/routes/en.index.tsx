@@ -9,7 +9,7 @@ const contentQuery = queryOptions({
   queryFn: () => getSiteContent({ data: { locale: "en" } }),
 });
 
-export const Route = createFileRoute("/en")({
+export const Route = createFileRoute("/en/")({
   head: () => ({
     meta: [
       { title: "QuestPulse | Continuous insight into your organisation" },

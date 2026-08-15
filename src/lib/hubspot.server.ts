@@ -22,15 +22,9 @@ function buildProperties(lead: LeadInput): Record<string, string> {
   const firstname = parts.length > 1 ? parts.slice(0, -1).join(" ") : trimmed;
   const lastname = parts.length > 1 ? (parts[parts.length - 1] ?? "") : "";
 
-  const messageLines = [
-    `Henvendelse fra questpulse.no: ${inquiryLabels[lead.inquiryType] ?? lead.inquiryType}`,
-    lead.message?.trim() ?? "",
-  ].filter(Boolean);
-
   const properties: Record<string, string> = {
     email: lead.email.trim().toLowerCase(),
     firstname,
-    message: messageLines.join("\n\n"),
     hs_lead_status: "NEW",
     lifecyclestage: "lead",
   };
@@ -38,6 +32,14 @@ function buildProperties(lead: LeadInput): Record<string, string> {
   if (lead.company?.trim()) properties["company"] = lead.company.trim();
   if (lead.role?.trim()) properties["jobtitle"] = lead.role.trim();
   return properties;
+}
+
+function buildNoteBody(lead: LeadInput): string {
+  const lines = [
+    `Henvendelse fra questpulse.no: ${inquiryLabels[lead.inquiryType] ?? lead.inquiryType}`,
+    lead.message?.trim() ?? "",
+  ].filter(Boolean);
+  return lines.join("\n\n");
 }
 
 function gatewayHeaders(lovableKey: string, hubspotKey: string) {
@@ -49,8 +51,45 @@ function gatewayHeaders(lovableKey: string, hubspotKey: string) {
 }
 
 /**
+ * Creates a HubSpot note with the message and inquiry type, associated to the contact.
+ * Note-to-contact association type id 202 is the HubSpot-defined default.
+ */
+async function createContactNote(
+  headers: Record<string, string>,
+  contactId: string,
+  lead: LeadInput,
+): Promise<string | null> {
+  try {
+    const response = await fetch(`${GATEWAY_URL}/crm/v3/objects/notes`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        properties: {
+          hs_timestamp: new Date().toISOString(),
+          hs_note_body: buildNoteBody(lead),
+        },
+        associations: [
+          {
+            to: { id: contactId },
+            types: [{ associationCategory: "HUBSPOT_DEFINED", associationTypeId: 202 }],
+          },
+        ],
+      }),
+    });
+    if (response.ok) return null;
+    const body = await response.text();
+    console.error(`HubSpot note failed [${response.status}]: ${body}`);
+    return `HubSpot note ${response.status}: ${body.slice(0, 400)}`;
+  } catch (error) {
+    console.error("HubSpot note threw", error);
+    return error instanceof Error ? error.message : "Ukjent feil";
+  }
+}
+
+/**
  * Sends a lead to HubSpot CRM through the Lovable connector gateway.
- * Creates the contact, or updates it when the email already exists.
+ * Creates the contact, or updates it when the email already exists, and logs
+ * the message plus inquiry type as an associated note.
  * Returns quietly when HubSpot is not connected yet, so no lead is ever lost.
  */
 export async function syncLeadToHubspot(
@@ -72,7 +111,11 @@ export async function syncLeadToHubspot(
       body: JSON.stringify({ properties }),
     });
 
-    if (response.ok) return { synced: true, error: null };
+    if (response.ok) {
+      const created = (await response.json()) as { id?: string };
+      const noteError = created.id ? await createContactNote(headers, created.id, lead) : null;
+      return { synced: true, error: noteError };
+    }
 
     const body = await response.text();
 
@@ -85,7 +128,10 @@ export async function syncLeadToHubspot(
           headers,
           body: JSON.stringify({ properties }),
         });
-        if (update.ok) return { synced: true, error: null };
+        if (update.ok) {
+          const noteError = await createContactNote(headers, existingId, lead);
+          return { synced: true, error: noteError };
+        }
         const updateBody = await update.text();
         console.error(`HubSpot update failed [${update.status}]: ${updateBody}`);
         return {
