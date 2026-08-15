@@ -1,4 +1,7 @@
+import { Link } from "@tanstack/react-router";
+
 import heroImage from "@/assets/hero-questpulse.jpg";
+
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { LeadForm } from "@/components/site/LeadForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
