@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://lxejgftqmrusycrnwmcu.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "nettside-lk",
+      "version": "0.1.0",
+      "title": "Nettside LK"
+    },
+    "tools": [
+      {
+        "name": "list_leads",
+        "title": "List leads",
+        "description": "List contact-form leads captured on the QuestPulse website, newest first. Requires an admin account.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "default": 20,
+              "description": "How many leads to return.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "inquiryType": {
+              "description": "Optional filter on inquiry type, e.g. 'demo' or 'pilot'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_site_content",
+        "title": "Get site content",
+        "description": "Read the editable website copy for one locale ('no' or 'en') as JSON.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "locale": {
+              "type": "string",
+              "enum": [
+                "no",
+                "en"
+              ],
+              "description": "Which language version of the website copy to read."
+            }
+          },
+          "required": [
+            "locale"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_site_content",
+        "title": "Update site content",
+        "description": "Update website copy for one locale by merging the given top-level sections into the stored content. Requires an admin account. Read the content first with get_site_content so the section shape matches.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "locale": {
+              "type": "string",
+              "enum": [
+                "no",
+                "en"
+              ],
+              "description": "Which language version of the website copy to update."
+            },
+            "sections": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {},
+              "description": "Top-level content sections to replace, e.g. { \"hero\": { ... } }."
+            }
+          },
+          "required": [
+            "locale",
+            "sections"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
