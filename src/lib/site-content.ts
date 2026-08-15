@@ -205,7 +205,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send henvendelse",
       sending: "Sender ...",
       success: "Takk. Vi har mottatt henvendelsen og tar kontakt.",
-      error: "Noe gikk galt. Prøv igjen, eller send e-post til linda@dchub.no.",
+      error: "Noe gikk galt. Prøv igjen, eller send e-post til support@questpulse.no.",
       privacy:
         "Vi bruker opplysningene kun til å følge opp henvendelsen din. Ingen deling med tredjepart.",
     },
@@ -357,7 +357,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send enquiry",
       sending: "Sending ...",
       success: "Thank you. We have received your enquiry and will be in touch.",
-      error: "Something went wrong. Please try again, or email linda@dchub.no.",
+      error: "Something went wrong. Please try again, or email support@questpulse.no.",
       privacy: "We use your details only to follow up on your enquiry. No sharing with third parties.",
     },
     footer: {
