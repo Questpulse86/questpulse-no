@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { Logo } from "@/components/site/Logo";
 import { footerKeys, navLabels, pagePaths } from "@/lib/page-content";
 import type { Locale, SiteContent } from "@/lib/site-content";
 
@@ -8,7 +9,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
     <footer className="bg-navy py-14 text-navy-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <p className="font-display text-lg">{content.brand.name}</p>
+          <Logo variant="onDark" width={132} />
           <p className="mt-2 max-w-md text-sm text-navy-foreground/60">{content.footer.text}</p>
         </div>
         <nav className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
