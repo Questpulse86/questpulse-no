@@ -33,8 +33,16 @@ export function SiteHeader({
               {navLabels[locale][key]}
             </Link>
           ))}
+          <Link
+            to="/demo"
+            className="transition-colors hover:text-navy"
+            activeProps={{ className: "text-navy font-semibold" }}
+          >
+            Demo
+          </Link>
         </nav>
         <div className="flex items-center gap-3">
+
           <Link
             to={altHref}
             className="text-xs font-semibold tracking-widest text-muted-foreground uppercase transition-colors hover:text-navy"
