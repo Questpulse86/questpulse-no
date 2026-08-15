@@ -45,7 +45,7 @@ function AdminPage() {
   const fetchOverview = useServerFn(getAdminOverview);
   const save = useServerFn(saveSiteContent);
   const [locale, setLocale] = useState<Locale>("no");
-  const [tab, setTab] = useState<"content" | "leads">("content");
+  const [tab, setTab] = useState<"content" | "leads" | "audit">("content");
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
