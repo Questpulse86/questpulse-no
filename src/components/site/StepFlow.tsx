@@ -5,27 +5,56 @@ import type { Locale } from "@/lib/site-content";
 const labels = {
   no: {
     caption: "Illustrasjon: utvikling over tid. Ingen faktiske data.",
+    hint: "Klikk eller hold musepekeren over et steg for forklaring.",
     axisStart: "Signal synlig",
     axisMid: "Tiltak satt i gang",
     axisEnd: "Effekt fulgt opp",
-    nodes: ["Løpende innsikt", "Tydelig prioritering", "Dokumentert effekt"],
     before: "Handlingsrom",
     after: "Konsekvens",
+    steps: [
+      {
+        title: "Løpende innsikt",
+        text: "Organisatoriske signaler samles løpende og pseudonymisert, slik at mønstre blir synlige mens handlingsrommet fortsatt er stort.",
+      },
+      {
+        title: "Tydelig prioritering",
+        text: "Signalene settes i sammenheng og rangeres, slik at leder ser hva som betyr mest nå og hva som kan vente.",
+      },
+      {
+        title: "Dokumentert effekt",
+        text: "Tiltakene følges opp over tid, med et etterprøvbart grunnlag for ledergruppe, styre og tilsyn.",
+      },
+    ],
   },
   en: {
     caption: "Illustration: development over time. No actual data.",
+    hint: "Click or hover a step for a short explanation.",
     axisStart: "Signal visible",
     axisMid: "Action under way",
     axisEnd: "Effect followed up",
-    nodes: ["Continuous insight", "Clear prioritisation", "Documented effect"],
     before: "Room to act",
     after: "Consequence",
+    steps: [
+      {
+        title: "Continuous insight",
+        text: "Organisational signals are collected continuously and pseudonymised, making patterns visible while there is still room to act.",
+      },
+      {
+        title: "Clear prioritisation",
+        text: "Signals are put in context and ranked, so leaders see what matters now and what can wait.",
+      },
+      {
+        title: "Documented effect",
+        text: "Actions are followed up over time, with a verifiable basis for the leadership team, the board and supervisory bodies.",
+      },
+    ],
   },
 } as const;
 
 export function StepFlow({ locale }: { locale: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
+  const [selected, setSelected] = useState(0);
   const text = labels[locale];
 
   useEffect(() => {
@@ -83,13 +112,29 @@ export function StepFlow({ locale }: { locale: Locale }) {
           {nodePositions.map((node, index) => (
             <g
               key={node.x}
-              className="qp-flow-node"
+              className={
+                selected === index ? "qp-flow-node qp-flow-node-active" : "qp-flow-node"
+              }
               style={{ animationDelay: `${0.9 + index * 0.28}s` }}
+              role="button"
+              tabIndex={0}
+              aria-pressed={selected === index}
+              aria-label={text.steps[index].title}
+              onMouseEnter={() => setSelected(index)}
+              onFocus={() => setSelected(index)}
+              onClick={() => setSelected(index)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setSelected(index);
+                }
+              }}
             >
+              <circle cx={node.x} cy={node.y} r="26" className="qp-flow-node-hit" />
               <circle cx={node.x} cy={node.y} r="13" className="qp-flow-node-ring" />
               <circle cx={node.x} cy={node.y} r="6" className="qp-flow-node-dot" />
               <text x={node.x} y={node.y - 26} className="qp-flow-node-label">
-                {index + 1}. {text.nodes[index]}
+                {index + 1}. {text.steps[index].title}
               </text>
             </g>
           ))}
@@ -104,8 +149,41 @@ export function StepFlow({ locale }: { locale: Locale }) {
             {text.axisEnd}
           </text>
         </svg>
+
+        <div
+          className="mt-6 rounded-md border border-border border-l-2 border-l-teal bg-card p-5"
+          aria-live="polite"
+        >
+          <p className="qp-eyebrow">
+            {selected + 1}. {text.steps[selected].title}
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            {text.steps[selected].text}
+          </p>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {text.steps.map((step, index) => (
+            <button
+              key={step.title}
+              type="button"
+              onMouseEnter={() => setSelected(index)}
+              onFocus={() => setSelected(index)}
+              onClick={() => setSelected(index)}
+              aria-pressed={selected === index}
+              className={
+                selected === index
+                  ? "rounded-full border border-teal bg-teal px-4 py-1.5 text-xs font-bold text-white transition-colors"
+                  : "rounded-full border border-border px-4 py-1.5 text-xs font-bold text-muted-foreground transition-colors hover:border-teal hover:text-foreground"
+              }
+            >
+              {index + 1}. {step.title}
+            </button>
+          ))}
+        </div>
+
         <figcaption className="mt-5 text-xs text-muted-foreground">
-          {text.caption}
+          {text.caption} {text.hint}
         </figcaption>
       </figure>
     </div>

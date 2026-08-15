@@ -416,14 +416,24 @@
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.qp-flow-node-hit {
+  fill: transparent;
 }
 
 .qp-flow-node-ring {
   fill: color-mix(in oklab, var(--teal) 20%, transparent);
+  transition:
+    fill 0.2s ease,
+    r 0.2s ease;
 }
 
 .qp-flow-node-dot {
   fill: var(--navy);
+  transition: fill 0.2s ease;
 }
 
 .qp-flow-node-label {
@@ -431,7 +441,28 @@
   font-size: 14px;
   font-weight: 700;
   text-anchor: middle;
+  transition: opacity 0.2s ease;
+  opacity: 0.6;
 }
+
+.qp-flow-node:hover .qp-flow-node-ring,
+.qp-flow-node:focus-visible .qp-flow-node-ring,
+.qp-flow-node-active .qp-flow-node-ring {
+  fill: color-mix(in oklab, var(--teal) 45%, transparent);
+  r: 18;
+}
+
+.qp-flow-node:hover .qp-flow-node-dot,
+.qp-flow-node-active .qp-flow-node-dot {
+  fill: var(--teal);
+}
+
+.qp-flow-node:hover .qp-flow-node-label,
+.qp-flow-node:focus-visible .qp-flow-node-label,
+.qp-flow-node-active .qp-flow-node-label {
+  opacity: 1;
+}
+
 
 .qp-flow-on .qp-flow-zone,
 .qp-flow-on .qp-flow-zone-late {
