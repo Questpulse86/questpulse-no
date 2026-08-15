@@ -1,0 +1,1 @@
+DELETE FROM public.leads WHERE email = 'lovable-test-lead@questpulse.no';
