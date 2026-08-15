@@ -339,3 +339,127 @@
     stroke-dasharray: none;
   }
 }
+
+/* Trestegsmodellen: fra signal til dokumentert effekt */
+@keyframes qp-flow-draw {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes qp-flow-node-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qp-flow-zone-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.qp-flow-zone {
+  fill: color-mix(in oklab, var(--teal) 8%, transparent);
+  opacity: 0;
+}
+
+.qp-flow-zone-late {
+  fill: color-mix(in oklab, var(--navy) 6%, transparent);
+  opacity: 0;
+}
+
+.qp-flow-zone-label {
+  fill: color-mix(in oklab, var(--navy) 60%, transparent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.qp-flow-axis {
+  stroke: color-mix(in oklab, var(--navy) 18%, transparent);
+  stroke-width: 1.5;
+}
+
+.qp-flow-axis-label {
+  fill: color-mix(in oklab, var(--navy) 55%, transparent);
+  font-size: 13px;
+}
+
+.qp-flow-divider {
+  stroke: color-mix(in oklab, var(--navy) 25%, transparent);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.qp-flow-line {
+  stroke: var(--teal);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+.qp-flow-node {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.qp-flow-node-ring {
+  fill: color-mix(in oklab, var(--teal) 20%, transparent);
+}
+
+.qp-flow-node-dot {
+  fill: var(--navy);
+}
+
+.qp-flow-node-label {
+  fill: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.qp-flow-on .qp-flow-zone,
+.qp-flow-on .qp-flow-zone-late {
+  animation: qp-flow-zone-in 0.6s ease-out both;
+}
+
+.qp-flow-on .qp-flow-zone-late {
+  animation-delay: 0.25s;
+}
+
+.qp-flow-on .qp-flow-line {
+  animation: qp-flow-draw 1.8s ease-out 0.2s both;
+}
+
+.qp-flow-on .qp-flow-node {
+  animation: qp-flow-node-in 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qp-flow-on .qp-flow-zone,
+  .qp-flow-on .qp-flow-zone-late,
+  .qp-flow-on .qp-flow-line,
+  .qp-flow-on .qp-flow-node {
+    animation: none;
+    opacity: 1;
+  }
+
+  .qp-flow-on .qp-flow-line {
+    stroke-dashoffset: 0;
+  }
+}

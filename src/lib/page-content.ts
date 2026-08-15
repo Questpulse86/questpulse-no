@@ -3,7 +3,14 @@ import type { Locale } from "@/lib/site-content";
 export type PageSection =
   | { kind: "prose"; eyebrow?: string; title: string; lead?: string; paragraphs: string[] }
   | { kind: "cards"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
-  | { kind: "steps"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
+  | {
+      kind: "steps";
+      eyebrow?: string;
+      title: string;
+      lead?: string;
+      visual?: "flow";
+      items: PageItem[];
+    }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
@@ -158,6 +165,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "steps",
           eyebrow: "Trestegsmodellen",
           title: "Fra signal til dokumentert effekt",
+          visual: "flow",
           items: [
             {
               title: "1. Løpende innsikt",
@@ -637,6 +645,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "steps",
           eyebrow: "The three-step model",
           title: "From signal to documented effect",
+          visual: "flow",
           items: [
             {
               title: "1. Continuous insight",
