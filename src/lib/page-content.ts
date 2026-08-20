@@ -217,19 +217,19 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           "Bank og finans er vårt første bevismarked. Løpende kontroll av det psykososiale arbeidsmiljøet, dokumentasjon til styre og tilsyn, og en aktiv pilot.",
       },
       hero: {
-        eyebrow: "For bank og finans",
-        title: "Vi beviser modellen der kravene er høyest",
-        lead: "Bank og finans har tydelige HR-funksjoner, høy bevissthet om sikkerhet og reelle krav til dokumentert kontroll. Derfor starter vi her.",
+        eyebrow: "Bank og finans",
+        title: "Organisatorisk risiko kan ikke styres på årlige øyeblikksbilder",
+        lead: "QuestPulse gir HR, ledelse og kontrollfunksjoner et mer løpende beslutningsgrunnlag for arbeidsmiljø, omstilling og lederoppfølging.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "Compliance-inngangen",
-          title: "Samtalen starter i en plikt dere allerede har",
-          lead: "Arbeidsmiljøloven krever risikobasert og løpende kontroll av det psykososiale arbeidsmiljøet. QuestPulse gjør plikten enklere å oppfylle og å dokumentere.",
+          eyebrow: "Regelverk",
+          title: "Fra periodisk kartlegging til mer løpende risikoforståelse",
+          lead: "Regelverket stiller krav til systematisk kartlegging, risikovurdering, tiltak og oppfølging av det psykososiale arbeidsmiljøet. QuestPulse gir virksomheten et mer løpende og strukturert beslutningsgrunnlag for dette arbeidet.",
           items: [
             {
-              title: "Løpende kontroll",
+              title: "Løpende oppfølging",
               text: "Risikobasert oppfølging gjennom hele året, ikke bare ved den årlige undersøkelsen.",
             },
             {
@@ -242,6 +242,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Krav i bransjen",
