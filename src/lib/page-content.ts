@@ -807,26 +807,6 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
-    pilot: {
-      meta: {
-        title: "Enterprise evaluation | QuestPulse",
-        description:
-          "Evaluate QuestPulse in a defined part of the organisation, with clear decision criteria and a documented conclusion.",
-      },
-      hero: {
-        eyebrow: "Enterprise evaluation",
-        title: "Evaluate QuestPulse in a controlled part of the organisation",
-        lead: "A structured evaluation with a defined scope, agreed decision criteria and a documented conclusion.",
-      },
-      sections: [
-        {
-          kind: "contact",
-          eyebrow: "Next step",
-          title: "Discuss an enterprise evaluation",
-          lead: "Tell us which part of the organisation is relevant, and we will get in touch.",
-        },
-      ],
-    },
 
     contact: {
       meta: {
