@@ -46,6 +46,13 @@
   --color-teal-deep: var(--teal-deep);
   --color-teal-soft: var(--teal-soft);
   --color-slate-ink: var(--slate-ink);
+  /* Digital Coach Hub: egen merkevarepalett, brukes kun under /dchub */
+  --color-dch-ink: var(--dch-ink);
+  --color-dch-accent: var(--dch-accent);
+  --color-dch-accent-deep: var(--dch-accent-deep);
+  --color-dch-sand: var(--dch-sand);
+  --color-dch-line: var(--dch-line);
+  --color-dch-muted: var(--dch-muted);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -70,6 +77,14 @@
   --teal-deep: oklch(0.5223 0.0894 184.71);
   --teal-soft: oklch(0.9337 0.0298 186.27);
   --slate-ink: oklch(0.5858 0.0328 240.57);
+
+  /* Digital Coach Hub-merkevare (varm palett, adskilt fra QuestPulse) */
+  --dch-ink: #13212f;
+  --dch-accent: #1a9a8e;
+  --dch-accent-deep: #158a7f;
+  --dch-sand: #faf9f7;
+  --dch-line: #e5e2dd;
+  --dch-muted: #6c757d;
 
   --background: oklch(0.9722 0.0034 247.86);
   --foreground: oklch(0.3535 0.0312 237.98);
