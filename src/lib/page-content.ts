@@ -915,63 +915,68 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
     },
     security: {
       meta: {
-        title: "Security and privacy in QuestPulse | Data stored in Norway",
+        title: "Trust Center | QuestPulse security, privacy and control",
         description:
-          "QuestPulse runs on Azure Norway East, is built to GDPR article 25 and the principles of the EU AI Act, and ships with a data processing agreement.",
+          "How QuestPulse handles security architecture, data location, access control, aggregation, retention, sub-processors, incidents, privacy and model governance.",
       },
       hero: {
-        eyebrow: "Security and privacy",
-        title: "Privacy as architecture, not as an appendix",
-        lead: "Insight about people demands strict safeguards. QuestPulse is built so the organisation gets the picture it needs without exposing individuals.",
+        eyebrow: "Trust Center",
+        title: "Security and privacy documented, not asserted",
+        lead: "Insight about people demands strict safeguards. This page describes how QuestPulse is built, operated and governed, and where responsibility sits.",
       },
       sections: [
         {
-          kind: "cards",
-          eyebrow: "Core principles",
-          title: "How we protect the data",
+          kind: "register",
+          eyebrow: "Documentation",
+          title: "Security and privacy in QuestPulse",
           items: [
             {
-              title: "Azure Norway East",
-              text: "Data is stored and processed in Norway, on Microsoft's Norwegian region, encrypted in transit and at rest.",
+              title: "Security architecture",
+              text: "Separated environments, least privilege between components, encryption in transit and at rest, and logging of administrative operations.",
             },
             {
-              title: "GDPR article 25",
-              text: "Privacy by design and data minimisation. We collect only what the purpose requires.",
+              title: "Data flow and data location",
+              text: "Data is stored and processed within the EEA, on Azure Norway East. Data flow from collection to aggregated insight is documented per environment.",
             },
             {
-              title: "EU AI Act",
-              text: "Built on the principles of the regulation, with transparency about what the system does and human control over decisions.",
+              title: "Access control",
+              text: "Login through your own identity provider using SSO. Access is role based, granted per organisational area and logged.",
             },
             {
-              title: "Aggregation and thresholds",
+              title: "Aggregation and protection of the individual",
               text: "Individual answers are never shared with the employer. Insight appears only when the group is large enough to prevent identification.",
             },
             {
-              title: "SSO and access control",
-              text: "Login through your own identity provider, with role-based access and traceability.",
+              title: "Retention and deletion",
+              text: "Retention is set per data category and agreed in the data processing agreement. Data is deleted or returned on termination.",
             },
             {
-              title: "Data processing agreement",
-              text: "Standard data processing agreement under GDPR article 28, with an overview of sub-processors and retention.",
-            },
-          ],
-        },
-        {
-          kind: "dark",
-          eyebrow: "Responsibilities",
-          title: "Who is responsible for what",
-          items: [
-            {
-              title: "You are the data controller",
-              text: "You decide purpose and scope, and which units take part.",
+              title: "Sub-processors",
+              text: "A current list of sub-processors, their purpose and location is provided as an annex to the data processing agreement.",
             },
             {
-              title: "QuestPulse is the processor",
-              text: "We process data only on your instruction, governed by the data processing agreement.",
+              title: "Incident handling",
+              text: "Defined routines for detection, classification, notification and follow-up, with agreed notification deadlines towards the controller.",
             },
             {
-              title: "Employees have transparency",
-              text: "Employees are informed about what is collected and can exercise their GDPR rights.",
+              title: "Continuity and recovery",
+              text: "Backup, recovery routines and defined recovery objectives, described in the operational documentation.",
+            },
+            {
+              title: "Privacy",
+              text: "Built to GDPR article 25 with data minimisation. You are the controller, QuestPulse is the processor under an article 28 agreement.",
+            },
+            {
+              title: "Model governance and human control",
+              text: "Automated analysis is used to prioritise and summarise, never to make decisions about individuals. Output is explainable and can be overridden by a person.",
+            },
+            {
+              title: "Agreements and documentation",
+              text: "Data processing agreement, sub-processor annex and security documentation are shared on request as part of a procurement or evaluation process.",
+            },
+            {
+              title: "Security contact point",
+              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
             },
           ],
         },
@@ -983,6 +988,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+
     partners: {
       meta: {
         title: "Partners | Working with QuestPulse",
