@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BruksomraderRouteImport } from './routes/bruksomrader'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-evaluering'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
 import { Route as KontaktRouteImport } from './routes/kontakt'
@@ -61,6 +62,11 @@ const BruksomraderRoute = BruksomraderRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnterpriseEvalueringRoute = EnterpriseEvalueringRouteImport.update({
+  id: '/enterprise-evaluering',
+  path: '/enterprise-evaluering',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForBankOgFinansRoute = ForBankOgFinansRouteImport.update({
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -222,6 +229,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -254,6 +262,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bruksomrader'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -316,6 +326,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bruksomrader'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -347,6 +358,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bruksomrader'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -379,6 +391,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BruksomraderRoute: typeof BruksomraderRoute
   DemoRoute: typeof DemoRoute
+  EnterpriseEvalueringRoute: typeof EnterpriseEvalueringRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
   KontaktRoute: typeof KontaktRoute
@@ -439,6 +452,13 @@ declare module '@tanstack/react-router' {
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enterprise-evaluering': {
+      id: '/enterprise-evaluering'
+      path: '/enterprise-evaluering'
+      fullPath: '/enterprise-evaluering'
+      preLoaderRoute: typeof EnterpriseEvalueringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/for-bank-og-finans': {
@@ -629,6 +649,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BruksomraderRoute: BruksomraderRoute,
   DemoRoute: DemoRoute,
+  EnterpriseEvalueringRoute: EnterpriseEvalueringRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
   KontaktRoute: KontaktRoute,
