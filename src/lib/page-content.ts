@@ -28,9 +28,10 @@ export type PageData = {
 export type PageKey =
   | "about"
   | "how"
+  | "usecases"
   | "banking"
   | "hr"
-  | "pilot"
+  | "enterprise"
   | "contact"
   | "security"
   | "partners";
@@ -38,48 +39,53 @@ export type PageKey =
 export const pagePaths = {
   about: { no: "/om-selskapet", en: "/en/about" },
   how: { no: "/slik-fungerer-det", en: "/en/how-it-works" },
+  usecases: { no: "/bruksomrader", en: "/en/use-cases" },
   banking: { no: "/for-bank-og-finans", en: "/en/banking-and-finance" },
   hr: { no: "/for-hr-og-ledelse", en: "/en/hr-and-leadership" },
-  pilot: { no: "/pilot", en: "/en/pilot" },
+  enterprise: { no: "/enterprise-evaluering", en: "/en/enterprise-evaluation" },
   contact: { no: "/kontakt", en: "/en/contact" },
   security: { no: "/sikkerhet-og-personvern", en: "/en/security-and-privacy" },
   partners: { no: "/partnere", en: "/en/partners" },
 } as const;
 
-export const navKeys: PageKey[] = ["how", "banking", "hr", "pilot", "about"];
+export const navKeys: PageKey[] = ["how", "usecases", "banking", "hr", "security", "about"];
 export const footerKeys: PageKey[] = [
-  "about",
   "how",
+  "usecases",
   "banking",
   "hr",
-  "pilot",
+  "enterprise",
   "security",
   "partners",
+  "about",
   "contact",
 ];
 
 export const navLabels: Record<Locale, Record<PageKey, string>> = {
   no: {
-    about: "Om selskapet",
-    how: "Slik fungerer det",
-    banking: "Bank og finans",
-    hr: "HR og ledelse",
-    pilot: "Pilot",
+    about: "Selskapet",
+    how: "Plattformen",
+    usecases: "Bruksområder",
+    banking: "Finans",
+    hr: "Innsikt",
+    enterprise: "Enterprise-evaluering",
     contact: "Kontakt",
-    security: "Sikkerhet og personvern",
+    security: "Trust Center",
     partners: "Partnere",
   },
   en: {
-    about: "About us",
-    how: "How it works",
-    banking: "Banking and finance",
-    hr: "HR and leadership",
-    pilot: "Pilot",
+    about: "Company",
+    how: "Platform",
+    usecases: "Use cases",
+    banking: "Finance",
+    hr: "Insight",
+    enterprise: "Enterprise evaluation",
     contact: "Contact",
-    security: "Security and privacy",
+    security: "Trust Center",
     partners: "Partners",
   },
 };
+
 
 export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
   no: {
