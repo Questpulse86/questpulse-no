@@ -587,23 +587,23 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         {
           kind: "cards",
           eyebrow: "The team",
-          title: "A small team with deep subject-matter experience",
-          lead: "We build the product close to pilot customers, with advisors in privacy, security and working environment.",
+          title: "Who is behind QuestPulse",
           items: [
             {
-              title: "Leadership and business",
-              text: "Linda Karlsen leads the company, with a background in coaching, leadership development and organisational work in Nordic companies.",
+              title: "Linda Karlsen, CEO and founder",
+              text: "Around 20 years of experience from sales, leadership and business development.",
             },
             {
-              title: "Product and technology",
-              text: "Development happens with technology advisors, with security and privacy as a premise from the first line of code.",
+              title: "Thomas Ryste, COO",
+              text: "Responsible for operations, finance and commercial agreements.",
             },
             {
-              title: "Advisory",
-              text: "Working environment, HSE and privacy are quality-assured by external specialists, so the product holds up before regulators and boards.",
+              title: "Eivind Teig, CTO",
+              text: "Responsible for product, security, data models and privacy architecture.",
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Vision",
