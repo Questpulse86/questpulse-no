@@ -561,7 +561,102 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+    usecases: {
+      meta: {
+        title: "Bruksområder | QuestPulse People Intelligence",
+        description:
+          "Fire områder der QuestPulse forbedrer beslutningen: omstilling og endring, ledelseskapasitet, belastning og friksjon, og psykososial risiko.",
+      },
+      hero: {
+        eyebrow: "Bruksområder",
+        title: "Fire beslutninger som i dag tas for sent",
+        lead: "QuestPulse brukes der konsekvensene er dyre og signalene kommer sent. Hvert område under beskriver hvilken beslutning innsikten forbedrer.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Områder",
+          title: "Der innsikten endrer beslutningen",
+          items: [
+            {
+              title: "Omstilling og endring",
+              text: "Hvilke enheter bærer endringen godt, og hvor svikter kapasiteten før leveransen gjør det. Beslutningen som forbedres er rekkefølge og tempo i omstillingen.",
+            },
+            {
+              title: "Ledelseskapasitet",
+              text: "Hvilke ledere har for stort kontrollspenn, og hvor er oppfølgingen tynn. Beslutningen som forbedres er hvor lederstøtte settes inn før turnover oppstår.",
+            },
+            {
+              title: "Belastning og friksjon",
+              text: "Hvor belastningen er vedvarende, og hvor friksjonen skyldes arbeidsform framfor personer. Beslutningen som forbedres er prioritering av ressurser og fjerning av hindre.",
+            },
+            {
+              title: "Psykososial risiko og arbeidsmiljø",
+              text: "Hvor risiko bygger seg opp mellom kartleggingene. Beslutningen som forbedres er hvilke tiltak som iverksettes, dokumenteres og følges opp mot styre og tilsyn.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Neste steg",
+          title: "Hvilken beslutning er vanskeligst hos dere i dag?",
+          lead: "Skriv kort hva det gjelder, så setter vi opp en strategisk gjennomgang.",
+        },
+      ],
+    },
+    enterprise: {
+      meta: {
+        title: "Enterprise-evaluering | QuestPulse",
+        description:
+          "Evaluer QuestPulse i en avgrenset del av organisasjonen, med tydelige beslutningskriterier, avklart personvern og en dokumentert konklusjon.",
+      },
+      hero: {
+        eyebrow: "Enterprise-evaluering",
+        title: "Evaluer QuestPulse i en kontrollert del av organisasjonen",
+        lead: "En strukturert evaluering med avgrenset omfang, avtalte beslutningskriterier og en dokumentert konklusjon.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Struktur",
+          title: "Hva evalueringen omfatter",
+          items: [
+            {
+              title: "Avgrenset problem og mål",
+              text: "Vi avklarer hvilken beslutning som skal forbedres, og hva et bedre beslutningsgrunnlag konkret betyr for dere.",
+            },
+            {
+              title: "Definert organisatorisk område",
+              text: "En avgrenset del av organisasjonen, med enheter, ledere og roller definert før oppstart.",
+            },
+            {
+              title: "Personvern og sikkerhetsavklaring",
+              text: "Databehandleravtale, datalokasjon, tilgangsstyring og terskler for aggregering avklares før oppstart.",
+            },
+            {
+              title: "Implementeringsplan",
+              text: "Oppsett, kommunikasjon, ansvar og milepæler, med tydelig anslag for egen innsats i organisasjonen.",
+            },
+            {
+              title: "Målbare beslutningskriterier",
+              text: "Hva som må være oppfylt for at evalueringen skal regnes som vellykket, avtalt skriftlig før oppstart.",
+            },
+            {
+              title: "Evaluering og beslutning",
+              text: "En felles gjennomgang av hva som ble observert, hva som ble handlet på, og hva videre bruk vil kreve.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Neste steg",
+          title: "Diskuter en enterprise-evaluering",
+          lead: "Skriv hvilken del av organisasjonen som er aktuell, så tar vi kontakt.",
+        },
+      ],
+    },
   },
+
   en: {
     about: {
       meta: {
