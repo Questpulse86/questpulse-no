@@ -364,13 +364,18 @@ function DcHub() {
 
             <Reveal>
               <div className="overflow-hidden rounded-[20px] bg-white shadow-[0_4px_28px_rgba(19,33,47,0.09)]">
-                <div className="flex aspect-[3/4] min-h-[340px] items-center justify-center bg-[linear-gradient(160deg,rgba(26,154,142,0.15)_0%,rgba(19,33,47,0.08)_100%)]">
-                  <span className="font-display text-[80px] text-[#1A9A8E] opacity-40">LK</span>
-                </div>
+                <img
+                  src={lindaPhoto.url}
+                  alt="Linda Karlsen, sertifisert NLP-coach og daglig leder i Digital Coach Hub AS"
+                  className="aspect-[3/4] min-h-[340px] w-full object-cover object-top"
+                  loading="eager"
+                />
                 <div className="flex items-center gap-4 border-t border-[#E5E2DD] p-6">
-                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#1A9A8E]/25 bg-[#1A9A8E]/10 font-display text-lg font-bold text-[#1A9A8E]">
-                    LK
-                  </span>
+                  <img
+                    src={lindaPhoto.url}
+                    alt=""
+                    className="h-12 w-12 flex-shrink-0 rounded-full border-2 border-[#1A9A8E]/25 object-cover object-top"
+                  />
                   <div>
                     <div className="font-display text-[17px] font-bold">Linda Karlsen</div>
                     <div className="text-xs text-[#6C757D]">
