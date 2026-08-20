@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/dchub/Reveal";
 import { LeadForm } from "@/components/site/LeadForm";
 import { getSiteContent } from "@/lib/site.functions";
+import lindaPhoto from "@/assets/linda-karlsen.png.asset.json";
 
 const title = "Ledercoach Askim | Linda Karlsen NLP-coach | Digital Coach Hub";
 const description =
@@ -212,18 +213,22 @@ const values = [
 const team = [
   {
     initials: "LK",
+    photo: lindaPhoto.url,
     name: "Linda Karlsen",
     role: "Grunder og Businesscoach",
     bio: "17+ år med ledererfaring fra begge sider av bordet. NLP-sertifisert coach etter ICF-standarder. Grunder av Digital Coach Hub og QuestPulse.",
   },
+
   {
     initials: "TR",
+    photo: null,
     name: "Thomas Ryste",
     role: "CTO",
     bio: "Teknisk arkitekt og CTO bak QuestPulse-plattformen. Ansvarlig for sikker infrastruktur, modellstyring og systemdesign.",
   },
   {
     initials: "ET",
+    photo: null,
     name: "Eivind Teig",
     role: "Fullstack Utvikler",
     bio: "Fullstack-utvikler med ansvar for produkt, brukeropplevelse og integrasjoner. Bygger det digitale som gjør arbeidet skalerbart.",
@@ -359,13 +364,18 @@ function DcHub() {
 
             <Reveal>
               <div className="overflow-hidden rounded-[20px] bg-white shadow-[0_4px_28px_rgba(19,33,47,0.09)]">
-                <div className="flex aspect-[3/4] min-h-[340px] items-center justify-center bg-[linear-gradient(160deg,rgba(26,154,142,0.15)_0%,rgba(19,33,47,0.08)_100%)]">
-                  <span className="font-display text-[80px] text-[#1A9A8E] opacity-40">LK</span>
-                </div>
+                <img
+                  src={lindaPhoto.url}
+                  alt="Linda Karlsen, sertifisert NLP-coach og daglig leder i Digital Coach Hub AS"
+                  className="aspect-[3/4] min-h-[340px] w-full object-cover object-top"
+                  loading="eager"
+                />
                 <div className="flex items-center gap-4 border-t border-[#E5E2DD] p-6">
-                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#1A9A8E]/25 bg-[#1A9A8E]/10 font-display text-lg font-bold text-[#1A9A8E]">
-                    LK
-                  </span>
+                  <img
+                    src={lindaPhoto.url}
+                    alt=""
+                    className="h-12 w-12 flex-shrink-0 rounded-full border-2 border-[#1A9A8E]/25 object-cover object-top"
+                  />
                   <div>
                     <div className="font-display text-[17px] font-bold">Linda Karlsen</div>
                     <div className="text-xs text-[#6C757D]">
@@ -564,9 +574,12 @@ function DcHub() {
           <div className="mx-auto grid max-w-[1120px] gap-16 px-8 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal>
               <div className="relative">
-                <div className="flex aspect-[3/4] items-center justify-center rounded-xl bg-[linear-gradient(160deg,rgba(26,154,142,0.15)_0%,rgba(19,33,47,0.08)_100%)]">
-                  <span className="font-display text-[72px] text-[#1A9A8E] opacity-40">LK</span>
-                </div>
+                <img
+                  src={lindaPhoto.url}
+                  alt="Linda Karlsen i samtale med ledere og ansatte"
+                  className="aspect-[3/4] w-full rounded-xl object-cover object-top"
+                  loading="lazy"
+                />
                 <div className="mt-4 flex items-center gap-3 rounded-xl border border-[#E5E2DD] bg-white p-4">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1A9A8E]/10 text-[#1A9A8E]">
                     ✓
@@ -648,9 +661,18 @@ function DcHub() {
               {team.map((person) => (
                 <Reveal key={person.name}>
                   <article className="h-full rounded-xl border border-[#E5E2DD] bg-white p-7 text-center">
-                    <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#1A9A8E]/10 font-display text-2xl font-bold text-[#1A9A8E]">
-                      {person.initials}
-                    </span>
+                    {person.photo ? (
+                      <img
+                        src={person.photo}
+                        alt={`${person.name}, ${person.role}`}
+                        className="mx-auto h-20 w-20 rounded-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#1A9A8E]/10 font-display text-2xl font-bold text-[#1A9A8E]">
+                        {person.initials}
+                      </span>
+                    )}
                     <div className="mt-5 font-display text-xl">{person.name}</div>
                     <div className="mt-1 text-[13px] font-semibold tracking-[0.06em] text-[#1A9A8E] uppercase">
                       {person.role}
