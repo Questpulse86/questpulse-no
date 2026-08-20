@@ -661,9 +661,18 @@ function DcHub() {
               {team.map((person) => (
                 <Reveal key={person.name}>
                   <article className="h-full rounded-xl border border-[#E5E2DD] bg-white p-7 text-center">
-                    <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#1A9A8E]/10 font-display text-2xl font-bold text-[#1A9A8E]">
-                      {person.initials}
-                    </span>
+                    {person.photo ? (
+                      <img
+                        src={person.photo}
+                        alt={`${person.name}, ${person.role}`}
+                        className="mx-auto h-20 w-20 rounded-full object-cover object-top"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#1A9A8E]/10 font-display text-2xl font-bold text-[#1A9A8E]">
+                        {person.initials}
+                      </span>
+                    )}
                     <div className="mt-5 font-display text-xl">{person.name}</div>
                     <div className="mt-1 text-[13px] font-semibold tracking-[0.06em] text-[#1A9A8E] uppercase">
                       {person.role}
