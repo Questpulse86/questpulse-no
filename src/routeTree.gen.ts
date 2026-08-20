@@ -23,6 +23,7 @@ import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
 import { Route as PartnereRouteImport } from './routes/partnere'
 import { Route as PilotRouteImport } from './routes/pilot'
 import { Route as SikkerhetOgPersonvernRouteImport } from './routes/sikkerhet-og-personvern'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SlikFungererDetRouteImport } from './routes/slik-fungerer-det'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -108,6 +109,11 @@ const PilotRoute = PilotRouteImport.update({
 const SikkerhetOgPersonvernRoute = SikkerhetOgPersonvernRouteImport.update({
   id: '/sikkerhet-og-personvern',
   path: '/sikkerhet-og-personvern',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SlikFungererDetRoute = SlikFungererDetRouteImport.update({
@@ -213,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -245,6 +252,7 @@ export interface FileRoutesByTo {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -279,6 +287,7 @@ export interface FileRoutesById {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -313,6 +322,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -378,6 +389,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -412,6 +424,7 @@ export interface RootRouteChildren {
   PartnereRoute: typeof PartnereRoute
   PilotRoute: typeof PilotRoute
   SikkerhetOgPersonvernRoute: typeof SikkerhetOgPersonvernRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlikFungererDetRoute: typeof SlikFungererDetRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -528,6 +541,13 @@ declare module '@tanstack/react-router' {
       path: '/sikkerhet-og-personvern'
       fullPath: '/sikkerhet-og-personvern'
       preLoaderRoute: typeof SikkerhetOgPersonvernRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/slik-fungerer-det': {
@@ -678,6 +698,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnereRoute: PartnereRoute,
   PilotRoute: PilotRoute,
   SikkerhetOgPersonvernRoute: SikkerhetOgPersonvernRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlikFungererDetRoute: SlikFungererDetRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
