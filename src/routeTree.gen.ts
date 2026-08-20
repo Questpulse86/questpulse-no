@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BruksomraderRouteImport } from './routes/bruksomrader'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
@@ -49,6 +50,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BruksomraderRoute = BruksomraderRouteImport.update({
+  id: '/bruksomrader',
+  path: '/bruksomrader',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoRoute = DemoRouteImport.update({
@@ -178,6 +184,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
   '/demo': typeof DemoRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
@@ -266,6 +275,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/bruksomrader'
     | '/demo'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
@@ -294,6 +304,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/bruksomrader'
     | '/demo'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
@@ -323,6 +334,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/bruksomrader'
     | '/demo'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
@@ -353,6 +365,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  BruksomraderRoute: typeof BruksomraderRoute
   DemoRoute: typeof DemoRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
@@ -399,6 +412,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bruksomrader': {
+      id: '/bruksomrader'
+      path: '/bruksomrader'
+      fullPath: '/bruksomrader'
+      preLoaderRoute: typeof BruksomraderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo': {
@@ -587,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  BruksomraderRoute: BruksomraderRoute,
   DemoRoute: DemoRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
