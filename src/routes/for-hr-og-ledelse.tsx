@@ -24,7 +24,10 @@ export const Route = createFileRoute("/for-hr-og-ledelse")({
       { property: "og:url", content: "https://questpulse.no/for-hr-og-ledelse" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/for-hr-og-ledelse" }, { rel: "alternate", hrefLang: "en", href: "/en/hr-and-leadership" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/for-hr-og-ledelse" },
+      { rel: "alternate", hrefLang: "en", href: "/en/hr-and-leadership" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

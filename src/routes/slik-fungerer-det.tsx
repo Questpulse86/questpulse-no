@@ -24,7 +24,10 @@ export const Route = createFileRoute("/slik-fungerer-det")({
       { property: "og:url", content: "https://questpulse.no/slik-fungerer-det" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/slik-fungerer-det" }, { rel: "alternate", hrefLang: "en", href: "/en/how-it-works" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/slik-fungerer-det" },
+      { rel: "alternate", hrefLang: "en", href: "/en/how-it-works" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

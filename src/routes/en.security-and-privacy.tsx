@@ -24,7 +24,10 @@ export const Route = createFileRoute("/en/security-and-privacy")({
       { property: "og:url", content: "https://questpulse.no/en/security-and-privacy" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/en/security-and-privacy" }, { rel: "alternate", hrefLang: "no", href: "/sikkerhet-og-personvern" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/en/security-and-privacy" },
+      { rel: "alternate", hrefLang: "no", href: "/sikkerhet-og-personvern" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

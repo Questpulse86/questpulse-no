@@ -24,7 +24,10 @@ export const Route = createFileRoute("/en/how-it-works")({
       { property: "og:url", content: "https://questpulse.no/en/how-it-works" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/en/how-it-works" }, { rel: "alternate", hrefLang: "no", href: "/slik-fungerer-det" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/en/how-it-works" },
+      { rel: "alternate", hrefLang: "no", href: "/slik-fungerer-det" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

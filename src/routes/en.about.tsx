@@ -24,7 +24,10 @@ export const Route = createFileRoute("/en/about")({
       { property: "og:url", content: "https://questpulse.no/en/about" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/en/about" }, { rel: "alternate", hrefLang: "no", href: "/om-selskapet" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/en/about" },
+      { rel: "alternate", hrefLang: "no", href: "/om-selskapet" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

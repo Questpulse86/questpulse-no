@@ -24,7 +24,10 @@ export const Route = createFileRoute("/for-bank-og-finans")({
       { property: "og:url", content: "https://questpulse.no/for-bank-og-finans" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/for-bank-og-finans" }, { rel: "alternate", hrefLang: "en", href: "/en/banking-and-finance" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/for-bank-og-finans" },
+      { rel: "alternate", hrefLang: "en", href: "/en/banking-and-finance" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,

@@ -11,7 +11,9 @@ type OAuthDetails = {
 };
 
 type OAuthNamespace = {
-  getAuthorizationDetails: (id: string) => Promise<{ data: OAuthDetails | null; error: Error | null }>;
+  getAuthorizationDetails: (
+    id: string,
+  ) => Promise<{ data: OAuthDetails | null; error: Error | null }>;
   approveAuthorization: (id: string) => Promise<{ data: OAuthDetails | null; error: Error | null }>;
   denyAuthorization: (id: string) => Promise<{ data: OAuthDetails | null; error: Error | null }>;
 };
@@ -23,7 +25,8 @@ function oauth(): OAuthNamespace {
 export const Route = createFileRoute("/.lovable/oauth/consent")({
   ssr: false,
   validateSearch: (search: Record<string, unknown>) => ({
-    authorization_id: typeof search["authorization_id"] === "string" ? search["authorization_id"] : "",
+    authorization_id:
+      typeof search["authorization_id"] === "string" ? search["authorization_id"] : "",
   }),
   beforeLoad: async ({ search, location }) => {
     if (!search.authorization_id) throw new Error("Mangler authorization_id");
@@ -86,8 +89,8 @@ function ConsentPage() {
         <p className="qp-eyebrow">QuestPulse</p>
         <h1 className="mt-3 text-2xl">Koble {clientName} til kontoen din</h1>
         <p className="mt-3 text-sm text-muted-foreground">
-          {clientName} får bruke QuestPulse-verktøyene som deg: lese henvendelser og lese eller endre
-          nettsidens innhold, med de samme tilgangene som kontoen din har.
+          {clientName} får bruke QuestPulse-verktøyene som deg: lese henvendelser og lese eller
+          endre nettsidens innhold, med de samme tilgangene som kontoen din har.
         </p>
         {error && (
           <p role="alert" className="mt-4 text-sm text-destructive">
@@ -98,7 +101,12 @@ function ConsentPage() {
           <Button className="flex-1" disabled={busy} onClick={() => void decide(true)}>
             Godkjenn
           </Button>
-          <Button variant="outline" className="flex-1" disabled={busy} onClick={() => void decide(false)}>
+          <Button
+            variant="outline"
+            className="flex-1"
+            disabled={busy}
+            onClick={() => void decide(false)}
+          >
             Avslå
           </Button>
         </div>

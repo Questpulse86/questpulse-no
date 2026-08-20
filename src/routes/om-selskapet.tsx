@@ -24,7 +24,10 @@ export const Route = createFileRoute("/om-selskapet")({
       { property: "og:url", content: "https://questpulse.no/om-selskapet" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://questpulse.no/om-selskapet" }, { rel: "alternate", hrefLang: "en", href: "/en/about" }],
+    links: [
+      { rel: "canonical", href: "https://questpulse.no/om-selskapet" },
+      { rel: "alternate", hrefLang: "en", href: "/en/about" },
+    ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: Page,
