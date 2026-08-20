@@ -435,63 +435,68 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
     },
     security: {
       meta: {
-        title: "Sikkerhet og personvern i QuestPulse | Data lagret i Norge",
+        title: "Trust Center | Sikkerhet, personvern og kontroll i QuestPulse",
         description:
-          "QuestPulse driftes på Azure Norway East, er bygget etter GDPR artikkel 25 og prinsippene i EU AI Act, og leveres med databehandleravtale.",
+          "Slik håndterer QuestPulse sikkerhetsarkitektur, dataflyt og datalokasjon, tilgangsstyring, aggregering, oppbevaring, underleverandører, hendelser og personvern.",
       },
       hero: {
-        eyebrow: "Sikkerhet og personvern",
-        title: "Personvern som arkitektur, ikke som vedlegg",
-        lead: "Innsikt om mennesker stiller strenge krav. QuestPulse er bygget slik at virksomheten får bildet den trenger, uten at enkeltpersoner blir eksponert.",
+        eyebrow: "Trust Center",
+        title: "Sikkerhet og personvern dokumentert, ikke påstått",
+        lead: "Innsikt om mennesker stiller strenge krav. Denne siden beskriver hvordan QuestPulse er bygget, driftet og styrt, og hvor ansvaret ligger.",
       },
       sections: [
         {
-          kind: "cards",
-          eyebrow: "Grunnprinsippene",
-          title: "Slik beskytter vi dataene",
+          kind: "register",
+          eyebrow: "Dokumentasjon",
+          title: "Sikkerhet og personvern i QuestPulse",
           items: [
             {
-              title: "Azure Norway East",
-              text: "Data lagres og behandles i Norge, på Microsofts norske region, med kryptering i transitt og i ro.",
+              title: "Sikkerhetsarkitektur",
+              text: "Adskilte miljøer, minste nødvendige rettigheter mellom komponenter, kryptering i transitt og i ro, og logging av administrative operasjoner.",
             },
             {
-              title: "GDPR artikkel 25",
-              text: "Innebygd personvern og dataminimering. Vi samler bare det som er nødvendig for formålet.",
+              title: "Dataflyt og datalokasjon",
+              text: "Data lagres og behandles innenfor EØS, på Azure Norway East. Dataflyten fra innsamling til aggregert innsikt er dokumentert per miljø.",
             },
             {
-              title: "EU AI Act",
-              text: "Bygget på prinsippene i regelverket, med åpenhet om hva systemet gjør og menneskelig kontroll over beslutninger.",
+              title: "Tilgangsstyring",
+              text: "Pålogging via virksomhetens egen identitetsleverandør med SSO. Tilgang er rollebasert, gis per organisatorisk område og logges.",
             },
             {
-              title: "Aggregering og terskler",
+              title: "Aggregering og beskyttelse av individet",
               text: "Individuelle svar deles aldri med arbeidsgiver. Innsikt vises først når gruppen er stor nok til å hindre gjenkjenning.",
             },
             {
-              title: "SSO og tilgangsstyring",
-              text: "Pålogging via virksomhetens egen identitetsleverandør, med rollebasert tilgang og sporbarhet.",
+              title: "Oppbevaring og sletting",
+              text: "Lagringstid settes per datakategori og avtales i databehandleravtalen. Data slettes eller returneres ved avslutning.",
             },
             {
-              title: "Databehandleravtale",
-              text: "Standard databehandleravtale etter GDPR artikkel 28, med oversikt over underleverandører og lagringstid.",
-            },
-          ],
-        },
-        {
-          kind: "dark",
-          eyebrow: "Ansvarsdeling",
-          title: "Hvem har ansvar for hva",
-          items: [
-            {
-              title: "Virksomheten er behandlingsansvarlig",
-              text: "Dere bestemmer formål og omfang, og hvilke enheter som deltar.",
+              title: "Underleverandører",
+              text: "Oppdatert oversikt over underleverandører, formål og lokasjon følger som vedlegg til databehandleravtalen.",
             },
             {
-              title: "QuestPulse er databehandler",
-              text: "Vi behandler opplysninger kun etter instruks fra virksomheten, regulert i databehandleravtalen.",
+              title: "Hendelseshåndtering",
+              text: "Definerte rutiner for deteksjon, klassifisering, varsling og oppfølging, med avtalte varslingsfrister mot behandlingsansvarlig.",
             },
             {
-              title: "Den ansatte har innsyn",
-              text: "Ansatte får informasjon om hva som samles inn, og kan utøve sine rettigheter etter GDPR.",
+              title: "Kontinuitet og gjenoppretting",
+              text: "Sikkerhetskopiering, gjenopprettingsrutiner og definerte gjenopprettingsmål, beskrevet i driftsdokumentasjonen.",
+            },
+            {
+              title: "Personvern",
+              text: "Bygget etter GDPR artikkel 25 med dataminimering. Virksomheten er behandlingsansvarlig, QuestPulse er databehandler etter artikkel 28.",
+            },
+            {
+              title: "Modellstyring og menneskelig kontroll",
+              text: "Automatisert analyse brukes til å prioritere og oppsummere, aldri til å treffe beslutninger om enkeltpersoner. Output er forklarbar og kan overstyres av en person.",
+            },
+            {
+              title: "Avtaler og dokumentasjon",
+              text: "Databehandleravtale, underleverandørvedlegg og sikkerhetsdokumentasjon deles på forespørsel som del av en anskaffelses- eller evalueringsprosess.",
+            },
+            {
+              title: "Kontaktpunkt for sikkerhet",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
             },
           ],
         },
@@ -503,6 +508,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+
     partners: {
       meta: {
         title: "Partnere | Samarbeid med QuestPulse",
