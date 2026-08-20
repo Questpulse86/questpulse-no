@@ -697,19 +697,19 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           "Banking and finance is our first proof market: continuous control of the psychosocial working environment, documentation for boards and regulators, and an active pilot.",
       },
       hero: {
-        eyebrow: "For banking and finance",
-        title: "We prove the model where requirements are highest",
-        lead: "Banking and finance have mature HR functions, high security awareness and real demands for documented control. That is why we start here.",
+        eyebrow: "Banking and finance",
+        title: "Organisational risk cannot be managed on annual snapshots",
+        lead: "QuestPulse gives HR, leadership and control functions a more continuous basis for decisions on working environment, change and leadership follow-up.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "The compliance entry point",
-          title: "The conversation starts in a duty you already have",
-          lead: "Norwegian working environment law requires risk-based, continuous control of the psychosocial working environment. QuestPulse makes that duty easier to meet and to document.",
+          eyebrow: "Regulatory context",
+          title: "From periodic mapping to a more continuous understanding of risk",
+          lead: "Regulation requires systematic mapping, risk assessment, measures and follow-up of the psychosocial working environment. QuestPulse gives the organisation a more continuous and structured basis for that work.",
           items: [
             {
-              title: "Continuous control",
+              title: "Continuous follow-up",
               text: "Risk-based follow-up through the whole year, not only at the annual survey.",
             },
             {
@@ -722,6 +722,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Sector requirements",
