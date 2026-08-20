@@ -213,10 +213,12 @@ const values = [
 const team = [
   {
     initials: "LK",
+    photo: lindaPhoto.url,
     name: "Linda Karlsen",
     role: "Grunder og Businesscoach",
     bio: "17+ år med ledererfaring fra begge sider av bordet. NLP-sertifisert coach etter ICF-standarder. Grunder av Digital Coach Hub og QuestPulse.",
   },
+
   {
     initials: "TR",
     name: "Thomas Ryste",
