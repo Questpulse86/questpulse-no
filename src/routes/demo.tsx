@@ -22,6 +22,7 @@ export const Route = createFileRoute("/demo")({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
+      { property: "og:site_name", content: "QuestPulse" },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },

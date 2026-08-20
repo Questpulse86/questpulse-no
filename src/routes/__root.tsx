@@ -78,14 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "QuestPulse | People Intelligence" },
-      {
-        name: "description",
-        content:
-          "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen.",
-      },
+      // Merkevarenøytralt: title, description og og:site_name settes per rute,
+      // slik at QuestPulse og Digital Coach Hub holdes adskilt.
+      { title: "Digital Coach Hub AS" },
       { name: "author", content: "Digital Coach Hub AS" },
-      { property: "og:site_name", content: "QuestPulse" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -20,6 +20,7 @@ export const Route = createFileRoute("/auth")({
       { title: "Logg inn | QuestPulse" },
       { name: "description", content: "Innlogging for redigering av QuestPulse-nettsiden." },
       { property: "og:title", content: "Logg inn | QuestPulse" },
+      { property: "og:site_name", content: "QuestPulse" },
       { property: "og:description", content: "Innlogging for QuestPulse innholdspanel." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },

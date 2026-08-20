@@ -17,6 +17,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
       { title: "Innholdspanel | QuestPulse" },
       { name: "description", content: "Rediger tekstene på QuestPulse-nettsiden og se leads." },
       { property: "og:title", content: "Innholdspanel | QuestPulse" },
+      { property: "og:site_name", content: "QuestPulse" },
       { property: "og:description", content: "Internt innholdspanel for QuestPulse." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
