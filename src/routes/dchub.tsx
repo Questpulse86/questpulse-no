@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/dchub/Reveal";
 import { LeadForm } from "@/components/site/LeadForm";
 import { getSiteContent } from "@/lib/site.functions";
+import lindaPhoto from "@/assets/linda-karlsen.png.asset.json";
 
 const title = "Ledercoach Askim | Linda Karlsen NLP-coach | Digital Coach Hub";
 const description =
