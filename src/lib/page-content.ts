@@ -1041,5 +1041,100 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+    usecases: {
+      meta: {
+        title: "Use cases | QuestPulse People Intelligence",
+        description:
+          "Four areas where QuestPulse improves the decision: change programmes, leadership capacity, workload and friction, and psychosocial risk.",
+      },
+      hero: {
+        eyebrow: "Use cases",
+        title: "Four decisions that are made too late today",
+        lead: "QuestPulse is used where consequences are expensive and signals arrive late. Each area below describes the decision the insight improves.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Areas",
+          title: "Where the insight changes the decision",
+          items: [
+            {
+              title: "Change and restructuring",
+              text: "Which units carry the change well, and where capacity breaks down before delivery does. The decision improved is sequencing and pace of the change programme.",
+            },
+            {
+              title: "Leadership capacity",
+              text: "Which leaders carry too wide a span of control, and where follow-up is thin. The decision improved is where to add leadership support before turnover appears.",
+            },
+            {
+              title: "Workload and friction",
+              text: "Where workload is sustained, and where friction stems from ways of working rather than people. The decision improved is prioritising resources and removing obstacles.",
+            },
+            {
+              title: "Psychosocial risk and working environment",
+              text: "Where risk builds up between mappings. The decision improved is which measures to act on, document and follow up towards the board and regulators.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Next step",
+          title: "Which decision is hardest for you today?",
+          lead: "Tell us briefly, and we will set up a strategic review.",
+        },
+      ],
+    },
+    enterprise: {
+      meta: {
+        title: "Enterprise evaluation | QuestPulse",
+        description:
+          "Evaluate QuestPulse in a defined part of the organisation, with clear decision criteria, a privacy and security review and a documented conclusion.",
+      },
+      hero: {
+        eyebrow: "Enterprise evaluation",
+        title: "Evaluate QuestPulse in a controlled part of the organisation",
+        lead: "A structured evaluation with a defined scope, agreed decision criteria and a documented conclusion.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Structure",
+          title: "What the evaluation covers",
+          items: [
+            {
+              title: "Defined problem and objective",
+              text: "We agree which decision is to be improved, and what a better basis for it looks like.",
+            },
+            {
+              title: "Defined organisational area",
+              text: "A delimited part of the organisation, with the units, leaders and roles involved specified up front.",
+            },
+            {
+              title: "Privacy and security review",
+              text: "Data processing agreement, data location, access control and aggregation thresholds agreed before start.",
+            },
+            {
+              title: "Implementation plan",
+              text: "Setup, communication, responsibilities and milestones, with a defined effort for your own organisation.",
+            },
+            {
+              title: "Measurable decision criteria",
+              text: "What must be true for the evaluation to be considered successful, agreed in writing before start.",
+            },
+            {
+              title: "Evaluation and decision",
+              text: "A joint review of what was observed, what was acted on, and what wider use would require.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Next step",
+          title: "Discuss an enterprise evaluation",
+          lead: "Tell us which part of the organisation is relevant, and we will get in touch.",
+        },
+      ],
+    },
+
   },
 };
