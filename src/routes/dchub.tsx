@@ -221,12 +221,14 @@ const team = [
 
   {
     initials: "TR",
+    photo: null,
     name: "Thomas Ryste",
     role: "CTO",
     bio: "Teknisk arkitekt og CTO bak QuestPulse-plattformen. Ansvarlig for sikker infrastruktur, modellstyring og systemdesign.",
   },
   {
     initials: "ET",
+    photo: null,
     name: "Eivind Teig",
     role: "Fullstack Utvikler",
     bio: "Fullstack-utvikler med ansvar for produkt, brukeropplevelse og integrasjoner. Bygger det digitale som gjør arbeidet skalerbart.",
