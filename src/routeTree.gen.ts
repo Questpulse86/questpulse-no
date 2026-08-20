@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BruksomraderRouteImport } from './routes/bruksomrader'
+import { Route as DchubRouteImport } from './routes/dchub'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-evaluering'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
@@ -59,6 +60,11 @@ const AuthRoute = AuthRouteImport.update({
 const BruksomraderRoute = BruksomraderRouteImport.update({
   id: '/bruksomrader',
   path: '/bruksomrader',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DchubRoute = DchubRouteImport.update({
+  id: '/dchub',
+  path: '/dchub',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoRoute = DemoRouteImport.update({
@@ -209,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
@@ -242,6 +249,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
@@ -312,6 +321,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/bruksomrader'
+    | '/dchub'
     | '/demo'
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
@@ -345,6 +355,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/bruksomrader'
+    | '/dchub'
     | '/demo'
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
@@ -379,6 +390,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/bruksomrader'
+    | '/dchub'
     | '/demo'
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
@@ -414,6 +426,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   BruksomraderRoute: typeof BruksomraderRoute
+  DchubRoute: typeof DchubRoute
   DemoRoute: typeof DemoRoute
   EnterpriseEvalueringRoute: typeof EnterpriseEvalueringRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
@@ -471,6 +484,13 @@ declare module '@tanstack/react-router' {
       path: '/bruksomrader'
       fullPath: '/bruksomrader'
       preLoaderRoute: typeof BruksomraderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dchub': {
+      id: '/dchub'
+      path: '/dchub'
+      fullPath: '/dchub'
+      preLoaderRoute: typeof DchubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo': {
@@ -688,6 +708,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   BruksomraderRoute: BruksomraderRoute,
+  DchubRoute: DchubRoute,
   DemoRoute: DemoRoute,
   EnterpriseEvalueringRoute: EnterpriseEvalueringRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
