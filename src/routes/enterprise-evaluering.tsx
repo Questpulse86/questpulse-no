@@ -18,6 +18,7 @@ export const Route = createFileRoute("/enterprise-evaluering")({
       { title: meta.title },
       { name: "description", content: meta.description },
       { property: "og:title", content: meta.title },
+      { property: "og:site_name", content: "QuestPulse" },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },

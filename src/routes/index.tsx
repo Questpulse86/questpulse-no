@@ -19,6 +19,7 @@ export const Route = createFileRoute("/")({
           "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
       },
       { property: "og:title", content: "QuestPulse | Løpende innsikt i organisasjonen" },
+      { property: "og:site_name", content: "QuestPulse" },
       {
         property: "og:description",
         content: "People Intelligence for norske virksomheter. Se det tidligere. Handle bedre.",
