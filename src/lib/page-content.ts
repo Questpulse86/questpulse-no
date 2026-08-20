@@ -809,71 +809,25 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
     },
     pilot: {
       meta: {
-        title: "Pilot with QuestPulse | Scope, outcome and how to apply",
+        title: "Enterprise evaluation | QuestPulse",
         description:
-          "A QuestPulse pilot is a scoped, documented programme with clear success criteria. See what it involves, what you get, and how to apply.",
+          "Evaluate QuestPulse in a defined part of the organisation, with clear decision criteria and a documented conclusion.",
       },
       hero: {
-        eyebrow: "Pilot",
-        title: "A scoped programme with clear success criteria",
-        lead: "The pilot is not a free trial. It is a structured programme where we jointly document use, insight, action and effect.",
+        eyebrow: "Enterprise evaluation",
+        title: "Evaluate QuestPulse in a controlled part of the organisation",
+        lead: "A structured evaluation with a defined scope, agreed decision criteria and a documented conclusion.",
       },
       sections: [
         {
-          kind: "steps",
-          eyebrow: "How it runs",
-          title: "From mapping to a basis for decisions",
-          items: [
-            {
-              title: "1. Mapping and setup",
-              text: "We agree scope, participating units, success criteria and data processing. Setup in Teams or Google Workspace, with SSO and defined access control.",
-            },
-            {
-              title: "2. Execution",
-              text: "Continuous reflection and insight through the pilot period, with regular reviews together with HR and the leaders involved.",
-            },
-            {
-              title: "3. Summary",
-              text: "We deliver a complete basis for decisions: what was observed, which actions were taken, what worked, and what continued use would require.",
-            },
-          ],
-        },
-        {
-          kind: "cards",
-          eyebrow: "What you get",
-          title: "Concrete outcomes of the pilot",
-          items: [
-            {
-              title: "Real insight into your organisation",
-              text: "Not a demo on synthetic data, but the picture of your own units during the pilot period.",
-            },
-            {
-              title: "Documentation for board and regulators",
-              text: "Mapping, actions and effect documented along the way, in a format leadership can use directly.",
-            },
-            {
-              title: "Close follow-up",
-              text: "You work directly with the team behind the product and influence what gets prioritised next.",
-            },
-          ],
-        },
-        {
-          kind: "prose",
-          eyebrow: "How to apply",
-          title: "Here is how to proceed",
-          paragraphs: [
-            "Send an enquiry marked Pilot in the form below, with a few words about your organisation, which units are relevant, and what you want a better overview of.",
-            "We respond with a discovery call. If it fits both parties, we set up a pilot agreement covering scope, success criteria and data processing before we start.",
-          ],
-        },
-        {
           kind: "contact",
-          eyebrow: "Apply for a pilot",
-          title: "Register your interest",
-          lead: "Choose Pilot in the form and we will get in touch for a discovery call.",
+          eyebrow: "Next step",
+          title: "Discuss an enterprise evaluation",
+          lead: "Tell us which part of the organisation is relevant, and we will get in touch.",
         },
       ],
     },
+
     contact: {
       meta: {
         title: "Contact QuestPulse | Book a discovery call",
