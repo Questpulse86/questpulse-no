@@ -5,6 +5,8 @@ import { Reveal } from "@/components/dchub/Reveal";
 import { LeadForm } from "@/components/site/LeadForm";
 import { getSiteContent } from "@/lib/site.functions";
 import lindaPhoto from "@/assets/linda-karlsen.png.asset.json";
+import lindaPortrett from "@/assets/linda-portrett.jpg.asset.json";
+import coachingSamtale from "@/assets/coaching-samtale.jpg.asset.json";
 
 const title = "Ledercoach Askim | Linda Karlsen NLP-coach | Digital Coach Hub";
 const description =
@@ -213,7 +215,7 @@ const values = [
 const team = [
   {
     initials: "LK",
-    photo: lindaPhoto.url,
+    photo: lindaPortrett.url,
     name: "Linda Karlsen",
     role: "Grunder og Businesscoach",
     bio: "17+ år med ledererfaring fra begge sider av bordet. NLP-sertifisert coach etter ICF-standarder. Grunder av Digital Coach Hub og QuestPulse.",
@@ -575,8 +577,8 @@ function DcHub() {
             <Reveal>
               <div className="relative">
                 <img
-                  src={lindaPhoto.url}
-                  alt="Linda Karlsen i samtale med ledere og ansatte"
+                  src={coachingSamtale.url}
+                  alt="Linda Karlsen i samtale med en leder i et møterom"
                   className="aspect-[3/4] w-full rounded-xl object-cover object-top"
                   loading="lazy"
                 />
