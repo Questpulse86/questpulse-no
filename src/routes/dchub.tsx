@@ -574,9 +574,12 @@ function DcHub() {
           <div className="mx-auto grid max-w-[1120px] gap-16 px-8 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal>
               <div className="relative">
-                <div className="flex aspect-[3/4] items-center justify-center rounded-xl bg-[linear-gradient(160deg,rgba(26,154,142,0.15)_0%,rgba(19,33,47,0.08)_100%)]">
-                  <span className="font-display text-[72px] text-[#1A9A8E] opacity-40">LK</span>
-                </div>
+                <img
+                  src={lindaPhoto.url}
+                  alt="Linda Karlsen i samtale med ledere og ansatte"
+                  className="aspect-[3/4] w-full rounded-xl object-cover object-top"
+                  loading="lazy"
+                />
                 <div className="mt-4 flex items-center gap-3 rounded-xl border border-[#E5E2DD] bg-white p-4">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1A9A8E]/10 text-[#1A9A8E]">
                     ✓
