@@ -35,6 +35,7 @@ import { Route as EnHrAndLeadershipRouteImport } from './routes/en.hr-and-leader
 import { Route as EnPartnersRouteImport } from './routes/en.partners'
 import { Route as EnPilotRouteImport } from './routes/en.pilot'
 import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-and-privacy'
+import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
@@ -169,6 +170,11 @@ const EnSecurityAndPrivacyRoute = EnSecurityAndPrivacyRouteImport.update({
   path: '/en/security-and-privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnUseCasesRoute = EnUseCasesRouteImport.update({
+  id: '/en/use-cases',
+  path: '/en/use-cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
@@ -206,6 +212,7 @@ export interface FileRoutesByFullPath {
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -235,6 +242,7 @@ export interface FileRoutesByTo {
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -266,6 +274,7 @@ export interface FileRoutesById {
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -297,6 +306,7 @@ export interface FileRouteTypes {
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -326,6 +336,7 @@ export interface FileRouteTypes {
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -356,6 +367,7 @@ export interface FileRouteTypes {
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -386,6 +398,7 @@ export interface RootRouteChildren {
   EnPartnersRoute: typeof EnPartnersRoute
   EnPilotRoute: typeof EnPilotRoute
   EnSecurityAndPrivacyRoute: typeof EnSecurityAndPrivacyRoute
+  EnUseCasesRoute: typeof EnUseCasesRoute
   EnIndexRoute: typeof EnIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -575,6 +588,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnSecurityAndPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/use-cases': {
+      id: '/en/use-cases'
+      path: '/en/use-cases'
+      fullPath: '/en/use-cases'
+      preLoaderRoute: typeof EnUseCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.lovable/oauth/consent': {
       id: '/.lovable/oauth/consent'
       path: '/.lovable/oauth/consent'
@@ -629,6 +649,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnPartnersRoute: EnPartnersRoute,
   EnPilotRoute: EnPilotRoute,
   EnSecurityAndPrivacyRoute: EnSecurityAndPrivacyRoute,
+  EnUseCasesRoute: EnUseCasesRoute,
   EnIndexRoute: EnIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
