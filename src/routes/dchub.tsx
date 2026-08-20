@@ -36,6 +36,7 @@ export const Route = createFileRoute("/dchub")({
       { title },
       { name: "description", content: description },
       { name: "robots", content: "index, follow" },
+      { property: "og:site_name", content: "Digital Coach Hub" },
       {
         property: "og:title",
         content: "Linda Karlsen. Coach for ledere og ansatte | Digital Coach Hub",
