@@ -31,6 +31,7 @@ import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnBankingAndFinanceRouteImport } from './routes/en.banking-and-finance'
 import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnEnterpriseEvaluationRouteImport } from './routes/en.enterprise-evaluation'
 import { Route as EnHowItWorksRouteImport } from './routes/en.how-it-works'
 import { Route as EnHrAndLeadershipRouteImport } from './routes/en.hr-and-leadership'
 import { Route as EnPartnersRouteImport } from './routes/en.partners'
@@ -151,6 +152,11 @@ const EnContactRoute = EnContactRouteImport.update({
   path: '/en/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnEnterpriseEvaluationRoute = EnEnterpriseEvaluationRouteImport.update({
+  id: '/en/enterprise-evaluation',
+  path: '/en/enterprise-evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnHowItWorksRoute = EnHowItWorksRouteImport.update({
   id: '/en/how-it-works',
   path: '/en/how-it-works',
@@ -214,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
@@ -245,6 +252,7 @@ export interface FileRoutesByTo {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
@@ -278,6 +286,7 @@ export interface FileRoutesById {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
@@ -311,6 +320,7 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
@@ -342,6 +352,7 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
@@ -406,6 +418,7 @@ export interface RootRouteChildren {
   EnAboutRoute: typeof EnAboutRoute
   EnBankingAndFinanceRoute: typeof EnBankingAndFinanceRoute
   EnContactRoute: typeof EnContactRoute
+  EnEnterpriseEvaluationRoute: typeof EnEnterpriseEvaluationRoute
   EnHowItWorksRoute: typeof EnHowItWorksRoute
   EnHrAndLeadershipRoute: typeof EnHrAndLeadershipRoute
   EnPartnersRoute: typeof EnPartnersRoute
@@ -573,6 +586,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/enterprise-evaluation': {
+      id: '/en/enterprise-evaluation'
+      path: '/en/enterprise-evaluation'
+      fullPath: '/en/enterprise-evaluation'
+      preLoaderRoute: typeof EnEnterpriseEvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/how-it-works': {
       id: '/en/how-it-works'
       path: '/en/how-it-works'
@@ -665,6 +685,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnAboutRoute: EnAboutRoute,
   EnBankingAndFinanceRoute: EnBankingAndFinanceRoute,
   EnContactRoute: EnContactRoute,
+  EnEnterpriseEvaluationRoute: EnEnterpriseEvaluationRoute,
   EnHowItWorksRoute: EnHowItWorksRoute,
   EnHrAndLeadershipRoute: EnHrAndLeadershipRoute,
   EnPartnersRoute: EnPartnersRoute,
