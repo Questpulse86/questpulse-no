@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/site-content";
 export type PageSection =
   | { kind: "prose"; eyebrow?: string; title: string; lead?: string; paragraphs: string[] }
   | { kind: "cards"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
+  | { kind: "register"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | {
       kind: "steps";
       eyebrow?: string;
@@ -14,6 +15,7 @@ export type PageSection =
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
+
 
 export type PageItem = { title: string; text: string };
 
