@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/site-content";
 export type PageSection =
   | { kind: "prose"; eyebrow?: string; title: string; lead?: string; paragraphs: string[] }
   | { kind: "cards"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
+  | { kind: "register"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | {
       kind: "steps";
       eyebrow?: string;
@@ -15,6 +16,7 @@ export type PageSection =
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
+
 export type PageItem = { title: string; text: string };
 
 export type PageData = {
@@ -26,9 +28,10 @@ export type PageData = {
 export type PageKey =
   | "about"
   | "how"
+  | "usecases"
   | "banking"
   | "hr"
-  | "pilot"
+  | "enterprise"
   | "contact"
   | "security"
   | "partners";
@@ -36,48 +39,53 @@ export type PageKey =
 export const pagePaths = {
   about: { no: "/om-selskapet", en: "/en/about" },
   how: { no: "/slik-fungerer-det", en: "/en/how-it-works" },
+  usecases: { no: "/bruksomrader", en: "/en/use-cases" },
   banking: { no: "/for-bank-og-finans", en: "/en/banking-and-finance" },
   hr: { no: "/for-hr-og-ledelse", en: "/en/hr-and-leadership" },
-  pilot: { no: "/pilot", en: "/en/pilot" },
+  enterprise: { no: "/enterprise-evaluering", en: "/en/enterprise-evaluation" },
   contact: { no: "/kontakt", en: "/en/contact" },
   security: { no: "/sikkerhet-og-personvern", en: "/en/security-and-privacy" },
   partners: { no: "/partnere", en: "/en/partners" },
 } as const;
 
-export const navKeys: PageKey[] = ["how", "banking", "hr", "pilot", "about"];
+export const navKeys: PageKey[] = ["how", "usecases", "banking", "hr", "security", "about"];
 export const footerKeys: PageKey[] = [
-  "about",
   "how",
+  "usecases",
   "banking",
   "hr",
-  "pilot",
+  "enterprise",
   "security",
   "partners",
+  "about",
   "contact",
 ];
 
 export const navLabels: Record<Locale, Record<PageKey, string>> = {
   no: {
-    about: "Om selskapet",
-    how: "Slik fungerer det",
-    banking: "Bank og finans",
-    hr: "HR og ledelse",
-    pilot: "Pilot",
+    about: "Selskapet",
+    how: "Plattformen",
+    usecases: "Bruksområder",
+    banking: "Finans",
+    hr: "Innsikt",
+    enterprise: "Enterprise-evaluering",
     contact: "Kontakt",
-    security: "Sikkerhet og personvern",
+    security: "Trust Center",
     partners: "Partnere",
   },
   en: {
-    about: "About us",
-    how: "How it works",
-    banking: "Banking and finance",
-    hr: "HR and leadership",
-    pilot: "Pilot",
+    about: "Company",
+    how: "Platform",
+    usecases: "Use cases",
+    banking: "Finance",
+    hr: "Insight",
+    enterprise: "Enterprise evaluation",
     contact: "Contact",
-    security: "Security and privacy",
+    security: "Trust Center",
     partners: "Partners",
   },
 };
+
 
 export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
   no: {
@@ -105,23 +113,23 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         {
           kind: "cards",
           eyebrow: "Teamet",
-          title: "Et lite team med tung fagbakgrunn",
-          lead: "Vi bygger produktet tett på pilotkunder, med rådgivere innen personvern, sikkerhet og arbeidsmiljø.",
+          title: "Hvem som står bak QuestPulse",
           items: [
             {
-              title: "Ledelse og forretning",
-              text: "Linda Karlsen leder selskapet, med bakgrunn fra coaching, lederutvikling og organisasjonsarbeid i norske virksomheter.",
+              title: "Linda Karlsen, CEO og gründer",
+              text: "Rundt 20 års erfaring fra salg, ledelse og forretningsutvikling.",
             },
             {
-              title: "Produkt og teknologi",
-              text: "Utvikling skjer i nært samarbeid med teknologirådgivere, med sikkerhet og personvern som premiss fra første linje kode.",
+              title: "Thomas Ryste, COO",
+              text: "Ansvar for drift, økonomi og kommersielle avtaler.",
             },
             {
-              title: "Fag og rådgivning",
-              text: "Arbeidsmiljø, HMS og personvern kvalitetssikres av eksterne fagressurser, slik at produktet står seg i møte med tilsyn og styre.",
+              title: "Eivind Teig, CTO",
+              text: "Ansvar for produkt, sikkerhet, datamodeller og personvernarkitektur.",
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Visjon",
@@ -215,19 +223,19 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           "Bank og finans er vårt første bevismarked. Løpende kontroll av det psykososiale arbeidsmiljøet, dokumentasjon til styre og tilsyn, og en aktiv pilot.",
       },
       hero: {
-        eyebrow: "For bank og finans",
-        title: "Vi beviser modellen der kravene er høyest",
-        lead: "Bank og finans har tydelige HR-funksjoner, høy bevissthet om sikkerhet og reelle krav til dokumentert kontroll. Derfor starter vi her.",
+        eyebrow: "Bank og finans",
+        title: "Organisatorisk risiko kan ikke styres på årlige øyeblikksbilder",
+        lead: "QuestPulse gir HR, ledelse og kontrollfunksjoner et mer løpende beslutningsgrunnlag for arbeidsmiljø, omstilling og lederoppfølging.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "Compliance-inngangen",
-          title: "Samtalen starter i en plikt dere allerede har",
-          lead: "Arbeidsmiljøloven krever risikobasert og løpende kontroll av det psykososiale arbeidsmiljøet. QuestPulse gjør plikten enklere å oppfylle og å dokumentere.",
+          eyebrow: "Regelverk",
+          title: "Fra periodisk kartlegging til mer løpende risikoforståelse",
+          lead: "Regelverket stiller krav til systematisk kartlegging, risikovurdering, tiltak og oppfølging av det psykososiale arbeidsmiljøet. QuestPulse gir virksomheten et mer løpende og strukturert beslutningsgrunnlag for dette arbeidet.",
           items: [
             {
-              title: "Løpende kontroll",
+              title: "Løpende oppfølging",
               text: "Risikobasert oppfølging gjennom hele året, ikke bare ved den årlige undersøkelsen.",
             },
             {
@@ -240,6 +248,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Krav i bransjen",
@@ -325,73 +334,6 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
-    pilot: {
-      meta: {
-        title: "Pilot med QuestPulse | Innhold, omfang og søknad",
-        description:
-          "En QuestPulse-pilot er et avgrenset, dokumentert løp med tydelige suksesskriterier. Se hva piloten innebærer, hva dere får, og hvordan dere søker.",
-      },
-      hero: {
-        eyebrow: "Pilot",
-        title: "Et avgrenset løp med tydelige suksesskriterier",
-        lead: "Piloten er ikke en gratis prøveperiode. Den er et strukturert løp der vi sammen dokumenterer bruk, innsikt, handling og effekt.",
-      },
-      sections: [
-        {
-          kind: "steps",
-          eyebrow: "Slik gjennomføres den",
-          title: "Fra kartlegging til beslutningsgrunnlag",
-          items: [
-            {
-              title: "1. Kartlegging og oppsett",
-              text: "Vi avklarer omfang, deltakende enheter, suksesskriterier og databehandling. Oppsett i Teams eller Google Workspace, med SSO og avklart tilgangsstyring.",
-            },
-            {
-              title: "2. Gjennomføring",
-              text: "Løpende refleksjon og innsikt gjennom pilotperioden, med jevnlige gjennomganger sammen med HR og de involverte lederne.",
-            },
-            {
-              title: "3. Oppsummering",
-              text: "Vi leverer et samlet beslutningsgrunnlag: hva som ble observert, hvilke tiltak som ble gjort, hva som virket, og hva videre bruk vil kreve.",
-            },
-          ],
-        },
-        {
-          kind: "cards",
-          eyebrow: "Hva dere får",
-          title: "Konkret utbytte av pilotperioden",
-          items: [
-            {
-              title: "Reell innsikt i egen organisasjon",
-              text: "Ikke en demo på syntetiske data, men bildet av deres egne enheter i pilotperioden.",
-            },
-            {
-              title: "Dokumentasjon til styre og tilsyn",
-              text: "Kartlegging, tiltak og effekt dokumentert underveis, i et format ledelsen kan bruke direkte.",
-            },
-            {
-              title: "Tett oppfølging",
-              text: "Dere jobber direkte med teamet bak produktet, og påvirker hva som prioriteres videre.",
-            },
-          ],
-        },
-        {
-          kind: "prose",
-          eyebrow: "Hvordan søke",
-          title: "Slik går dere frem",
-          paragraphs: [
-            "Send en henvendelse merket Pilot i skjemaet under, med noen ord om virksomheten, hvilke enheter som er aktuelle, og hva dere ønsker å få bedre oversikt over.",
-            "Vi svarer med en kartleggingssamtale. Passer det for begge parter, setter vi opp pilotavtale med omfang, suksesskriterier og databehandleravtale før oppstart.",
-          ],
-        },
-        {
-          kind: "contact",
-          eyebrow: "Søk pilot",
-          title: "Meld interesse for pilot",
-          lead: "Velg Pilot i skjemaet, så tar vi kontakt for en kartleggingssamtale.",
-        },
-      ],
-    },
     contact: {
       meta: {
         title: "Kontakt QuestPulse | Book en kartleggingssamtale",
@@ -433,63 +375,68 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
     },
     security: {
       meta: {
-        title: "Sikkerhet og personvern i QuestPulse | Data lagret i Norge",
+        title: "Trust Center | Sikkerhet, personvern og kontroll i QuestPulse",
         description:
-          "QuestPulse driftes på Azure Norway East, er bygget etter GDPR artikkel 25 og prinsippene i EU AI Act, og leveres med databehandleravtale.",
+          "Slik håndterer QuestPulse sikkerhetsarkitektur, dataflyt og datalokasjon, tilgangsstyring, aggregering, oppbevaring, underleverandører, hendelser og personvern.",
       },
       hero: {
-        eyebrow: "Sikkerhet og personvern",
-        title: "Personvern som arkitektur, ikke som vedlegg",
-        lead: "Innsikt om mennesker stiller strenge krav. QuestPulse er bygget slik at virksomheten får bildet den trenger, uten at enkeltpersoner blir eksponert.",
+        eyebrow: "Trust Center",
+        title: "Sikkerhet og personvern dokumentert, ikke påstått",
+        lead: "Innsikt om mennesker stiller strenge krav. Denne siden beskriver hvordan QuestPulse er bygget, driftet og styrt, og hvor ansvaret ligger.",
       },
       sections: [
         {
-          kind: "cards",
-          eyebrow: "Grunnprinsippene",
-          title: "Slik beskytter vi dataene",
+          kind: "register",
+          eyebrow: "Dokumentasjon",
+          title: "Sikkerhet og personvern i QuestPulse",
           items: [
             {
-              title: "Azure Norway East",
-              text: "Data lagres og behandles i Norge, på Microsofts norske region, med kryptering i transitt og i ro.",
+              title: "Sikkerhetsarkitektur",
+              text: "Adskilte miljøer, minste nødvendige rettigheter mellom komponenter, kryptering i transitt og i ro, og logging av administrative operasjoner.",
             },
             {
-              title: "GDPR artikkel 25",
-              text: "Innebygd personvern og dataminimering. Vi samler bare det som er nødvendig for formålet.",
+              title: "Dataflyt og datalokasjon",
+              text: "Data lagres og behandles innenfor EØS, på Azure Norway East. Dataflyten fra innsamling til aggregert innsikt er dokumentert per miljø.",
             },
             {
-              title: "EU AI Act",
-              text: "Bygget på prinsippene i regelverket, med åpenhet om hva systemet gjør og menneskelig kontroll over beslutninger.",
+              title: "Tilgangsstyring",
+              text: "Pålogging via virksomhetens egen identitetsleverandør med SSO. Tilgang er rollebasert, gis per organisatorisk område og logges.",
             },
             {
-              title: "Aggregering og terskler",
+              title: "Aggregering og beskyttelse av individet",
               text: "Individuelle svar deles aldri med arbeidsgiver. Innsikt vises først når gruppen er stor nok til å hindre gjenkjenning.",
             },
             {
-              title: "SSO og tilgangsstyring",
-              text: "Pålogging via virksomhetens egen identitetsleverandør, med rollebasert tilgang og sporbarhet.",
+              title: "Oppbevaring og sletting",
+              text: "Lagringstid settes per datakategori og avtales i databehandleravtalen. Data slettes eller returneres ved avslutning.",
             },
             {
-              title: "Databehandleravtale",
-              text: "Standard databehandleravtale etter GDPR artikkel 28, med oversikt over underleverandører og lagringstid.",
-            },
-          ],
-        },
-        {
-          kind: "dark",
-          eyebrow: "Ansvarsdeling",
-          title: "Hvem har ansvar for hva",
-          items: [
-            {
-              title: "Virksomheten er behandlingsansvarlig",
-              text: "Dere bestemmer formål og omfang, og hvilke enheter som deltar.",
+              title: "Underleverandører",
+              text: "Oppdatert oversikt over underleverandører, formål og lokasjon følger som vedlegg til databehandleravtalen.",
             },
             {
-              title: "QuestPulse er databehandler",
-              text: "Vi behandler opplysninger kun etter instruks fra virksomheten, regulert i databehandleravtalen.",
+              title: "Hendelseshåndtering",
+              text: "Definerte rutiner for deteksjon, klassifisering, varsling og oppfølging, med avtalte varslingsfrister mot behandlingsansvarlig.",
             },
             {
-              title: "Den ansatte har innsyn",
-              text: "Ansatte får informasjon om hva som samles inn, og kan utøve sine rettigheter etter GDPR.",
+              title: "Kontinuitet og gjenoppretting",
+              text: "Sikkerhetskopiering, gjenopprettingsrutiner og definerte gjenopprettingsmål, beskrevet i driftsdokumentasjonen.",
+            },
+            {
+              title: "Personvern",
+              text: "Bygget etter GDPR artikkel 25 med dataminimering. Virksomheten er behandlingsansvarlig, QuestPulse er databehandler etter artikkel 28.",
+            },
+            {
+              title: "Modellstyring og menneskelig kontroll",
+              text: "Automatisert analyse brukes til å prioritere og oppsummere, aldri til å treffe beslutninger om enkeltpersoner. Output er forklarbar og kan overstyres av en person.",
+            },
+            {
+              title: "Avtaler og dokumentasjon",
+              text: "Databehandleravtale, underleverandørvedlegg og sikkerhetsdokumentasjon deles på forespørsel som del av en anskaffelses- eller evalueringsprosess.",
+            },
+            {
+              title: "Kontaktpunkt for sikkerhet",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
             },
           ],
         },
@@ -501,6 +448,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+
     partners: {
       meta: {
         title: "Partnere | Samarbeid med QuestPulse",
@@ -559,7 +507,102 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+    usecases: {
+      meta: {
+        title: "Bruksområder | QuestPulse People Intelligence",
+        description:
+          "Fire områder der QuestPulse forbedrer beslutningen: omstilling og endring, ledelseskapasitet, belastning og friksjon, og psykososial risiko.",
+      },
+      hero: {
+        eyebrow: "Bruksområder",
+        title: "Fire beslutninger som i dag tas for sent",
+        lead: "QuestPulse brukes der konsekvensene er dyre og signalene kommer sent. Hvert område under beskriver hvilken beslutning innsikten forbedrer.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Områder",
+          title: "Der innsikten endrer beslutningen",
+          items: [
+            {
+              title: "Omstilling og endring",
+              text: "Hvilke enheter bærer endringen godt, og hvor svikter kapasiteten før leveransen gjør det. Beslutningen som forbedres er rekkefølge og tempo i omstillingen.",
+            },
+            {
+              title: "Ledelseskapasitet",
+              text: "Hvilke ledere har for stort kontrollspenn, og hvor er oppfølgingen tynn. Beslutningen som forbedres er hvor lederstøtte settes inn før turnover oppstår.",
+            },
+            {
+              title: "Belastning og friksjon",
+              text: "Hvor belastningen er vedvarende, og hvor friksjonen skyldes arbeidsform framfor personer. Beslutningen som forbedres er prioritering av ressurser og fjerning av hindre.",
+            },
+            {
+              title: "Psykososial risiko og arbeidsmiljø",
+              text: "Hvor risiko bygger seg opp mellom kartleggingene. Beslutningen som forbedres er hvilke tiltak som iverksettes, dokumenteres og følges opp mot styre og tilsyn.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Neste steg",
+          title: "Hvilken beslutning er vanskeligst hos dere i dag?",
+          lead: "Skriv kort hva det gjelder, så setter vi opp en strategisk gjennomgang.",
+        },
+      ],
+    },
+    enterprise: {
+      meta: {
+        title: "Enterprise-evaluering | QuestPulse",
+        description:
+          "Evaluer QuestPulse i en avgrenset del av organisasjonen, med tydelige beslutningskriterier, avklart personvern og en dokumentert konklusjon.",
+      },
+      hero: {
+        eyebrow: "Enterprise-evaluering",
+        title: "Evaluer QuestPulse i en kontrollert del av organisasjonen",
+        lead: "En strukturert evaluering med avgrenset omfang, avtalte beslutningskriterier og en dokumentert konklusjon.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Struktur",
+          title: "Hva evalueringen omfatter",
+          items: [
+            {
+              title: "Avgrenset problem og mål",
+              text: "Vi avklarer hvilken beslutning som skal forbedres, og hva et bedre beslutningsgrunnlag konkret betyr for dere.",
+            },
+            {
+              title: "Definert organisatorisk område",
+              text: "En avgrenset del av organisasjonen, med enheter, ledere og roller definert før oppstart.",
+            },
+            {
+              title: "Personvern og sikkerhetsavklaring",
+              text: "Databehandleravtale, datalokasjon, tilgangsstyring og terskler for aggregering avklares før oppstart.",
+            },
+            {
+              title: "Implementeringsplan",
+              text: "Oppsett, kommunikasjon, ansvar og milepæler, med tydelig anslag for egen innsats i organisasjonen.",
+            },
+            {
+              title: "Målbare beslutningskriterier",
+              text: "Hva som må være oppfylt for at evalueringen skal regnes som vellykket, avtalt skriftlig før oppstart.",
+            },
+            {
+              title: "Evaluering og beslutning",
+              text: "En felles gjennomgang av hva som ble observert, hva som ble handlet på, og hva videre bruk vil kreve.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Neste steg",
+          title: "Diskuter en enterprise-evaluering",
+          lead: "Skriv hvilken del av organisasjonen som er aktuell, så tar vi kontakt.",
+        },
+      ],
+    },
   },
+
   en: {
     about: {
       meta: {
@@ -585,23 +628,23 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         {
           kind: "cards",
           eyebrow: "The team",
-          title: "A small team with deep subject-matter experience",
-          lead: "We build the product close to pilot customers, with advisors in privacy, security and working environment.",
+          title: "Who is behind QuestPulse",
           items: [
             {
-              title: "Leadership and business",
-              text: "Linda Karlsen leads the company, with a background in coaching, leadership development and organisational work in Nordic companies.",
+              title: "Linda Karlsen, CEO and founder",
+              text: "Around 20 years of experience from sales, leadership and business development.",
             },
             {
-              title: "Product and technology",
-              text: "Development happens with technology advisors, with security and privacy as a premise from the first line of code.",
+              title: "Thomas Ryste, COO",
+              text: "Responsible for operations, finance and commercial agreements.",
             },
             {
-              title: "Advisory",
-              text: "Working environment, HSE and privacy are quality-assured by external specialists, so the product holds up before regulators and boards.",
+              title: "Eivind Teig, CTO",
+              text: "Responsible for product, security, data models and privacy architecture.",
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Vision",
@@ -695,19 +738,19 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           "Banking and finance is our first proof market: continuous control of the psychosocial working environment, documentation for boards and regulators, and an active pilot.",
       },
       hero: {
-        eyebrow: "For banking and finance",
-        title: "We prove the model where requirements are highest",
-        lead: "Banking and finance have mature HR functions, high security awareness and real demands for documented control. That is why we start here.",
+        eyebrow: "Banking and finance",
+        title: "Organisational risk cannot be managed on annual snapshots",
+        lead: "QuestPulse gives HR, leadership and control functions a more continuous basis for decisions on working environment, change and leadership follow-up.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "The compliance entry point",
-          title: "The conversation starts in a duty you already have",
-          lead: "Norwegian working environment law requires risk-based, continuous control of the psychosocial working environment. QuestPulse makes that duty easier to meet and to document.",
+          eyebrow: "Regulatory context",
+          title: "From periodic mapping to a more continuous understanding of risk",
+          lead: "Regulation requires systematic mapping, risk assessment, measures and follow-up of the psychosocial working environment. QuestPulse gives the organisation a more continuous and structured basis for that work.",
           items: [
             {
-              title: "Continuous control",
+              title: "Continuous follow-up",
               text: "Risk-based follow-up through the whole year, not only at the annual survey.",
             },
             {
@@ -720,6 +763,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
           ],
         },
+
         {
           kind: "dark",
           eyebrow: "Sector requirements",
@@ -805,73 +849,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
-    pilot: {
-      meta: {
-        title: "Pilot with QuestPulse | Scope, outcome and how to apply",
-        description:
-          "A QuestPulse pilot is a scoped, documented programme with clear success criteria. See what it involves, what you get, and how to apply.",
-      },
-      hero: {
-        eyebrow: "Pilot",
-        title: "A scoped programme with clear success criteria",
-        lead: "The pilot is not a free trial. It is a structured programme where we jointly document use, insight, action and effect.",
-      },
-      sections: [
-        {
-          kind: "steps",
-          eyebrow: "How it runs",
-          title: "From mapping to a basis for decisions",
-          items: [
-            {
-              title: "1. Mapping and setup",
-              text: "We agree scope, participating units, success criteria and data processing. Setup in Teams or Google Workspace, with SSO and defined access control.",
-            },
-            {
-              title: "2. Execution",
-              text: "Continuous reflection and insight through the pilot period, with regular reviews together with HR and the leaders involved.",
-            },
-            {
-              title: "3. Summary",
-              text: "We deliver a complete basis for decisions: what was observed, which actions were taken, what worked, and what continued use would require.",
-            },
-          ],
-        },
-        {
-          kind: "cards",
-          eyebrow: "What you get",
-          title: "Concrete outcomes of the pilot",
-          items: [
-            {
-              title: "Real insight into your organisation",
-              text: "Not a demo on synthetic data, but the picture of your own units during the pilot period.",
-            },
-            {
-              title: "Documentation for board and regulators",
-              text: "Mapping, actions and effect documented along the way, in a format leadership can use directly.",
-            },
-            {
-              title: "Close follow-up",
-              text: "You work directly with the team behind the product and influence what gets prioritised next.",
-            },
-          ],
-        },
-        {
-          kind: "prose",
-          eyebrow: "How to apply",
-          title: "Here is how to proceed",
-          paragraphs: [
-            "Send an enquiry marked Pilot in the form below, with a few words about your organisation, which units are relevant, and what you want a better overview of.",
-            "We respond with a discovery call. If it fits both parties, we set up a pilot agreement covering scope, success criteria and data processing before we start.",
-          ],
-        },
-        {
-          kind: "contact",
-          eyebrow: "Apply for a pilot",
-          title: "Register your interest",
-          lead: "Choose Pilot in the form and we will get in touch for a discovery call.",
-        },
-      ],
-    },
+
     contact: {
       meta: {
         title: "Contact QuestPulse | Book a discovery call",
@@ -913,63 +891,68 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
     },
     security: {
       meta: {
-        title: "Security and privacy in QuestPulse | Data stored in Norway",
+        title: "Trust Center | QuestPulse security, privacy and control",
         description:
-          "QuestPulse runs on Azure Norway East, is built to GDPR article 25 and the principles of the EU AI Act, and ships with a data processing agreement.",
+          "How QuestPulse handles security architecture, data location, access control, aggregation, retention, sub-processors, incidents, privacy and model governance.",
       },
       hero: {
-        eyebrow: "Security and privacy",
-        title: "Privacy as architecture, not as an appendix",
-        lead: "Insight about people demands strict safeguards. QuestPulse is built so the organisation gets the picture it needs without exposing individuals.",
+        eyebrow: "Trust Center",
+        title: "Security and privacy documented, not asserted",
+        lead: "Insight about people demands strict safeguards. This page describes how QuestPulse is built, operated and governed, and where responsibility sits.",
       },
       sections: [
         {
-          kind: "cards",
-          eyebrow: "Core principles",
-          title: "How we protect the data",
+          kind: "register",
+          eyebrow: "Documentation",
+          title: "Security and privacy in QuestPulse",
           items: [
             {
-              title: "Azure Norway East",
-              text: "Data is stored and processed in Norway, on Microsoft's Norwegian region, encrypted in transit and at rest.",
+              title: "Security architecture",
+              text: "Separated environments, least privilege between components, encryption in transit and at rest, and logging of administrative operations.",
             },
             {
-              title: "GDPR article 25",
-              text: "Privacy by design and data minimisation. We collect only what the purpose requires.",
+              title: "Data flow and data location",
+              text: "Data is stored and processed within the EEA, on Azure Norway East. Data flow from collection to aggregated insight is documented per environment.",
             },
             {
-              title: "EU AI Act",
-              text: "Built on the principles of the regulation, with transparency about what the system does and human control over decisions.",
+              title: "Access control",
+              text: "Login through your own identity provider using SSO. Access is role based, granted per organisational area and logged.",
             },
             {
-              title: "Aggregation and thresholds",
+              title: "Aggregation and protection of the individual",
               text: "Individual answers are never shared with the employer. Insight appears only when the group is large enough to prevent identification.",
             },
             {
-              title: "SSO and access control",
-              text: "Login through your own identity provider, with role-based access and traceability.",
+              title: "Retention and deletion",
+              text: "Retention is set per data category and agreed in the data processing agreement. Data is deleted or returned on termination.",
             },
             {
-              title: "Data processing agreement",
-              text: "Standard data processing agreement under GDPR article 28, with an overview of sub-processors and retention.",
-            },
-          ],
-        },
-        {
-          kind: "dark",
-          eyebrow: "Responsibilities",
-          title: "Who is responsible for what",
-          items: [
-            {
-              title: "You are the data controller",
-              text: "You decide purpose and scope, and which units take part.",
+              title: "Sub-processors",
+              text: "A current list of sub-processors, their purpose and location is provided as an annex to the data processing agreement.",
             },
             {
-              title: "QuestPulse is the processor",
-              text: "We process data only on your instruction, governed by the data processing agreement.",
+              title: "Incident handling",
+              text: "Defined routines for detection, classification, notification and follow-up, with agreed notification deadlines towards the controller.",
             },
             {
-              title: "Employees have transparency",
-              text: "Employees are informed about what is collected and can exercise their GDPR rights.",
+              title: "Continuity and recovery",
+              text: "Backup, recovery routines and defined recovery objectives, described in the operational documentation.",
+            },
+            {
+              title: "Privacy",
+              text: "Built to GDPR article 25 with data minimisation. You are the controller, QuestPulse is the processor under an article 28 agreement.",
+            },
+            {
+              title: "Model governance and human control",
+              text: "Automated analysis is used to prioritise and summarise, never to make decisions about individuals. Output is explainable and can be overridden by a person.",
+            },
+            {
+              title: "Agreements and documentation",
+              text: "Data processing agreement, sub-processor annex and security documentation are shared on request as part of a procurement or evaluation process.",
+            },
+            {
+              title: "Security contact point",
+              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
             },
           ],
         },
@@ -981,6 +964,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+
     partners: {
       meta: {
         title: "Partners | Working with QuestPulse",
@@ -1039,5 +1023,100 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
+    usecases: {
+      meta: {
+        title: "Use cases | QuestPulse People Intelligence",
+        description:
+          "Four areas where QuestPulse improves the decision: change programmes, leadership capacity, workload and friction, and psychosocial risk.",
+      },
+      hero: {
+        eyebrow: "Use cases",
+        title: "Four decisions that are made too late today",
+        lead: "QuestPulse is used where consequences are expensive and signals arrive late. Each area below describes the decision the insight improves.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Areas",
+          title: "Where the insight changes the decision",
+          items: [
+            {
+              title: "Change and restructuring",
+              text: "Which units carry the change well, and where capacity breaks down before delivery does. The decision improved is sequencing and pace of the change programme.",
+            },
+            {
+              title: "Leadership capacity",
+              text: "Which leaders carry too wide a span of control, and where follow-up is thin. The decision improved is where to add leadership support before turnover appears.",
+            },
+            {
+              title: "Workload and friction",
+              text: "Where workload is sustained, and where friction stems from ways of working rather than people. The decision improved is prioritising resources and removing obstacles.",
+            },
+            {
+              title: "Psychosocial risk and working environment",
+              text: "Where risk builds up between mappings. The decision improved is which measures to act on, document and follow up towards the board and regulators.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Next step",
+          title: "Which decision is hardest for you today?",
+          lead: "Tell us briefly, and we will set up a strategic review.",
+        },
+      ],
+    },
+    enterprise: {
+      meta: {
+        title: "Enterprise evaluation | QuestPulse",
+        description:
+          "Evaluate QuestPulse in a defined part of the organisation, with clear decision criteria, a privacy and security review and a documented conclusion.",
+      },
+      hero: {
+        eyebrow: "Enterprise evaluation",
+        title: "Evaluate QuestPulse in a controlled part of the organisation",
+        lead: "A structured evaluation with a defined scope, agreed decision criteria and a documented conclusion.",
+      },
+      sections: [
+        {
+          kind: "register",
+          eyebrow: "Structure",
+          title: "What the evaluation covers",
+          items: [
+            {
+              title: "Defined problem and objective",
+              text: "We agree which decision is to be improved, and what a better basis for it looks like.",
+            },
+            {
+              title: "Defined organisational area",
+              text: "A delimited part of the organisation, with the units, leaders and roles involved specified up front.",
+            },
+            {
+              title: "Privacy and security review",
+              text: "Data processing agreement, data location, access control and aggregation thresholds agreed before start.",
+            },
+            {
+              title: "Implementation plan",
+              text: "Setup, communication, responsibilities and milestones, with a defined effort for your own organisation.",
+            },
+            {
+              title: "Measurable decision criteria",
+              text: "What must be true for the evaluation to be considered successful, agreed in writing before start.",
+            },
+            {
+              title: "Evaluation and decision",
+              text: "A joint review of what was observed, what was acted on, and what wider use would require.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Next step",
+          title: "Discuss an enterprise evaluation",
+          lead: "Tell us which part of the organisation is relevant, and we will get in touch.",
+        },
+      ],
+    },
+
   },
 };

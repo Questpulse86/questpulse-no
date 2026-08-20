@@ -1,286 +1,432 @@
 import { Link } from "@tanstack/react-router";
 
-import heroImage from "@/assets/hero-questpulse.jpg";
-
-import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { LeadForm } from "@/components/site/LeadForm";
+import { QpWave } from "@/components/site/QpWave";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
+import { pagePaths } from "@/lib/page-content";
 import type { Locale, SiteContent } from "@/lib/site-content";
 
+type Copy = {
+  hero: { eyebrow: string; title: string; lead: string; cta1: string; cta2: string };
+  problem: { eyebrow: string; title: string; body: string };
+  flow: { eyebrow: string; title: string; lead: string; steps: string[] };
+  usecases: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    items: { title: string; text: string }[];
+    link: string;
+  };
+  roles: {
+    eyebrow: string;
+    title: string;
+    items: { title: string; text: string }[];
+  };
+  product: { eyebrow: string; title: string; lead: string; stages: string[]; note: string };
+  trust: { eyebrow: string; title: string; items: string[]; link: string };
+  cta: { title: string; text: string; button: string };
+};
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="qp-eyebrow">{children}</p>;
-}
+const copy: Record<Locale, Copy> = {
+  no: {
+    hero: {
+      eyebrow: "People Intelligence for komplekse virksomheter",
+      title: "Se hva som utvikler seg før konsekvensene blir synlige",
+      lead: "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, og viser utviklingen fra signal til dokumentert effekt over tid.",
+      cta1: "Be om en strategisk gjennomgang",
+      cta2: "Se hvordan det fungerer",
+    },
+    problem: {
+      eyebrow: "Problemet",
+      title: "Virksomheten oppdateres hver dag. Beslutningsgrunnlaget gjør det ikke.",
+      body: "Store virksomheter tar fortsatt viktige beslutninger om mennesker, ledelse og kapasitet på signaler som allerede er utdaterte. Når konsekvensene blir synlige i sykefravær, kompetansetap, konflikter eller svakere leveranser, har handlingsrommet blitt mindre.",
+    },
+    flow: {
+      eyebrow: "Beslutningsflyt",
+      title: "Fra privat refleksjon til dokumentert effekt",
+      lead: "Én sammenhengende flyt, der individet beskyttes og ledelsen får et grunnlag som kan handles på.",
+      steps: [
+        "Privat refleksjon",
+        "Beskyttede, aggregerte signaler",
+        "Prioritert beslutningsgrunnlag",
+        "Lederhandling",
+        "Utvikling og effekt over tid",
+      ],
+    },
+    usecases: {
+      eyebrow: "Bruksområder",
+      title: "Fire beslutninger QuestPulse forbedrer",
+      lead: "Innsikten har verdi der beslutningen er vanskelig og konsekvensen er dyr.",
+      items: [
+        {
+          title: "Omstilling og endring",
+          text: "Forbedrer beslutningen om rekkefølge og tempo, ved å vise hvilke enheter som bærer endringen og hvor kapasiteten svikter først.",
+        },
+        {
+          title: "Ledelseskapasitet",
+          text: "Forbedrer beslutningen om hvor lederstøtte settes inn, ved å vise hvor kontrollspennet er for stort og oppfølgingen for tynn.",
+        },
+        {
+          title: "Belastning og friksjon",
+          text: "Forbedrer beslutningen om ressurser og arbeidsform, ved å skille vedvarende belastning fra normale variasjoner.",
+        },
+        {
+          title: "Psykososial risiko og arbeidsmiljø",
+          text: "Forbedrer beslutningen om hvilke tiltak som iverksettes og dokumenteres, ved å vise risiko som bygger seg opp mellom kartleggingene.",
+        },
+      ],
+      link: "Se alle bruksområder",
+    },
+    roles: {
+      eyebrow: "Verdi for lederroller",
+      title: "Fire innganger til samme underlag",
+      items: [
+        {
+          title: "Konsernledelse og styre",
+          text: "Organisatorisk risiko fremstilt på samme nivå som finansiell risiko, med utvikling over tid og grunnlag for styrebehandling.",
+        },
+        {
+          title: "HR og People",
+          text: "Prioritering mellom enheter, årsak framfor symptom, og dokumentasjon av kartlegging, tiltak og effekt underveis.",
+        },
+        {
+          title: "Ledere",
+          text: "Et tydelig bilde av eget ansvarsområde, med konkrete handlingsvalg og oppfølging av om handlingen traff.",
+        },
+        {
+          title: "Risiko, compliance og HMS",
+          text: "Sporbart beslutningsgrunnlag for systematisk arbeid med det psykososiale arbeidsmiljøet, klart til internkontroll og tilsyn.",
+        },
+      ],
+    },
+    product: {
+      eyebrow: "Produktvisning",
+      title: "Slik henger systemet sammen",
+      lead: "Et nøkternt bilde av flyten gjennom plattformen. Produktskjermbilder publiseres først når de er godkjent for ekstern bruk.",
+      stages: [
+        "Innsamling i eksisterende arbeidsverktøy",
+        "Aggregering og beskyttelse av individet",
+        "Prioritering per organisatorisk område",
+        "Lederhandling og oppfølging",
+        "Dokumentasjon av effekt",
+      ],
+      note: "Aggregering skjer før innsikten blir synlig for noen leder. Enkeltsvar deles aldri.",
+    },
+    trust: {
+      eyebrow: "Tillit",
+      title: "Kontroll er en del av arkitekturen",
+      items: [
+        "Personvern som arkitektur",
+        "Aggregert innsikt",
+        "Rollebasert tilgang",
+        "Dokumentert databehandling",
+      ],
+      link: "Gå til Trust Center",
+    },
+    cta: {
+      title: "Hvordan følger dere utviklingen i organisasjonen i dag?",
+      text: "Vi starter med deres beslutningsbehov, eksisterende prosesser og krav til personvern og sikkerhet.",
+      button: "Be om en strategisk gjennomgang",
+    },
+  },
+  en: {
+    hero: {
+      eyebrow: "People Intelligence for complex organisations",
+      title: "See what is developing before the consequences become visible",
+      lead: "QuestPulse gives leadership continuous insight into workload, friction and leadership action, and shows the development from signal to documented effect over time.",
+      cta1: "Request a strategic review",
+      cta2: "See how it works",
+    },
+    problem: {
+      eyebrow: "The problem",
+      title: "The organisation updates every day. The basis for decisions does not.",
+      body: "Large organisations still make important decisions about people, leadership and capacity on signals that are already out of date. By the time consequences appear as absence, loss of expertise, conflict or weaker delivery, the room to act has narrowed.",
+    },
+    flow: {
+      eyebrow: "Decision flow",
+      title: "From private reflection to documented effect",
+      lead: "One connected flow, where the individual is protected and leadership gets a basis it can act on.",
+      steps: [
+        "Private reflection",
+        "Protected, aggregated signals",
+        "Prioritised basis for decisions",
+        "Leadership action",
+        "Development and effect over time",
+      ],
+    },
+    usecases: {
+      eyebrow: "Use cases",
+      title: "Four decisions QuestPulse improves",
+      lead: "The insight matters where the decision is hard and the consequence is expensive.",
+      items: [
+        {
+          title: "Change and restructuring",
+          text: "Improves the decision on sequencing and pace, by showing which units carry the change and where capacity breaks first.",
+        },
+        {
+          title: "Leadership capacity",
+          text: "Improves the decision on where to add leadership support, by showing where span of control is too wide and follow-up too thin.",
+        },
+        {
+          title: "Workload and friction",
+          text: "Improves the decision on resources and ways of working, by separating sustained workload from normal variation.",
+        },
+        {
+          title: "Psychosocial risk and working environment",
+          text: "Improves the decision on which measures to act on and document, by showing risk building up between mappings.",
+        },
+      ],
+      link: "See all use cases",
+    },
+    roles: {
+      eyebrow: "Value for leadership roles",
+      title: "Four entry points to the same basis",
+      items: [
+        {
+          title: "Executive leadership and board",
+          text: "Organisational risk presented at the same level as financial risk, with development over time and a basis for board discussion.",
+        },
+        {
+          title: "HR and People",
+          text: "Prioritisation across units, cause rather than symptom, and documentation of mapping, actions and effect along the way.",
+        },
+        {
+          title: "Leaders",
+          text: "A clear picture of their own area, with concrete choices of action and follow-up on whether the action landed.",
+        },
+        {
+          title: "Risk, compliance and HSE",
+          text: "A traceable basis for systematic work on the psychosocial working environment, ready for internal control and regulators.",
+        },
+      ],
+    },
+    product: {
+      eyebrow: "Product view",
+      title: "How the system fits together",
+      lead: "A plain view of the flow through the platform. Product screenshots are published only once approved for external use.",
+      stages: [
+        "Collection in existing work tools",
+        "Aggregation and protection of the individual",
+        "Prioritisation per organisational area",
+        "Leadership action and follow-up",
+        "Documentation of effect",
+      ],
+      note: "Aggregation happens before any leader sees the insight. Individual answers are never shared.",
+    },
+    trust: {
+      eyebrow: "Trust",
+      title: "Control is part of the architecture",
+      items: [
+        "Privacy as architecture",
+        "Aggregated insight",
+        "Role-based access",
+        "Documented data processing",
+      ],
+      link: "Go to the Trust Center",
+    },
+    cta: {
+      title: "How do you follow development in your organisation today?",
+      text: "We start with your decision needs, existing processes and requirements for privacy and security.",
+      button: "Request a strategic review",
+    },
+  },
+};
 
 export function Landing({ locale, content }: { locale: Locale; content: SiteContent }) {
+  const t = copy[locale];
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader locale={locale} content={content} altHref={locale === "no" ? "/en" : "/"} />
 
-
       <main>
-        {/* Hero */}
+        {/* 1. Hero */}
         <section className="relative overflow-hidden bg-navy text-navy-foreground">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-teal/20 blur-3xl"
+          <QpWave
+            tone="dark"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full opacity-60"
           />
-          <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-[1.15fr_0.85fr] lg:py-32">
-            <div>
-              <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
-                {content.hero.eyebrow}
-              </p>
-              <h1 className="mt-5 max-w-2xl text-4xl leading-[1.08] font-bold text-navy-foreground sm:text-5xl lg:text-6xl">
-                {content.hero.title}
-              </h1>
-              <span className="qp-rule mt-7" />
-              <p className="mt-7 max-w-xl text-lg text-navy-foreground/75">{content.hero.lead}</p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Button asChild size="lg">
-                  <a href="#kontakt">{content.hero.cta1}</a>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-navy-foreground/30 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
-                >
-                  <a href="#hvordan">{content.hero.cta2}</a>
-                </Button>
-              </div>
+          <div className="relative mx-auto max-w-6xl px-5 py-24 lg:py-32">
+            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
+              {t.hero.eyebrow}
+            </p>
+            <h1 className="mt-6 max-w-4xl text-4xl leading-[1.06] font-bold text-navy-foreground sm:text-5xl lg:text-6xl">
+              {t.hero.title}
+            </h1>
+            <span className="qp-rule mt-8" />
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-navy-foreground/75">
+              {t.hero.lead}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to={pagePaths.contact[locale]}>{t.hero.cta1}</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-navy-foreground/30 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
+              >
+                <Link to={pagePaths.how[locale]}>{t.hero.cta2}</Link>
+              </Button>
             </div>
-            <div className="flex flex-col justify-end gap-8">
-              <img
-                src={heroImage}
-                alt={
-                  locale === "no"
-                    ? "Organisatoriske signaler visualisert som løpende kurver"
-                    : "Organisational signals visualised as continuous curves"
-                }
-                width={1600}
-                height={1200}
-                className="w-full rounded-md border border-navy-foreground/15 object-cover shadow-lg"
-              />
-              <blockquote className="border-l-2 border-teal pl-6">
-                <p className="font-display text-2xl leading-snug text-navy-foreground sm:text-3xl">
-                  {content.hero.short}
-                </p>
-                <footer className="mt-3 text-sm text-navy-foreground/60">
-                  {content.brand.name} &middot; {content.brand.category}
-                </footer>
-              </blockquote>
-            </div>
-
           </div>
         </section>
 
-        {/* Trust bar */}
-        <section id="sikkerhet" className="border-b border-border bg-card">
-          <div className="mx-auto max-w-6xl px-5 py-8">
-            <p className="text-center text-sm text-muted-foreground">{content.trust.title}</p>
-            <ul className="mt-6 grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
-              {content.trust.items.map((item) => (
-                <li key={item.title} className="text-center">
-                  <p className="text-sm font-semibold text-navy">{item.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{item.text}</p>
+        {/* 2. Problemet */}
+        <section className="mx-auto max-w-6xl px-5 py-24">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p className="qp-eyebrow">{t.problem.eyebrow}</p>
+              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.problem.title}</h2>
+            </div>
+            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:pt-12">
+              {t.problem.body}
+            </p>
+          </div>
+        </section>
+
+        {/* 3. Beslutningsflyt */}
+        <section className="border-y border-border bg-card">
+          <div className="mx-auto max-w-6xl px-5 py-24">
+            <div className="max-w-3xl">
+              <p className="qp-eyebrow">{t.flow.eyebrow}</p>
+              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.flow.title}</h2>
+              <p className="mt-5 text-muted-foreground">{t.flow.lead}</p>
+            </div>
+            <ol className="mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
+              {t.flow.steps.map((step, index) => (
+                <li key={step} className="relative md:pr-6">
+                  <span
+                    aria-hidden
+                    className="absolute top-2 left-8 hidden h-px w-full bg-border md:block"
+                  />
+                  <span className="relative z-10 inline-flex h-4 w-4 items-center justify-center rounded-full border border-teal bg-card">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+                  </span>
+                  <p className="mt-5 font-display text-sm text-teal-deep tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-2 text-base leading-snug font-bold text-navy">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* 4. Bruksområder */}
+        <section className="mx-auto max-w-6xl px-5 py-24">
+          <div className="max-w-3xl">
+            <p className="qp-eyebrow">{t.usecases.eyebrow}</p>
+            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.usecases.title}</h2>
+            <p className="mt-5 text-muted-foreground">{t.usecases.lead}</p>
+          </div>
+          <dl className="mt-14 border-t border-border">
+            {t.usecases.items.map((item, index) => (
+              <div
+                key={item.title}
+                className="grid gap-3 border-b border-border py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8"
+              >
+                <span className="font-display text-sm text-teal-deep tabular-nums">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <dt className="text-lg font-bold text-navy">{item.title}</dt>
+                <dd className="text-sm leading-relaxed text-muted-foreground">{item.text}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-8">
+            <Link className="story-link text-sm font-semibold" to={pagePaths.usecases[locale]}>
+              {t.usecases.link}
+            </Link>
+          </p>
+        </section>
+
+        {/* 5. Verdi for lederroller */}
+        <section className="bg-navy py-24 text-navy-foreground">
+          <div className="mx-auto max-w-6xl px-5">
+            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
+              {t.roles.eyebrow}
+            </p>
+            <h2 className="mt-4 max-w-2xl text-3xl text-navy-foreground sm:text-4xl">
+              {t.roles.title}
+            </h2>
+            <div className="mt-14 grid gap-px overflow-hidden bg-navy-foreground/15 sm:grid-cols-2">
+              {t.roles.items.map((item) => (
+                <article key={item.title} className="bg-navy p-8">
+                  <h3 className="text-lg text-navy-foreground">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-navy-foreground/70">
+                    {item.text}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <p className="mt-10">
+              <Link
+                className="text-sm font-semibold text-teal underline-offset-4 hover:underline"
+                to={pagePaths.hr[locale]}
+              >
+                {locale === "no" ? "Se innsikt per rolle" : "See insight per role"}
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        {/* 6. Produktvisning */}
+        <section className="mx-auto max-w-6xl px-5 py-24">
+          <div className="max-w-3xl">
+            <p className="qp-eyebrow">{t.product.eyebrow}</p>
+            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.product.title}</h2>
+            <p className="mt-5 text-muted-foreground">{t.product.lead}</p>
+          </div>
+          <div className="mt-14 border-t border-l border-border">
+            {t.product.stages.map((stage, index) => (
+              <div
+                key={stage}
+                className="flex items-baseline gap-6 border-r border-b border-border px-6 py-6"
+              >
+                <span className="font-display text-sm text-teal-deep tabular-nums">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base text-navy">{stage}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-2xl border-l-2 border-teal pl-5 font-display text-lg text-navy">
+            {t.product.note}
+          </p>
+        </section>
+
+        {/* 8. Tillit */}
+        <section className="border-y border-border bg-card">
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p className="qp-eyebrow">{t.trust.eyebrow}</p>
+              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.trust.title}</h2>
+              <p className="mt-6">
+                <Link className="story-link text-sm font-semibold" to={pagePaths.security[locale]}>
+                  {t.trust.link}
+                </Link>
+              </p>
+            </div>
+            <ul className="grid gap-px self-start bg-border sm:grid-cols-2">
+              {t.trust.items.map((item) => (
+                <li key={item} className="bg-card px-6 py-6 text-sm font-semibold text-navy">
+                  {item}
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        {/* Problem */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="max-w-3xl">
-            <Eyebrow>{content.problem.eyebrow}</Eyebrow>
-            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.problem.title}</h2>
-            <p className="mt-5 text-lg text-muted-foreground">{content.problem.lead}</p>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {content.problem.items.map((item, index) => (
-              <article
-                key={item.title}
-                className="rounded-md border border-border border-l-2 border-l-teal bg-card p-7"
-              >
-                <span className="font-display text-3xl text-teal-soft">0{index + 1}</span>
-                <h3 className="mt-3 text-lg font-bold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section id="hvordan" className="border-y border-border bg-card">
-          <div className="mx-auto max-w-6xl px-5 py-24">
-            <div className="max-w-3xl">
-              <Eyebrow>{content.how.eyebrow}</Eyebrow>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.how.title}</h2>
-              <p className="mt-5 text-lg text-muted-foreground">{content.how.lead}</p>
-            </div>
-            <ol className="mt-14 grid gap-10 md:grid-cols-3">
-              {content.how.steps.map((step, index) => (
-                <li key={step.title}>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-teal text-sm font-bold text-white">
-                    {index + 1}
-                  </div>
-                  <h3 className="mt-5 text-xl font-bold">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-14">
-              <ImagePlaceholder
-                ratio="16/9"
-                label={
-                  locale === "no"
-                    ? "Skjermbilde av lederdashboard"
-                    : "Screenshot of the leadership dashboard"
-                }
-                hint={
-                  locale === "no"
-                    ? "Anbefalt format: 1600 x 900 px"
-                    : "Recommended format: 1600 x 900 px"
-                }
-              />
-            </div>
-          </div>
-
-        </section>
-
-        {/* Compliance */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <Eyebrow>{content.compliance.eyebrow}</Eyebrow>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.compliance.title}</h2>
-              <p className="mt-5 text-muted-foreground">{content.compliance.lead}</p>
-              <p className="mt-8 border-l-2 border-teal pl-5 font-display text-xl text-navy">
-                {content.compliance.note}
-              </p>
-            </div>
-            <div className="grid gap-5">
-              {content.compliance.points.map((point) => (
-                <article key={point.title} className="rounded-md bg-card p-7 shadow-sm">
-                  <h3 className="text-lg font-bold">{point.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{point.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Demo */}
-        <section id="demo" className="border-y border-border bg-card">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div>
-              <Eyebrow>{locale === "no" ? "Interaktiv demo" : "Interactive demo"}</Eyebrow>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">
-                {locale === "no"
-                  ? "Se hva hvert nivå faktisk får se"
-                  : "See exactly what each level is shown"}
-              </h2>
-              <p className="mt-5 text-muted-foreground">
-                {locale === "no"
-                  ? "Bytt mellom toppleder, avdelingsleder, teamleder og medarbeider. Ledernivåene ser kun aggregerte tall. Medarbeiderens rom er privat og deles aldri med leder eller HR."
-                  : "Switch between executive, department leader, team leader and employee. Leadership levels see aggregated figures only. The employee space stays private."}
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Button asChild size="lg">
-                  <Link to="/demo">{locale === "no" ? "Se demoen" : "Se demoen"}</Link>
-                </Button>
-                <span className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-                  {locale === "no" ? "Fiktive eksempeldata" : "Fictional sample data"}
-                </span>
-              </div>
-            </div>
-            <div className="rounded-lg border border-border bg-background p-6 shadow-sm">
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { id: "H1", navn: locale === "no" ? "Toppleder" : "Executive" },
-                  { id: "H2", navn: locale === "no" ? "Avdelingsleder" : "Department leader" },
-                  { id: "H3", navn: locale === "no" ? "Teamleder" : "Team leader" },
-                  { id: "H4", navn: locale === "no" ? "Medarbeider" : "Employee" },
-                ].map((r) => (
-                  <div key={r.id} className="rounded-md border border-border bg-card p-4">
-                    <p className="text-[11px] font-bold text-teal">{r.id}</p>
-                    <p className="mt-1 text-sm font-semibold text-navy">{r.navn}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-xs text-muted-foreground">
-                {locale === "no"
-                  ? "Organizational Health Index, tidlige varsler, hotspots og neste beste lederhandling."
-                  : "Organizational Health Index, early warnings, hotspots and next best leadership action."}
-              </p>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Roles */}
-        <section id="roller" className="bg-navy py-24 text-navy-foreground">
-          <div className="mx-auto max-w-6xl px-5">
-            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
-              {content.roles.eyebrow}
-            </p>
-            <h2 className="mt-4 max-w-2xl text-3xl text-navy-foreground sm:text-4xl">
-              {content.roles.title}
-            </h2>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-md bg-navy-foreground/15 sm:grid-cols-2">
-              {content.roles.items.map((item) => (
-                <article key={item.role} className="bg-navy p-8">
-                  <h3 className="text-lg text-navy-foreground">{item.role}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-navy-foreground/70">{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Market */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="max-w-3xl">
-            <Eyebrow>{content.market.eyebrow}</Eyebrow>
-            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.market.title}</h2>
-            <p className="mt-5 text-lg text-muted-foreground">{content.market.lead}</p>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {content.market.points.map((point) => (
-              <article key={point.title} className="rounded-md border border-border bg-card p-7">
-                <h3 className="text-lg font-bold">{point.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{point.text}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            <ImagePlaceholder
-              ratio="3/2"
-              label={locale === "no" ? "Portrett av Linda Karlsen" : "Portrait of Linda Karlsen"}
-              hint={locale === "no" ? "Anbefalt format: 1200 x 800 px" : "Recommended: 1200 x 800 px"}
-            />
-            <ImagePlaceholder
-              ratio="3/2"
-              label={
-                locale === "no"
-                  ? "Situasjonsbilde fra kundemøte"
-                  : "Situational photo from a client meeting"
-              }
-              hint={locale === "no" ? "Anbefalt format: 1200 x 800 px" : "Recommended: 1200 x 800 px"}
-            />
-          </div>
-        </section>
-
-
-        {/* Contact */}
-        <section id="kontakt" className="border-t border-border bg-card">
+        {/* 9. Avsluttende CTA */}
+        <section id="kontakt" className="border-t border-border">
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
-              <Eyebrow>{content.contact.eyebrow}</Eyebrow>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{content.contact.title}</h2>
-              <p className="mt-5 text-muted-foreground">{content.contact.lead}</p>
+              <h2 className="text-3xl leading-tight sm:text-4xl">{t.cta.title}</h2>
+              <p className="mt-5 text-muted-foreground">{t.cta.text}</p>
               <p className="mt-8 text-sm text-muted-foreground">
                 <a className="story-link" href="mailto:hei@questpulse.no">
                   hei@questpulse.no
@@ -299,7 +445,6 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
       </main>
 
       <SiteFooter locale={locale} content={content} />
-
     </div>
   );
 }

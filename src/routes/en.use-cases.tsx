@@ -5,14 +5,14 @@ import { PageView } from "@/components/site/PageView";
 import { pageContent } from "@/lib/page-content";
 import { getSiteContent } from "@/lib/site.functions";
 
-const meta = pageContent["no"]["security"].meta;
+const meta = pageContent["en"]["usecases"].meta;
 
 const contentQuery = queryOptions({
-  queryKey: ["site-content", "no"],
-  queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
+  queryKey: ["site-content", "en"],
+  queryFn: () => getSiteContent({ data: { locale: "en" as const } }),
 });
 
-export const Route = createFileRoute("/sikkerhet-og-personvern")({
+export const Route = createFileRoute("/en/use-cases")({
   head: () => ({
     meta: [
       { title: meta.title },
@@ -20,13 +20,14 @@ export const Route = createFileRoute("/sikkerhet-og-personvern")({
       { property: "og:title", content: meta.title },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
-      { property: "og:locale", content: "nb_NO" },
-      { property: "og:url", content: "https://questpulse.no/sikkerhet-og-personvern" },
+      { property: "og:locale", content: "en" },
+      { property: "og:url", content: "https://questpulse.no/en/use-cases" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://questpulse.no/sikkerhet-og-personvern" },
-      { rel: "alternate", hrefLang: "en", href: "/en/security-and-privacy" },
+      { rel: "canonical", href: "https://questpulse.no/en/use-cases" },
+      { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/bruksomrader" },
+      { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en/use-cases" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
@@ -35,5 +36,5 @@ export const Route = createFileRoute("/sikkerhet-og-personvern")({
 
 function Page() {
   const { data } = useSuspenseQuery(contentQuery);
-  return <PageView locale="no" pageKey="security" content={data} />;
+  return <PageView locale="en" pageKey="usecases" content={data} />;
 }

@@ -90,6 +90,28 @@ function Section({
     );
   }
 
+  if (section.kind === "register") {
+    return (
+      <section className="mx-auto max-w-6xl px-5 py-24">
+        {header}
+        <dl className="mt-14 border-t border-border">
+          {section.items.map((item, index) => (
+            <div
+              key={item.title}
+              className="grid gap-3 border-b border-border py-7 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8"
+            >
+              <span className="font-display text-sm text-teal-deep tabular-nums">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <dt className="text-lg font-bold text-navy">{item.title}</dt>
+              <dd className="text-sm leading-relaxed text-muted-foreground">{item.text}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    );
+  }
+
   if (section.kind === "prose") {
     return (
       <section className="mx-auto max-w-6xl px-5 py-24">
@@ -104,6 +126,7 @@ function Section({
       </section>
     );
   }
+
 
   if (section.kind === "steps") {
     return (

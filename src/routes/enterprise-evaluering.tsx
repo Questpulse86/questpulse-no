@@ -5,14 +5,14 @@ import { PageView } from "@/components/site/PageView";
 import { pageContent } from "@/lib/page-content";
 import { getSiteContent } from "@/lib/site.functions";
 
-const meta = pageContent["no"]["security"].meta;
+const meta = pageContent["no"]["enterprise"].meta;
 
 const contentQuery = queryOptions({
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
 });
 
-export const Route = createFileRoute("/sikkerhet-og-personvern")({
+export const Route = createFileRoute("/enterprise-evaluering")({
   head: () => ({
     meta: [
       { title: meta.title },
@@ -21,12 +21,13 @@ export const Route = createFileRoute("/sikkerhet-og-personvern")({
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
-      { property: "og:url", content: "https://questpulse.no/sikkerhet-og-personvern" },
+      { property: "og:url", content: "https://questpulse.no/enterprise-evaluering" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://questpulse.no/sikkerhet-og-personvern" },
-      { rel: "alternate", hrefLang: "en", href: "/en/security-and-privacy" },
+      { rel: "canonical", href: "https://questpulse.no/enterprise-evaluering" },
+      { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/enterprise-evaluering" },
+      { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en/enterprise-evaluation" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
@@ -35,5 +36,5 @@ export const Route = createFileRoute("/sikkerhet-og-personvern")({
 
 function Page() {
   const { data } = useSuspenseQuery(contentQuery);
-  return <PageView locale="no" pageKey="security" content={data} />;
+  return <PageView locale="no" pageKey="enterprise" content={data} />;
 }

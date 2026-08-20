@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BruksomraderRouteImport } from './routes/bruksomrader'
+import { Route as DchubRouteImport } from './routes/dchub'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-evaluering'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
 import { Route as KontaktRouteImport } from './routes/kontakt'
@@ -21,6 +24,7 @@ import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
 import { Route as PartnereRouteImport } from './routes/partnere'
 import { Route as PilotRouteImport } from './routes/pilot'
 import { Route as SikkerhetOgPersonvernRouteImport } from './routes/sikkerhet-og-personvern'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SlikFungererDetRouteImport } from './routes/slik-fungerer-det'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -29,11 +33,13 @@ import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnBankingAndFinanceRouteImport } from './routes/en.banking-and-finance'
 import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnEnterpriseEvaluationRouteImport } from './routes/en.enterprise-evaluation'
 import { Route as EnHowItWorksRouteImport } from './routes/en.how-it-works'
 import { Route as EnHrAndLeadershipRouteImport } from './routes/en.hr-and-leadership'
 import { Route as EnPartnersRouteImport } from './routes/en.partners'
 import { Route as EnPilotRouteImport } from './routes/en.pilot'
 import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-and-privacy'
+import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
@@ -51,9 +57,24 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BruksomraderRoute = BruksomraderRouteImport.update({
+  id: '/bruksomrader',
+  path: '/bruksomrader',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DchubRoute = DchubRouteImport.update({
+  id: '/dchub',
+  path: '/dchub',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnterpriseEvalueringRoute = EnterpriseEvalueringRouteImport.update({
+  id: '/enterprise-evaluering',
+  path: '/enterprise-evaluering',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ForBankOgFinansRoute = ForBankOgFinansRouteImport.update({
@@ -94,6 +115,11 @@ const PilotRoute = PilotRouteImport.update({
 const SikkerhetOgPersonvernRoute = SikkerhetOgPersonvernRouteImport.update({
   id: '/sikkerhet-og-personvern',
   path: '/sikkerhet-og-personvern',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SlikFungererDetRoute = SlikFungererDetRouteImport.update({
@@ -138,6 +164,11 @@ const EnContactRoute = EnContactRouteImport.update({
   path: '/en/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnEnterpriseEvaluationRoute = EnEnterpriseEvaluationRouteImport.update({
+  id: '/en/enterprise-evaluation',
+  path: '/en/enterprise-evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnHowItWorksRoute = EnHowItWorksRouteImport.update({
   id: '/en/how-it-works',
   path: '/en/how-it-works',
@@ -163,6 +194,11 @@ const EnSecurityAndPrivacyRoute = EnSecurityAndPrivacyRouteImport.update({
   path: '/en/security-and-privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnUseCasesRoute = EnUseCasesRouteImport.update({
+  id: '/en/use-cases',
+  path: '/en/use-cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
@@ -178,7 +214,10 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -187,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -194,11 +234,13 @@ export interface FileRoutesByFullPath {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -206,7 +248,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -215,6 +260,7 @@ export interface FileRoutesByTo {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -222,11 +268,13 @@ export interface FileRoutesByTo {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -236,7 +284,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/bruksomrader': typeof BruksomraderRoute
+  '/dchub': typeof DchubRoute
   '/demo': typeof DemoRoute
+  '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/kontakt': typeof KontaktRoute
@@ -245,6 +296,7 @@ export interface FileRoutesById {
   '/partnere': typeof PartnereRoute
   '/pilot': typeof PilotRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -252,11 +304,13 @@ export interface FileRoutesById {
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
+  '/en/enterprise-evaluation': typeof EnEnterpriseEvaluationRoute
   '/en/how-it-works': typeof EnHowItWorksRoute
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
+  '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -266,7 +320,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/bruksomrader'
+    | '/dchub'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -275,6 +332,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -282,11 +340,13 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -294,7 +354,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/bruksomrader'
+    | '/dchub'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -303,6 +366,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -310,11 +374,13 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -323,7 +389,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/bruksomrader'
+    | '/dchub'
     | '/demo'
+    | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/kontakt'
@@ -332,6 +401,7 @@ export interface FileRouteTypes {
     | '/partnere'
     | '/pilot'
     | '/sikkerhet-og-personvern'
+    | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -339,11 +409,13 @@ export interface FileRouteTypes {
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
+    | '/en/enterprise-evaluation'
     | '/en/how-it-works'
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
     | '/en/security-and-privacy'
+    | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -353,7 +425,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  BruksomraderRoute: typeof BruksomraderRoute
+  DchubRoute: typeof DchubRoute
   DemoRoute: typeof DemoRoute
+  EnterpriseEvalueringRoute: typeof EnterpriseEvalueringRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
   KontaktRoute: typeof KontaktRoute
@@ -362,17 +437,20 @@ export interface RootRouteChildren {
   PartnereRoute: typeof PartnereRoute
   PilotRoute: typeof PilotRoute
   SikkerhetOgPersonvernRoute: typeof SikkerhetOgPersonvernRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlikFungererDetRoute: typeof SlikFungererDetRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   EnAboutRoute: typeof EnAboutRoute
   EnBankingAndFinanceRoute: typeof EnBankingAndFinanceRoute
   EnContactRoute: typeof EnContactRoute
+  EnEnterpriseEvaluationRoute: typeof EnEnterpriseEvaluationRoute
   EnHowItWorksRoute: typeof EnHowItWorksRoute
   EnHrAndLeadershipRoute: typeof EnHrAndLeadershipRoute
   EnPartnersRoute: typeof EnPartnersRoute
   EnPilotRoute: typeof EnPilotRoute
   EnSecurityAndPrivacyRoute: typeof EnSecurityAndPrivacyRoute
+  EnUseCasesRoute: typeof EnUseCasesRoute
   EnIndexRoute: typeof EnIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -401,11 +479,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bruksomrader': {
+      id: '/bruksomrader'
+      path: '/bruksomrader'
+      fullPath: '/bruksomrader'
+      preLoaderRoute: typeof BruksomraderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dchub': {
+      id: '/dchub'
+      path: '/dchub'
+      fullPath: '/dchub'
+      preLoaderRoute: typeof DchubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo': {
       id: '/demo'
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enterprise-evaluering': {
+      id: '/enterprise-evaluering'
+      path: '/enterprise-evaluering'
+      fullPath: '/enterprise-evaluering'
+      preLoaderRoute: typeof EnterpriseEvalueringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/for-bank-og-finans': {
@@ -464,6 +563,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SikkerhetOgPersonvernRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/slik-fungerer-det': {
       id: '/slik-fungerer-det'
       path: '/slik-fungerer-det'
@@ -520,6 +626,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/enterprise-evaluation': {
+      id: '/en/enterprise-evaluation'
+      path: '/en/enterprise-evaluation'
+      fullPath: '/en/enterprise-evaluation'
+      preLoaderRoute: typeof EnEnterpriseEvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/how-it-works': {
       id: '/en/how-it-works'
       path: '/en/how-it-works'
@@ -555,6 +668,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnSecurityAndPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/use-cases': {
+      id: '/en/use-cases'
+      path: '/en/use-cases'
+      fullPath: '/en/use-cases'
+      preLoaderRoute: typeof EnUseCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.lovable/oauth/consent': {
       id: '/.lovable/oauth/consent'
       path: '/.lovable/oauth/consent'
@@ -587,7 +707,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  BruksomraderRoute: BruksomraderRoute,
+  DchubRoute: DchubRoute,
   DemoRoute: DemoRoute,
+  EnterpriseEvalueringRoute: EnterpriseEvalueringRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
   KontaktRoute: KontaktRoute,
@@ -596,6 +719,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnereRoute: PartnereRoute,
   PilotRoute: PilotRoute,
   SikkerhetOgPersonvernRoute: SikkerhetOgPersonvernRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlikFungererDetRoute: SlikFungererDetRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
@@ -603,11 +727,13 @@ const rootRouteChildren: RootRouteChildren = {
   EnAboutRoute: EnAboutRoute,
   EnBankingAndFinanceRoute: EnBankingAndFinanceRoute,
   EnContactRoute: EnContactRoute,
+  EnEnterpriseEvaluationRoute: EnEnterpriseEvaluationRoute,
   EnHowItWorksRoute: EnHowItWorksRoute,
   EnHrAndLeadershipRoute: EnHrAndLeadershipRoute,
   EnPartnersRoute: EnPartnersRoute,
   EnPilotRoute: EnPilotRoute,
   EnSecurityAndPrivacyRoute: EnSecurityAndPrivacyRoute,
+  EnUseCasesRoute: EnUseCasesRoute,
   EnIndexRoute: EnIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
