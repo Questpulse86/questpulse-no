@@ -32,6 +32,10 @@ dist-ssr
 *.sw?
 
 # Lokale miljøfiler og hemmeligheter
+# .env er sporet med vilje og skal kun inneholde publiserbare verdier.
+# Alle andre .env-varianter holdes utenfor versjonskontroll.
+.env.*
+!.env.example
 .env.local
 .env.*.local
 *.pem
