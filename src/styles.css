@@ -50,9 +50,12 @@
   --color-dch-ink: var(--dch-ink);
   --color-dch-accent: var(--dch-accent);
   --color-dch-accent-deep: var(--dch-accent-deep);
+  --color-dch-accent-strong: var(--dch-accent-strong);
   --color-dch-sand: var(--dch-sand);
+  --color-dch-warm: var(--dch-warm);
   --color-dch-line: var(--dch-line);
   --color-dch-muted: var(--dch-muted);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -82,9 +85,12 @@
   --dch-ink: #13212f;
   --dch-accent: #1a9a8e;
   --dch-accent-deep: #158a7f;
+  --dch-accent-strong: #0f6a62;
   --dch-sand: #faf9f7;
-  --dch-line: #e5e2dd;
-  --dch-muted: #6c757d;
+  --dch-warm: #f4f1ec;
+  --dch-line: #e2ded7;
+  --dch-muted: #55606d;
+
 
   --background: oklch(0.9722 0.0034 247.86);
   --foreground: oklch(0.3535 0.0312 237.98);
