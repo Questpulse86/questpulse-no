@@ -1,34 +1,32 @@
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 import { Reveal } from "@/components/dchub/Reveal";
 import { DCH_FORM_ID, HubSpotForm } from "@/components/site/HubSpotForm";
-import { getSiteContent } from "@/lib/site.functions";
 import {
+  BOOKING_URL,
+  about,
+  closing,
+  dchubBrand,
   dchubImages,
   dchubSite,
+  faq,
+  hero,
   navLinks,
-  situations,
-  insights,
-  usps,
+  outcomes,
+  process,
+  questpulseNote,
+  recognition,
+  resultsSection,
   services,
-  focusList,
-  stats,
-  values,
-  team,
+  servicesSection,
   testimonials,
-  articles,
 } from "@/lib/dchub-content";
 
-const title = "Ledercoach Askim | Linda Karlsen NLP-coach | Digital Coach Hub";
+const title = "Businesscoach og ledercoach | Linda Karlsen | Digital Coach Hub";
 const description =
-  "Sertifisert NLP-coach Linda Karlsen i Askim tilbyr ledercoaching, ansattcoaching og grunder-coaching. 15 år erfaring. Book gratis avklaringssamtale i dag. Indre Østfold og online.";
+  "Linda Karlsen tilbyr businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års ledererfaring. Askim og digitalt i hele Norge.";
 const site = dchubSite;
-
-const contentQuery = queryOptions({
-  queryKey: ["site-content", "no"],
-  queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
-});
 
 export const Route = createFileRoute("/dchub")({
   head: () => ({
@@ -37,15 +35,8 @@ export const Route = createFileRoute("/dchub")({
       { name: "description", content: description },
       { name: "robots", content: "index, follow" },
       { property: "og:site_name", content: "Digital Coach Hub" },
-      {
-        property: "og:title",
-        content: "Linda Karlsen. Coach for ledere og ansatte | Digital Coach Hub",
-      },
-      {
-        property: "og:description",
-        content:
-          "Et trygt rom, konkrete verktøy og struktur som hjelper deg å prestere bærekraftig over tid.",
-      },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
       { property: "og:url", content: `${site}/` },
@@ -57,25 +48,29 @@ export const Route = createFileRoute("/dchub")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
+          "@type": "ProfessionalService",
           name: "Digital Coach Hub AS",
-          alternateName: "Linda Karlsen Coaching",
+          alternateName: "Linda Karlsen coaching",
           description:
-            "Sertifisert NLP-coach Linda Karlsen tilbyr coaching og sparring for ledere og ansatte. 15 år erfaring. Askim, Indre Østfold.",
+            "Businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. Askim og digitalt i hele Norge.",
           url: site,
-          telephone: "+4794806616",
-          email: "linda@dchub.no",
+          telephone: dchubBrand.phone,
+          email: dchubBrand.email,
+          founder: { "@type": "Person", name: "Linda Karlsen" },
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Askim",
             addressLocality: "Askim",
             addressRegion: "Indre Østfold",
             postalCode: "1830",
             addressCountry: "NO",
           },
-          geo: { "@type": "GeoCoordinates", latitude: 59.5644, longitude: 11.1734 },
           areaServed: ["Askim", "Indre Østfold", "Oslo", "Norge"],
-          sameAs: ["https://questpulse.no"],
+          serviceType: [
+            "Businesscoaching",
+            "Ledercoaching",
+            "Foredrag",
+            "Workshops",
+          ],
         }),
       },
       {
@@ -84,420 +79,276 @@ export const Route = createFileRoute("/dchub")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Linda Karlsen",
-          jobTitle: "NLP-coach og ledercoach",
+          jobTitle: ["Businesscoach", "Ledercoach", "Gründer", "Foredragsholder"],
+          description:
+            "Businesscoach, ledercoach, gründer og foredragsholder med 20 års ledererfaring.",
           url: site,
-          telephone: "+4794806616",
-          email: "linda@dchub.no",
-          worksFor: { "@type": "Organization", name: "Digital Coach Hub AS" },
+          telephone: dchubBrand.phone,
+          email: dchubBrand.email,
+          worksFor: { "@type": "Organization", name: dchubBrand.legalName },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
         }),
       },
     ],
   }),
-  loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
   component: DcHub,
 });
 
-const btnPrimary =
-  "inline-flex items-center justify-center gap-2 rounded-md border-2 border-dch-accent bg-dch-accent px-7 py-3.5 text-[15px] font-bold text-white transition-all hover:border-dch-accent-deep hover:bg-dch-accent-deep";
-const btnOutline =
-  "inline-flex items-center justify-center gap-2 rounded-md border-2 border-dch-ink px-7 py-3.5 text-[15px] font-bold text-dch-ink transition-all hover:bg-dch-ink hover:text-white";
-const label =
-  "inline-block text-[11px] font-bold tracking-[0.12em] text-dch-accent uppercase";
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dch-accent-strong focus-visible:ring-offset-2 focus-visible:ring-offset-white";
+const btnPrimary = `inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md bg-dch-accent-strong px-7 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-dch-ink ${focusRing}`;
+const btnOutline = `inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md border-2 border-dch-ink px-7 py-3.5 text-[15px] font-bold text-dch-ink transition-colors hover:bg-dch-ink hover:text-white ${focusRing}`;
+const eyebrow =
+  "inline-block text-[11px] font-bold tracking-[0.14em] text-dch-accent-strong uppercase";
+const h2 = "mt-4 font-display text-[clamp(26px,3.2vw,38px)] leading-[1.2] font-bold";
+
+/** Bevarer UTM-parametere fra landingen videre til HubSpot-bookingen. */
+function useBookingUrl() {
+  const [url, setUrl] = useState(BOOKING_URL);
+
+  useEffect(() => {
+    const current = new URLSearchParams(window.location.search);
+    const forwarded = new URLSearchParams();
+    current.forEach((value, key) => {
+      if (/^(utm_|gclid|fbclid|hsa_)/i.test(key)) forwarded.append(key, value);
+    });
+    const query = forwarded.toString();
+    if (query) setUrl(`${BOOKING_URL}?${query}`);
+  }, []);
+
+  return url;
+}
+
+function BookButton({
+  children,
+  variant = "primary",
+  className = "",
+}: {
+  children: React.ReactNode;
+  variant?: "primary" | "outline";
+  className?: string;
+}) {
+  const url = useBookingUrl();
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener"
+      data-booking-cta
+      className={`${variant === "primary" ? btnPrimary : btnOutline} ${className}`}
+    >
+      {children}
+    </a>
+  );
+}
 
 function DcHub() {
-  const { data } = useSuspenseQuery(contentQuery);
+  const bookingUrl = useBookingUrl();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen scroll-smooth bg-white font-sans text-dch-ink">
-      <nav className="sticky top-0 z-50 border-b border-dch-line bg-white/95 backdrop-blur">
-        <div className="mx-auto flex h-[68px] max-w-[1120px] items-center justify-between px-8">
-          <a href="#" className="flex items-baseline gap-2">
-            <span className="font-display text-xl font-bold tracking-tight">Digital Coach Hub</span>
-            <span className="text-[10px] font-semibold tracking-[0.08em] text-dch-accent uppercase">
+    <div className="min-h-screen scroll-smooth bg-dch-sand font-sans text-dch-ink">
+      <a
+        href="#hovedinnhold"
+        className={`sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold ${focusRing}`}
+      >
+        Til hovedinnhold
+      </a>
+
+      <header className="sticky top-0 z-50 border-b border-dch-line bg-dch-sand/95 backdrop-blur">
+        <div className="mx-auto flex min-h-[72px] max-w-[1120px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
+          <a href="#hovedinnhold" className={`flex flex-col leading-tight ${focusRing}`}>
+            <span className="font-display text-lg font-bold tracking-tight sm:text-xl">
+              Digital Coach Hub
+            </span>
+            <span className="text-[10px] font-semibold tracking-[0.1em] text-dch-muted uppercase">
               Linda Karlsen
             </span>
           </a>
-          <ul className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-dch-muted transition-colors hover:text-dch-ink"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://questpulse.no"
-              className="hidden text-[13px] font-semibold text-dch-accent hover:opacity-75 sm:inline"
+
+          <nav aria-label="Hovedmeny" className="hidden lg:block">
+            <ul className="flex items-center gap-7">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={`inline-flex min-h-[44px] items-center text-sm font-medium text-dch-ink/80 transition-colors hover:text-dch-ink ${focusRing}`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <BookButton className="hidden px-5 py-2.5 text-sm sm:inline-flex">
+              Book en gratis samtale
+            </BookButton>
+            <button
+              type="button"
+              aria-expanded={menuOpen}
+              aria-controls="mobilmeny"
+              onClick={() => setMenuOpen((open) => !open)}
+              className={`inline-flex h-11 w-11 items-center justify-center rounded-md border border-dch-line bg-white text-dch-ink lg:hidden ${focusRing}`}
             >
-              QuestPulse for bedrifter
-            </a>
-            <a href="#kontakt" className={`${btnPrimary} px-5 py-2.5 text-sm`}>
-              Book samtale
-            </a>
+              <span className="sr-only">{menuOpen ? "Lukk meny" : "Åpne meny"}</span>
+              <span aria-hidden className="text-lg leading-none">
+                {menuOpen ? "✕" : "☰"}
+              </span>
+            </button>
           </div>
         </div>
-      </nav>
 
-      <main>
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-dch-sand py-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-20 -right-32 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(26,154,142,0.10)_0%,transparent_70%)]"
-          />
-          <div className="relative mx-auto grid max-w-[1120px] items-center gap-16 px-8 lg:grid-cols-2">
-            <Reveal>
-              <span className="mb-6 inline-flex items-center rounded-full border border-dch-accent/25 bg-dch-accent/10 px-3.5 py-1.5 text-xs font-bold tracking-[0.08em] text-dch-accent uppercase">
-                Coaching og sparring for ledere og ansatte
-              </span>
-              <h1 className="font-display text-[clamp(34px,4.5vw,52px)] leading-[1.15] font-bold">
-                Når jobben tar
-                <br />
-                mer enn den gir.
-              </h1>
-              <p className="mt-6 max-w-xl text-lg leading-[1.75] text-dch-muted">
-                Du trenger ikke mer motivasjon. Du trenger støtte som er trygg, profesjonell og som
-                faktisk holder. Jeg gir deg et trygt rom, konkrete verktøy og struktur som hjelper
-                deg å prestere bærekraftig over tid.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3.5">
-                <a href="#kontakt" className={btnPrimary}>
-                  Book en uforpliktende samtale
-                </a>
-                <a href="#tjenester" className={btnOutline}>
-                  Se hva jeg tilbyr
-                </a>
-              </div>
-              <div className="mt-10 flex flex-wrap items-center gap-5 text-xs font-semibold text-dch-muted">
-                <span>Sertifisert NLP-coach</span>
-                <span className="h-4 w-px bg-dch-line" />
-                <span className="text-dch-ink">15 år med ledere og ansatte</span>
-                <span className="h-4 w-px bg-dch-line" />
-                <span className="text-dch-ink">Askim, Indre Østfold</span>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <div className="overflow-hidden rounded-[20px] bg-white shadow-[0_4px_28px_rgba(19,33,47,0.09)]">
-                <img
-                  src={dchubImages.lindaHero}
-                  alt="Linda Karlsen, sertifisert NLP-coach og daglig leder i Digital Coach Hub AS"
-                  className="aspect-[3/4] min-h-[340px] w-full object-cover object-top"
-                  loading="eager"
-                />
-                <div className="flex items-center gap-4 border-t border-dch-line p-6">
-                  <img
-                    src={dchubImages.lindaHero}
-                    alt=""
-                    className="h-12 w-12 flex-shrink-0 rounded-full border-2 border-dch-accent/25 object-cover object-top"
-                  />
-                  <div>
-                    <div className="font-display text-[17px] font-bold">Linda Karlsen</div>
-                    <div className="text-xs text-dch-muted">
-                      Sertifisert NLP-coach, CEO Digital Coach Hub AS
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* SITUASJONER */}
-        <section id="situasjoner" className="py-24">
-          <div className="mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto mb-16 max-w-[640px] text-center">
-              <span className={label}>Situasjoner jeg ser hver dag</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] leading-tight">
-                Du vet at noe må justeres.
-                <br />
-                Men ikke helt hvor du skal starte.
-              </h2>
-              <p className="mt-4 text-[19px] leading-[1.75] text-dch-muted">
-                Arbeidshverdagen er blitt mer krevende for mange. Mer kompleksitet, mer endring og
-                mindre tid til å hente seg inn. Her er situasjonene jeg hjelper folk gjennom.
-              </p>
-            </Reveal>
-
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {situations.map((item) => (
-                <Reveal key={item.title}>
-                  <article className="h-full rounded-xl border border-dch-line bg-white p-7 transition-shadow hover:shadow-[0_2px_12px_rgba(19,33,47,0.07)]">
-                    <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-dch-accent/10 text-dch-accent">
-                      ●
-                    </span>
-                    <h3 className="font-display text-xl">{item.title}</h3>
-                    <p className="mt-3 text-[15px] leading-[1.75] text-dch-muted">{item.text}</p>
-                  </article>
-                </Reveal>
-              ))}
-              <Reveal>
-                <article className="h-full rounded-xl border border-dch-accent/20 bg-dch-sand p-7">
-                  <h3 className="font-display text-xl">Usikker på neste steg?</h3>
-                  <p className="mt-3 mb-4 text-[15px] leading-[1.75] text-dch-muted">
-                    Du trenger ikke ha alle svar før du tar kontakt. I en gratis avklaringssamtale
-                    ser vi på hvor du står og hva som kan passe deg.
-                  </p>
-                  <a href="#kontakt" className={`${btnPrimary} px-5 py-2.5 text-sm`}>
-                    Book gratis avklaring
+        {menuOpen ? (
+          <nav
+            id="mobilmeny"
+            aria-label="Mobilmeny"
+            className="border-t border-dch-line bg-white lg:hidden"
+          >
+            <ul className="mx-auto max-w-[1120px] px-5 py-2 sm:px-8">
+              {navLinks.map((link) => (
+                <li key={link.href} className="border-b border-dch-line/70 last:border-0">
+                  <a
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`flex min-h-[52px] items-center text-[15px] font-semibold ${focusRing}`}
+                  >
+                    {link.label}
                   </a>
-                </article>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+                </li>
+              ))}
+              <li className="py-4">
+                <BookButton className="w-full">Book en gratis samtale</BookButton>
+              </li>
+            </ul>
+          </nav>
+        ) : null}
+      </header>
 
-        {/* PROBLEMET */}
-        <section id="problemet" className="bg-dch-sand py-24">
-          <div className="mx-auto grid max-w-[1120px] gap-14 px-8 lg:grid-cols-2">
+      <main id="hovedinnhold">
+        {/* 2. HERO */}
+        <section className="border-b border-dch-line bg-dch-warm">
+          <div className="mx-auto grid max-w-[1120px] items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
             <Reveal>
-              <span className={label}>Problemet er sjelden manglende vilje</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] leading-tight">
-                De fleste vil levere godt, bidra i teamet og utvikle seg.
-              </h2>
-              <p className="mt-5 text-[17px] leading-[1.75] text-dch-muted">
-                Utfordringen er at hverdagen ofte er lagt opp slik at det er vanskelig å lykkes
-                alene. Uten gode verktøy og støtte ser jeg dette mønsteret igjen og igjen, uavhengig
-                av tittel, bransje eller erfaring.
-              </p>
-              <p className="mt-4 text-[17px] leading-[1.75] text-dch-muted">
-                Det er ikke et motivasjonsproblem. Det er et struktur- og støtteproblem. Og det lar
-                seg løse.
-              </p>
-              <a href="#kontakt" className={`${btnPrimary} mt-6`}>
-                Start med en samtale
-              </a>
-            </Reveal>
-
-            <Reveal className="space-y-4">
-              {insights.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex gap-4 rounded-xl border border-dch-line bg-white p-6"
-                >
-                  <span className="mt-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-dch-accent/10 text-dch-accent">
-                    ●
-                  </span>
-                  <div>
-                    <h3 className="font-display text-lg">{item.title}</h3>
-                    <p className="mt-2 text-[15px] leading-[1.7] text-dch-muted">{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* USP */}
-        <section className="relative overflow-hidden bg-dch-ink py-24">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(26,154,142,0.16)_0%,transparent_70%)]"
-          />
-          <div className="relative mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto max-w-[580px] text-center">
-              <span className="text-[11px] font-bold tracking-[0.12em] text-white/60 uppercase">
-                Hvorfor Digital Coach Hub
-              </span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] text-white">
-                Ikke mer motivasjon. Mer system.
-              </h2>
-              <p className="mt-3.5 text-base leading-[1.7] text-white/55">
-                Fire konkrete områder der vi gjør hverdagen din enklere å lede i, fra dag én.
-              </p>
-            </Reveal>
-
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {usps.map((usp) => (
-                <Reveal key={usp.num}>
-                  <article className="h-full rounded-xl border border-white/10 bg-white/[0.04] p-7 transition-transform hover:-translate-y-1">
-                    <div className="text-[11px] font-bold tracking-[0.12em] text-dch-accent uppercase">
-                      {usp.num}
-                    </div>
-                    <h3 className="mt-4 font-display text-xl text-white">{usp.title}</h3>
-                    <div className="mt-1 text-[13px] text-white/50">{usp.sub}</div>
-                    <p className="mt-4 text-[15px] leading-[1.7] text-white/70">{usp.text}</p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* TJENESTER */}
-        <section id="tjenester" className="bg-dch-sand py-24">
-          <div className="mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto max-w-[640px] text-center">
-              <span className={label}>Hva passer deg best?</span>
-              <h2 className="mt-3.5 font-display text-[clamp(24px,2.6vw,32px)] leading-tight">
-                Uansett om du kommer som leder, ny i rollen, ansatt under press eller på vegne av en
-                bedrift, starter vi med en avklaringssamtale og tilpasser opplegget til din
-                situasjon.
-              </h2>
-            </Reveal>
-
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {services.map((service) => (
-                <Reveal key={service.tag}>
-                  <article className="flex h-full flex-col justify-between rounded-xl border border-dch-line bg-white">
-                    <div className="p-7">
-                      <span className="inline-block rounded-full bg-dch-accent/10 px-3 py-1 text-[11px] font-bold tracking-[0.08em] text-dch-accent uppercase">
-                        {service.tag}
-                      </span>
-                      <h3 className="mt-4 font-display text-xl">{service.title}</h3>
-                      <p className="mt-3 text-[15px] leading-[1.75] text-dch-muted">
-                        {service.text}
-                      </p>
-                    </div>
-                    <div className="border-t border-dch-line px-7 py-5">
-                      <a
-                        href="#kontakt"
-                        className="text-sm font-bold text-dch-accent underline-offset-4 hover:underline"
-                      >
-                        {service.cta}
-                      </a>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal className="mt-12">
-              <div className="flex flex-col items-start gap-6 rounded-xl border border-dch-accent/25 bg-white p-8 lg:flex-row lg:items-center lg:justify-between">
-                <div className="max-w-3xl">
-                  <span className={label}>For virksomheter med 20+ ansatte</span>
-                  <h3 className="mt-3 font-display text-2xl">
-                    Forebygging og løpende innsikt med QuestPulse
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-[1.75] text-dch-muted">
-                    Digital Coach Hub AS står bak QuestPulse, en norskutviklet People Intelligence
-                    Platform som gir virksomheter løpende innsikt i belastning og organisatorisk
-                    risiko. For virksomheter som trenger kontinuitet, struktur og bedre
-                    beslutningsgrunnlag i arbeidet med mennesker, ledelse og endring.
-                  </p>
-                </div>
-                <a href="https://questpulse.no" className={`${btnPrimary} whitespace-nowrap`}>
-                  Les om QuestPulse
+              <span className={eyebrow}>{hero.eyebrow}</span>
+              <h1 className="mt-4 font-display text-[clamp(32px,4.6vw,54px)] leading-[1.12] font-bold">
+                {hero.title}
+              </h1>
+              <p className="mt-6 max-w-xl text-[19px] leading-[1.75] text-dch-muted">{hero.lead}</p>
+              <div className="mt-9 flex flex-wrap gap-3.5">
+                <BookButton>{hero.ctaPrimary}</BookButton>
+                <a href="#slik-jobber-jeg" className={btnOutline}>
+                  {hero.ctaSecondary}
                 </a>
               </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* OM LINDA */}
-        <section id="om-linda" className="py-24">
-          <div className="mx-auto grid max-w-[1120px] gap-16 px-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <Reveal>
-              <div className="relative">
-                <img
-                  src={dchubImages.coachingSamtale}
-                  alt="Linda Karlsen i samtale med en leder i et møterom"
-                  className="aspect-[3/4] w-full rounded-xl object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="mt-4 flex items-center gap-3 rounded-xl border border-dch-line bg-white p-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-dch-accent/10 text-dch-accent">
-                    ✓
-                  </span>
-                  <div>
-                    <div className="font-display text-base font-bold">Linda Karlsen</div>
-                    <div className="text-xs text-dch-muted">
-                      NLP-sertifisert coach etter ICF-standarder
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <span className={label}>Vi hjelper folk med ansvar å få kontroll igjen</span>
-              <h2 className="mt-3.5 font-display text-[clamp(24px,2.8vw,34px)] leading-tight">
-                Jeg jobber med ledere og nøkkelpersoner som har tempo, forventninger og en kalender
-                som aldri gir fred.
-              </h2>
-              <p className="mt-5 text-[17px] leading-[1.75] text-dch-muted">
-                Det jeg er best på er å gjøre hverdagen din enklere å lede i. Fordi gode intensjoner
-                ikke gir resultater. System gjør.
-              </p>
-              <p className="mt-3.5 text-[17px] leading-[1.75] text-dch-muted">
-                Du får en struktur du faktisk klarer å følge, tydelige grep du tester med en gang,
-                og ærlige tilbakemeldinger når du gjør ting unødvendig komplisert.
-              </p>
-
-              <ul className="mt-7 space-y-3">
-                {focusList.map((item) => (
-                  <li key={item} className="flex gap-3 text-[15px] text-dch-ink">
-                    <span className="text-dch-accent">✓</span>
+              <ul className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-semibold text-dch-ink/85">
+                {hero.trust.map((item, index) => (
+                  <li key={item} className="flex items-center gap-4">
+                    {index > 0 ? <span aria-hidden className="h-4 w-px bg-dch-line" /> : null}
                     {item}
                   </li>
                 ))}
               </ul>
+            </Reveal>
 
-              <div className="mt-9 grid gap-6 border-y border-dch-line py-7 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div key={stat.number}>
-                    <div className="font-display text-3xl font-bold text-dch-accent">
-                      {stat.number}
-                    </div>
-                    <div className="mt-1 text-[13px] leading-snug text-dch-muted">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-7 grid gap-4 sm:grid-cols-3">
-                {values.map((value) => (
-                  <div
-                    key={value.title}
-                    className="rounded-lg border border-dch-line bg-dch-sand p-4"
-                  >
-                    <div className="text-sm font-bold">{value.title}</div>
-                    <div className="mt-1 text-[13px] leading-snug text-dch-muted">{value.text}</div>
-                  </div>
-                ))}
-              </div>
-
-              <a href="#kontakt" className={`${btnPrimary} mt-8`}>
-                Book en samtale med Linda
-              </a>
+            <Reveal>
+              <img
+                src={dchubImages.lindaHero}
+                alt="Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub"
+                className="aspect-[4/5] w-full rounded-[20px] object-cover object-top shadow-[0_18px_50px_-30px_rgba(19,33,47,0.5)]"
+                loading="eager"
+              />
             </Reveal>
           </div>
         </section>
 
-        {/* TEAM */}
-        <section id="teamet" className="bg-[#F3F1EE] py-24">
-          <div className="mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto max-w-[560px] text-center">
-              <span className={label}>Menneskene bak</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] leading-tight">
-                Møt teamet som står bak Digital Coach Hub hver dag
-              </h2>
+        {/* 3. GJENKJENNELSE */}
+        <section className="border-b border-dch-line bg-dch-sand">
+          <div className="mx-auto max-w-[1120px] px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{recognition.eyebrow}</span>
+              <h2 className={h2}>{recognition.title}</h2>
+              <p className="mt-5 text-[19px] leading-[1.75] text-dch-muted">{recognition.lead}</p>
             </Reveal>
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              {team.map((person) => (
-                <Reveal key={person.name}>
-                  <article className="h-full rounded-xl border border-dch-line bg-white p-7 text-center">
-                    {person.photo ? (
-                      <img
-                        src={person.photo}
-                        alt={`${person.name}, ${person.role}`}
-                        className="mx-auto h-20 w-20 rounded-full object-cover object-top"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-dch-accent/10 font-display text-2xl font-bold text-dch-accent">
-                        {person.initials}
-                      </span>
-                    )}
-                    <div className="mt-5 font-display text-xl">{person.name}</div>
-                    <div className="mt-1 text-[13px] font-semibold tracking-[0.06em] text-dch-accent uppercase">
-                      {person.role}
+
+            <div className="mt-14 grid gap-x-14 gap-y-12 sm:grid-cols-2">
+              {recognition.items.map((item, index) => (
+                <Reveal key={item.title}>
+                  <div className="border-t border-dch-line pt-6">
+                    <span className="font-display text-sm font-bold text-dch-accent-strong">
+                      0{index + 1}
+                    </span>
+                    <h3 className="mt-2 font-display text-[22px] leading-snug font-bold">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[16px] leading-[1.8] text-dch-muted">{item.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. RESULTATET KUNDEN ØNSKER */}
+        <section className="border-b border-dch-line bg-dch-warm">
+          <div className="mx-auto max-w-[1120px] px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{outcomes.eyebrow}</span>
+              <h2 className={h2}>{outcomes.title}</h2>
+              <p className="mt-5 text-[19px] leading-[1.75] text-dch-muted">{outcomes.lead}</p>
+            </Reveal>
+            <div className="mt-14 grid gap-10 sm:grid-cols-3">
+              {outcomes.items.map((item) => (
+                <Reveal key={item.title}>
+                  <div className="border-t-2 border-dch-accent-strong pt-5">
+                    <h3 className="font-display text-[22px] font-bold">{item.title}</h3>
+                    <p className="mt-3 text-[16px] leading-[1.8] text-dch-muted">{item.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. TJENESTER */}
+        <section id="tjenester" className="border-b border-dch-line bg-dch-sand">
+          <div className="mx-auto max-w-[1120px] px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{servicesSection.eyebrow}</span>
+              <h2 className={h2}>{servicesSection.title}</h2>
+            </Reveal>
+
+            <div className="mt-12 divide-y divide-dch-line border-y border-dch-line">
+              {services.map((service) => (
+                <Reveal key={service.id}>
+                  <article
+                    id={service.id}
+                    className="grid scroll-mt-24 gap-6 py-10 lg:grid-cols-[0.32fr_0.68fr]"
+                  >
+                    <div>
+                      <span className={eyebrow}>{service.label}</span>
+                      <h3 className="mt-3 font-display text-[24px] leading-snug font-bold">
+                        {service.title}
+                      </h3>
                     </div>
-                    <p className="mt-4 text-[15px] leading-[1.7] text-dch-muted">{person.bio}</p>
+                    <div>
+                      <p className="max-w-2xl text-[17px] leading-[1.8] text-dch-muted">
+                        {service.text}
+                      </p>
+                      <BookButton className="mt-6">{service.cta}</BookButton>
+                    </div>
                   </article>
                 </Reveal>
               ))}
@@ -505,26 +356,48 @@ function DcHub() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
-        <section className="bg-dch-sand py-24">
-          <div className="mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto max-w-[560px] text-center">
-              <span className={label}>Hva klientene sier</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)]">
-                Resultater som holder
-              </h2>
+        {/* 6. SLIK FOREGÅR SAMARBEIDET */}
+        <section id="slik-jobber-jeg" className="border-b border-dch-line bg-dch-warm">
+          <div className="mx-auto max-w-[1120px] scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{process.eyebrow}</span>
+              <h2 className={h2}>{process.title}</h2>
             </Reveal>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+              {process.steps.map((step, index) => (
+                <li key={step.title}>
+                  <Reveal>
+                    <div className="border-t border-dch-line pt-5">
+                      <span className="font-display text-3xl font-bold text-dch-accent-strong">
+                        {index + 1}
+                      </span>
+                      <h3 className="mt-3 font-display text-xl font-bold">{step.title}</h3>
+                      <p className="mt-3 text-[16px] leading-[1.8] text-dch-muted">{step.text}</p>
+                    </div>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-12 max-w-2xl text-[15px] text-dch-muted italic">{process.note}</p>
+            <BookButton className="mt-8">Book en gratis avklaringssamtale</BookButton>
+          </div>
+        </section>
+
+        {/* 7. KUNDEUTTALELSER */}
+        <section id="resultater" className="border-b border-dch-line bg-dch-sand">
+          <div className="mx-auto max-w-[1120px] scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{resultsSection.eyebrow}</span>
+              <h2 className={h2}>{resultsSection.title}</h2>
+            </Reveal>
+            <div className="mt-12 grid gap-10 md:grid-cols-3">
               {testimonials.map((item) => (
                 <Reveal key={item.name}>
-                  <blockquote className="h-full rounded-xl border border-dch-line bg-white p-8">
-                    <div className="text-dch-accent">★★★★★</div>
-                    <p className="mt-4 text-[15px] leading-[1.7] text-dch-ink italic">
-                      {item.quote}
-                    </p>
-                    <footer className="mt-5">
-                      <div className="text-sm font-bold">{item.name}</div>
-                      <div className="text-[13px] text-dch-muted">{item.role}</div>
+                  <blockquote className="border-t border-dch-line pt-6">
+                    <p className="font-display text-[19px] leading-[1.6]">{item.quote}</p>
+                    <footer className="mt-5 text-[14px]">
+                      <span className="font-bold">{item.name}</span>
+                      <span className="text-dch-muted"> · {item.role}</span>
                     </footer>
                   </blockquote>
                 </Reveal>
@@ -533,155 +406,209 @@ function DcHub() {
           </div>
         </section>
 
-        {/* ARTIKLER */}
-        <section id="artikler" className="py-24">
-          <div className="mx-auto max-w-[1120px] px-8">
-            <Reveal className="mx-auto max-w-[560px] text-center">
-              <span className={label}>Innsikt for ledere</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] leading-tight">
-                Konkrete grep for mindre friksjon i hverdagen
-              </h2>
-              <p className="mt-4 text-[17px] leading-[1.75] text-dch-muted">
-                Erfaringer fra lederhverdager der kalenderen koker, beslutninger haster og samtaler
-                utsettes litt for lenge.
-              </p>
+        {/* 8. OM LINDA */}
+        <section id="om-linda" className="border-b border-dch-line bg-dch-warm">
+          <div className="mx-auto grid max-w-[1120px] scroll-mt-24 gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-28">
+            <Reveal>
+              <img
+                src={dchubImages.coachingSamtale}
+                alt="Linda Karlsen i samtale med en leder"
+                className="aspect-[3/4] w-full rounded-[20px] object-cover object-top"
+                loading="lazy"
+              />
             </Reveal>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {articles.map((article) => (
-                <Reveal key={article.title}>
-                  <article className="h-full overflow-hidden rounded-xl border border-dch-line bg-white">
-                    <div className="flex h-32 items-center justify-center bg-[#F3F1EE] text-4xl">
-                      {article.icon}
-                    </div>
-                    <div className="p-6">
-                      <span className="text-[11px] font-bold tracking-[0.08em] text-dch-accent uppercase">
-                        {article.tag}
-                      </span>
-                      <h3 className="mt-3 font-display text-lg leading-snug">{article.title}</h3>
-                      <p className="mt-3 text-[15px] leading-[1.7] text-dch-muted">
-                        {article.text}
-                      </p>
-                    </div>
-                  </article>
-                </Reveal>
+            <Reveal>
+              <span className={eyebrow}>{about.eyebrow}</span>
+              <h2 className={h2}>{about.title}</h2>
+              <div className="mt-6 space-y-4">
+                {about.paragraphs.map((paragraph) => (
+                  <p key={paragraph.slice(0, 24)} className="text-[17px] leading-[1.85] text-dch-muted">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <BookButton className="mt-9">{about.cta}</BookButton>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 9. KORT QUESTPULSE-KOBLING */}
+        <section className="border-b border-dch-line bg-dch-sand">
+          <div className="mx-auto max-w-[1120px] px-5 py-12 sm:px-8">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-3xl">
+                <span className="text-[11px] font-bold tracking-[0.14em] text-dch-muted uppercase">
+                  {questpulseNote.eyebrow}
+                </span>
+                <h2 className="mt-2 font-display text-[20px] leading-snug font-bold">
+                  {questpulseNote.title}
+                </h2>
+                <p className="mt-2 text-[15px] leading-[1.75] text-dch-muted">
+                  {questpulseNote.text}
+                </p>
+              </div>
+              <a
+                href={questpulseNote.href}
+                className={`inline-flex min-h-[44px] items-center text-sm font-bold text-dch-accent-strong underline underline-offset-4 ${focusRing}`}
+              >
+                {questpulseNote.cta}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 10. FAQ */}
+        <section id="faq" className="border-b border-dch-line bg-dch-warm">
+          <div className="mx-auto max-w-[820px] px-5 py-20 sm:px-8 lg:py-24">
+            <Reveal>
+              <span className={eyebrow}>Ofte stilte spørsmål</span>
+              <h2 className={h2}>Det folk spør om før de booker</h2>
+            </Reveal>
+            <div className="mt-10 divide-y divide-dch-line border-y border-dch-line">
+              {faq.map((item) => (
+                <details key={item.q} className="group py-5">
+                  <summary
+                    className={`flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-display text-[19px] font-bold ${focusRing}`}
+                  >
+                    {item.q}
+                    <span
+                      aria-hidden
+                      className="text-dch-accent-strong transition-transform group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-[16px] leading-[1.8] text-dch-muted">{item.a}</p>
+                </details>
               ))}
             </div>
           </div>
         </section>
 
-        {/* KONTAKT */}
-        <section id="kontakt" className="bg-dch-sand py-24">
-          <div className="mx-auto grid max-w-[1120px] gap-12 px-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <span className={label}>Ta kontakt</span>
-              <h2 className="mt-3.5 font-display text-[clamp(26px,3.2vw,38px)] leading-tight">
-                Book en gratis avklaringssamtale
-              </h2>
-              <p className="mt-5 text-[17px] leading-[1.75] text-dch-muted">
-                Jeg svarer innen én virkedag. Ingen forpliktelse. Vi ser på hvor du står og hva som
-                kan passe deg.
-              </p>
-              <p className="mt-8 text-sm text-dch-muted">
-                <a className="font-semibold text-dch-accent" href="mailto:linda@dchub.no">
-                  linda@dchub.no
-                </a>
-                <br />
-                <a className="font-semibold text-dch-accent" href="tel:+4794806616">
-                  +47 948 06 616
-                </a>
-                <br />
-                Askim, Indre Østfold
-              </p>
-              <p className="mt-6 text-xs text-dch-muted">
-                Konfidensielt. Alle henvendelser behandles med diskresjon.
-              </p>
-            </div>
-            <HubSpotForm formId={DCH_FORM_ID} />
-          </div>
-        </section>
+        {/* 11. SLUTTSEKSJON: BOOKING OG KONTAKTSKJEMA */}
+        <section id="book" className="bg-dch-sand">
+          <div className="mx-auto max-w-[1120px] scroll-mt-24 px-5 py-20 sm:px-8 lg:py-28">
+            <Reveal className="max-w-[720px]">
+              <span className={eyebrow}>{closing.eyebrow}</span>
+              <h2 className={h2}>{closing.title}</h2>
+              <p className="mt-5 text-[19px] leading-[1.75] text-dch-muted">{closing.text}</p>
+              <BookButton className="mt-8">{closing.ctaPrimary}</BookButton>
+            </Reveal>
 
-        {/* LOKAL SEO */}
-        <section className="border-t border-[#E9ECEF] bg-[#F8F9FA] py-8">
-          <div className="mx-auto max-w-[800px] px-8">
-            <p className="text-xs leading-[1.8] text-dch-muted">
-              Linda Karlsen er sertifisert NLP-coach og ledercoach med base i Askim, Indre Østfold.
-              Hun tilbyr coaching for ledere, ansatte og grundere i Askim, Mysen, Moss, Fredrikstad,
-              Sarpsborg og Oslo-regionen, samt online for hele Norge. Digital Coach Hub AS står bak
-              QuestPulse, People Intelligence-plattform for norske kompetansebedrifter.
-            </p>
+            <div className="mt-12 overflow-hidden rounded-[20px] border border-dch-line bg-white">
+              <iframe
+                src={`${BOOKING_URL}?embed=true`}
+                title="Book en samtale med Linda Karlsen"
+                loading="lazy"
+                className="w-full"
+                style={{ minHeight: 720 }}
+              />
+            </div>
+
+            <div className="mt-16 grid gap-12 border-t border-dch-line pt-12 lg:grid-cols-[0.8fr_1.2fr]">
+              <div>
+                <h3 className="font-display text-[22px] font-bold">Eller send en melding</h3>
+                <p className="mt-3 text-[16px] leading-[1.8] text-dch-muted">{closing.formLead}</p>
+                <p className="mt-6 text-sm text-dch-muted">
+                  <a
+                    className={`font-semibold text-dch-accent-strong ${focusRing}`}
+                    href={`mailto:${dchubBrand.email}`}
+                  >
+                    {dchubBrand.email}
+                  </a>
+                  <br />
+                  <a
+                    className={`font-semibold text-dch-accent-strong ${focusRing}`}
+                    href={`tel:${dchubBrand.phone}`}
+                  >
+                    {dchubBrand.phoneDisplay}
+                  </a>
+                  <br />
+                  {dchubBrand.place}
+                </p>
+                <p className="mt-6 text-xs text-dch-muted">
+                  Konfidensielt. Alle henvendelser behandles med diskresjon.
+                </p>
+              </div>
+              <HubSpotForm formId={DCH_FORM_ID} />
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-dch-ink py-16 text-white">
-        <div className="mx-auto grid max-w-[1120px] gap-10 px-8 md:grid-cols-[1.4fr_1fr_1fr]">
+      {/* 12. FOOTER */}
+      <footer className="bg-dch-ink py-14 text-white">
+        <div className="mx-auto grid max-w-[1120px] gap-10 px-5 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="font-display text-xl font-bold">Digital Coach Hub</div>
-            <div className="mt-1 text-[13px] text-dch-accent">Linda Karlsen, CEO</div>
-            <p className="mt-4 max-w-sm text-sm leading-[1.7] text-white/60">
-              Coaching og sparring for ledere, ansatte og virksomheter. Sertifisert NLP-coach. 15 år
-              erfaring. Askim, Indre Østfold.
+            <div className="mt-1 text-[13px] text-white/70">Linda Karlsen</div>
+            <p className="mt-4 max-w-sm text-sm leading-[1.8] text-white/70">
+              Businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års
+              ledererfaring. Askim og digitalt i hele Norge.
             </p>
           </div>
-          <div>
-            <div className="text-[11px] font-bold tracking-[0.12em] text-white/50 uppercase">
+          <nav aria-label="Footer: tjenester">
+            <div className="text-[11px] font-bold tracking-[0.14em] text-white/60 uppercase">
               Tjenester
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="mt-4 space-y-2 text-sm text-white/80">
+              {services.map((service) => (
+                <li key={service.id}>
+                  <a href={`#${service.id}`} className={`hover:text-white ${focusRing}`}>
+                    {service.label === "For virksomheter" ? "Foredrag og workshops" : service.label}
+                  </a>
+                </li>
+              ))}
               <li>
-                <a href="#tjenester" className="hover:text-white">
-                  For ansatte
-                </a>
-              </li>
-              <li>
-                <a href="#tjenester" className="hover:text-white">
-                  For ledere
-                </a>
-              </li>
-              <li>
-                <a href="#tjenester" className="hover:text-white">
-                  Ny som leder
-                </a>
-              </li>
-              <li>
-                <a href="#tjenester" className="hover:text-white">
-                  Bedriftsløsninger
-                </a>
-              </li>
-              <li>
-                <a href="https://questpulse.no" className="hover:text-white">
-                  QuestPulse for bedrifter
+                <a href="#faq" className={`hover:text-white ${focusRing}`}>
+                  Ofte stilte spørsmål
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
           <div>
-            <div className="text-[11px] font-bold tracking-[0.12em] text-white/50 uppercase">
+            <div className="text-[11px] font-bold tracking-[0.14em] text-white/60 uppercase">
               Kontakt
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="mt-4 space-y-2 text-sm text-white/80">
               <li>
-                <a href="mailto:linda@dchub.no" className="hover:text-white">
-                  linda@dchub.no
+                <a href={`mailto:${dchubBrand.email}`} className={`hover:text-white ${focusRing}`}>
+                  {dchubBrand.email}
                 </a>
               </li>
               <li>
-                <a href="tel:+4794806616" className="hover:text-white">
-                  +47 948 06 616
+                <a href={`tel:${dchubBrand.phone}`} className={`hover:text-white ${focusRing}`}>
+                  {dchubBrand.phoneDisplay}
                 </a>
               </li>
-              <li>Askim, Indre Østfold</li>
-              <li>Org.nr. 936 265 634</li>
+              <li>{dchubBrand.place}</li>
+              <li>Org.nr. {dchubBrand.orgNumber}</li>
             </ul>
           </div>
         </div>
-        <div className="mx-auto mt-12 flex max-w-[1120px] flex-wrap items-center justify-between gap-3 border-t border-white/10 px-8 pt-6 text-xs text-white/50">
-          <span>&copy; {new Date().getFullYear()} Digital Coach Hub AS</span>
-          <a href="https://questpulse.no" className="hover:text-white">
-            QuestPulse
+        <div className="mx-auto mt-12 flex max-w-[1120px] flex-wrap items-center justify-between gap-3 border-t border-white/15 px-5 pt-6 text-xs text-white/60 sm:px-8">
+          <span>
+            &copy; {new Date().getFullYear()} {dchubBrand.legalName}
+          </span>
+          <a href={questpulseNote.href} className={`hover:text-white ${focusRing}`}>
+            QuestPulse leveres av {dchubBrand.legalName}
           </a>
         </div>
       </footer>
+
+      {/* Mobil sticky CTA */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-dch-line bg-white/95 p-3 backdrop-blur sm:hidden">
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener"
+          data-booking-cta
+          className={`${btnPrimary} w-full`}
+        >
+          Book en gratis samtale
+        </a>
+      </div>
+      <div aria-hidden className="h-20 bg-dch-ink sm:hidden" />
     </div>
   );
 }
