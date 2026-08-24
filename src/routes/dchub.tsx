@@ -2,7 +2,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Reveal } from "@/components/dchub/Reveal";
-import { LeadForm } from "@/components/site/LeadForm";
+import { DCH_FORM_ID, HubSpotForm } from "@/components/site/HubSpotForm";
 import { getSiteContent } from "@/lib/site.functions";
 import {
   dchubImages,
@@ -596,7 +596,7 @@ function DcHub() {
                 Konfidensielt. Alle henvendelser behandles med diskresjon.
               </p>
             </div>
-            <LeadForm locale="no" copy={data.contact} />
+            <HubSpotForm formId={DCH_FORM_ID} />
           </div>
         </section>
 

@@ -1,4 +1,4 @@
-import { LeadForm } from "@/components/site/LeadForm";
+import { HubSpotShareForm, QP_FORM_SHARE_URL } from "@/components/site/HubSpotForm";
 import { RoleShowcase } from "@/components/site/RoleShowcase";
 import { StepFlow } from "@/components/site/StepFlow";
 
@@ -84,7 +84,10 @@ function Section({
               Digital Coach Hub AS
             </p>
           </div>
-          <LeadForm locale={locale} copy={content.contact} />
+          <HubSpotShareForm
+            url={QP_FORM_SHARE_URL}
+            title={locale === "no" ? "Kontaktskjema" : "Contact form"}
+          />
         </div>
       </section>
     );

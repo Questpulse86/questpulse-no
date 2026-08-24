@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { LeadForm } from "@/components/site/LeadForm";
+import { HubSpotShareForm, QP_FORM_SHARE_URL } from "@/components/site/HubSpotForm";
 import { QpWave } from "@/components/site/QpWave";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -439,7 +439,10 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 Digital Coach Hub AS
               </p>
             </div>
-            <LeadForm locale={locale} copy={content.contact} />
+            <HubSpotShareForm
+              url={QP_FORM_SHARE_URL}
+              title={locale === "no" ? "Kontaktskjema" : "Contact form"}
+            />
           </div>
         </section>
       </main>
