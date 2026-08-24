@@ -1,5 +1,5 @@
 /**
- * Digital Coach Hub: alt merkevare- og sideinnhold.
+ * Digital Coach Hub: Linda Karlsens personlige coachingmerkevare.
  * Holdes bevisst adskilt fra QuestPulse-innholdet i src/lib/site-content.ts
  * og src/lib/page-content.ts. Ingen deling av tekst mellom de to merkevarene.
  */
@@ -8,6 +8,7 @@ import lindaPortrett from "@/assets/linda-portrett.jpg.asset.json";
 import coachingSamtale from "@/assets/coaching-samtale.jpg.asset.json";
 
 export const dchubSite = "https://digitalcoachub.no";
+
 export const dchubBrand = {
   name: "Digital Coach Hub",
   legalName: "Digital Coach Hub AS",
@@ -15,7 +16,16 @@ export const dchubBrand = {
   person: "Linda Karlsen",
   email: "linda@dchub.no",
   phone: "+4794806616",
+  phoneDisplay: "+47 948 06 616",
+  place: "Askim, Indre Østfold",
 } as const;
+
+/**
+ * Eksisterende bookingressurs i HubSpot (portal 146982049, region eu1):
+ * møtelenken «Meet with Linda Karlsen». Alle primære CTA-er peker hit.
+ * Skal en annen møtelenke brukes, endres kun denne konstanten.
+ */
+export const BOOKING_URL = "https://meetings-eu1.hubspot.com/linda-karlsen";
 
 export const dchubImages = {
   lindaHero: lindaPhoto.url,
@@ -24,157 +34,129 @@ export const dchubImages = {
 };
 
 export const navLinks = [
-  { href: "#tjenester", label: "Tjenester" },
+  { href: "#for-grundere", label: "For gründere" },
+  { href: "#for-ledere", label: "For ledere" },
+  { href: "#foredrag", label: "Foredrag og workshops" },
   { href: "#om-linda", label: "Om Linda" },
-  { href: "#teamet", label: "Teamet" },
-  { href: "#artikler", label: "Artikler" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "#resultater", label: "Resultater" },
 ];
 
-export const situations = [
-  {
-    title: "Høyt ansvar",
-    text: "Du har stort lederansvar, høye forventninger og krevende saker som tærer på konsentrasjon og mental helse. Med målrettet støtte får du struktur og verktøy for å stå stødigere og ta bedre beslutninger, også når presset er høyt.",
-  },
-  {
-    title: "Lite tid til refleksjon",
-    text: "Kalenderen er full, men hodet får aldri jobbet ordentlig langsiktig. Du hopper mellom møter, saker og meldinger og mister oversikten over hva som egentlig er viktigst. Vi hjelper deg å skape refleksjonspauser som reduserer stress og gir bedre prioriteringer.",
-  },
-  {
-    title: "Prokrastinering",
-    text: "De viktigste oppgavene skyves foran deg, selv om du vet at de er kritiske for jobb og karriere. Sammen identifiserer vi hva som faktisk stopper deg, og du får konkrete teknikker for å komme videre.",
-  },
-  {
-    title: "Ubalanse mellom jobb og fritid",
-    text: "Jobben flyter inn i kvelden, og hodet får aldri helt fri. Vi hjelper deg å sette tydelige grenser, senke stressnivået og bygge en mer bærekraftig balanse, uten at du mister engasjement eller eierskap til jobben.",
-  },
-  {
-    title: "Følelse av å stå alene",
-    text: "Som leder eller nøkkelperson kan du kjenne på ensomhet i krevende situasjoner og personalsaker. Hos Digital Coach Hub får du en profesjonell sparringspartner som forstår både mennesker, ledelse og arbeidshverdag.",
-  },
-];
+export const hero = {
+  eyebrow: "Businesscoach, ledercoach og foredragsholder",
+  title: "Når du har mye ansvar, trenger du et sted å tenke klart.",
+  lead: "Jeg hjelper gründere og ledere med å rydde i press, ta tydeligere beslutninger og skape fremdrift som faktisk holder. Praktisk, ærlig og tilpasset virkeligheten du står i.",
+  ctaPrimary: "Book en gratis avklaringssamtale",
+  ctaSecondary: "Se hvordan jeg jobber",
+  trust: [
+    "20 års ledererfaring",
+    "Gründer",
+    "Sertifisert NLP Master Coach",
+    "Foredragsholder",
+    "Askim og digitalt",
+  ],
+};
 
-export const insights = [
-  {
-    title: "Kostnader",
-    text: "Høyt stressnivå, dårlige prioriteringer og lav gjennomføringsevne gir skjulte kostnader i form av sykefravær, utslitte nøkkelpersoner og tapte muligheter.",
-  },
-  {
-    title: "Beslutninger",
-    text: "Når presset er høyt og bildet er uklart, faller kvaliteten på beslutningene. Det blir vanskeligere å forankre, skape eierskap og holde kursen over tid.",
-  },
-  {
-    title: "Gjennomføring",
-    text: "Gode intensjoner og planer blir værende på idéstadiet. Uten tydelig støtte og oppfølging skjer det lite endring i faktisk adferd, fokus og resultater.",
-  },
-];
+export const recognition = {
+  eyebrow: "Når alt krever oppmerksomhet",
+  title: "Du trenger ikke ha mistet kontrollen for å trenge en sparringspartner.",
+  lead: "Mange av dem jeg jobber med leverer godt utad. Samtidig bruker de for mye kapasitet på å holde oversikten, ta alle beslutningene og bære ansvaret alene.",
+  items: [
+    {
+      title: "Alt er viktig. Lite får nok ro.",
+      text: "Du hopper mellom drift, mennesker, kunder og beslutninger. Dagen fylles, men det viktigste blir fortsatt skjøvet foran deg.",
+    },
+    {
+      title: "Du står alene i de vanskeligste valgene.",
+      text: "Andre forventer tydelige svar. Selv mangler du et sted der du kan tenke høyt, utfordre egne antakelser og sortere uten å måtte ha fasiten klar.",
+    },
+    {
+      title: "Virksomheten vokser raskere enn strukturen.",
+      text: "Det som fungerte før holder ikke lenger. Roller, prioriteringer og arbeidsmåter må utvikles uten at fremdriften stopper.",
+    },
+    {
+      title: "Jobben følger med hjem.",
+      text: "Du er ferdig med arbeidsdagen, men hodet fortsetter. Over tid går det utover både overskudd, relasjoner og kvaliteten på beslutningene.",
+    },
+  ],
+};
 
-export const usps = [
-  {
-    num: "USP 01",
-    title: "Tidsstyring",
-    sub: "Når møter og avbrytelser tar over",
-    text: "Du får en struktur som gjør at du faktisk styrer dagen, ikke omvendt. Konkrete grep som frigjør tid til det som betyr noe.",
-  },
-  {
-    num: "USP 02",
-    title: "Prioritering",
-    sub: "Når alt haster",
-    text: "Vi trener deg til å skille det viktige fra det presserende. Du slutter å reagere på alt og begynner å lede mot det som gir effekt.",
-  },
-  {
-    num: "USP 03",
-    title: "Kommunikasjon",
-    sub: "Som kutter misforståelser",
-    text: "Tydelig kommunikasjon er ikke en personlighetsegenskap. Det er en ferdighet. Du lærer å si det du mener på en måte folk faktisk tar inn.",
-  },
-  {
-    num: "USP 04",
-    title: "Grensesetting",
-    sub: "Uten drama",
-    text: "Du lærer å si nei på en måte som er profesjonell, tydelig og respektfull, uten at relasjoner tar skade og uten dårlig samvittighet etterpå.",
-  },
-];
+export const outcomes = {
+  eyebrow: "Det vi jobber mot",
+  title: "Fra press og spredt fokus til tydelige valg og gjennomføring.",
+  lead: "Målet er ikke en perfekt kalender. Målet er at du bruker kapasiteten din på det som faktisk betyr mest.",
+  items: [
+    {
+      title: "Klarhet",
+      text: "Du ser hva som er viktigst nå, hva som kan vente og hvilke valg som faktisk flytter deg eller virksomheten videre.",
+    },
+    {
+      title: "Beslutningskraft",
+      text: "Du tar tydeligere beslutninger, kommuniserer dem bedre og står stødigere når andre forventer svar.",
+    },
+    {
+      title: "Bærekraftig fremdrift",
+      text: "Du bygger arbeidsmåter som gir resultater uten at jobb, ansvar og ambisjoner tar all tilgjengelig kapasitet.",
+    },
+  ],
+};
+
+export const servicesSection = {
+  eyebrow: "Slik kan jeg hjelpe",
+  title: "Støtte tilpasset ansvaret du faktisk står i.",
+};
 
 export const services = [
   {
-    tag: "For ansatte",
-    title: "Støtte for deg som ansatt",
-    text: "For deg som står i krevende situasjoner, høyt tempo eller stor belastning, og trenger et trygt rom for å sortere, prioritere og finne veien videre. Du trenger ikke ha alle svar. Vi starter der du er.",
-    cta: "Book avklaringssamtale",
+    id: "for-grundere",
+    label: "For gründere",
+    title: "Businesscoaching og strategisk sparring",
+    text: "For deg som bygger virksomhet og samtidig skal håndtere salg, mennesker, økonomi, prioriteringer og usikkerhet. Vi rydder i det som tar kapasitet, finner neste riktige beslutning og gjør planer om til konkret handling.",
+    cta: "Book en avklaringssamtale",
   },
   {
-    tag: "For ledere",
-    title: "Støtte for deg som leder",
-    text: "For deg som leder mennesker og tar beslutninger hver dag. Vi jobber med tydelighet i rollen, krysspress, krevende samtaler, prioritering og beslutningskraft. Konkret og tilpasset din hverdag.",
-    cta: "Book avklaringssamtale",
+    id: "for-ledere",
+    label: "For ledere",
+    title: "Ledercoaching én til én",
+    text: "For deg som leder mennesker, står i krysspress eller trenger et ærlig utenforstående blikk. Vi jobber med lederrollen, krevende samtaler, kommunikasjon, prioritering og beslutninger i din faktiske arbeidshverdag.",
+    cta: "Book en avklaringssamtale",
   },
   {
-    tag: "Ny som leder",
-    title: "For deg som er ny i lederrollen",
-    text: "Trygg støtte i overgangen fra fagperson til leder. Du får konkrete verktøy for kommunikasjon, forventningsavklaring, prioritering og selvledelse, slik at du finner din egen lederstil raskt og med trygghet.",
-    cta: "Book avklaringssamtale",
-  },
-  {
-    tag: "Bedriftsløsninger",
-    title: "For virksomheter",
-    text: "For virksomheter som vil jobbe systematisk med bærekraftig prestasjon, trivsel og redusert stress, med lederutvikling, kurs og workshops. Vi tilpasser til din organisasjon og dine mål.",
-    cta: "Ta kontakt for dialog",
+    id: "foredrag",
+    label: "For virksomheter",
+    title: "Foredrag og workshops",
+    text: "Engasjerende og praktiske opplegg om selvledelse, prioritering, kommunikasjon og bærekraftig prestasjon. Innholdet tilpasses målgruppen og skal kunne brukes i arbeidshverdagen, ikke bare inspirere i rommet.",
+    cta: "Snakk med meg om et oppdrag",
   },
 ];
 
-export const focusList = [
-  "Tidsstyring når møter og avbrytelser tar over",
-  "Prioritering når alt haster",
-  "Kommunikasjon som kutter misforståelser",
-  "Grensesetting uten drama",
-];
+export const process = {
+  eyebrow: "Enkelt å komme i gang",
+  title: "Vi starter med situasjonen din, ikke en ferdig metode.",
+  steps: [
+    {
+      title: "Kort avklaring",
+      text: "I en gratis samtale på 20 minutter ser vi på hva du ønsker å endre, og om jeg er riktig sparringspartner.",
+    },
+    {
+      title: "Tydelig mål",
+      text: "Vi definerer hva som skal være annerledes etter samarbeidet og hvilke beslutninger eller handlinger som betyr mest.",
+    },
+    {
+      title: "Praktisk arbeid",
+      text: "Samtalene kobles direkte til situasjonene du står i. Du får spørsmål, struktur, ærlige tilbakemeldinger og konkrete grep.",
+    },
+    {
+      title: "Fremdrift mellom samtalene",
+      text: "Det viktigste skjer i hverdagen. Derfor følger vi opp hva du faktisk har prøvd, lært og gjennomført.",
+    },
+  ],
+  note: "I avklaringssamtalen finner vi ut om en enkeltsamtale eller et lengre forløp passer best.",
+};
 
-export const stats = [
-  { number: "17+", label: "År med ledererfaring i praksis" },
-  { number: "100+", label: "Ledere og nøkkelpersoner støttet" },
-  { number: "ICF", label: "NLP-sertifisert coach etter ICF-standarder" },
-];
-
-export const values = [
-  {
-    title: "Praktisk tilnærming",
-    text: "Strukturer og verktøy som faktisk fungerer i praksis",
-  },
-  {
-    title: "Ærlig kommunikasjon",
-    text: "Vi sier det som det er og holder oss til det som gir resultater",
-  },
-  {
-    title: "Pålitelig støtte",
-    text: "Vi står ved din side i krevende situasjoner og prosesser",
-  },
-];
-
-export const team = [
-  {
-    initials: "LK",
-    photo: lindaPortrett.url,
-    name: "Linda Karlsen",
-    role: "Grunder og Businesscoach",
-    bio: "17+ år med ledererfaring fra begge sider av bordet. NLP-sertifisert coach etter ICF-standarder. Grunder av Digital Coach Hub og QuestPulse.",
-  },
-
-  {
-    initials: "TR",
-    photo: null,
-    name: "Thomas Ryste",
-    role: "CTO",
-    bio: "Teknisk arkitekt og CTO bak QuestPulse-plattformen. Ansvarlig for sikker infrastruktur, modellstyring og systemdesign.",
-  },
-  {
-    initials: "ET",
-    photo: null,
-    name: "Eivind Teig",
-    role: "Fullstack Utvikler",
-    bio: "Fullstack-utvikler med ansvar for produkt, brukeropplevelse og integrasjoner. Bygger det digitale som gjør arbeidet skalerbart.",
-  },
-];
+export const resultsSection = {
+  eyebrow: "Erfaringer fra klienter",
+  title: "Endring skal merkes i arbeidshverdagen.",
+};
 
 export const testimonials = [
   {
@@ -197,23 +179,55 @@ export const testimonials = [
   },
 ];
 
-export const articles = [
+export const about = {
+  eyebrow: "Om Linda Karlsen",
+  title: "Jeg har brukt 20 år på å forstå hva som får mennesker og virksomheter videre.",
+  paragraphs: [
+    "Jeg er businesscoach, ledercoach, gründer og foredragsholder. Gjennom 20 år som leder har jeg jobbet i finans, bygget salgsteam i maritim næring og stått i distribusjonsnettverk, prosjektorganisasjoner og oppstartsbedrifter.",
+    "Jeg har kjent ansvaret fra innsiden. Beslutningene som må tas før hele bildet er klart. Forventningene fra kunder, medarbeidere og eiere. Periodene der alt virker viktig samtidig, og der det ikke finnes en fasit å lene seg på.",
+    "Det har lært meg at mennesker med mye ansvar sjelden trenger enda en generell metode. De trenger et sted der de kan tenke klart, bli utfordret og oversette innsikt til handling i sin egen virkelighet.",
+    "Som coach er jeg varm, direkte og praktisk. Jeg lytter, men lar deg ikke bli værende i de samme forklaringene. Vi jobber med det du faktisk kan påvirke, og med de valgene som gir størst effekt nå.",
+    "Jeg er sertifisert NLP Master Coach og gründer av Digital Coach Hub AS og QuestPulse. Kombinasjonen av ledererfaring, coaching og gründerskap gjør at jeg forstår både mennesket, virksomheten og presset som oppstår mellom dem.",
+  ],
+  cta: "Book en samtale med Linda",
+};
+
+export const questpulseNote = {
+  eyebrow: "Også gründer av QuestPulse",
+  title:
+    "Coaching gir innsikt i menneskene. QuestPulse gir virksomheten et løpende beslutningsgrunnlag.",
+  text: "Digital Coach Hub AS står også bak QuestPulse, en People Intelligence-plattform for virksomheter som vil oppdage belastning, friksjon og lederutfordringer tidligere. QuestPulse har en egen merkevare, målgruppe og nettside.",
+  cta: "Gå til QuestPulse",
+  href: "https://questpulse.no",
+};
+
+export const faq = [
   {
-    icon: "💡",
-    tag: "Prioritering",
-    title: "Fra kaos til klarhet: 5 steg til mer struktur i hverdagen",
-    text: "Slik tar du tilbake kontrollen når alt konkurrerer om oppmerksomheten din.",
+    q: "Hvem passer coaching hos deg for?",
+    a: "Jeg jobber primært med gründere og ledere som har mye ansvar og ønsker tydeligere prioriteringer, bedre beslutninger eller mer bærekraftig fremdrift.",
   },
   {
-    icon: "🎯",
-    tag: "Tid",
-    title: "Min strategi for å prioritere tiden når alt haster",
-    text: "Tre spørsmål som hjelper deg finne hva som faktisk er viktigst, ikke bare hva som er mest presserende.",
+    q: "Hva skjer i den første samtalen?",
+    a: "Vi bruker 20 minutter på å forstå situasjonen din, hva du ønsker å endre og om jeg er riktig person til å hjelpe. Samtalen er uforpliktende.",
   },
   {
-    icon: "🔧",
-    tag: "QuestPulse",
-    title: "Verktøy som hjelper deg beholde nøkkelmedarbeidere",
-    text: "Hvorfor løpende innsikt er bedre enn en årsundersøkelse for virksomheter i vekst.",
+    q: "Er coaching det samme som terapi?",
+    a: "Nei. Coaching tar utgangspunkt i nåsituasjonen, valgene dine og det du ønsker å skape videre. Ved behov for helsehjelp eller behandling skal du bruke kvalifisert helsepersonell.",
+  },
+  {
+    q: "Må jeg møte fysisk?",
+    a: "Nei. Jeg jobber digitalt med klienter i hele Norge og tilbyr også samtaler i Askim etter avtale.",
+  },
+  {
+    q: "Kan virksomheter bestille foredrag eller workshops?",
+    a: "Ja. Foredrag og workshops tilpasses målgruppe, situasjon og ønsket resultat. Ta kontakt, så avklarer vi behov og format.",
   },
 ];
+
+export const closing = {
+  eyebrow: "Neste steg",
+  title: "Du trenger ikke ha hele løsningen klar før du tar kontakt.",
+  text: "Book en gratis avklaringssamtale. Vi ser på hva som opptar kapasiteten din nå, og hva som kan være et godt neste steg.",
+  ctaPrimary: "Book 20 minutter med Linda",
+  formLead: "Foretrekker du å skrive? Send en kort melding, så svarer jeg innen én virkedag.",
+};
