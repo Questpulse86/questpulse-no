@@ -1,24 +1,38 @@
-# Nettside LK
+# questpulse.no
 
-Jeg har laget en gjennomført plan og strategi for mitt selskap. Har idag lansert nettside via @connector:hubspot:"HubSpot" med flere funksjoner CTA osv, men hub spot lager bare en veldig generisk nettside og jeg vil ha noe som matcher vårt selskap, strategi og mål om kunder. Men jeg vet ikke hvilken plattform jeg kan bruke som gir meg det jeg trenger av funksjoner og som er trygg og sikker og kan hostes av eksterne aktører etterhvert som vi tjener penger så det må du hjelpe meg.
+Kildekode for nettstedene til QuestPulse og Digital Coach Hub AS (org.nr. 936 265 634).
 
-This project was built with [Lovable](https://lovable.dev).
+Ett kodebase, to domener. Vertsbasert ruting i `vercel.json` sender `questpulse.no` til `/` og `digitalcoachub.no` til `/dchub`.
 
-## Build with Lovable
+QuestPulse er People Intelligence-infrastruktur som kobler lederhandling til effekt i organisasjoner.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c8344056-89d0-47db-8fd9-622541c0f0e9).
+## Utvikling
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Krever Node.js og npm. Se [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) for installasjon.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
+git clone <repo-url>
+cd questpulse-no
 npm i
 npm run dev
 ```
+
+## Miljøvariabler
+
+`.env` er sporet i repoet med vilje og skal kun inneholde publiserbare verdier: Supabase prosjekt-ID, URL og publishable key. Disse ligger uansett i nettleserbundlen.
+
+Legg aldri service role-nøkler, API-nøkler eller tokens i `.env`. Servernøkler hører hjemme i Vercel environment variables eller GitHub Actions secrets.
+
+## Bygg og deploy
+
+CI kjører `bun install --frozen-lockfile` og `bun run build` ved hver pull request og push til `main`. Vercel deployer fra `main` med autodetektert framework-oppsett. Build settings skal ikke overstyres manuelt.
+
+Oppsett av repo, beskyttelse av `main` og deploy er dokumentert i [docs/github-setup.md](docs/github-setup.md).
+
+## Sikkerhet
+
+Sårbarheter meldes til support@questpulse.no. Ikke opprett offentlige issues for sikkerhetsforhold. Se [SECURITY.md](SECURITY.md).
+
+## Bygget med Lovable
+
+Prosjektet utvikles i [Lovable](https://lovable.dev). Endringer i Lovable committes rett til `main`, og push til `main` synkes tilbake til Lovable.
