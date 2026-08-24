@@ -32,8 +32,8 @@ type Copy = {
 const copy: Record<Locale, Copy> = {
   no: {
     hero: {
-      eyebrow: "People Intelligence for komplekse virksomheter",
-      title: "Se hva som utvikler seg før konsekvensene blir synlige",
+      eyebrow: "People Intelligence",
+      title: "Organisasjonen varsler lenge før tallene gjør det",
       lead: "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, og viser utviklingen fra signal til dokumentert effekt over tid.",
       cta1: "Be om en strategisk gjennomgang",
       cta2: "Se hvordan det fungerer",
@@ -133,8 +133,8 @@ const copy: Record<Locale, Copy> = {
   },
   en: {
     hero: {
-      eyebrow: "People Intelligence for complex organisations",
-      title: "See what is developing before the consequences become visible",
+      eyebrow: "People Intelligence",
+      title: "The organisation signals long before the numbers do",
       lead: "QuestPulse gives leadership continuous insight into workload, friction and leadership action, and shows the development from signal to documented effect over time.",
       cta1: "Request a strategic review",
       cta2: "See how it works",
