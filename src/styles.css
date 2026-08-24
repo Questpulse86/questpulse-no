@@ -50,9 +50,12 @@
   --color-dch-ink: var(--dch-ink);
   --color-dch-accent: var(--dch-accent);
   --color-dch-accent-deep: var(--dch-accent-deep);
+  --color-dch-accent-strong: var(--dch-accent-strong);
   --color-dch-sand: var(--dch-sand);
+  --color-dch-warm: var(--dch-warm);
   --color-dch-line: var(--dch-line);
   --color-dch-muted: var(--dch-muted);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
