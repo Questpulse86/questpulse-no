@@ -30,48 +30,46 @@ The older `brand-beyond-hubspot` repo can be archived once this setup is verifie
 
 ---
 
-## 3. Branch protection for `main`
+## 3. Branch protection for `main` (Lovable-compatible)
 
-Protect `main` so all changes go through pull requests and CI.
+Important: this project is synced by Lovable. All commits arrive as direct pushes to `main` from `lovable-dev[bot]` / `gpt-engineer-app[bot]`. A classic "require pull request + 1 approval + do not allow bypassing" rule silently blocks those pushes: edits look fine in the Lovable preview but never reach GitHub, and therefore never reach Vercel.
 
-1. Go to **Settings → Branches**.
-2. Click **Add rule**.
-3. Branch name pattern: `main`
-4. Enable these options:
-   - [x] **Require a pull request before merging**
-     - [x] **Require approvals**: set to at least `1`
-     - [x] **Dismiss stale pull request approvals when new commits are pushed**
-   - [x] **Require status checks to pass before merging**
-     - Search for and select `build`
-   - [x] **Require conversation resolution before merging**
-   - [x] **Do not allow bypassing the above settings**
-5. Click **Create** or **Save changes**.
+Use a ruleset instead:
 
-This enforces: every change to `main` needs a PR, one approval, and a passing CI build.
+1. Go to **Settings → Rules → Rulesets → New branch ruleset**.
+2. Name: `main protection`. Enforcement: **Active**. Target branch: `main`.
+3. Under **Bypass list**, add the **Lovable GitHub App** (and any other sync bot pushing to `main`).
+4. Enable:
+   - [x] **Require status checks to pass** → select `build`
+   - [x] **Block force pushes**
+   - [x] **Restrict deletions**
+5. Pull requests: either leave **Require a pull request** off, or enable it with **Required approvals: 0**. With a single developer, requiring 1 approval means every text change waits on another person.
+6. Do **not** enable "do not allow bypassing" until Lovable no longer pushes to `main`.
+
+This keeps CI as a real gate while leaving the Lovable to GitHub to Vercel flow intact.
 
 ---
 
 ## 4. Security settings
 
-1. Go to **Settings → Code security**.
-2. Enable:
+1. Go to **Settings → Code security** and enable:
    - [x] **Dependency graph**
    - [x] **Dependabot alerts**
    - [x] **Dependabot security updates**
-   - [x] **Secret scanning**
-   - [x] **Push protection for secrets**
-3. Go to **Settings → Secrets and variables → Actions**.
-4. Add the following repository secrets. These are encrypted and only available to GitHub Actions.
+   - [x] **Grouped security updates**
+2. **Secret scanning** and **push protection** require either a public repo or a paid GitHub plan. On a private repo without one, the section is not even visible in settings.
+   - This repo holds marketing site code only, no secrets. Making it public unlocks secret scanning and push protection at no cost.
+   - Decide first: public repo (recommended here), or accept no secret scanning. Paying for GitHub Team for this alone is not worth it.
+3. Go to **Settings → Secrets and variables → Actions** and add only what CI actually needs. CI runs `bun run build` and nothing else.
 
-| Secret name | Value / source | Purpose |
-|-------------|----------------|---------|
-| `LOVABLE_API_KEY` | From Lovable project settings | Lovable connector gateway |
-| `HUBSPOT_API_KEY` | From HubSpot private app | HubSpot CRM sync |
-| `SUPABASE_URL` | From Lovable Cloud settings | Database URL |
-| `SUPABASE_SERVICE_ROLE_KEY` | From Lovable Cloud settings | Server-side database access |
-| `VITE_SUPABASE_URL` | Same as `SUPABASE_URL` | Browser client |
-| `VITE_SUPABASE_ANON_KEY` | Publishable anon key | Browser client |
-| `VERCEL_TOKEN` | From Vercel dashboard | Deployment token |
+| Secret name | Needed by CI? | Notes |
+|-------------|---------------|-------|
+| `VITE_SUPABASE_URL` | Yes, if the build reads it | Browser client |
+| `VITE_SUPABASE_ANON_KEY` | Yes, if the build reads it | Publishable key, safe in the browser |
+| `HUBSPOT_API_KEY` | No | Runtime only, belongs in the hosting env |
+| `LOVABLE_API_KEY` | No | Runtime only |
+| `SUPABASE_SERVICE_ROLE_KEY` | No | Never needed by a build step. Do not add it. |
+| `VERCEL_TOKEN` | No | Vercel deploys through its own Git integration. A deploy token adds a key to rotate and no benefit. |
 
 Never commit these values to code. The existing `.gitignore` already excludes `.env` and local secrets.
 
@@ -96,21 +94,22 @@ If the build fails, fix the error before merging. Branch protection will block m
 
 ## 6. Vercel deployment setup
 
-1. Go to [vercel.com](https://vercel.com) and import `questpulse-no`.
-2. In project settings, set:
-   - **Framework preset**: Other (or leave blank if using custom build)
-   - **Build command**: `bun run build`
-   - **Output directory**: `dist`
-3. Add all environment variables from the secrets table above.
-4. Under **Domains**, add both:
-   - `questpulse.no`
-   - `digitalcoachub.no`
-5. Set `questpulse.no` as the primary domain.
+Do not change build settings. Vercel already auto-detects this project as a TanStack Start project and the latest production deploy is green. TanStack Start does not build to `dist`, so setting framework preset "Other", build command `bun run build` and output directory `dist` would break a working setup.
+
+1. Confirm the Vercel project is linked to the `questpulse-no` repo, branch `main`.
+2. Leave **Framework preset**, **Build command** and **Output directory** on auto-detect.
+3. Add runtime environment variables (Supabase, HubSpot) under **Settings → Environment Variables**.
+4. Domains are a separate operation, not a checkbox. Current reality:
+   - `digitalcoachub.no`, `www.digitalcoachub.no` and `dchub.no` currently sit on a different Vercel project (`lkprivate`, Next.js).
+   - `questpulse.no` is not attached to any Vercel project yet.
+   - Moving `digitalcoachub.no` is a live cutover with downtime risk. Plan it separately, with a rollback path.
+   - `dchub.no` is the email domain. Do not touch its DNS before the MX records are verified and documented.
+5. Order of operations: attach `questpulse.no` to this project first and verify it, then plan the `digitalcoachub.no` cutover.
 6. Vercel reads `vercel.json` from the repo for host-based routing:
    - `questpulse.no` → `/`
    - `digitalcoachub.no` → `/dchub`
 
-Do not deploy from two different repos to the same Vercel project. Always deploy from `questpulse-no`.
+Do not deploy the same code from two different repos. Always deploy from `questpulse-no`.
 
 ---
 
@@ -155,12 +154,12 @@ Archiving keeps the history but makes the repo read-only. It prevents confusion 
 Before considering the setup complete, verify each item:
 
 - [ ] `questpulse-no` is the only active repo
-- [ ] `main` branch is protected with PR + approval + CI required
-- [ ] Secret scanning and push protection are enabled
-- [ ] All required secrets are added to GitHub Actions
+- [ ] `main` ruleset requires the `build` check, with Lovable App on the bypass list
+- [ ] Secret scanning and push protection are enabled (requires public repo or paid plan)
+- [ ] Only build-required secrets are added to GitHub Actions
 - [ ] CI `build` job passes on pull requests
 - [ ] Vercel deploys from `questpulse-no`
-- [ ] Both `questpulse.no` and `digitalcoachub.no` resolve correctly
+- [ ] `questpulse.no` resolves correctly; `digitalcoachub.no` cutover planned separately
 - [ ] Old `brand-beyond-hubspot` repo is archived
 - [ ] Team members have only the access they need
 
