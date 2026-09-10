@@ -197,9 +197,9 @@ function DcHub() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <BookButton className="hidden px-5 py-2.5 text-sm sm:inline-flex">
-              Book en gratis samtale
-            </BookButton>
+            <span className="hidden sm:block">
+              <BookButton className="px-5 py-2.5 text-sm">Book en gratis samtale</BookButton>
+            </span>
             <button
               type="button"
               aria-expanded={menuOpen}

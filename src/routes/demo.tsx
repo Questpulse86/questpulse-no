@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
 import { getSiteContent } from "@/lib/site.functions";
 
-const title = "Interaktiv demo | QuestPulse People Risk Intelligence";
+const title = "Interaktiv demo | QuestPulse People Intelligence";
 const description =
   "Utforsk QuestPulse på fire nivåer: toppleder, avdelingsleder, teamleder og medarbeider. Interaktiv demo med fiktive eksempeldata.";
 

@@ -102,7 +102,7 @@ function PrivacyPage() {
               {section.list ? (
                 <ul className="mt-4 space-y-2 text-[16px] leading-[1.8] text-dch-muted">
                   {section.list.map((item) => (
-                    <li key={item} className="pl-5 -indent-5 before:mr-2 before:content-['—']">
+                    <li key={item} className="pl-5 -indent-5 before:mr-2 before:content-['•']">
                       {item}
                     </li>
                   ))}
