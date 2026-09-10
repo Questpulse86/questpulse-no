@@ -23,7 +23,7 @@ export function DemoConsole() {
           <div>
             <p className="font-display text-lg font-bold text-navy">QuestPulse-visning</p>
             <p className="text-xs text-muted-foreground">
-              People Risk Intelligence, levert passivt via Microsoft Teams
+              People Intelligence, levert passivt via Microsoft Teams
             </p>
           </div>
           <Button size="sm" variant="outline" onClick={() => setTeamsOpen(true)}>

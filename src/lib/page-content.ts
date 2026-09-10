@@ -104,7 +104,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         {
           kind: "prose",
           eyebrow: "Bakgrunn",
-          title: "Fra coaching og lederutvikling til løpende innsikt",
+          title: "Fra lederutvikling til løpende innsikt",
           paragraphs: [
             "Digital Coach Hub har arbeidet tett på ledere og HR-miljøer i norske virksomheter. Mønsteret gjentok seg: utfordringene var kjent lenge før de ble målt, men det fantes ikke et system som fanget signalene tidsnok til at noen kunne handle.",
             "QuestPulse er svaret på det. I stedet for enda en årlig undersøkelse gir vi virksomheten et løpende bilde av hva som utvikler seg, i verktøyene folk allerede bruker.",
@@ -619,7 +619,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         {
           kind: "prose",
           eyebrow: "Background",
-          title: "From coaching and leadership development to continuous insight",
+          title: "From leadership development to continuous insight",
           paragraphs: [
             "Digital Coach Hub has worked closely with leaders and HR teams in Nordic organisations. The pattern repeated itself: the challenges were known long before they were measured, but no system captured the signals early enough for anyone to act.",
             "QuestPulse is the answer to that. Instead of another annual survey, we give the organisation a continuous picture of what is developing, inside the tools people already use.",
