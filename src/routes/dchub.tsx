@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
+import { CookieNotice } from "@/components/dchub/CookieNotice";
 import { Reveal } from "@/components/dchub/Reveal";
 import { DCH_FORM_ID, HubSpotForm } from "@/components/site/HubSpotForm";
 import {
@@ -22,6 +23,7 @@ import {
   servicesSection,
   testimonials,
 } from "@/lib/dchub-content";
+import { useDchHref } from "@/lib/dchub-href";
 
 const title = "Businesscoach og ledercoach | Linda Karlsen | Digital Coach Hub";
 const description =
@@ -64,6 +66,7 @@ export const Route = createFileRoute("/dchub")({
             postalCode: "1830",
             addressCountry: "NO",
           },
+          privacyPolicy: `${site}/personvern/`,
           areaServed: ["Askim", "Indre Østfold", "Oslo", "Norge"],
           serviceType: [
             "Businesscoaching",
@@ -155,6 +158,7 @@ function BookButton({
 
 function DcHub() {
   const bookingUrl = useBookingUrl();
+  const privacyHref = useDchHref("/personvern");
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -590,9 +594,14 @@ function DcHub() {
           <span>
             &copy; {new Date().getFullYear()} {dchubBrand.legalName}
           </span>
-          <a href={questpulseNote.href} className={`hover:text-white ${focusRing}`}>
-            QuestPulse leveres av {dchubBrand.legalName}
-          </a>
+          <span className="flex flex-wrap items-center gap-4">
+            <a href={privacyHref} className={`underline underline-offset-4 hover:text-white ${focusRing}`}>
+              Personvern og informasjonskapsler
+            </a>
+            <a href={questpulseNote.href} className={`hover:text-white ${focusRing}`}>
+              QuestPulse leveres av {dchubBrand.legalName}
+            </a>
+          </span>
         </div>
       </footer>
 
@@ -609,6 +618,7 @@ function DcHub() {
         </a>
       </div>
       <div aria-hidden className="h-20 bg-dch-ink sm:hidden" />
+      <CookieNotice />
     </div>
   );
 }

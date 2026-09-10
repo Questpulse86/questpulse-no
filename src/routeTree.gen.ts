@@ -29,6 +29,7 @@ import { Route as SlikFungererDetRouteImport } from './routes/slik-fungerer-det'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as DchubPersonvernRouteImport } from './routes/dchub_.personvern'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnBankingAndFinanceRouteImport } from './routes/en.banking-and-finance'
@@ -144,6 +145,11 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const DchubPersonvernRoute = DchubPersonvernRouteImport.update({
+  id: '/dchub_/personvern',
+  path: '/dchub/personvern',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
   path: '/en/',
@@ -231,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -265,6 +272,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -301,6 +309,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/dchub_/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -337,6 +346,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -371,6 +381,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -406,6 +417,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/_authenticated/admin'
+    | '/dchub_/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -441,6 +453,7 @@ export interface RootRouteChildren {
   SlikFungererDetRoute: typeof SlikFungererDetRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  DchubPersonvernRoute: typeof DchubPersonvernRoute
   EnAboutRoute: typeof EnAboutRoute
   EnBankingAndFinanceRoute: typeof EnBankingAndFinanceRoute
   EnContactRoute: typeof EnContactRoute
@@ -598,6 +611,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/dchub_/personvern': {
+      id: '/dchub_/personvern'
+      path: '/dchub/personvern'
+      fullPath: '/dchub/personvern'
+      preLoaderRoute: typeof DchubPersonvernRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/': {
       id: '/en/'
       path: '/en'
@@ -724,6 +744,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  DchubPersonvernRoute: DchubPersonvernRoute,
   EnAboutRoute: EnAboutRoute,
   EnBankingAndFinanceRoute: EnBankingAndFinanceRoute,
   EnContactRoute: EnContactRoute,
