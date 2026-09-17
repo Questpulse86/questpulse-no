@@ -84,10 +84,14 @@ function Section({
               Digital Coach Hub AS
             </p>
           </div>
-          <HubSpotShareForm
-            url={QP_FORM_SHARE_URL}
-            title={locale === "no" ? "Kontaktskjema" : "Contact form"}
-          />
+          {section.form === "direct" ? (
+            <ContactForm locale={locale} />
+          ) : (
+            <HubSpotShareForm
+              url={QP_FORM_SHARE_URL}
+              title={locale === "no" ? "Kontaktskjema" : "Contact form"}
+            />
+          )}
         </div>
       </section>
     );
