@@ -13,7 +13,7 @@ export type PageSection =
       items: PageItem[];
     }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
-  | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
+  | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
 
