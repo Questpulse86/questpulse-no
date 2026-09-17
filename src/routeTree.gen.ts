@@ -30,6 +30,7 @@ import { Route as SlikFungererDetRouteImport } from './routes/slik-fungerer-det'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as DchubEnRouteImport } from './routes/dchub_.en'
 import { Route as DchubPersonvernRouteImport } from './routes/dchub_.personvern'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
@@ -44,6 +45,7 @@ import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-a
 import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DchubEnPrivacyRouteImport } from './routes/dchub_.en_.privacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -151,6 +153,11 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const DchubEnRoute = DchubEnRouteImport.update({
+  id: '/dchub_/en',
+  path: '/dchub/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DchubPersonvernRoute = DchubPersonvernRouteImport.update({
   id: '/dchub_/personvern',
   path: '/dchub/personvern',
@@ -222,6 +229,11 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DchubEnPrivacyRoute = DchubEnPrivacyRouteImport.update({
+  id: '/dchub_/en_/privacy',
+  path: '/dchub/en/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -244,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/en': typeof DchubEnRoute
   '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
@@ -258,6 +271,7 @@ export interface FileRoutesByFullPath {
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub/en/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -280,6 +294,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/en': typeof DchubEnRoute
   '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
@@ -294,6 +309,7 @@ export interface FileRoutesByTo {
   '/en': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub/en/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -318,6 +334,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/dchub_/en': typeof DchubEnRoute
   '/dchub_/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
@@ -332,6 +349,7 @@ export interface FileRoutesById {
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub_/en_/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -356,6 +374,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/en'
     | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
@@ -370,6 +389,7 @@ export interface FileRouteTypes {
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub/en/privacy'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -392,6 +412,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/en'
     | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
@@ -406,6 +427,7 @@ export interface FileRouteTypes {
     | '/en'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub/en/privacy'
   id:
     | '__root__'
     | '/'
@@ -429,6 +451,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/_authenticated/admin'
+    | '/dchub_/en'
     | '/dchub_/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
@@ -443,6 +466,7 @@ export interface FileRouteTypes {
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub_/en_/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -466,6 +490,7 @@ export interface RootRouteChildren {
   SlikFungererDetRoute: typeof SlikFungererDetRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  DchubEnRoute: typeof DchubEnRoute
   DchubPersonvernRoute: typeof DchubPersonvernRoute
   EnAboutRoute: typeof EnAboutRoute
   EnBankingAndFinanceRoute: typeof EnBankingAndFinanceRoute
@@ -480,6 +505,7 @@ export interface RootRouteChildren {
   EnIndexRoute: typeof EnIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  DchubEnPrivacyRoute: typeof DchubEnPrivacyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -631,6 +657,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/dchub_/en': {
+      id: '/dchub_/en'
+      path: '/dchub/en'
+      fullPath: '/dchub/en'
+      preLoaderRoute: typeof DchubEnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dchub_/personvern': {
       id: '/dchub_/personvern'
       path: '/dchub/personvern'
@@ -729,6 +762,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dchub_/en_/privacy': {
+      id: '/dchub_/en_/privacy'
+      path: '/dchub/en/privacy'
+      fullPath: '/dchub/en/privacy'
+      preLoaderRoute: typeof DchubEnPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -765,6 +805,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  DchubEnRoute: DchubEnRoute,
   DchubPersonvernRoute: DchubPersonvernRoute,
   EnAboutRoute: EnAboutRoute,
   EnBankingAndFinanceRoute: EnBankingAndFinanceRoute,
@@ -779,6 +820,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnIndexRoute: EnIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  DchubEnPrivacyRoute: DchubEnPrivacyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
