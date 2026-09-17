@@ -1,69 +1,67 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { DchubLandingPage, type DchubLandingContent } from "@/components/dchub/DchubLandingPage";
+import { dchubBrand, dchubSite } from "@/lib/dchub-content";
 import {
-  about,
-  closing,
-  dchubBrand,
-  dchubSite,
-  dchubUi,
-  faq,
-  hero,
-  navLinks,
-  outcomes,
-  process,
-  questpulseNote,
-  recognition,
-  resultsSection,
-  services,
-  servicesSection,
-  testimonials,
-} from "@/lib/dchub-content";
-import { cookieNotice } from "@/lib/dchub-privacy";
+  aboutEn,
+  closingEn,
+  dchubUiEn,
+  faqEn,
+  heroEn,
+  navLinksEn,
+  outcomesEn,
+  processEn,
+  questpulseNoteEn,
+  recognitionEn,
+  resultsSectionEn,
+  servicesEn,
+  servicesSectionEn,
+  testimonialsEn,
+} from "@/lib/dchub-content-en";
+import { cookieNoticeEn } from "@/lib/dchub-privacy-en";
 
-const title = "Businesscoach og ledercoach | Linda Karlsen | Digital Coach Hub";
+const title = "Business Coach and Leadership Coach | Linda Karlsen | Digital Coach Hub";
 const description =
-  "Linda Karlsen tilbyr businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års ledererfaring. Askim og digitalt i hele Norge.";
+  "Linda Karlsen offers business coaching, leadership coaching, talks and workshops for founders and leaders. 20 years of leadership experience. Askim and online across Norway.";
 const site = dchubSite;
 const shareImage = `${site}/dch-og-image.jpg`;
 
 const landingContent: DchubLandingContent = {
-  navLinks,
-  hero,
-  recognition,
-  outcomes,
-  servicesSection,
-  services,
-  process,
-  resultsSection,
-  testimonials,
-  about,
-  questpulseNote,
-  faq,
-  closing,
-  ui: dchubUi,
-  cookieNotice,
+  navLinks: navLinksEn,
+  hero: heroEn,
+  recognition: recognitionEn,
+  outcomes: outcomesEn,
+  servicesSection: servicesSectionEn,
+  services: servicesEn,
+  process: processEn,
+  resultsSection: resultsSectionEn,
+  testimonials: testimonialsEn,
+  about: aboutEn,
+  questpulseNote: questpulseNoteEn,
+  faq: faqEn,
+  closing: closingEn,
+  ui: dchubUiEn,
+  cookieNotice: cookieNoticeEn,
 };
 
-export const Route = createFileRoute("/dchub")({
+export const Route = createFileRoute("/dchub_/en")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "google-site-verification", content: "rfbFzmt2lToxviyPO67oS6CbpoLd-B04Bo6iyMJp0Z8" },
       { name: "robots", content: "index, follow" },
       { property: "og:site_name", content: "Digital Coach Hub" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:locale", content: "nb_NO" },
-      { property: "og:url", content: `${site}/` },
+      { property: "og:locale", content: "en_GB" },
+      { property: "og:url", content: `${site}/en/` },
       { property: "og:image", content: shareImage },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub",
+        content: "Linda Karlsen, business coach and leadership coach at Digital Coach Hub",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
@@ -71,11 +69,11 @@ export const Route = createFileRoute("/dchub")({
       { name: "twitter:image", content: shareImage },
       {
         name: "twitter:image:alt",
-        content: "Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub",
+        content: "Linda Karlsen, business coach and leadership coach at Digital Coach Hub",
       },
     ],
     links: [
-      { rel: "canonical", href: `${site}/` },
+      { rel: "canonical", href: `${site}/en/` },
       { rel: "alternate", hrefLang: "nb", href: `${site}/` },
       { rel: "alternate", hrefLang: "en", href: `${site}/en/` },
       { rel: "alternate", hrefLang: "x-default", href: `${site}/` },
@@ -89,8 +87,8 @@ export const Route = createFileRoute("/dchub")({
           name: "Digital Coach Hub AS",
           alternateName: "Linda Karlsen coaching",
           description:
-            "Businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. Askim og digitalt i hele Norge.",
-          url: site,
+            "Business coaching, leadership coaching, talks and workshops for founders and leaders. Askim and online across Norway.",
+          url: `${site}/en/`,
           image: shareImage,
           telephone: dchubBrand.phone,
           email: dchubBrand.email,
@@ -102,9 +100,9 @@ export const Route = createFileRoute("/dchub")({
             postalCode: "1830",
             addressCountry: "NO",
           },
-          privacyPolicy: `${site}/personvern/`,
-          areaServed: ["Askim", "Indre Østfold", "Oslo", "Norge"],
-          serviceType: ["Businesscoaching", "Ledercoaching", "Foredrag", "Workshops"],
+          privacyPolicy: `${site}/en/privacy/`,
+          areaServed: ["Askim", "Indre Østfold", "Oslo", "Norway"],
+          serviceType: ["Business coaching", "Leadership coaching", "Talks", "Workshops"],
         }),
       },
       {
@@ -113,10 +111,10 @@ export const Route = createFileRoute("/dchub")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Linda Karlsen",
-          jobTitle: ["Businesscoach", "Ledercoach", "Gründer", "Foredragsholder"],
+          jobTitle: ["Business coach", "Leadership coach", "Founder", "Speaker"],
           description:
-            "Businesscoach, ledercoach, gründer og foredragsholder med 20 års ledererfaring.",
-          url: site,
+            "Business coach, leadership coach, founder and speaker with 20 years of leadership experience.",
+          url: `${site}/en/`,
           image: shareImage,
           telephone: dchubBrand.phone,
           email: dchubBrand.email,
@@ -128,7 +126,7 @@ export const Route = createFileRoute("/dchub")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: faq.map((item) => ({
+          mainEntity: faqEn.map((item) => ({
             "@type": "Question",
             name: item.q,
             acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -137,16 +135,16 @@ export const Route = createFileRoute("/dchub")({
       },
     ],
   }),
-  component: DcHub,
+  component: DcHubEnglish,
 });
 
-function DcHub() {
+function DcHubEnglish() {
   return (
     <DchubLandingPage
       content={landingContent}
-      locale="no"
-      alternatePath="/en"
-      privacyPath="/personvern"
+      locale="en"
+      alternatePath="/"
+      privacyPath="/en/privacy"
     />
   );
 }

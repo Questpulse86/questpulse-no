@@ -6,6 +6,7 @@ import { cookieNotice } from "@/lib/dchub-privacy";
 const STORAGE_KEY = "dch-cookie-consent";
 
 type Consent = "all" | "necessary";
+type CookieNoticeContent = typeof cookieNotice;
 
 declare global {
   interface Window {
@@ -19,9 +20,15 @@ function applyConsent(consent: Consent) {
 }
 
 /** Samtykkebanner for informasjonskapsler på Digital Coach Hub. */
-export function CookieNotice() {
+export function CookieNotice({
+  content = cookieNotice,
+  privacyPath = "/personvern",
+}: {
+  content?: CookieNoticeContent;
+  privacyPath?: string;
+}) {
   const [visible, setVisible] = useState(false);
-  const privacyHref = useDchHref("/personvern");
+  const privacyHref = useDchHref(privacyPath);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY) as Consent | null;
@@ -44,31 +51,31 @@ export function CookieNotice() {
   return (
     <div
       role="dialog"
-      aria-label={cookieNotice.heading}
+      aria-label={content.heading}
       className="fixed inset-x-0 bottom-0 z-[60] border-t border-dch-line bg-white p-4 shadow-[0_-8px_24px_rgba(19,33,47,0.08)] sm:bottom-4 sm:left-4 sm:max-w-md sm:rounded-2xl sm:border"
     >
-      <p className="font-display text-[17px] font-bold text-dch-ink">{cookieNotice.heading}</p>
-      <p className="mt-2 text-[14px] leading-[1.7] text-dch-muted">{cookieNotice.text}</p>
+      <p className="font-display text-[17px] font-bold text-dch-ink">{content.heading}</p>
+      <p className="mt-2 text-[14px] leading-[1.7] text-dch-muted">{content.text}</p>
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={() => choose("all")}
           className="inline-flex min-h-[44px] items-center rounded-md bg-dch-accent-strong px-5 text-[14px] font-bold text-white transition-colors hover:bg-dch-ink"
         >
-          {cookieNotice.accept}
+          {content.accept}
         </button>
         <button
           type="button"
           onClick={() => choose("necessary")}
           className="inline-flex min-h-[44px] items-center rounded-md border-2 border-dch-ink px-5 text-[14px] font-bold text-dch-ink transition-colors hover:bg-dch-ink hover:text-white"
         >
-          {cookieNotice.reject}
+          {content.reject}
         </button>
         <a
           href={privacyHref}
           className="ml-1 text-[13px] font-semibold text-dch-accent-strong underline underline-offset-4"
         >
-          {cookieNotice.link}
+          {content.link}
         </a>
       </div>
     </div>
@@ -76,7 +83,15 @@ export function CookieNotice() {
 }
 
 /** Knapp for å gjøre om valget, brukes i personvernerklæringen. */
-export function CookieSettingsButton({ className = "" }: { className?: string }) {
+export function CookieSettingsButton({
+  className = "",
+  idleLabel = "Endre valg for informasjonskapsler",
+  doneLabel = "Oppdaterer …",
+}: {
+  className?: string;
+  idleLabel?: string;
+  doneLabel?: string;
+}) {
   const [done, setDone] = useState(false);
 
   return (
@@ -89,7 +104,7 @@ export function CookieSettingsButton({ className = "" }: { className?: string })
       }}
       className={`inline-flex min-h-[44px] items-center rounded-md border-2 border-dch-ink px-5 text-[14px] font-bold text-dch-ink transition-colors hover:bg-dch-ink hover:text-white ${className}`}
     >
-      {done ? "Oppdaterer …" : "Endre valg for informasjonskapsler"}
+      {done ? doneLabel : idleLabel}
     </button>
   );
 }

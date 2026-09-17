@@ -2,14 +2,19 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { DchubPrivacyPage } from "@/components/dchub/DchubPrivacyPage";
 import { dchubBrand, dchubSite } from "@/lib/dchub-content";
-import { cookieNotice, privacyMeta, privacyPage } from "@/lib/dchub-privacy";
+import {
+  cookieNoticeEn,
+  dchubPrivacyUiEn,
+  privacyMetaEn,
+  privacyPageEn,
+} from "@/lib/dchub-privacy-en";
 
-const title = "Personvernerklæring og informasjonskapsler | Digital Coach Hub";
+const title = "Privacy and Cookies | Digital Coach Hub";
 const description =
-  "Slik behandler Digital Coach Hub AS personopplysninger fra kontaktskjema, booking og bruk av nettsiden, og hvilke informasjonskapsler som brukes.";
-const url = `${dchubSite}/personvern/`;
+  "How Digital Coach Hub AS processes personal data from contact forms, booking and website use, and which cookies are used.";
+const url = `${dchubSite}/en/privacy/`;
 
-export const Route = createFileRoute("/dchub_/personvern")({
+export const Route = createFileRoute("/dchub_/en/privacy")({
   head: () => ({
     meta: [
       { title },
@@ -19,14 +24,14 @@ export const Route = createFileRoute("/dchub_/personvern")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:locale", content: "nb_NO" },
+      { property: "og:locale", content: "en_GB" },
       { property: "og:url", content: url },
       { name: "twitter:card", content: "summary" },
     ],
     links: [
       { rel: "canonical", href: url },
-      { rel: "alternate", hrefLang: "nb", href: url },
-      { rel: "alternate", hrefLang: "en", href: `${dchubSite}/en/privacy/` },
+      { rel: "alternate", hrefLang: "nb", href: `${dchubSite}/personvern/` },
+      { rel: "alternate", hrefLang: "en", href: url },
     ],
     scripts: [
       {
@@ -34,11 +39,11 @@ export const Route = createFileRoute("/dchub_/personvern")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "PrivacyPolicy",
-          name: privacyPage.title,
+          name: privacyPageEn.title,
           url,
-          inLanguage: "nb-NO",
-          version: privacyMeta.version,
-          dateModified: privacyMeta.updatedIso,
+          inLanguage: "en-GB",
+          version: privacyMetaEn.version,
+          dateModified: privacyMetaEn.updatedIso,
           isPartOf: { "@type": "WebSite", name: "Digital Coach Hub", url: dchubSite },
           publisher: {
             "@type": "Organization",
@@ -56,35 +61,25 @@ export const Route = createFileRoute("/dchub_/personvern")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Digital Coach Hub", item: `${dchubSite}/` },
-            { "@type": "ListItem", position: 2, name: privacyPage.title, item: url },
+            { "@type": "ListItem", position: 1, name: "Digital Coach Hub", item: `${dchubSite}/en/` },
+            { "@type": "ListItem", position: 2, name: privacyPageEn.title, item: url },
           ],
         }),
       },
     ],
   }),
-  component: PrivacyPage,
+  component: PrivacyPageEnglish,
 });
 
-function PrivacyPage() {
+function PrivacyPageEnglish() {
   return (
     <DchubPrivacyPage
-      content={privacyPage}
-      meta={privacyMeta}
-      cookieContent={cookieNotice}
-      homePath="/"
-      privacyPath="/personvern"
-      ui={{
-        versionLabel: "Versjon",
-        updatedLabel: "Sist oppdatert",
-        typeHeader: "Type",
-        purposeHeader: "Formål",
-        durationHeader: "Varighet",
-        changeCookieChoice: "Endre valg for informasjonskapsler",
-        updatingCookieChoice: "Oppdaterer …",
-        backToHome: "Tilbake til forsiden",
-        orgNumberLabel: "org.nr.",
-      }}
+      content={privacyPageEn}
+      meta={privacyMetaEn}
+      cookieContent={cookieNoticeEn}
+      homePath="/en"
+      privacyPath="/en/privacy"
+      ui={dchubPrivacyUiEn}
     />
   );
 }

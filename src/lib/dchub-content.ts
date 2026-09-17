@@ -109,6 +109,7 @@ export const services = [
   {
     id: "for-grundere",
     label: "For gründere",
+    footerLabel: "For gründere",
     title: "Businesscoaching og strategisk sparring",
     text: "For deg som bygger virksomhet og samtidig skal håndtere salg, mennesker, økonomi, prioriteringer og usikkerhet. Vi rydder i det som tar kapasitet, finner neste riktige beslutning og gjør planer om til konkret handling.",
     cta: "Book en avklaringssamtale",
@@ -116,6 +117,7 @@ export const services = [
   {
     id: "for-ledere",
     label: "For ledere",
+    footerLabel: "For ledere",
     title: "Ledercoaching én til én",
     text: "For deg som leder mennesker, står i krysspress eller trenger et ærlig utenforstående blikk. Vi jobber med lederrollen, krevende samtaler, kommunikasjon, prioritering og beslutninger i din faktiske arbeidshverdag.",
     cta: "Book en avklaringssamtale",
@@ -123,6 +125,7 @@ export const services = [
   {
     id: "foredrag",
     label: "For virksomheter",
+    footerLabel: "Foredrag og workshops",
     title: "Foredrag og workshops",
     text: "Engasjerende og praktiske opplegg om selvledelse, prioritering, kommunikasjon og bærekraftig prestasjon. Innholdet tilpasses målgruppen og skal kunne brukes i arbeidshverdagen, ikke bare inspirere i rommet.",
     cta: "Snakk med meg om et oppdrag",
@@ -230,4 +233,31 @@ export const closing = {
   text: "Book en gratis avklaringssamtale. Vi ser på hva som opptar kapasiteten din nå, og hva som kan være et godt neste steg.",
   ctaPrimary: "Book 20 minutter med Linda",
   formLead: "Foretrekker du å skrive? Send en kort melding, så svarer jeg innen én virkedag.",
+};
+
+export const dchubUi = {
+  skipToContent: "Til hovedinnhold",
+  mainNavLabel: "Hovedmeny",
+  mobileNavLabel: "Mobilmeny",
+  openMenu: "Åpne meny",
+  closeMenu: "Lukk meny",
+  alternateLanguageLabel: "English",
+  bookFreeCall: "Book en gratis samtale",
+  heroAlt: "Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub",
+  aboutImageAlt: "Linda Karlsen i samtale med en leder",
+  processCta: "Book en gratis avklaringssamtale",
+  faqEyebrow: "Ofte stilte spørsmål",
+  faqTitle: "Det folk spør om før de booker",
+  bookingTitle: "Book en samtale med Linda Karlsen",
+  contactHeading: "Eller send en melding",
+  confidentialNote: "Konfidensielt. Alle henvendelser behandles med diskresjon.",
+  footerDescription:
+    "Businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års ledererfaring. Askim og digitalt i hele Norge.",
+  footerServicesLabel: "Footer: tjenester",
+  footerServicesTitle: "Tjenester",
+  footerContactTitle: "Kontakt",
+  orgNumberLabel: "Org.nr.",
+  privacyLink: "Personvern og informasjonskapsler",
+  questPulseFooter: `QuestPulse leveres av ${dchubBrand.legalName}`,
+  mobileCta: "Book en gratis samtale",
 };
