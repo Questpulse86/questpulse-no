@@ -14,7 +14,7 @@ const description =
   "How Digital Coach Hub AS processes personal data from contact forms, booking and website use, and which cookies are used.";
 const url = `${dchubSite}/en/privacy/`;
 
-export const Route = createFileRoute("/dchub_/en/privacy")({
+export const Route = createFileRoute("/dchub_/en_/privacy")({
   head: () => ({
     meta: [
       { title },
