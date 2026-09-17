@@ -47,9 +47,27 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      const host = url.hostname.toLowerCase();
+      if (host === "www.digitalcoachub.no") {
+        return Response.redirect(`https://digitalcoachub.no${url.pathname}${url.search}`, 308);
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalizedResponse = await normalizeCatastrophicSsrResponse(response);
+
+      if (host === "digitalcoachub.no") {
+        const headers = new Headers(normalizedResponse.headers);
+        headers.set("X-Robots-Tag", "index, follow");
+        return new Response(normalizedResponse.body, {
+          status: normalizedResponse.status,
+          statusText: normalizedResponse.statusText,
+          headers,
+        });
+      }
+
+      return normalizedResponse;
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
