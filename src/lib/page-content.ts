@@ -120,12 +120,12 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
               text: "Rundt 20 års erfaring fra salg, ledelse og forretningsutvikling.",
             },
             {
-              title: "Thomas Ryste, COO",
-              text: "Ansvar for drift, økonomi og kommersielle avtaler.",
+              title: "Fagmiljø og rådgivere",
+              text: "QuestPulse bygges med innspill fra miljøer med erfaring fra ledelse, HR, arbeidsmiljø og regulerte virksomheter.",
             },
             {
-              title: "Eivind Teig, CTO",
-              text: "Ansvar for produkt, sikkerhet, datamodeller og personvernarkitektur.",
+              title: "Produkt og sikkerhet",
+              text: "Produktet utvikles med personvern, aggregering, tilgangsstyring og dokumentasjon som grunnleggende premisser.",
             },
           ],
         },
@@ -220,7 +220,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for bank og finans | Compliance og kontroll",
         description:
-          "Bank og finans er vårt første bevismarked. Løpende kontroll av det psykososiale arbeidsmiljøet, dokumentasjon til styre og tilsyn, og en aktiv pilot.",
+          "QuestPulse gir regulerte virksomheter bedre grunnlag for løpende oppfølging av psykososialt arbeidsmiljø, dokumentasjon til styre og tilsyn og mer presise prioriteringer.",
       },
       hero: {
         eyebrow: "Bank og finans",
@@ -264,7 +264,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Personvern som arkitektur",
-              text: "GDPR artikkel 25 og prinsippene i EU AI Act er lagt til grunn i designet, ikke lagt på i etterkant.",
+              text: "GDPR artikkel 25 og relevante prinsipper for ansvarlig automatisert analyse er lagt til grunn i designet, ikke lagt på i etterkant.",
             },
             {
               title: "Sporbarhet",
@@ -274,18 +274,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
         {
           kind: "prose",
-          eyebrow: "Aktiv pilot",
-          title: "Piloten dokumenterer bruk, innsikt og handling",
+          eyebrow: "Kontrollert evaluering",
+          title: "Evalueringsløpet dokumenterer bruk, innsikt og handling",
           paragraphs: [
-            "Vi har en aktiv pilot. Piloten dokumenterer faktisk bruk, hvilken innsikt som oppstår, hvilke handlinger den utløser og hva som skjer videre.",
-            "Pilotkunder omtales aldri ved navn på våre offentlige flater. Referanser deles kun etter avtale, direkte i dialog.",
+            "Et evalueringsløp avklares med tydelige rammer for omfang, personvern, beslutningskriterier og forventet egeninnsats før oppstart.",
+            "Referanser og kundecaser deles kun etter avtale, direkte i dialog.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Neste steg",
           title: "Ta en kartleggingssamtale",
-          lead: "Vi starter med hvordan dere følger utviklingen i organisasjonen i dag, ikke med en demo.",
+          lead: "Vi starter med hvordan dere følger utviklingen i organisasjonen i dag, ikke med en produktpresentasjon.",
         },
       ],
     },
@@ -359,7 +359,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Salg og pilot",
-              text: "hei@questpulse.no. Velg Demo eller Pilot i skjemaet for raskest oppfølging.",
+              text: "hei@questpulse.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
             },
             {
               title: "Partnerskap",
@@ -635,12 +635,12 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
               text: "Around 20 years of experience from sales, leadership and business development.",
             },
             {
-              title: "Thomas Ryste, COO",
-              text: "Responsible for operations, finance and commercial agreements.",
+              title: "Subject network and advisors",
+              text: "QuestPulse is built with input from people experienced in leadership, HR, working environment and regulated organisations.",
             },
             {
-              title: "Eivind Teig, CTO",
-              text: "Responsible for product, security, data models and privacy architecture.",
+              title: "Product and security",
+              text: "The product is developed with privacy, aggregation, access control and documentation as core premises.",
             },
           ],
         },
@@ -735,7 +735,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for banking and finance | Compliance and control",
         description:
-          "Banking and finance is our first proof market: continuous control of the psychosocial working environment, documentation for boards and regulators, and an active pilot.",
+          "QuestPulse gives regulated organisations a stronger basis for continuous follow-up of the psychosocial working environment, documentation for boards and regulators, and more precise prioritisation.",
       },
       hero: {
         eyebrow: "Banking and finance",
@@ -779,7 +779,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Privacy by architecture",
-              text: "GDPR article 25 and the principles of the EU AI Act are built into the design, not added afterwards.",
+              text: "GDPR article 25 and relevant principles for responsible automated analysis are built into the design, not added afterwards.",
             },
             {
               title: "Traceability",
@@ -789,18 +789,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
         {
           kind: "prose",
-          eyebrow: "Active pilot",
-          title: "The pilot documents use, insight and action",
+          eyebrow: "Controlled evaluation",
+          title: "The evaluation documents use, insight and action",
           paragraphs: [
-            "We have an active pilot. It documents actual usage, the insight that emerges, the actions it triggers and what happens next.",
-            "Pilot customers are never named on our public surfaces. References are shared only by agreement, directly in dialogue.",
+            "An evaluation track is agreed with clear boundaries for scope, privacy, decision criteria and expected internal effort before start.",
+            "References and customer cases are shared only by agreement, directly in dialogue.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Next step",
           title: "Book a discovery call",
-          lead: "We start with how you follow organisational development today, not with a demo.",
+          lead: "We start with how you follow organisational development today, not with a product presentation.",
         },
       ],
     },
@@ -875,7 +875,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Sales and pilot",
-              text: "hei@questpulse.no. Choose Demo or Pilot in the form for the fastest response.",
+              text: "hei@questpulse.no. Choose Discovery conversation in the form for the fastest response.",
             },
             {
               title: "Partnerships",

@@ -10,10 +10,12 @@ type LeadInput = {
 };
 
 const inquiryLabels: Record<string, string> = {
-  demo: "Demo",
-  pilot: "Pilot",
+  demo: "Kartleggingssamtale",
+  pilot: "Enterprise-evaluering",
+  kartlegging: "Kartleggingssamtale",
+  evaluering: "Enterprise-evaluering",
   partner: "Partner",
-  investor: "Investor",
+  investor: "Annet",
 };
 
 function buildProperties(lead: LeadInput): Record<string, string> {

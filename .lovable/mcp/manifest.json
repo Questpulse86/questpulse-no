@@ -37,7 +37,7 @@
               "maximum": 100
             },
             "inquiryType": {
-              "description": "Optional filter on inquiry type, e.g. 'demo' or 'pilot'.",
+              "description": "Optional filter on inquiry type, e.g. 'kartlegging', 'evaluering' or 'partner'.",
               "type": "string"
             }
           }
