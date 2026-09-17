@@ -27,6 +27,7 @@ export const Route = createFileRoute("/demo")({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
