@@ -8,12 +8,19 @@ export const Route = createFileRoute("/robots.txt")({
         const isDchub = host.includes("digitalcoachub");
         const origin = isDchub ? "https://digitalcoachub.no" : "https://questpulse.no";
 
+        const disallow = isDchub
+          ? ""
+          : `Disallow: /demo
+Disallow: /auth
+Disallow: /admin
+`;
+
         const body = `User-agent: Googlebot
 Allow: /
-
+${disallow}
 User-agent: Bingbot
 Allow: /
-
+${disallow}
 User-agent: Twitterbot
 Allow: /
 
@@ -22,7 +29,7 @@ Allow: /
 
 User-agent: *
 Allow: /
-
+${disallow}
 Sitemap: ${origin}/sitemap.xml
 `;
 

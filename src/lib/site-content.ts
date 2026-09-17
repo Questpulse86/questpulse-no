@@ -372,14 +372,12 @@ export const inquiryTypes: Record<Locale, { value: string; label: string }[]> = 
     { value: "demo", label: "Demo eller kartleggingssamtale" },
     { value: "pilot", label: "Pilot" },
     { value: "partner", label: "Partnerskap" },
-    { value: "investor", label: "Investor" },
     { value: "annet", label: "Annet" },
   ],
   en: [
     { value: "demo", label: "Demo or discovery call" },
     { value: "pilot", label: "Pilot" },
     { value: "partner", label: "Partnership" },
-    { value: "investor", label: "Investor" },
     { value: "other", label: "Other" },
   ],
 };

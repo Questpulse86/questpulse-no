@@ -277,7 +277,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "Aktiv pilot",
           title: "Piloten dokumenterer bruk, innsikt og handling",
           paragraphs: [
-            "Vi har en aktiv pilot i finanssektoren. Piloten dokumenterer faktisk bruk, hvilken innsikt som oppstår, hvilke handlinger den utløser og hva som skjer videre.",
+            "Vi har en aktiv pilot. Piloten dokumenterer faktisk bruk, hvilken innsikt som oppstår, hvilke handlinger den utløser og hva som skjer videre.",
             "Pilotkunder omtales aldri ved navn på våre offentlige flater. Referanser deles kun etter avtale, direkte i dialog.",
           ],
         },
@@ -792,7 +792,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "Active pilot",
           title: "The pilot documents use, insight and action",
           paragraphs: [
-            "We have an active pilot in the financial sector. It documents actual usage, the insight that emerges, the actions it triggers and what happens next.",
+            "We have an active pilot. It documents actual usage, the insight that emerges, the actions it triggers and what happens next.",
             "Pilot customers are never named on our public surfaces. References are shared only by agreement, directly in dialogue.",
           ],
         },
