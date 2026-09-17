@@ -8,6 +8,12 @@ import {
 import { QpWave } from "@/components/site/QpWave";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { pagePaths } from "@/lib/page-content";
 import type { Locale, SiteContent } from "@/lib/site-content";
@@ -30,6 +36,7 @@ type Copy = {
   };
   product: { eyebrow: string; title: string; lead: string; stages: string[]; note: string };
   trust: { eyebrow: string; title: string; items: string[]; link: string };
+  faq: { eyebrow: string; title: string; lead: string; items: { q: string; a: string }[] };
   cta: { title: string; text: string; button: string };
 };
 
@@ -128,6 +135,37 @@ const copy: Record<Locale, Copy> = {
         "Dokumentert databehandling",
       ],
       link: "Gå til Trust Center",
+    },
+    faq: {
+      eyebrow: "Vanlige spørsmål",
+      title: "Det ledere spør om først",
+      lead: "Korte svar på de spørsmålene som oftest avgjør om en evaluering settes i gang.",
+      items: [
+        {
+          q: "Hva skiller QuestPulse fra en medarbeiderundersøkelse?",
+          a: "En undersøkelse gir et øyeblikksbilde på et bestemt tidspunkt. QuestPulse følger utviklingen løpende, kobler lederhandling til det som skjer etterpå, og viser om tiltaket faktisk virket.",
+        },
+        {
+          q: "Hvordan beskyttes den enkelte ansatte?",
+          a: "Innsikt aggregeres før den blir synlig for noen leder. Enkeltsvar deles aldri, og tilgang styres av rolle. Personvern er bygget inn i arkitekturen, ikke lagt til som en innstilling.",
+        },
+        {
+          q: "Hva kreves av IT for å komme i gang?",
+          a: "Løsningen brukes i arbeidsverktøyene dere allerede har, med pålogging gjennom eksisterende brukerkonto. Det kreves ingen ny plattform for de ansatte og ingen integrasjon mot HR-systemet for å starte.",
+        },
+        {
+          q: "Hvor lagres dataene?",
+          a: "Data lagres innenfor EØS, med dokumentert databehandling og rollebasert tilgang. Vi går gjennom rammene i detalj i en kartleggingssamtale.",
+        },
+        {
+          q: "Hjelper dette oss med kravene i arbeidsmiljøloven?",
+          a: "Arbeidsmiljøloven krever risikobasert og løpende oppfølging av det psykososiale arbeidsmiljøet, med dokumentasjon av kartlegging, tiltak og effekt. QuestPulse gjør den plikten enklere å oppfylle og lettere å dokumentere.",
+        },
+        {
+          q: "Er løsningen tilgjengelig på norsk?",
+          a: "Ja. Løsningen er utviklet for norsk arbeidsliv, på norsk, og er også tilgjengelig på engelsk.",
+        },
+      ],
     },
     cta: {
       title: "Hvordan følger dere utviklingen i organisasjonen i dag?",
@@ -229,6 +267,37 @@ const copy: Record<Locale, Copy> = {
         "Documented data processing",
       ],
       link: "Go to the Trust Center",
+    },
+    faq: {
+      eyebrow: "Frequently asked",
+      title: "What leaders ask first",
+      lead: "Short answers to the questions that usually decide whether an evaluation starts.",
+      items: [
+        {
+          q: "How is this different from an employee survey?",
+          a: "A survey gives a snapshot at a single point in time. QuestPulse follows development continuously, connects leadership action to what happens next, and shows whether the action actually worked.",
+        },
+        {
+          q: "How is the individual employee protected?",
+          a: "Insight is aggregated before any leader can see it. Individual answers are never shared, and access is governed by role. Privacy is built into the architecture, not added as a setting.",
+        },
+        {
+          q: "What does IT need to do to get started?",
+          a: "The solution is used inside the work tools you already have, with sign-in through existing accounts. No new platform for employees, and no HR system integration required to begin.",
+        },
+        {
+          q: "Where is the data stored?",
+          a: "Data is stored within the EEA, with documented data processing and role-based access. We walk through the full framework in a discovery conversation.",
+        },
+        {
+          q: "Does this help with Norwegian working environment requirements?",
+          a: "Norwegian regulation requires risk-based, continuous follow-up of the psychosocial working environment, documented from mapping through action to effect. QuestPulse makes that duty easier to fulfil and to document.",
+        },
+        {
+          q: "Is the solution available in Norwegian?",
+          a: "Yes. It is built for Norwegian working life, in Norwegian, and is also available in English.",
+        },
+      ],
     },
     cta: {
       title: "How do you follow development in your organisation today?",
@@ -424,6 +493,29 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* 8b. Vanlige spørsmål */}
+        <section className="mx-auto max-w-6xl px-5 py-24">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="qp-eyebrow">{t.faq.eyebrow}</p>
+              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.faq.title}</h2>
+              <p className="mt-5 text-muted-foreground">{t.faq.lead}</p>
+            </div>
+            <Accordion type="single" collapsible className="border-t border-border">
+              {t.faq.items.map((item, index) => (
+                <AccordionItem key={item.q} value={`faq-${index}`}>
+                  <AccordionTrigger className="text-left text-base font-bold text-navy">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 
