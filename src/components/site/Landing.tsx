@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/react-router";
 
-import { HubSpotShareForm, QP_FORM_SHARE_URL } from "@/components/site/HubSpotForm";
+import {
+  HUBSPOT_BOOKING_URL,
+  HubSpotShareForm,
+  QP_FORM_SHARE_URL,
+} from "@/components/site/HubSpotForm";
 import { QpWave } from "@/components/site/QpWave";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -35,7 +39,7 @@ const copy: Record<Locale, Copy> = {
       eyebrow: "People Intelligence",
       title: "Organisasjonen varsler lenge før tallene gjør det",
       lead: "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, og viser utviklingen fra signal til dokumentert effekt over tid.",
-      cta1: "Be om en strategisk gjennomgang",
+      cta1: "Book kartleggingssamtale",
       cta2: "Se hvordan det fungerer",
     },
     problem: {
@@ -128,7 +132,7 @@ const copy: Record<Locale, Copy> = {
     cta: {
       title: "Hvordan følger dere utviklingen i organisasjonen i dag?",
       text: "Vi starter med deres beslutningsbehov, eksisterende prosesser og krav til personvern og sikkerhet.",
-      button: "Be om en strategisk gjennomgang",
+      button: "Book kartleggingssamtale",
     },
   },
   en: {
@@ -136,7 +140,7 @@ const copy: Record<Locale, Copy> = {
       eyebrow: "People Intelligence",
       title: "The organisation signals long before the numbers do",
       lead: "QuestPulse gives leadership continuous insight into workload, friction and leadership action, and shows the development from signal to documented effect over time.",
-      cta1: "Request a strategic review",
+      cta1: "Book a discovery conversation",
       cta2: "See how it works",
     },
     problem: {
@@ -229,7 +233,7 @@ const copy: Record<Locale, Copy> = {
     cta: {
       title: "How do you follow development in your organisation today?",
       text: "We start with your decision needs, existing processes and requirements for privacy and security.",
-      button: "Request a strategic review",
+      button: "Book a discovery conversation",
     },
   },
 };
@@ -261,7 +265,9 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link to={pagePaths.contact[locale]}>{t.hero.cta1}</Link>
+                <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                  {t.hero.cta1}
+                </a>
               </Button>
               <Button
                 asChild
@@ -427,6 +433,13 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
             <div>
               <h2 className="text-3xl leading-tight sm:text-4xl">{t.cta.title}</h2>
               <p className="mt-5 text-muted-foreground">{t.cta.text}</p>
+              <p className="mt-8">
+                <Button asChild size="lg">
+                  <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                    {t.cta.button}
+                  </a>
+                </Button>
+              </p>
               <p className="mt-8 text-sm text-muted-foreground">
                 <a className="story-link" href="mailto:hei@questpulse.no">
                   hei@questpulse.no

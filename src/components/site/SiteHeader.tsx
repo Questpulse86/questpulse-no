@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { HUBSPOT_BOOKING_URL } from "@/components/site/HubSpotForm";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
 import { navKeys, navLabels, pagePaths } from "@/lib/page-content";
@@ -45,7 +46,9 @@ export function SiteHeader({
             {other === "no" ? "NO" : "EN"}
           </Link>
           <Button asChild size="sm">
-            <Link to={pagePaths.contact[locale]}>{content.nav.cta}</Link>
+            <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+              {content.nav.cta}
+            </a>
           </Button>
         </div>
       </div>
