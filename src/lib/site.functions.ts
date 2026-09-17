@@ -1,20 +1,31 @@
 import { createServerFn } from "@tanstack/react-start";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { mergeContent, type Locale, type SiteContent } from "@/lib/site-content";
+import { defaultContent, mergeContent, type Locale, type SiteContent } from "@/lib/site-content";
 import { contentSaveSchema, leadSchema, localeSchema } from "@/lib/site-schemas";
 
 export const getSiteContent = createServerFn({ method: "GET" })
   .inputValidator((input: { locale: Locale }) => ({ locale: localeSchema.parse(input.locale) }))
   .handler(async ({ data }): Promise<SiteContent> => {
-    const { createPublicClient } = await import("@/lib/supabase-public.server");
-    const supabase = createPublicClient();
-    const { data: row } = await supabase
-      .from("site_content")
-      .select("data")
-      .eq("locale", data.locale)
-      .maybeSingle();
-    return mergeContent(data.locale, row?.data ?? null);
+    try {
+      const { createPublicClient } = await import("@/lib/supabase-public.server");
+      const supabase = createPublicClient();
+      const { data: row, error } = await supabase
+        .from("site_content")
+        .select("data")
+        .eq("locale", data.locale)
+        .maybeSingle();
+
+      if (error) {
+        console.error("Public site content lookup failed", error);
+        return defaultContent[data.locale];
+      }
+
+      return mergeContent(data.locale, row?.data ?? null);
+    } catch (error) {
+      console.error("Public site content fallback used", error);
+      return defaultContent[data.locale];
+    }
   });
 
 export const submitLead = createServerFn({ method: "POST" })
