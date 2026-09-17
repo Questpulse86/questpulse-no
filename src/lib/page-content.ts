@@ -13,7 +13,7 @@ export type PageSection =
       items: PageItem[];
     }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
-  | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
+  | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
 
@@ -189,6 +189,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "contact",
           eyebrow: "Ta kontakt",
           title: "Vil du vite mer om selskapet?",
+          form: "direct",
           lead: "Book en kartleggingssamtale, så tar vi en konkret vurdering av hva QuestPulse kan bety for deres virksomhet.",
         },
       ],
@@ -740,6 +741,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           kind: "contact",
           eyebrow: "Get in touch",
           title: "Want to know more about the company?",
+          form: "direct",
           lead: "Book a discovery conversation, and we will make a concrete assessment of what QuestPulse could mean for your organisation.",
         },
       ],
