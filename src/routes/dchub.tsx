@@ -35,6 +35,7 @@ export const Route = createFileRoute("/dchub")({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "google-site-verification", content: "rfbFzmt2lToxviyPO67oS6CbpoLd-B04Bo6iyMJp0Z8" },
       { name: "robots", content: "index, follow" },
       { property: "og:site_name", content: "Digital Coach Hub" },
       { property: "og:title", content: title },
