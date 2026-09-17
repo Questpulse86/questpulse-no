@@ -29,6 +29,7 @@ const title = "Businesscoach og ledercoach | Linda Karlsen | Digital Coach Hub";
 const description =
   "Linda Karlsen tilbyr businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års ledererfaring. Askim og digitalt i hele Norge.";
 const site = dchubSite;
+const shareImage = `${site}/dch-og-image.jpg`;
 
 export const Route = createFileRoute("/dchub")({
   head: () => ({
@@ -43,7 +44,21 @@ export const Route = createFileRoute("/dchub")({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
       { property: "og:url", content: `${site}/` },
+      { property: "og:image", content: shareImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub",
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: shareImage },
+      {
+        name: "twitter:image:alt",
+        content: "Linda Karlsen, businesscoach og ledercoach i Digital Coach Hub",
+      },
     ],
     links: [{ rel: "canonical", href: `${site}/` }],
     scripts: [
