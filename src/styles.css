@@ -516,7 +516,7 @@
   }
 }
 
-/* Demo: signalfarger for risikonivå (kun i QuestPulse-demoen) */
+/* Produktvisning: signalfarger for risikonivå */
 :root {
   --signal-low: var(--teal-deep);
   --signal-low-soft: oklch(0.9337 0.0298 186.27);

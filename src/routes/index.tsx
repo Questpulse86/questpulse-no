@@ -12,17 +12,17 @@ const contentQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "QuestPulse | Løpende innsikt i organisasjonen" },
+      { title: "QuestPulse | People Intelligence" },
       {
         name: "description",
         content:
-          "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
+          "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, fra signal til dokumentert effekt.",
       },
-      { property: "og:title", content: "QuestPulse | Løpende innsikt i organisasjonen" },
+      { property: "og:title", content: "QuestPulse | People Intelligence" },
       { property: "og:site_name", content: "QuestPulse" },
       {
         property: "og:description",
-        content: "People Intelligence for norske virksomheter. Se det tidligere. Handle bedre.",
+        content: "People Intelligence for norske virksomheter. Fra signal til dokumentert effekt.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },

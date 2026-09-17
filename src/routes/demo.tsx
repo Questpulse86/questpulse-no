@@ -65,8 +65,8 @@ function DemoPage() {
         <section className="mx-auto max-w-6xl px-5 py-14">
           <DemoConsole />
           <p className="mt-6 text-xs text-muted-foreground">
-            Alle tall, team og navn i demoen er konstruert for illustrasjon. Ingen ekte kundedata
-            eller personopplysninger vises.
+            Alle tall, team og navn i produktvisningen er konstruert for illustrasjon. Ingen ekte
+            kundedata eller personopplysninger vises.
           </p>
         </section>
 
