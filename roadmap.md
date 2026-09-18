@@ -1,3 +1,5 @@
-# Roadmap
+# Veikart
 
-- [x] Gjennomgå opplastet HubSpot-forside, visuell oppgraderingsplan og DOCX for å løfte QuestPulse-forsiden og fjerne synlige bedriftshemmeligheter.
+- [x] Analysere vedlagt presentasjon og nettsidens produktvisninger
+- [x] Utforme et beslutningsklart pitchdeck for store norske finansinstitusjoner
+- [x] Bygge og kvalitetssikre PowerPoint-filen
