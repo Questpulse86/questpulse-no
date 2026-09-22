@@ -22,6 +22,7 @@ import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
 import { Route as PartnereRouteImport } from './routes/partnere'
+import { Route as PersonvernRouteImport } from './routes/personvern'
 import { Route as PilotRouteImport } from './routes/pilot'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SikkerhetOgPersonvernRouteImport } from './routes/sikkerhet-og-personvern'
@@ -109,6 +110,11 @@ const OmSelskapetRoute = OmSelskapetRouteImport.update({
 const PartnereRoute = PartnereRouteImport.update({
   id: '/partnere',
   path: '/partnere',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonvernRoute = PersonvernRouteImport.update({
+  id: '/personvern',
+  path: '/personvern',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PilotRoute = PilotRouteImport.update({
@@ -248,6 +254,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
@@ -286,6 +293,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
@@ -326,6 +334,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
@@ -366,6 +375,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
     | '/robots.txt'
     | '/sikkerhet-og-personvern'
@@ -404,6 +414,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
     | '/robots.txt'
     | '/sikkerhet-og-personvern'
@@ -443,6 +454,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
     | '/robots.txt'
     | '/sikkerhet-og-personvern'
@@ -483,6 +495,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   OmSelskapetRoute: typeof OmSelskapetRoute
   PartnereRoute: typeof PartnereRoute
+  PersonvernRoute: typeof PersonvernRoute
   PilotRoute: typeof PilotRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SikkerhetOgPersonvernRoute: typeof SikkerhetOgPersonvernRoute
@@ -599,6 +612,13 @@ declare module '@tanstack/react-router' {
       path: '/partnere'
       fullPath: '/partnere'
       preLoaderRoute: typeof PartnereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personvern': {
+      id: '/personvern'
+      path: '/personvern'
+      fullPath: '/personvern'
+      preLoaderRoute: typeof PersonvernRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pilot': {
@@ -797,6 +817,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   OmSelskapetRoute: OmSelskapetRoute,
   PartnereRoute: PartnereRoute,
+  PersonvernRoute: PersonvernRoute,
   PilotRoute: PilotRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SikkerhetOgPersonvernRoute: SikkerhetOgPersonvernRoute,
