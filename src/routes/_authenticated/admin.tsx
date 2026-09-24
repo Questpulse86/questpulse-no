@@ -4,6 +4,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
+import { SecurityPanel } from "@/components/admin/SecurityPanel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,7 +47,7 @@ function AdminPage() {
   const fetchOverview = useServerFn(getAdminOverview);
   const save = useServerFn(saveSiteContent);
   const [locale, setLocale] = useState<Locale>("no");
-  const [tab, setTab] = useState<"content" | "leads" | "audit">("content");
+  const [tab, setTab] = useState<"content" | "leads" | "audit" | "security">("content");
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
@@ -132,6 +133,14 @@ function AdminPage() {
             >
               Agentlogg ({overview.data.audit.length})
             </Button>
+            <Button
+              size="sm"
+              variant={tab === "security" ? "default" : "outline"}
+              onClick={() => setTab("security")}
+            >
+              Sikkerhet
+            </Button>
+
 
             <Button size="sm" variant="ghost" onClick={signOut}>
               Logg ut
@@ -229,6 +238,8 @@ function AdminPage() {
               </tbody>
             </table>
           </div>
+        ) : tab === "security" ? (
+          <SecurityPanel />
         ) : (
           <AuditTable rows={overview.data.audit} />
         )}

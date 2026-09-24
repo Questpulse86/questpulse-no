@@ -92,6 +92,35 @@ export const getAdminOverview = createServerFn({ method: "GET" })
 
   });
 
+export type SecurityStatus = {
+  tables: { name: string; rls_enabled: boolean; policies: number; open_policies: number }[];
+  buckets: { name: string; public: boolean; policies: number }[];
+  leads: {
+    client_write_policies: number;
+    client_write_grants: number;
+    total_30d: number;
+    hubspot_failed_30d: number;
+    last_insert: string | null;
+  };
+  checked_at: string;
+};
+
+export const getSecurityStatus = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<SecurityStatus> => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    if (!isAdmin) throw new Error("Forbidden");
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await (supabaseAdmin.rpc as unknown as (
+      fn: string,
+    ) => Promise<{ data: unknown; error: { message: string } | null }>)("security_status");
+    if (error) throw new Error(error.message);
+    return data as SecurityStatus;
+  });
+
 export const saveSiteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => contentSaveSchema.parse(input))

@@ -146,6 +146,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      security_status: { Args: never; Returns: Json }
     }
     Enums: {
       app_role: "admin" | "editor" | "user"
