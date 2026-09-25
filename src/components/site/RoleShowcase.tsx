@@ -90,7 +90,7 @@ const copy: Record<Locale, Record<RoleKey, RoleCopy>> = {
       title: "Prioritisation across units",
       lead: "HR sees where effort pays off most, without rebuilding the picture manually every time someone asks.",
       points: [
-        "Overview between the larger surveys",
+        "Overview between fixed measurement points",
         "A ranked view of where support is needed now",
         "Documentation built along the way",
       ],

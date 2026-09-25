@@ -83,14 +83,14 @@ export const Route = createFileRoute("/")({
             {
               name: "description",
               content:
-                "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
+                "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
             },
             { property: "og:title", content: "QuestPulse | People Intelligence" },
             { property: "og:site_name", content: "QuestPulse" },
             {
               property: "og:description",
               content:
-                "Se det tidligere. Gjør mer av det som virker. People Intelligence for norske virksomheter.",
+                "Fra spredte signaler til felles beslutningsgrunnlag. People Intelligence for norske virksomheter.",
             },
             { property: "og:type", content: "website" },
             { property: "og:locale", content: "nb_NO" },

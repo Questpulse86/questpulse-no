@@ -163,8 +163,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           title: "Hva QuestPulse ikke er",
           items: [
             {
-              title: "Ikke en medarbeiderundersøkelse",
-              text: "QuestPulse er ikke pulsmåling, ikke en velværeapp og ikke et generelt HR-system.",
+              title: "Et eget styringslag",
+              text: "QuestPulse fyller gapet mellom de faste målepunktene og kobler løpende signaler til lederhandling og læring over tid.",
             },
             {
               title: "Ikke en digital veileder",
@@ -293,7 +293,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data i Norge",
-              text: "Drift på Azure Norway East, med databehandleravtale og tydelig ansvarsfordeling.",
+              text: "Dokumentert dataflyt, databehandleravtale og tydelig ansvarsfordeling.",
             },
             {
               title: "Avklart tilgangsstyring",
@@ -396,7 +396,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Salg og pilot",
-              text: "hei@questpulse.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
+              text: "linda@dchub.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
             },
             {
               title: "Partnerskap",
@@ -404,7 +404,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Personvern",
-              text: "Spørsmål om behandling av personopplysninger rettes til hei@questpulse.no. Tekniske spørsmål går til support@questpulse.no.",
+              text: "Spørsmål om behandling av personopplysninger og tekniske forhold rettes til linda@dchub.no.",
             },
           ],
         },
@@ -433,7 +433,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Dataflyt og datalokasjon",
-              text: "Data lagres og behandles innenfor EØS, på Azure Norway East. Dataflyten fra innsamling til aggregert innsikt er dokumentert per miljø.",
+              text: "Datalokasjon bekreftes i avtalegrunnlaget før oppstart. Dataflyten fra innsamling til aggregert innsikt dokumenteres per miljø.",
             },
             {
               title: "Tilgangsstyring",
@@ -473,7 +473,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Kontaktpunkt for sikkerhet",
-              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til linda@dchub.no.",
             },
           ],
         },
@@ -658,7 +658,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "The starting point",
           title: "A gap in the way organisations are managed",
           paragraphs: [
-            "Insight arrives too late. Traditional surveys provide snapshots, and between measurement points the things that matter most are already happening: workload builds, friction settles into teams, follow-up slips, and strong patterns disappear without anyone understanding why they worked.",
+            "Insight arrives too late. Periodic measurements provide snapshots, and between measurement points the things that matter most are already happening: workload builds, friction settles into teams, follow-up slips, and strong patterns disappear without anyone understanding why they worked.",
             "Leadership sees the consequences in sickness absence, quiet quitting and leadership strain, long after the signals were already there.",
           ],
         },
@@ -715,8 +715,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           title: "What QuestPulse is not",
           items: [
             {
-              title: "Not an employee survey",
-              text: "QuestPulse is not a pulse survey, not a wellbeing app and not a general HR system.",
+              title: "A distinct management layer",
+              text: "QuestPulse fills the gap between fixed measurement points and connects continuous signals to leadership action and learning over time.",
             },
             {
               title: "Not a digital adviser",
@@ -825,7 +825,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Continuous follow-up",
-              text: "Risk-based follow-up through the whole year, not only at the annual survey.",
+              text: "Risk-based follow-up throughout the year, not only at fixed measurement points.",
             },
             {
               title: "Systematic HSE work",
@@ -845,7 +845,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data in Norway",
-              text: "Operated on Azure Norway East, with a data processing agreement and clear division of responsibility.",
+              text: "Documented data flow, a data processing agreement and a clear division of responsibility.",
             },
             {
               title: "Controlled access",
@@ -882,7 +882,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for HR and leadership | Value per role",
         description:
-          "What QuestPulse gives HR, leaders, executives and boards: better overview between surveys, support for prioritisation and a clearer basis for decisions.",
+          "What QuestPulse gives HR, leaders, executives and boards: better overview between measurement points, support for prioritisation and a clearer basis for decisions.",
       },
       hero: {
         eyebrow: "For HR and leadership",
@@ -949,7 +949,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Sales and pilot",
-              text: "hei@questpulse.no. Choose Discovery conversation in the form for the fastest response.",
+              text: "linda@dchub.no. Choose Discovery conversation in the form for the fastest response.",
             },
             {
               title: "Partnerships",
@@ -957,7 +957,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Privacy",
-              text: "Questions about processing of personal data go to hei@questpulse.no. Technical questions go to support@questpulse.no.",
+              text: "Questions about personal data processing and technical matters go to linda@dchub.no.",
             },
           ],
         },
@@ -986,7 +986,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Data flow and data location",
-              text: "Data is stored and processed within the EEA, on Azure Norway East. Data flow from collection to aggregated insight is documented per environment.",
+              text: "Data location is confirmed in the contractual documentation before implementation. Data flow from collection to aggregated insight is documented for each environment.",
             },
             {
               title: "Access control",
@@ -1026,7 +1026,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Security contact point",
-              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
+              text: "Security enquiries, vulnerability reports and documentation requests go to linda@dchub.no.",
             },
           ],
         },
