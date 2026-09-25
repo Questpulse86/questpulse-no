@@ -163,8 +163,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           title: "Hva QuestPulse ikke er",
           items: [
             {
-              title: "Ikke en medarbeiderundersøkelse",
-              text: "QuestPulse er ikke pulsmåling, ikke en velværeapp og ikke et generelt HR-system.",
+              title: "Et eget styringslag",
+              text: "QuestPulse fyller gapet mellom de faste målepunktene og kobler løpende signaler til lederhandling og læring over tid.",
             },
             {
               title: "Ikke en digital veileder",
@@ -658,7 +658,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "The starting point",
           title: "A gap in the way organisations are managed",
           paragraphs: [
-            "Insight arrives too late. Traditional surveys provide snapshots, and between measurement points the things that matter most are already happening: workload builds, friction settles into teams, follow-up slips, and strong patterns disappear without anyone understanding why they worked.",
+            "Insight arrives too late. Periodic measurements provide snapshots, and between measurement points the things that matter most are already happening: workload builds, friction settles into teams, follow-up slips, and strong patterns disappear without anyone understanding why they worked.",
             "Leadership sees the consequences in sickness absence, quiet quitting and leadership strain, long after the signals were already there.",
           ],
         },
@@ -715,8 +715,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           title: "What QuestPulse is not",
           items: [
             {
-              title: "Not an employee survey",
-              text: "QuestPulse is not a pulse survey, not a wellbeing app and not a general HR system.",
+              title: "A distinct management layer",
+              text: "QuestPulse fills the gap between fixed measurement points and connects continuous signals to leadership action and learning over time.",
             },
             {
               title: "Not a digital adviser",
@@ -825,7 +825,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Continuous follow-up",
-              text: "Risk-based follow-up through the whole year, not only at the annual survey.",
+              text: "Risk-based follow-up throughout the year, not only at fixed measurement points.",
             },
             {
               title: "Systematic HSE work",
@@ -882,7 +882,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for HR and leadership | Value per role",
         description:
-          "What QuestPulse gives HR, leaders, executives and boards: better overview between surveys, support for prioritisation and a clearer basis for decisions.",
+          "What QuestPulse gives HR, leaders, executives and boards: better overview between measurement points, support for prioritisation and a clearer basis for decisions.",
       },
       hero: {
         eyebrow: "For HR and leadership",

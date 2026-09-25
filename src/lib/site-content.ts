@@ -242,7 +242,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       items: [
         {
           title: "Insight arrives late",
-          text: "Traditional surveys give a snapshot. Long periods pass between an early signal and a decision.",
+          text: "Periodic measurements give a snapshot. Long periods pass between an early signal and a decision.",
         },
         {
           title: "What matters is hard to see",
@@ -280,7 +280,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       points: [
         {
           title: "Continuous oversight",
-          text: "Risk-based follow-up of the working environment throughout the year, not only at the annual survey.",
+          text: "Risk-based follow-up of the working environment throughout the year, not only at fixed measurement points.",
         },
         {
           title: "Systematic HSE work",
@@ -307,7 +307,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
         },
         {
           role: "For HR",
-          text: "Better overview between the larger surveys, clearer prioritisation of effort and stronger support for managers.",
+          text: "Better overview between fixed measurement points, clearer prioritisation of effort and stronger support for managers.",
         },
         {
           role: "For leadership and the board",

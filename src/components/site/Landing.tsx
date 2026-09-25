@@ -332,7 +332,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">{t.product.lead}</p>
             </div>
             <div className="mt-12"><ProductPreview t={t} /></div>
-            <ol className="mt-8 grid border-y border-border sm:grid-cols-4">
+            <ol className="mt-8 grid border-y border-border sm:grid-cols-3 lg:grid-cols-6">
               {t.product.flow.map((step, index) => (
                 <li key={step} className="flex items-center gap-3 border-b border-border py-5 sm:border-r sm:border-b-0 sm:px-5 first:pl-0 last:border-r-0">
                   <span className="font-display text-sm text-teal-deep">{String(index + 1).padStart(2, "0")}</span>
