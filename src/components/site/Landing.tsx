@@ -225,7 +225,7 @@ function ProductPreview({ t }: { t: HomeCopy }) {
               <h3 className="mt-2 font-sans text-lg font-semibold text-navy-foreground">{t.product.insightTitle}</h3>
             </div>
             <span className="inline-flex items-center gap-1.5 rounded-sm bg-teal/15 px-2.5 py-1 text-[11px] font-semibold text-teal">
-              <TrendingUp className="size-3" /> {t.signals[1].status}
+              <TrendingUp className="size-3" /> {t.signals.at(1)?.status}
             </span>
           </div>
           <div className="grid gap-4 py-5 md:grid-cols-[1.15fr_0.85fr]">
@@ -246,7 +246,7 @@ function ProductPreview({ t }: { t: HomeCopy }) {
               <p className="mt-5 text-[10px] font-bold tracking-[0.14em] text-teal uppercase">{t.product.actionTitle}</p>
               <p className="mt-2 text-sm leading-relaxed text-navy-foreground/75">{t.product.actionBody}</p>
               <div className="mt-5 flex items-center gap-2 text-[11px] font-semibold text-navy-foreground/45">
-                <LockKeyhole className="size-3.5" /> {t.signals[1].privacy}
+                <LockKeyhole className="size-3.5" /> {t.signals.at(1)?.privacy}
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
             </div>
             <div className="grid border-t border-border sm:grid-cols-2">
               {t.value.items.map((item, index) => {
-                const Icon = valueIcons[index];
+                const Icon = valueIcons[index] ?? Eye;
                 return (
                   <article key={item.title} className="group border-b border-border py-7 sm:px-7 sm:odd:border-r">
                     <div className="flex size-9 items-center justify-center rounded-md bg-secondary text-teal-deep transition-colors group-hover:bg-teal group-hover:text-primary-foreground"><Icon className="size-4" /></div>
@@ -350,7 +350,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               <h2 className="max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">{t.roles.title}</h2>
               <div className="border-t border-navy-foreground/15">
                 {t.roles.items.map((item, index) => {
-                  const Icon = roleIcons[index];
+                  const Icon = roleIcons[index] ?? Users;
                   return (
                     <article key={item.title} className="grid gap-4 border-b border-navy-foreground/15 py-6 sm:grid-cols-[3rem_11rem_1fr] sm:items-start">
                       <div className="flex size-9 items-center justify-center rounded-md bg-navy-foreground/[0.06] text-teal"><Icon className="size-4" /></div>
