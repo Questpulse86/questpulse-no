@@ -293,7 +293,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data i Norge",
-              text: "Drift på Azure Norway East, med databehandleravtale og tydelig ansvarsfordeling.",
+              text: "Dokumentert dataflyt, databehandleravtale og tydelig ansvarsfordeling.",
             },
             {
               title: "Avklart tilgangsstyring",
@@ -396,7 +396,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Salg og pilot",
-              text: "hei@questpulse.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
+              text: "linda@dchub.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
             },
             {
               title: "Partnerskap",
@@ -404,7 +404,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Personvern",
-              text: "Spørsmål om behandling av personopplysninger rettes til hei@questpulse.no. Tekniske spørsmål går til support@questpulse.no.",
+              text: "Spørsmål om behandling av personopplysninger og tekniske forhold rettes til linda@dchub.no.",
             },
           ],
         },
@@ -433,7 +433,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Dataflyt og datalokasjon",
-              text: "Data lagres og behandles innenfor EØS, på Azure Norway East. Dataflyten fra innsamling til aggregert innsikt er dokumentert per miljø.",
+              text: "Datalokasjon bekreftes i avtalegrunnlaget før oppstart. Dataflyten fra innsamling til aggregert innsikt dokumenteres per miljø.",
             },
             {
               title: "Tilgangsstyring",
@@ -473,7 +473,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Kontaktpunkt for sikkerhet",
-              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til linda@dchub.no.",
             },
           ],
         },
@@ -845,7 +845,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data in Norway",
-              text: "Operated on Azure Norway East, with a data processing agreement and clear division of responsibility.",
+              text: "Documented data flow, a data processing agreement and a clear division of responsibility.",
             },
             {
               title: "Controlled access",
@@ -949,7 +949,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Sales and pilot",
-              text: "hei@questpulse.no. Choose Discovery conversation in the form for the fastest response.",
+              text: "linda@dchub.no. Choose Discovery conversation in the form for the fastest response.",
             },
             {
               title: "Partnerships",
@@ -957,7 +957,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Privacy",
-              text: "Questions about processing of personal data go to hei@questpulse.no. Technical questions go to support@questpulse.no.",
+              text: "Questions about personal data processing and technical matters go to linda@dchub.no.",
             },
           ],
         },
@@ -986,7 +986,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Data flow and data location",
-              text: "Data is stored and processed within the EEA, on Azure Norway East. Data flow from collection to aggregated insight is documented per environment.",
+              text: "Data location is confirmed in the contractual documentation before implementation. Data flow from collection to aggregated insight is documented for each environment.",
             },
             {
               title: "Access control",
@@ -1026,7 +1026,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Security contact point",
-              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
+              text: "Security enquiries, vulnerability reports and documentation requests go to linda@dchub.no.",
             },
           ],
         },

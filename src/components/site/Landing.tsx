@@ -56,8 +56,8 @@ const copy: Record<Locale, HomeCopy> = {
   no: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "Se det tidligere. Gjør mer av det som virker.",
-      lead: "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
+      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
+      lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
       cta: "Book kartleggingssamtale",
       secondary: "Se hvordan det fungerer",
     },
@@ -67,9 +67,9 @@ const copy: Record<Locale, HomeCopy> = {
       { label: "Lederhandling", title: "Tiltak kan følges over tid", status: "Dokumentert", privacy: "Sporbart" },
     ],
     value: {
-      eyebrow: "Fra signal til beslutning",
-      title: "Et bedre grunnlag mens det fortsatt er tid til å handle",
-      lead: "QuestPulse samler utvikling, prioritering og oppfølging i én tydelig beslutningsflyt.",
+      eyebrow: "Fra spredte signaler til felles beslutningsgrunnlag",
+      title: "Mer enn måling. Mer enn analyse. Mer enn dashboard.",
+      lead: "De fleste virksomheter tar beslutninger om mennesker, ledelse og kapasitet på forsinkede signaler. QuestPulse gjør signalene handlingsbare tidligere.",
       items: [
         { title: "Oppdag tidligere", text: "Se belastning og friksjon før konsekvensene setter seg i fravær, tap av kompetanse eller svakere leveranser." },
         { title: "Forsterk det som virker", text: "Gjør gode arbeidsmønstre synlige og gi flere team mulighet til å lære av dem." },
@@ -81,7 +81,7 @@ const copy: Record<Locale, HomeCopy> = {
       eyebrow: "Beslutningsflaten",
       title: "Fra det som utvikler seg, til det dere gjør med det",
       lead: "Ikke flere løsrevne målinger. Ett sammenhengende bilde som gjør det mulig å se, prioritere og følge opp.",
-      flow: ["Løpende innsikt", "Tydelig prioritering", "Lederhandling", "Dokumentert effekt"],
+      flow: ["Signal", "Tolkning", "Risiko", "Anbefaling", "Lederhandling", "Læring over tid"],
       insightTitle: "Arbeidsflyt fungerer bedre i flere team",
       insightBody: "Et positivt mønster er stabilt nok til å undersøkes og forsterkes.",
       actionTitle: "Anbefalt prioritering",
@@ -102,15 +102,15 @@ const copy: Record<Locale, HomeCopy> = {
       eyebrow: "Personvern og sikkerhet",
       title: "Innsikt uten å gjøre mennesker gjennomsiktige",
       lead: "Data pseudonymiseres, enkeltsvar skjermes og tilgang styres etter rolle. Personvern er en del av arkitekturen fra første signal.",
-      items: ["Pseudonymiserte data", "Aggregert innsikt", "Rollebasert tilgang", "Lagring innenfor EØS"],
+      items: ["Pseudonymiserte data", "Aggregert innsikt", "Rollebasert tilgang", "Tydelig eierskapsmodell"],
       link: "Les om sikkerhet og personvern",
     },
     faq: {
       eyebrow: "Kort fortalt",
       title: "Det beslutningstakere spør om først",
       items: [
-        { q: "Er QuestPulse en medarbeiderundersøkelse?", a: "Nei. QuestPulse er et lag for løpende innsikt om mennesker, ledelse og organisasjon. Det kobler utvikling til handling og følger effekten over tid." },
-        { q: "Hvordan beskyttes den enkelte?", a: "Data pseudonymiseres og innsikt aggregeres før den blir synlig for ledere. Individuelle svar deles aldri." },
+        { q: "Hva skiller QuestPulse fra periodiske målinger?", a: "Periodiske målinger gir øyeblikksbilder. QuestPulse gir et løpende bilde mellom målepunktene og kobler det til hva som faktisk ble gjort." },
+        { q: "Hvordan beskyttes den enkelte?", a: "Ingen i selskapet ser hva den enkelte skriver. Innsikt leveres aggregert med anonymitetsterskler. Det er bygget inn i arkitekturen." },
         { q: "Må vi bytte HR-system?", a: "Nei. QuestPulse er ikke et frittstående HR-system. Det er laget for å fungere sammen med virksomhetens etablerte arbeidsverktøy og prosesser." },
         { q: "Hvor lagres dataene?", a: "Data lagres innenfor EØS med rollebasert tilgang og dokumentert databehandling." },
       ],
@@ -126,8 +126,8 @@ const copy: Record<Locale, HomeCopy> = {
   en: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "See it earlier. Do more of what works.",
-      lead: "QuestPulse gives HR and leadership continuous insight into what is developing across the organisation, making it easier to prioritise the right actions.",
+      title: "Detect organisational friction, strain and leadership challenges before they escalate.",
+      lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared basis for decisions across HR, management and executive leadership.",
       cta: "Book a discovery conversation",
       secondary: "See how it works",
     },
@@ -137,9 +137,9 @@ const copy: Record<Locale, HomeCopy> = {
       { label: "Leadership action", title: "Actions can be followed over time", status: "Documented", privacy: "Traceable" },
     ],
     value: {
-      eyebrow: "From signal to decision",
-      title: "A better basis while there is still time to act",
-      lead: "QuestPulse brings development, prioritisation and follow-up into one clear decision flow.",
+      eyebrow: "From scattered signals to a shared basis for decisions",
+      title: "More than measurement. More than analysis. More than a dashboard.",
+      lead: "Most organisations make decisions about people, leadership and capacity using delayed signals. QuestPulse makes those signals actionable earlier.",
       items: [
         { title: "Detect earlier", text: "See strain and friction before the consequences become absence, lost expertise or weaker delivery." },
         { title: "Reinforce what works", text: "Make strong working patterns visible and help more teams learn from them." },
@@ -151,7 +151,7 @@ const copy: Record<Locale, HomeCopy> = {
       eyebrow: "Decision view",
       title: "From what is developing to what you do about it",
       lead: "Not another set of disconnected measurements. One coherent view for seeing, prioritising and following up.",
-      flow: ["Continuous insight", "Clear priority", "Leadership action", "Documented effect"],
+      flow: ["Signal", "Interpretation", "Risk", "Recommendation", "Leadership action", "Learning over time"],
       insightTitle: "Ways of working are improving across more teams",
       insightBody: "A positive pattern is stable enough to examine and reinforce.",
       actionTitle: "Recommended priority",
@@ -172,15 +172,15 @@ const copy: Record<Locale, HomeCopy> = {
       eyebrow: "Privacy and security",
       title: "Insight without making people transparent",
       lead: "Data is pseudonymised, individual responses are protected and access is role-based. Privacy is part of the architecture from the first signal.",
-      items: ["Pseudonymised data", "Aggregated insight", "Role-based access", "Data storage within the EEA"],
+      items: ["Pseudonymised data", "Aggregated insight", "Role-based access", "Clear ownership model"],
       link: "Read about security and privacy",
     },
     faq: {
       eyebrow: "In brief",
       title: "What decision-makers ask first",
       items: [
-        { q: "Is QuestPulse an employee survey?", a: "No. QuestPulse is an insight layer for people, leadership and organisation. It connects development to action and follows the effect over time." },
-        { q: "How is each individual protected?", a: "Data is pseudonymised and insight is aggregated before leaders see it. Individual responses are never shared." },
+        { q: "How does QuestPulse differ from periodic measurement?", a: "Periodic measurement provides snapshots. QuestPulse provides a continuous view between measurement points and connects it to the actions taken." },
+        { q: "How is each individual protected?", a: "No one in the company sees what an individual writes. Insight is aggregated and protected by anonymity thresholds. This is built into the architecture." },
         { q: "Do we need to replace our HR system?", a: "No. QuestPulse is not a standalone HR system. It is designed to work with established tools and processes." },
         { q: "Where is data stored?", a: "Data is stored within the EEA with role-based access and documented data processing." },
       ],

@@ -16,13 +16,13 @@ export const Route = createFileRoute("/en/")({
       {
         name: "description",
         content:
-          "QuestPulse gives HR and leadership continuous insight into what is developing across the organisation, making it easier to prioritise the right actions.",
+          "QuestPulse turns continuous signals from teams, leaders and business units into a shared basis for decisions across HR and leadership.",
       },
       { property: "og:title", content: "QuestPulse | People Intelligence" },
       { property: "og:site_name", content: "QuestPulse" },
       {
         property: "og:description",
-        content: "See it earlier. Do more of what works. People Intelligence for Nordic organisations.",
+        content: "From scattered signals to a shared basis for decisions. People Intelligence for Nordic organisations.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en" },

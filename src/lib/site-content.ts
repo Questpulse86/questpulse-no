@@ -66,7 +66,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
     brand: {
       name: "QuestPulse",
       category: "People Intelligence",
-      tagline: "Se det tidligere. Gjør mer av det som virker.",
+      tagline: "Fra spredte signaler til felles beslutningsgrunnlag.",
     },
     nav: {
       how: "Slik fungerer det",
@@ -77,9 +77,9 @@ export const defaultContent: Record<Locale, SiteContent> = {
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Se det tidligere. Gjør mer av det som virker.",
+      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
       short: "Bedre beslutninger om folk og ledelse, mens det fortsatt er tid til å handle.",
-      lead: "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
+      lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
       cta1: "Book kartleggingssamtale",
       cta2: "Slik fungerer det",
     },
@@ -166,7 +166,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
     trust: {
       title: "Bygget for virksomheter med krav til sikkerhet og dokumentasjon",
       items: [
-        { title: "Azure Norway East", text: "Data lagret i Norge" },
+        { title: "Kontrollert databehandling", text: "Dokumentert dataflyt og tilgang" },
         { title: "GDPR artikkel 25", text: "Personvern som arkitektur" },
         { title: "EU-regelverk", text: "Bygget etter relevante prinsipper" },
         { title: "SSO", text: "Avklart tilgangsstyring" },
@@ -205,7 +205,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send henvendelse",
       sending: "Sender ...",
       success: "Takk. Vi har mottatt henvendelsen og tar kontakt.",
-      error: "Noe gikk galt. Prøv igjen, eller send e-post til support@questpulse.no.",
+      error: "Noe gikk galt. Prøv igjen, eller send e-post til linda@dchub.no.",
       privacy:
         "Vi bruker opplysningene kun til å følge opp henvendelsen din. Ingen deling med tredjepart.",
     },
@@ -218,7 +218,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
     brand: {
       name: "QuestPulse",
       category: "People Intelligence",
-      tagline: "See it earlier. Act better.",
+      tagline: "From scattered signals to a shared basis for decisions.",
     },
     nav: {
       how: "How it works",
@@ -229,9 +229,9 @@ export const defaultContent: Record<Locale, SiteContent> = {
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Insight into your organisation while there is still time to act",
+      title: "Detect organisational friction, strain and leadership challenges before they escalate.",
       short: "See it earlier. Act better.",
-      lead: "QuestPulse gives HR and leadership continuous insight into what is developing across the organisation, and makes it easier to prioritise the right actions.",
+      lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared basis for decisions across HR, management and executive leadership.",
       cta1: "Book a discovery conversation",
       cta2: "How it works",
     },
@@ -318,7 +318,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
     trust: {
       title: "Built for organisations with real security and documentation requirements",
       items: [
-        { title: "Azure Norway East", text: "Data hosted in Norway" },
+        { title: "Controlled data processing", text: "Documented data flow and access" },
         { title: "GDPR article 25", text: "Privacy by design" },
         { title: "EU regulation", text: "Built around relevant principles" },
         { title: "SSO", text: "Clear access control" },
@@ -357,7 +357,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send enquiry",
       sending: "Sending ...",
       success: "Thank you. We have received your enquiry and will be in touch.",
-      error: "Something went wrong. Please try again, or email support@questpulse.no.",
+      error: "Something went wrong. Please try again, or email linda@dchub.no.",
       privacy: "We use your details only to follow up on your enquiry. No sharing with third parties.",
     },
     footer: {
