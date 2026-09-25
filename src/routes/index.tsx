@@ -83,14 +83,14 @@ export const Route = createFileRoute("/")({
             {
               name: "description",
               content:
-                "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, fra signal til dokumentert effekt.",
+                "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
             },
             { property: "og:title", content: "QuestPulse | People Intelligence" },
             { property: "og:site_name", content: "QuestPulse" },
             {
               property: "og:description",
               content:
-                "People Intelligence for norske virksomheter. Fra signal til dokumentert effekt.",
+                "Se det tidligere. Gjør mer av det som virker. People Intelligence for norske virksomheter.",
             },
             { property: "og:type", content: "website" },
             { property: "og:locale", content: "nb_NO" },
