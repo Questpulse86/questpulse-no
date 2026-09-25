@@ -121,6 +121,23 @@ export const getSecurityStatus = createServerFn({ method: "GET" })
     return data as SecurityStatus;
   });
 
+export const analyzeSecurityIncident = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: { description: string }) => {
+    const d = String(input?.description ?? "").trim();
+    if (d.length < 20 || d.length > 5000) throw new Error("Beskrivelsen må være mellom 20 og 5000 tegn.");
+    return { description: d };
+  })
+  .handler(async ({ data, context }) => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    if (!isAdmin) throw new Error("Forbidden");
+    const { analyzeIncident } = await import("@/lib/incident.server");
+    return analyzeIncident(data.description);
+  });
+
 export const saveSiteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => contentSaveSchema.parse(input))

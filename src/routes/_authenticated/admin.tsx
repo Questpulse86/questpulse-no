@@ -4,6 +4,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
+import { IncidentAdvisor } from "@/components/admin/IncidentAdvisor";
 import { SecurityPanel } from "@/components/admin/SecurityPanel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,7 +48,7 @@ function AdminPage() {
   const fetchOverview = useServerFn(getAdminOverview);
   const save = useServerFn(saveSiteContent);
   const [locale, setLocale] = useState<Locale>("no");
-  const [tab, setTab] = useState<"content" | "leads" | "audit" | "security">("content");
+  const [tab, setTab] = useState<"content" | "leads" | "audit" | "security" | "incident">("content");
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
@@ -140,6 +141,14 @@ function AdminPage() {
             >
               Sikkerhet
             </Button>
+            <Button
+              size="sm"
+              variant={tab === "incident" ? "default" : "outline"}
+              onClick={() => setTab("incident")}
+            >
+              Avvik
+            </Button>
+
 
 
             <Button size="sm" variant="ghost" onClick={signOut}>
@@ -240,6 +249,8 @@ function AdminPage() {
           </div>
         ) : tab === "security" ? (
           <SecurityPanel />
+        ) : tab === "incident" ? (
+          <IncidentAdvisor />
         ) : (
           <AuditTable rows={overview.data.audit} />
         )}
