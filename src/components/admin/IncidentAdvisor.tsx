@@ -65,7 +65,7 @@ export function IncidentAdvisor() {
         <section className="rounded-md border border-border bg-card p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-lg">Foreslåtte tiltak</h2>
-            <span className={`rounded px-2 py-1 text-xs uppercase ${PRIORITY_STYLE[advice.severity] ?? PRIORITY_STYLE.lav}`}>
+            <span className={`rounded px-2 py-1 text-xs uppercase ${PRIORITY_STYLE[advice.severity] ?? PRIORITY_STYLE["lav"]}`}>
               Alvorlighet: {advice.severity}
             </span>
           </div>
@@ -85,7 +85,7 @@ export function IncidentAdvisor() {
                   />
                   <div className={done[i] ? "opacity-60" : ""}>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className={`rounded px-2 py-0.5 text-xs uppercase ${PRIORITY_STYLE[a.priority] ?? PRIORITY_STYLE.lav}`}>
+                      <span className={`rounded px-2 py-0.5 text-xs uppercase ${PRIORITY_STYLE[a.priority] ?? PRIORITY_STYLE["lav"]}`}>
                         {a.priority}
                       </span>
                       <strong className="text-sm">{a.title}</strong>
