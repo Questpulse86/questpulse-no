@@ -1,6 +1,7 @@
-# Veikart
+# Roadmap
 
-- [x] Analysere vedlagt presentasjon og nettsidens produktvisninger
-- [x] Utforme et beslutningsklart pitchdeck for store norske finansinstitusjoner
-- [x] Bygge og kvalitetssikre PowerPoint-filen
-- [x] Legge til og kvalitetssikre en slide om verdi på ulike organisasjonsnivåer
+- [ ] Gjennomgå kanonisk markedstekst og opplastede designplaner
+- [ ] Velge visuell retning for QuestPulse-forsiden
+- [ ] Oppdatere tekst, åpningsfelt, struktur og enterprise-design
+- [ ] Kontrollere norsk og engelsk innhold, mobil og desktop
+- [ ] Kontrollere at ingen sensitiv eller konkurranseutsatt informasjon vises
