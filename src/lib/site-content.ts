@@ -66,7 +66,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
     brand: {
       name: "QuestPulse",
       category: "People Intelligence",
-      tagline: "Se det tidligere. Handle bedre.",
+      tagline: "Se det tidligere. Gjør mer av det som virker.",
     },
     nav: {
       how: "Slik fungerer det",
@@ -77,8 +77,8 @@ export const defaultContent: Record<Locale, SiteContent> = {
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Vi gir arbeidsgivere innsikt i tide",
-      short: "Se det tidligere. Handle bedre.",
+      title: "Se det tidligere. Gjør mer av det som virker.",
+      short: "Bedre beslutninger om folk og ledelse, mens det fortsatt er tid til å handle.",
       lead: "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
       cta1: "Book kartleggingssamtale",
       cta2: "Slik fungerer det",
