@@ -18,6 +18,7 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-evaluering'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
+import { Route as ForskningRouteImport } from './routes/forskning'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
@@ -42,6 +43,7 @@ import { Route as EnHowItWorksRouteImport } from './routes/en.how-it-works'
 import { Route as EnHrAndLeadershipRouteImport } from './routes/en.hr-and-leadership'
 import { Route as EnPartnersRouteImport } from './routes/en.partners'
 import { Route as EnPilotRouteImport } from './routes/en.pilot'
+import { Route as EnResearchRouteImport } from './routes/en.research'
 import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-and-privacy'
 import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
@@ -90,6 +92,11 @@ const ForBankOgFinansRoute = ForBankOgFinansRouteImport.update({
 const ForHrOgLedelseRoute = ForHrOgLedelseRouteImport.update({
   id: '/for-hr-og-ledelse',
   path: '/for-hr-og-ledelse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForskningRoute = ForskningRouteImport.update({
+  id: '/forskning',
+  path: '/forskning',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -214,6 +221,11 @@ const EnPilotRoute = EnPilotRouteImport.update({
   path: '/en/pilot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnResearchRoute = EnResearchRouteImport.update({
+  id: '/en/research',
+  path: '/en/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnSecurityAndPrivacyRoute = EnSecurityAndPrivacyRouteImport.update({
   id: '/en/security-and-privacy',
   path: '/en/security-and-privacy',
@@ -250,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -273,6 +286,7 @@ export interface FileRoutesByFullPath {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
@@ -289,6 +303,7 @@ export interface FileRoutesByTo {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -312,6 +327,7 @@ export interface FileRoutesByTo {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en': typeof EnIndexRoute
@@ -330,6 +346,7 @@ export interface FileRoutesById {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -353,6 +370,7 @@ export interface FileRoutesById {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
@@ -371,6 +389,7 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -394,6 +413,7 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en/'
@@ -410,6 +430,7 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -433,6 +454,7 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en'
@@ -450,6 +472,7 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -473,6 +496,7 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en/'
@@ -491,6 +515,7 @@ export interface RootRouteChildren {
   EnterpriseEvalueringRoute: typeof EnterpriseEvalueringRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
+  ForskningRoute: typeof ForskningRoute
   KontaktRoute: typeof KontaktRoute
   McpRoute: typeof McpRoute
   OmSelskapetRoute: typeof OmSelskapetRoute
@@ -513,6 +538,7 @@ export interface RootRouteChildren {
   EnHrAndLeadershipRoute: typeof EnHrAndLeadershipRoute
   EnPartnersRoute: typeof EnPartnersRoute
   EnPilotRoute: typeof EnPilotRoute
+  EnResearchRoute: typeof EnResearchRoute
   EnSecurityAndPrivacyRoute: typeof EnSecurityAndPrivacyRoute
   EnUseCasesRoute: typeof EnUseCasesRoute
   EnIndexRoute: typeof EnIndexRoute
@@ -584,6 +610,13 @@ declare module '@tanstack/react-router' {
       path: '/for-hr-og-ledelse'
       fullPath: '/for-hr-og-ledelse'
       preLoaderRoute: typeof ForHrOgLedelseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forskning': {
+      id: '/forskning'
+      path: '/forskning'
+      fullPath: '/forskning'
+      preLoaderRoute: typeof ForskningRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -754,6 +787,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnPilotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/research': {
+      id: '/en/research'
+      path: '/en/research'
+      fullPath: '/en/research'
+      preLoaderRoute: typeof EnResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/security-and-privacy': {
       id: '/en/security-and-privacy'
       path: '/en/security-and-privacy'
@@ -813,6 +853,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnterpriseEvalueringRoute: EnterpriseEvalueringRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
+  ForskningRoute: ForskningRoute,
   KontaktRoute: KontaktRoute,
   McpRoute: McpRoute,
   OmSelskapetRoute: OmSelskapetRoute,
@@ -836,6 +877,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnHrAndLeadershipRoute: EnHrAndLeadershipRoute,
   EnPartnersRoute: EnPartnersRoute,
   EnPilotRoute: EnPilotRoute,
+  EnResearchRoute: EnResearchRoute,
   EnSecurityAndPrivacyRoute: EnSecurityAndPrivacyRoute,
   EnUseCasesRoute: EnUseCasesRoute,
   EnIndexRoute: EnIndexRoute,

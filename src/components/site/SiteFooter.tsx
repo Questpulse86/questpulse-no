@@ -34,6 +34,12 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
               {navLabels[locale][key]}
             </Link>
           ))}
+          <Link
+            to={locale === "no" ? "/forskning" : "/en/research"}
+            className="text-navy-foreground/70 transition-colors hover:text-navy-foreground"
+          >
+            {locale === "no" ? "Forskning" : "Research"}
+          </Link>
         </nav>
       </div>
       <div className="mx-auto mt-12 max-w-6xl border-t border-navy-foreground/15 px-5 pt-6">

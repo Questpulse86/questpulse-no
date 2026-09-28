@@ -5,6 +5,8 @@ import { pagePaths } from "@/lib/page-content";
 const questpulsePaths = [
   "/",
   "/en",
+  "/forskning",
+  "/en/research",
   ...Object.values(pagePaths).flatMap((entry) => [entry.no, entry.en]),
 ];
 
