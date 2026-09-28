@@ -15,7 +15,7 @@ export function SiteHeader({
 }: {
   locale: Locale;
   content: SiteContent;
-  altHref: "/" | "/en" | (typeof pagePaths)[keyof typeof pagePaths][Locale];
+  altHref: "/" | "/en" | (typeof pagePaths)[keyof typeof pagePaths][Locale] | "/forskning" | "/en/research";
   theme?: "light" | "dark";
 }) {
   const other: Locale = locale === "no" ? "en" : "no";
