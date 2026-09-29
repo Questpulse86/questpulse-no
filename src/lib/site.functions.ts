@@ -1,20 +1,31 @@
 import { createServerFn } from "@tanstack/react-start";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { mergeContent, type Locale, type SiteContent } from "@/lib/site-content";
+import { defaultContent, mergeContent, type Locale, type SiteContent } from "@/lib/site-content";
 import { contentSaveSchema, leadSchema, localeSchema } from "@/lib/site-schemas";
 
 export const getSiteContent = createServerFn({ method: "GET" })
   .inputValidator((input: { locale: Locale }) => ({ locale: localeSchema.parse(input.locale) }))
   .handler(async ({ data }): Promise<SiteContent> => {
-    const { createPublicClient } = await import("@/lib/supabase-public.server");
-    const supabase = createPublicClient();
-    const { data: row } = await supabase
-      .from("site_content")
-      .select("data")
-      .eq("locale", data.locale)
-      .maybeSingle();
-    return mergeContent(data.locale, row?.data ?? null);
+    try {
+      const { createPublicClient } = await import("@/lib/supabase-public.server");
+      const supabase = createPublicClient();
+      const { data: row, error } = await supabase
+        .from("site_content")
+        .select("data")
+        .eq("locale", data.locale)
+        .maybeSingle();
+
+      if (error) {
+        console.error("Public site content lookup failed", error);
+        return defaultContent[data.locale];
+      }
+
+      return mergeContent(data.locale, row?.data ?? null);
+    } catch (error) {
+      console.error("Public site content fallback used", error);
+      return defaultContent[data.locale];
+    }
   });
 
 export const submitLead = createServerFn({ method: "POST" })
@@ -79,6 +90,52 @@ export const getAdminOverview = createServerFn({ method: "GET" })
       audit: audit ?? [],
     };
 
+  });
+
+export type SecurityStatus = {
+  tables: { name: string; rls_enabled: boolean; policies: number; open_policies: number }[];
+  buckets: { name: string; public: boolean; policies: number }[];
+  leads: {
+    client_write_policies: number;
+    client_write_grants: number;
+    total_30d: number;
+    hubspot_failed_30d: number;
+    last_insert: string | null;
+  };
+  checked_at: string;
+};
+
+export const getSecurityStatus = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<SecurityStatus> => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    if (!isAdmin) throw new Error("Forbidden");
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await (supabaseAdmin.rpc as unknown as (
+      fn: string,
+    ) => Promise<{ data: unknown; error: { message: string } | null }>)("security_status");
+    if (error) throw new Error(error.message);
+    return data as SecurityStatus;
+  });
+
+export const analyzeSecurityIncident = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: { description: string }) => {
+    const d = String(input?.description ?? "").trim();
+    if (d.length < 20 || d.length > 5000) throw new Error("Beskrivelsen må være mellom 20 og 5000 tegn.");
+    return { description: d };
+  })
+  .handler(async ({ data, context }) => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    if (!isAdmin) throw new Error("Forbidden");
+    const { analyzeIncident } = await import("@/lib/incident.server");
+    return analyzeIncident(data.description);
   });
 
 export const saveSiteContent = createServerFn({ method: "POST" })

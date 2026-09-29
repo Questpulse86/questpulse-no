@@ -13,7 +13,7 @@ export type PageSection =
       items: PageItem[];
     }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
-  | { kind: "contact"; eyebrow?: string; title: string; lead?: string }
+  | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
 
@@ -91,69 +91,106 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
   no: {
     about: {
       meta: {
-        title: "Om QuestPulse | People Intelligence fra Digital Coach Hub",
+        title: "Om QuestPulse | People Intelligence-infrastruktur",
         description:
-          "QuestPulse utvikles av Digital Coach Hub AS. Les om hvem vi er, bakgrunnen vår og visjonen om at arbeidsgivere skal se utviklingen i organisasjonen i tide.",
+          "QuestPulse kobler lederhandling til organisatorisk effekt over tid, slik at HR og ledelsen ser hva som utvikler seg mens det fortsatt er tid til å handle.",
       },
       hero: {
         eyebrow: "Om selskapet",
-        title: "Vi bygger innsikten ledelsen mangler om egen organisasjon",
-        lead: "QuestPulse utvikles av Digital Coach Hub AS. Vi kombinerer erfaring fra ledelse, HR-utvikling og teknologi for å gjøre organisatorisk risiko like synlig som økonomisk risiko.",
+        title: "People Intelligence-infrastruktur for beslutninger som virker",
+        lead: "QuestPulse er People Intelligence-infrastruktur. Vi kobler lederhandling til organisatorisk effekt over tid, og gir HR og ledelsen løpende innsikt i hva som faktisk utvikler seg i organisasjonen, mens det fortsatt er tid til å handle.",
       },
       sections: [
         {
           kind: "prose",
-          eyebrow: "Bakgrunn",
-          title: "Fra coaching og lederutvikling til løpende innsikt",
+          eyebrow: "Utgangspunktet",
+          title: "Et hull i måten virksomheter styres på",
           paragraphs: [
-            "Digital Coach Hub har arbeidet tett på ledere og HR-miljøer i norske virksomheter. Mønsteret gjentok seg: utfordringene var kjent lenge før de ble målt, men det fantes ikke et system som fanget signalene tidsnok til at noen kunne handle.",
-            "QuestPulse er svaret på det. I stedet for enda en årlig undersøkelse gir vi virksomheten et løpende bilde av hva som utvikler seg, i verktøyene folk allerede bruker.",
+            "Innsikten kommer for sent. Tradisjonelle undersøkelser gir øyeblikksbilder, og mellom målepunktene skjer det som betyr mest: belastning bygger seg opp, friksjon setter seg i team, oppfølging glipper, og gode mønstre forsvinner uten at noen forstår hvorfor de virket.",
+            "Ledelsen ser konsekvensene i sykefravær, stille oppsigelser og lederslitasje, lenge etter at signalene var der.",
           ],
         },
         {
           kind: "cards",
-          eyebrow: "Teamet",
-          title: "Hvem som står bak QuestPulse",
+          eyebrow: "Hva vi gjør",
+          title: "Fra tidlige signaler til dokumentert effekt",
           items: [
             {
-              title: "Linda Karlsen, CEO og gründer",
-              text: "Rundt 20 års erfaring fra salg, ledelse og forretningsutvikling.",
+              title: "Signalene blir synlige tidligere",
+              text: "QuestPulse løfter fram både utfordringer og det som fungerer, mens ledelsen fortsatt har handlingsrom.",
             },
             {
-              title: "Thomas Ryste, COO",
-              text: "Ansvar for drift, økonomi og kommersielle avtaler.",
+              title: "Ledere får grunnlag for oppfølging",
+              text: "Løsningen gir ledere et konkret grunnlag for handling og hjelper HR å prioritere innsatsen der den betyr mest.",
             },
             {
-              title: "Eivind Teig, CTO",
-              text: "Ansvar for produkt, sikkerhet, datamodeller og personvernarkitektur.",
+              title: "Effekt følges over tid",
+              text: "Der andre stopper ved å lytte, går vi videre til kausalitet: hva ble gjort, hva skjedde etterpå, og hva bør forsterkes.",
             },
           ],
         },
-
         {
           kind: "dark",
-          eyebrow: "Visjon",
-          title: "At ingen ledelse skal oppdage utfordringen for sent",
+          eyebrow: "Personvern og etterlevelse",
+          title: "Personvern er arkitektur, ikke en policy",
           items: [
             {
-              title: "Innsikt i tide",
-              text: "Signalene skal være synlige mens handlingsrommet fortsatt er stort, ikke når oppsigelsen er levert.",
+              title: "Verdi for ansatte",
+              text: "Ansatte bruker QuestPulse fordi det hjelper dem, ikke fordi de blir målt. Det er grunnen til at dataene er ekte.",
             },
             {
-              title: "Trygghet for den ansatte",
-              text: "Innsikt skal aldri gå på bekostning av personvern. Individuelle svar deles ikke.",
+              title: "Tåler kontroll",
+              text: "Løsningen er bygget for å tåle tillitsvalgte, revisjon og regulatorisk kontroll.",
             },
             {
-              title: "Dokumentert effekt",
-              text: "Virksomheten skal kunne vise hva den gjorde, hvorfor, og hva som faktisk virket.",
+              title: "Dokumentert plikt",
+              text: "Arbeidsmiljøloven krever risikobasert og løpende kontroll av det psykososiale arbeidsmiljøet, med dokumentasjon på kartlegging, tiltak og effekt.",
             },
+          ],
+        },
+        {
+          kind: "prose",
+          eyebrow: "Marked og kjøpere",
+          title: "Bygget i norsk arbeidsliv først",
+          paragraphs: [
+            "Vi bygger i norsk arbeidsliv først, med kunnskapsintensive virksomheter i bank, finans, rådgivning og industri som første marked. Korte beslutningsveier, høye krav til etterlevelse og sterk referanseverdi inn i Norden.",
+            "Kjøperne er CEO og toppledelse som trenger tidlig varsling og bedre beslutningsgrunnlag, HR- og People-ledere som trenger oversikt og prioritering, og ledere som trenger å vite hva de skal gjøre på mandag.",
+          ],
+        },
+        {
+          kind: "cards",
+          eyebrow: "Avgrensning",
+          title: "Hva QuestPulse ikke er",
+          items: [
+            {
+              title: "Et eget styringslag",
+              text: "QuestPulse fyller gapet mellom de faste målepunktene og kobler løpende signaler til lederhandling og læring over tid.",
+            },
+            {
+              title: "Ikke en digital veileder",
+              text: "Vi erstatter ikke HR eller ledere. Vi gir dem grunnlaget de mangler.",
+            },
+            {
+              title: "Ikke mer prosess",
+              text: "Verdien ligger i bedre beslutningsgrunnlag, tydeligere prioritering og oppfølging av faktisk effekt.",
+            },
+          ],
+        },
+        {
+          kind: "prose",
+          eyebrow: "Selskapet",
+          title: "Levert av Digital Coach Hub AS",
+          paragraphs: [
+            "Teamet er tre personer med komplementær kompetanse og ett felles utgangspunkt: vi har alle kjent på hva det koster at organisasjoner ikke ser det som bygger seg opp.",
+            "Tonen vår er rolig, presis og beslutningsnær. Troverdighet er valutaen vår.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Ta kontakt",
           title: "Vil du vite mer om selskapet?",
-          lead: "Send oss noen ord om hva dere lurer på, så tar vi kontakt.",
+          form: "direct",
+          lead: "Book en kartleggingssamtale, så tar vi en konkret vurdering av hva QuestPulse kan bety for deres virksomhet.",
         },
       ],
     },
@@ -220,7 +257,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for bank og finans | Compliance og kontroll",
         description:
-          "Bank og finans er vårt første bevismarked. Løpende kontroll av det psykososiale arbeidsmiljøet, dokumentasjon til styre og tilsyn, og en aktiv pilot.",
+          "QuestPulse gir regulerte virksomheter bedre grunnlag for løpende oppfølging av psykososialt arbeidsmiljø, dokumentasjon til styre og tilsyn og mer presise prioriteringer.",
       },
       hero: {
         eyebrow: "Bank og finans",
@@ -256,7 +293,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data i Norge",
-              text: "Drift på Azure Norway East, med databehandleravtale og tydelig ansvarsfordeling.",
+              text: "Dokumentert dataflyt, databehandleravtale og tydelig ansvarsfordeling.",
             },
             {
               title: "Avklart tilgangsstyring",
@@ -264,7 +301,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Personvern som arkitektur",
-              text: "GDPR artikkel 25 og prinsippene i EU AI Act er lagt til grunn i designet, ikke lagt på i etterkant.",
+              text: "GDPR artikkel 25 og relevante prinsipper for ansvarlig automatisert analyse er lagt til grunn i designet, ikke lagt på i etterkant.",
             },
             {
               title: "Sporbarhet",
@@ -274,18 +311,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
         {
           kind: "prose",
-          eyebrow: "Aktiv pilot",
-          title: "Piloten dokumenterer bruk, innsikt og handling",
+          eyebrow: "Kontrollert evaluering",
+          title: "Evalueringsløpet dokumenterer bruk, innsikt og handling",
           paragraphs: [
-            "Vi har en aktiv pilot i finanssektoren. Piloten dokumenterer faktisk bruk, hvilken innsikt som oppstår, hvilke handlinger den utløser og hva som skjer videre.",
-            "Pilotkunder omtales aldri ved navn på våre offentlige flater. Referanser deles kun etter avtale, direkte i dialog.",
+            "Et evalueringsløp avklares med tydelige rammer for omfang, personvern, beslutningskriterier og forventet egeninnsats før oppstart.",
+            "Referanser og kundecaser deles kun etter avtale, direkte i dialog.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Neste steg",
           title: "Ta en kartleggingssamtale",
-          lead: "Vi starter med hvordan dere følger utviklingen i organisasjonen i dag, ikke med en demo.",
+          lead: "Vi starter med hvordan dere følger utviklingen i organisasjonen i dag, ikke med en produktpresentasjon.",
         },
       ],
     },
@@ -359,7 +396,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Salg og pilot",
-              text: "hei@questpulse.no. Velg Demo eller Pilot i skjemaet for raskest oppfølging.",
+              text: "linda@dchub.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
             },
             {
               title: "Partnerskap",
@@ -367,7 +404,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Personvern",
-              text: "Spørsmål om behandling av personopplysninger rettes til hei@questpulse.no. Tekniske spørsmål går til support@questpulse.no.",
+              text: "Spørsmål om behandling av personopplysninger og tekniske forhold rettes til linda@dchub.no.",
             },
           ],
         },
@@ -396,7 +433,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Dataflyt og datalokasjon",
-              text: "Data lagres og behandles innenfor EØS, på Azure Norway East. Dataflyten fra innsamling til aggregert innsikt er dokumentert per miljø.",
+              text: "Datalokasjon bekreftes i avtalegrunnlaget før oppstart. Dataflyten fra innsamling til aggregert innsikt dokumenteres per miljø.",
             },
             {
               title: "Tilgangsstyring",
@@ -436,7 +473,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Kontaktpunkt for sikkerhet",
-              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til linda@dchub.no.",
             },
           ],
         },
@@ -606,69 +643,106 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
   en: {
     about: {
       meta: {
-        title: "About QuestPulse | People Intelligence by Digital Coach Hub",
+        title: "About QuestPulse | People Intelligence infrastructure",
         description:
-          "QuestPulse is built by Digital Coach Hub AS. Read about who we are, our background, and our vision of employers seeing organisational change in time.",
+          "QuestPulse connects leadership action to organisational effect over time, giving HR and leadership continuous insight while there is still time to act.",
       },
       hero: {
-        eyebrow: "About us",
-        title: "We build the insight leadership is missing about its own organisation",
-        lead: "QuestPulse is built by Digital Coach Hub AS. We combine experience from leadership, HR development and technology to make organisational risk as visible as financial risk.",
+        eyebrow: "About QuestPulse",
+        title: "People Intelligence infrastructure for decisions that work",
+        lead: "QuestPulse is People Intelligence infrastructure. We connect leadership action to organisational effect over time, giving HR and leadership continuous insight into what is actually developing inside the organisation while there is still time to act.",
       },
       sections: [
         {
           kind: "prose",
-          eyebrow: "Background",
-          title: "From coaching and leadership development to continuous insight",
+          eyebrow: "The starting point",
+          title: "A gap in the way organisations are managed",
           paragraphs: [
-            "Digital Coach Hub has worked closely with leaders and HR teams in Nordic organisations. The pattern repeated itself: the challenges were known long before they were measured, but no system captured the signals early enough for anyone to act.",
-            "QuestPulse is the answer to that. Instead of another annual survey, we give the organisation a continuous picture of what is developing, inside the tools people already use.",
+            "Insight arrives too late. Periodic measurements provide snapshots, and between measurement points the things that matter most are already happening: workload builds, friction settles into teams, follow-up slips, and strong patterns disappear without anyone understanding why they worked.",
+            "Leadership sees the consequences in sickness absence, quiet quitting and leadership strain, long after the signals were already there.",
           ],
         },
         {
           kind: "cards",
-          eyebrow: "The team",
-          title: "Who is behind QuestPulse",
+          eyebrow: "What we do",
+          title: "From early signals to documented effect",
           items: [
             {
-              title: "Linda Karlsen, CEO and founder",
-              text: "Around 20 years of experience from sales, leadership and business development.",
+              title: "Signals become visible earlier",
+              text: "QuestPulse brings forward both challenges and what is working, while leadership still has room to act.",
             },
             {
-              title: "Thomas Ryste, COO",
-              text: "Responsible for operations, finance and commercial agreements.",
+              title: "Leaders get a basis for follow-up",
+              text: "The solution gives leaders a concrete basis for action and helps HR prioritise effort where it matters most.",
             },
             {
-              title: "Eivind Teig, CTO",
-              text: "Responsible for product, security, data models and privacy architecture.",
+              title: "Effect is followed over time",
+              text: "Where others stop at listening, we continue to causality: what was done, what happened afterwards, and what should be reinforced.",
             },
           ],
         },
-
         {
           kind: "dark",
-          eyebrow: "Vision",
-          title: "No leadership team should discover the problem too late",
+          eyebrow: "Privacy and compliance",
+          title: "Privacy is architecture, not a policy",
           items: [
             {
-              title: "Insight in time",
-              text: "Signals should be visible while there is still room to act, not once the resignation has been handed in.",
+              title: "Value for employees",
+              text: "Employees use QuestPulse because it helps them, not because they are being measured. That is why the data is real.",
             },
             {
-              title: "Safety for the employee",
-              text: "Insight must never come at the cost of privacy. Individual answers are never shared.",
+              title: "Built for scrutiny",
+              text: "The solution is built to stand up to employee representatives, audits and regulatory scrutiny.",
             },
             {
-              title: "Documented effect",
-              text: "The organisation should be able to show what it did, why, and what actually worked.",
+              title: "Documented duty",
+              text: "Norwegian working environment rules require risk-based and continuous control of the psychosocial working environment, with documentation of mapping, actions and effect.",
             },
+          ],
+        },
+        {
+          kind: "prose",
+          eyebrow: "Market and buyers",
+          title: "Built in Norwegian working life first",
+          paragraphs: [
+            "We are building first in Norwegian working life, with knowledge-intensive organisations in banking, finance, advisory and industry as the first market. Short decision paths, high compliance expectations and strong reference value into the Nordics.",
+            "The buyers are CEOs and executive teams who need early warning and a stronger basis for decisions, HR and People leaders who need overview and prioritisation, and leaders who need to know what to do on Monday.",
+          ],
+        },
+        {
+          kind: "cards",
+          eyebrow: "Definition",
+          title: "What QuestPulse is not",
+          items: [
+            {
+              title: "A distinct management layer",
+              text: "QuestPulse fills the gap between fixed measurement points and connects continuous signals to leadership action and learning over time.",
+            },
+            {
+              title: "Not a digital adviser",
+              text: "We do not replace HR or leaders. We give them the foundation they are missing.",
+            },
+            {
+              title: "Not more process",
+              text: "The value is a better basis for decisions, clearer prioritisation and follow-up of actual effect.",
+            },
+          ],
+        },
+        {
+          kind: "prose",
+          eyebrow: "The company",
+          title: "Delivered by Digital Coach Hub AS",
+          paragraphs: [
+            "The team consists of three people with complementary expertise and one shared starting point: we all know what it costs when organisations fail to see what is building up.",
+            "Our tone is calm, precise and close to decision-making. Credibility is our currency.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Get in touch",
-          title: "Want to know more about us?",
-          lead: "Send us a few words about what you are wondering, and we will get back to you.",
+          title: "Want to know more about the company?",
+          form: "direct",
+          lead: "Book a discovery conversation, and we will make a concrete assessment of what QuestPulse could mean for your organisation.",
         },
       ],
     },
@@ -735,7 +809,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for banking and finance | Compliance and control",
         description:
-          "Banking and finance is our first proof market: continuous control of the psychosocial working environment, documentation for boards and regulators, and an active pilot.",
+          "QuestPulse gives regulated organisations a stronger basis for continuous follow-up of the psychosocial working environment, documentation for boards and regulators, and more precise prioritisation.",
       },
       hero: {
         eyebrow: "Banking and finance",
@@ -751,7 +825,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Continuous follow-up",
-              text: "Risk-based follow-up through the whole year, not only at the annual survey.",
+              text: "Risk-based follow-up throughout the year, not only at fixed measurement points.",
             },
             {
               title: "Systematic HSE work",
@@ -771,7 +845,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Data in Norway",
-              text: "Operated on Azure Norway East, with a data processing agreement and clear division of responsibility.",
+              text: "Documented data flow, a data processing agreement and a clear division of responsibility.",
             },
             {
               title: "Controlled access",
@@ -779,7 +853,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Privacy by architecture",
-              text: "GDPR article 25 and the principles of the EU AI Act are built into the design, not added afterwards.",
+              text: "GDPR article 25 and relevant principles for responsible automated analysis are built into the design, not added afterwards.",
             },
             {
               title: "Traceability",
@@ -789,18 +863,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
         {
           kind: "prose",
-          eyebrow: "Active pilot",
-          title: "The pilot documents use, insight and action",
+          eyebrow: "Controlled evaluation",
+          title: "The evaluation documents use, insight and action",
           paragraphs: [
-            "We have an active pilot in the financial sector. It documents actual usage, the insight that emerges, the actions it triggers and what happens next.",
-            "Pilot customers are never named on our public surfaces. References are shared only by agreement, directly in dialogue.",
+            "An evaluation track is agreed with clear boundaries for scope, privacy, decision criteria and expected internal effort before start.",
+            "References and customer cases are shared only by agreement, directly in dialogue.",
           ],
         },
         {
           kind: "contact",
           eyebrow: "Next step",
           title: "Book a discovery call",
-          lead: "We start with how you follow organisational development today, not with a demo.",
+          lead: "We start with how you follow organisational development today, not with a product presentation.",
         },
       ],
     },
@@ -808,7 +882,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       meta: {
         title: "QuestPulse for HR and leadership | Value per role",
         description:
-          "What QuestPulse gives HR, leaders, executives and boards: better overview between surveys, support for prioritisation and a clearer basis for decisions.",
+          "What QuestPulse gives HR, leaders, executives and boards: better overview between measurement points, support for prioritisation and a clearer basis for decisions.",
       },
       hero: {
         eyebrow: "For HR and leadership",
@@ -875,7 +949,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Sales and pilot",
-              text: "hei@questpulse.no. Choose Demo or Pilot in the form for the fastest response.",
+              text: "linda@dchub.no. Choose Discovery conversation in the form for the fastest response.",
             },
             {
               title: "Partnerships",
@@ -883,7 +957,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Privacy",
-              text: "Questions about processing of personal data go to hei@questpulse.no. Technical questions go to support@questpulse.no.",
+              text: "Questions about personal data processing and technical matters go to linda@dchub.no.",
             },
           ],
         },
@@ -912,7 +986,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Data flow and data location",
-              text: "Data is stored and processed within the EEA, on Azure Norway East. Data flow from collection to aggregated insight is documented per environment.",
+              text: "Data location is confirmed in the contractual documentation before implementation. Data flow from collection to aggregated insight is documented for each environment.",
             },
             {
               title: "Access control",
@@ -952,7 +1026,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Security contact point",
-              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
+              text: "Security enquiries, vulnerability reports and documentation requests go to linda@dchub.no.",
             },
           ],
         },

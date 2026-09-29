@@ -15,7 +15,7 @@ export default defineTool({
       .string()
       .trim()
       .optional()
-      .describe("Optional filter on inquiry type, e.g. 'demo' or 'pilot'."),
+      .describe("Optional filter on inquiry type, e.g. 'kartlegging', 'evaluering' or 'partner'."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ limit, inquiryType }, ctx) => {

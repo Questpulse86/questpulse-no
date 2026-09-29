@@ -6,9 +6,12 @@ export const HUBSPOT_REGION = "eu1";
 /** Digital Coach Hub: «Kontakt oss»-skjema i HubSpot. */
 export const DCH_FORM_ID = "1e06e913-4a73-4088-b1bf-b18c49856ffa";
 
-/** QuestPulse: delt lenke til «Kontakt oss for demo»-skjemaet i HubSpot. */
+/** QuestPulse: delt lenke til kontaktskjemaet i HubSpot. */
 export const QP_FORM_SHARE_URL =
   "https://2fic2p.share-eu1.hsforms.com/2kMkML_0-RC2Iw0_umTW9Dw";
+
+/** HubSpot-booking brukt som primær handling på QuestPulse og Digital Coach Hub. */
+export const HUBSPOT_BOOKING_URL = "https://meetings-eu1.hubspot.com/linda-karlsen";
 
 const EMBED_SRC = `https://js-${HUBSPOT_REGION}.hsforms.net/forms/embed/${HUBSPOT_PORTAL_ID}.js`;
 

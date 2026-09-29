@@ -4,6 +4,9 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
+import { ContactsPanel } from "@/components/admin/ContactsPanel";
+import { IncidentAdvisor } from "@/components/admin/IncidentAdvisor";
+import { SecurityPanel } from "@/components/admin/SecurityPanel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,7 +49,7 @@ function AdminPage() {
   const fetchOverview = useServerFn(getAdminOverview);
   const save = useServerFn(saveSiteContent);
   const [locale, setLocale] = useState<Locale>("no");
-  const [tab, setTab] = useState<"content" | "leads" | "audit">("content");
+  const [tab, setTab] = useState<"content" | "leads" | "audit" | "security" | "incident" | "contacts">("content");
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
@@ -132,6 +135,30 @@ function AdminPage() {
             >
               Agentlogg ({overview.data.audit.length})
             </Button>
+            <Button
+              size="sm"
+              variant={tab === "security" ? "default" : "outline"}
+              onClick={() => setTab("security")}
+            >
+              Sikkerhet
+            </Button>
+            <Button
+              size="sm"
+              variant={tab === "incident" ? "default" : "outline"}
+              onClick={() => setTab("incident")}
+            >
+              Avvik
+            </Button>
+            <Button
+              size="sm"
+              variant={tab === "contacts" ? "default" : "outline"}
+              onClick={() => setTab("contacts")}
+            >
+              Kunder og booking
+            </Button>
+
+
+
 
             <Button size="sm" variant="ghost" onClick={signOut}>
               Logg ut
@@ -141,7 +168,9 @@ function AdminPage() {
       </header>
 
       <main className="mx-auto max-w-5xl px-5 py-10">
-        {tab === "content" ? (
+        {tab === "contacts" ? (
+          <ContactsPanel />
+        ) : tab === "content" ? (
           <>
             <div className="sticky top-0 z-10 -mx-5 mb-8 flex flex-wrap items-center justify-between gap-3 bg-background/95 px-5 py-3 backdrop-blur">
               <div className="flex gap-2">
@@ -229,6 +258,10 @@ function AdminPage() {
               </tbody>
             </table>
           </div>
+        ) : tab === "security" ? (
+          <SecurityPanel />
+        ) : tab === "incident" ? (
+          <IncidentAdvisor />
         ) : (
           <AuditTable rows={overview.data.audit} />
         )}

@@ -12,17 +12,17 @@ const contentQuery = queryOptions({
 export const Route = createFileRoute("/en/")({
   head: () => ({
     meta: [
-      { title: "QuestPulse | Continuous insight into your organisation" },
+      { title: "QuestPulse | People Intelligence" },
       {
         name: "description",
         content:
-          "QuestPulse gives HR and leadership continuous insight into what is developing across the organisation, and makes it easier to prioritise the right actions.",
+          "QuestPulse turns continuous signals from teams, leaders and business units into a shared basis for decisions across HR and leadership.",
       },
-      { property: "og:title", content: "QuestPulse | Continuous insight into your organisation" },
+      { property: "og:title", content: "QuestPulse | People Intelligence" },
       { property: "og:site_name", content: "QuestPulse" },
       {
         property: "og:description",
-        content: "People Intelligence for Nordic organisations. See it earlier. Act better.",
+        content: "From scattered signals to a shared basis for decisions. People Intelligence for Nordic organisations.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en" },

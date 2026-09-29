@@ -5,6 +5,8 @@ import { pagePaths } from "@/lib/page-content";
 const questpulsePaths = [
   "/",
   "/en",
+  "/forskning",
+  "/en/research",
   ...Object.values(pagePaths).flatMap((entry) => [entry.no, entry.en]),
 ];
 
@@ -15,7 +17,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const host = new URL(request.url).host;
         const isDchub = host.includes("digitalcoachub");
         const origin = isDchub ? "https://digitalcoachub.no" : "https://questpulse.no";
-        const paths = isDchub ? ["/"] : questpulsePaths;
+        const paths = isDchub ? ["/", "/en", "/personvern", "/en/privacy"] : questpulsePaths;
 
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

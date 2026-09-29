@@ -15,5 +15,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [mcpPlugin()],
+    server: { allowedHosts: ["digitalcoachub.no", "www.digitalcoachub.no", "questpulse.no"] },
   },
 });

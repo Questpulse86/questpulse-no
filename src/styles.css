@@ -516,7 +516,7 @@
   }
 }
 
-/* Demo: signalfarger for risikonivå (kun i QuestPulse-demoen) */
+/* Produktvisning: signalfarger for risikonivå */
 :root {
   --signal-low: var(--teal-deep);
   --signal-low-soft: oklch(0.9337 0.0298 186.27);
@@ -548,4 +548,74 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in,
   .animate-scale-in { animation: none; }
+}
+
+/* QuestPulse-forside: mørk beslutningsflate */
+.qp-grid-bg {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+.qp-product-shell {
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--navy-foreground) 14%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--navy) 93%, var(--teal));
+  box-shadow: 0 24px 80px color-mix(in oklab, var(--navy) 42%, transparent);
+  color: var(--navy-foreground);
+}
+
+.qp-hero-preview {
+  position: relative;
+}
+
+.qp-hero-preview::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  content: "";
+  border-radius: calc(var(--radius) + 2px);
+  background: linear-gradient(135deg, color-mix(in oklab, var(--teal) 60%, transparent), transparent 42%);
+}
+
+.qp-preview-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.25rem;
+  padding: 0 0.65rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: color-mix(in oklab, var(--navy-foreground) 42%, transparent);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.qp-preview-nav span {
+  color: var(--teal);
+  font-family: var(--font-display);
+}
+
+.qp-preview-nav-active {
+  background: color-mix(in oklab, var(--teal) 12%, transparent);
+  color: var(--navy-foreground);
+}
+
+@keyframes qp-preview-rise {
+  from { transform: scaleY(0.15); opacity: 0.25; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+.qp-preview-bar {
+  min-width: 0.35rem;
+  transform-origin: bottom;
+  border-radius: 2px 2px 0 0;
+  background: color-mix(in oklab, var(--teal) 78%, var(--navy-foreground));
+  animation: qp-preview-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qp-preview-bar { animation: none; }
 }

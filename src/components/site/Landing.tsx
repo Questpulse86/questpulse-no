@@ -1,452 +1,415 @@
 import { Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BarChart3,
+  Check,
+  ChevronRight,
+  Eye,
+  Layers3,
+  LockKeyhole,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 
-import { HubSpotShareForm, QP_FORM_SHARE_URL } from "@/components/site/HubSpotForm";
-import { QpWave } from "@/components/site/QpWave";
+import {
+  HUBSPOT_BOOKING_URL,
+  HubSpotShareForm,
+  QP_FORM_SHARE_URL,
+} from "@/components/site/HubSpotForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { pagePaths } from "@/lib/page-content";
 import type { Locale, SiteContent } from "@/lib/site-content";
 
-type Copy = {
-  hero: { eyebrow: string; title: string; lead: string; cta1: string; cta2: string };
-  problem: { eyebrow: string; title: string; body: string };
-  flow: { eyebrow: string; title: string; lead: string; steps: string[] };
-  usecases: {
+type HomeCopy = {
+  hero: { eyebrow: string; title: string; lead: string; cta: string; secondary: string };
+  signals: { label: string; title: string; status: string; privacy: string }[];
+  value: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[] };
+  product: {
     eyebrow: string;
     title: string;
     lead: string;
-    items: { title: string; text: string }[];
-    link: string;
+    flow: string[];
+    insightTitle: string;
+    insightBody: string;
+    actionTitle: string;
+    actionBody: string;
+    example: string;
   };
-  roles: {
-    eyebrow: string;
-    title: string;
-    items: { title: string; text: string }[];
-  };
-  product: { eyebrow: string; title: string; lead: string; stages: string[]; note: string };
-  trust: { eyebrow: string; title: string; items: string[]; link: string };
-  cta: { title: string; text: string; button: string };
+  roles: { eyebrow: string; title: string; items: { title: string; text: string }[] };
+  trust: { eyebrow: string; title: string; lead: string; items: string[]; link: string };
+  faq: { eyebrow: string; title: string; items: { q: string; a: string }[] };
+  cta: { eyebrow: string; title: string; text: string; button: string; email: string };
 };
 
-const copy: Record<Locale, Copy> = {
+const copy: Record<Locale, HomeCopy> = {
   no: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "Organisasjonen varsler lenge før tallene gjør det",
-      lead: "QuestPulse gir ledelsen løpende innsikt i belastning, friksjon og lederhandling, og viser utviklingen fra signal til dokumentert effekt over tid.",
-      cta1: "Be om en strategisk gjennomgang",
-      cta2: "Se hvordan det fungerer",
+      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
+      lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
+      cta: "Book kartleggingssamtale",
+      secondary: "Se hvordan det fungerer",
     },
-    problem: {
-      eyebrow: "Problemet",
-      title: "Virksomheten oppdateres hver dag. Beslutningsgrunnlaget gjør det ikke.",
-      body: "Store virksomheter tar fortsatt viktige beslutninger om mennesker, ledelse og kapasitet på signaler som allerede er utdaterte. Når konsekvensene blir synlige i sykefravær, kompetansetap, konflikter eller svakere leveranser, har handlingsrommet blitt mindre.",
-    },
-    flow: {
-      eyebrow: "Beslutningsflyt",
-      title: "Fra privat refleksjon til dokumentert effekt",
-      lead: "Én sammenhengende flyt, der individet beskyttes og ledelsen får et grunnlag som kan handles på.",
-      steps: [
-        "Privat refleksjon",
-        "Beskyttede, aggregerte signaler",
-        "Prioritert beslutningsgrunnlag",
-        "Lederhandling",
-        "Utvikling og effekt over tid",
-      ],
-    },
-    usecases: {
-      eyebrow: "Bruksområder",
-      title: "Fire beslutninger QuestPulse forbedrer",
-      lead: "Innsikten har verdi der beslutningen er vanskelig og konsekvensen er dyr.",
+    signals: [
+      { label: "Belastning", title: "Utvikling krever oppmerksomhet", status: "Følg opp", privacy: "Aggregert" },
+      { label: "Arbeidsflyt", title: "Gode mønstre holder seg", status: "Forsterk", privacy: "Aggregert" },
+      { label: "Lederhandling", title: "Tiltak kan følges over tid", status: "Dokumentert", privacy: "Sporbart" },
+    ],
+    value: {
+      eyebrow: "Fra spredte signaler til felles beslutningsgrunnlag",
+      title: "Mer enn måling. Mer enn analyse. Mer enn dashboard.",
+      lead: "De fleste virksomheter tar beslutninger om mennesker, ledelse og kapasitet på forsinkede signaler. QuestPulse gjør signalene handlingsbare tidligere.",
       items: [
-        {
-          title: "Omstilling og endring",
-          text: "Forbedrer beslutningen om rekkefølge og tempo, ved å vise hvilke enheter som bærer endringen og hvor kapasiteten svikter først.",
-        },
-        {
-          title: "Ledelseskapasitet",
-          text: "Forbedrer beslutningen om hvor lederstøtte settes inn, ved å vise hvor kontrollspennet er for stort og oppfølgingen for tynn.",
-        },
-        {
-          title: "Belastning og friksjon",
-          text: "Forbedrer beslutningen om ressurser og arbeidsform, ved å skille vedvarende belastning fra normale variasjoner.",
-        },
-        {
-          title: "Psykososial risiko og arbeidsmiljø",
-          text: "Forbedrer beslutningen om hvilke tiltak som iverksettes og dokumenteres, ved å vise risiko som bygger seg opp mellom kartleggingene.",
-        },
-      ],
-      link: "Se alle bruksområder",
-    },
-    roles: {
-      eyebrow: "Verdi for lederroller",
-      title: "Fire innganger til samme underlag",
-      items: [
-        {
-          title: "Konsernledelse og styre",
-          text: "Organisatorisk risiko fremstilt på samme nivå som finansiell risiko, med utvikling over tid og grunnlag for styrebehandling.",
-        },
-        {
-          title: "HR og People",
-          text: "Prioritering mellom enheter, årsak framfor symptom, og dokumentasjon av kartlegging, tiltak og effekt underveis.",
-        },
-        {
-          title: "Ledere",
-          text: "Et tydelig bilde av eget ansvarsområde, med konkrete handlingsvalg og oppfølging av om handlingen traff.",
-        },
-        {
-          title: "Risiko, compliance og HMS",
-          text: "Sporbart beslutningsgrunnlag for systematisk arbeid med det psykososiale arbeidsmiljøet, klart til internkontroll og tilsyn.",
-        },
+        { title: "Oppdag tidligere", text: "Se belastning og friksjon før konsekvensene setter seg i fravær, tap av kompetanse eller svakere leveranser." },
+        { title: "Forsterk det som virker", text: "Gjør gode arbeidsmønstre synlige og gi flere team mulighet til å lære av dem." },
+        { title: "Prioriter med retning", text: "Gi ledere et tydeligere grunnlag for hvor innsatsen bør settes inn først." },
+        { title: "Dokumenter effekten", text: "Følg utviklingen etter et tiltak og se om handlingen faktisk traff." },
       ],
     },
     product: {
-      eyebrow: "Produktvisning",
-      title: "Slik henger systemet sammen",
-      lead: "Et nøkternt bilde av flyten gjennom plattformen. Produktskjermbilder publiseres først når de er godkjent for ekstern bruk.",
-      stages: [
-        "Innsamling i eksisterende arbeidsverktøy",
-        "Aggregering og beskyttelse av individet",
-        "Prioritering per organisatorisk område",
-        "Lederhandling og oppfølging",
-        "Dokumentasjon av effekt",
+      eyebrow: "Beslutningsflaten",
+      title: "Fra det som utvikler seg, til det dere gjør med det",
+      lead: "Ikke flere løsrevne målinger. Ett sammenhengende bilde som gjør det mulig å se, prioritere og følge opp.",
+      flow: ["Signal", "Tolkning", "Risiko", "Anbefaling", "Lederhandling", "Læring over tid"],
+      insightTitle: "Arbeidsflyt fungerer bedre i flere team",
+      insightBody: "Et positivt mønster er stabilt nok til å undersøkes og forsterkes.",
+      actionTitle: "Anbefalt prioritering",
+      actionBody: "Kartlegg hva de beste teamene gjør annerledes før neste ledermøte.",
+      example: "Fiktive eksempeldata",
+    },
+    roles: {
+      eyebrow: "Verdi på hvert nivå",
+      title: "Samme virkelighet. Riktig utsnitt for hver rolle.",
+      items: [
+        { title: "Medarbeider", text: "Et privat rom for refleksjon og egen utvikling. Individuelle svar deles aldri." },
+        { title: "Leder", text: "Et tydelig bilde av eget ansvarsområde og et bedre grunnlag for neste handling." },
+        { title: "HR og People", text: "Prioritering på tvers, utvikling over tid og dokumentasjon av hva som virker." },
+        { title: "Toppledelse og styre", text: "Aggregert organisasjonsinnsikt som kan følges opp sammen med øvrige styringsdata." },
       ],
-      note: "Aggregering skjer før innsikten blir synlig for noen leder. Enkeltsvar deles aldri.",
     },
     trust: {
-      eyebrow: "Tillit",
-      title: "Kontroll er en del av arkitekturen",
+      eyebrow: "Personvern og sikkerhet",
+      title: "Innsikt uten å gjøre mennesker gjennomsiktige",
+      lead: "Data pseudonymiseres, enkeltsvar skjermes og tilgang styres etter rolle. Personvern er en del av arkitekturen fra første signal.",
+      items: ["Pseudonymiserte data", "Aggregert innsikt", "Rollebasert tilgang", "Tydelig eierskapsmodell"],
+      link: "Les om sikkerhet og personvern",
+    },
+    faq: {
+      eyebrow: "Kort fortalt",
+      title: "Det beslutningstakere spør om først",
       items: [
-        "Personvern som arkitektur",
-        "Aggregert innsikt",
-        "Rollebasert tilgang",
-        "Dokumentert databehandling",
+        { q: "Hva skiller QuestPulse fra periodiske målinger?", a: "Periodiske målinger gir øyeblikksbilder. QuestPulse gir et løpende bilde mellom målepunktene og kobler det til hva som faktisk ble gjort." },
+        { q: "Hvordan beskyttes den enkelte?", a: "Ingen i selskapet ser hva den enkelte skriver. Innsikt leveres aggregert med anonymitetsterskler. Det er bygget inn i arkitekturen." },
+        { q: "Må vi bytte HR-system?", a: "Nei. QuestPulse er ikke et frittstående HR-system. Det er laget for å fungere sammen med virksomhetens etablerte arbeidsverktøy og prosesser." },
+        { q: "Hvor lagres dataene?", a: "Data lagres innenfor EØS med rollebasert tilgang og dokumentert databehandling." },
       ],
-      link: "Gå til Trust Center",
     },
     cta: {
-      title: "Hvordan følger dere utviklingen i organisasjonen i dag?",
+      eyebrow: "Neste steg",
+      title: "Hva ville dere sett tidligere med et bedre beslutningsgrunnlag?",
       text: "Vi starter med deres beslutningsbehov, eksisterende prosesser og krav til personvern og sikkerhet.",
-      button: "Be om en strategisk gjennomgang",
+      button: "Book kartleggingssamtale",
+      email: "linda@dchub.no",
     },
   },
   en: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "The organisation signals long before the numbers do",
-      lead: "QuestPulse gives leadership continuous insight into workload, friction and leadership action, and shows the development from signal to documented effect over time.",
-      cta1: "Request a strategic review",
-      cta2: "See how it works",
+      title: "Detect organisational friction, strain and leadership challenges before they escalate.",
+      lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared basis for decisions across HR, management and executive leadership.",
+      cta: "Book a discovery conversation",
+      secondary: "See how it works",
     },
-    problem: {
-      eyebrow: "The problem",
-      title: "The organisation updates every day. The basis for decisions does not.",
-      body: "Large organisations still make important decisions about people, leadership and capacity on signals that are already out of date. By the time consequences appear as absence, loss of expertise, conflict or weaker delivery, the room to act has narrowed.",
-    },
-    flow: {
-      eyebrow: "Decision flow",
-      title: "From private reflection to documented effect",
-      lead: "One connected flow, where the individual is protected and leadership gets a basis it can act on.",
-      steps: [
-        "Private reflection",
-        "Protected, aggregated signals",
-        "Prioritised basis for decisions",
-        "Leadership action",
-        "Development and effect over time",
-      ],
-    },
-    usecases: {
-      eyebrow: "Use cases",
-      title: "Four decisions QuestPulse improves",
-      lead: "The insight matters where the decision is hard and the consequence is expensive.",
+    signals: [
+      { label: "Workload", title: "Development requires attention", status: "Follow up", privacy: "Aggregated" },
+      { label: "Ways of working", title: "Strong patterns are holding", status: "Reinforce", privacy: "Aggregated" },
+      { label: "Leadership action", title: "Actions can be followed over time", status: "Documented", privacy: "Traceable" },
+    ],
+    value: {
+      eyebrow: "From scattered signals to a shared basis for decisions",
+      title: "More than measurement. More than analysis. More than a dashboard.",
+      lead: "Most organisations make decisions about people, leadership and capacity using delayed signals. QuestPulse makes those signals actionable earlier.",
       items: [
-        {
-          title: "Change and restructuring",
-          text: "Improves the decision on sequencing and pace, by showing which units carry the change and where capacity breaks first.",
-        },
-        {
-          title: "Leadership capacity",
-          text: "Improves the decision on where to add leadership support, by showing where span of control is too wide and follow-up too thin.",
-        },
-        {
-          title: "Workload and friction",
-          text: "Improves the decision on resources and ways of working, by separating sustained workload from normal variation.",
-        },
-        {
-          title: "Psychosocial risk and working environment",
-          text: "Improves the decision on which measures to act on and document, by showing risk building up between mappings.",
-        },
-      ],
-      link: "See all use cases",
-    },
-    roles: {
-      eyebrow: "Value for leadership roles",
-      title: "Four entry points to the same basis",
-      items: [
-        {
-          title: "Executive leadership and board",
-          text: "Organisational risk presented at the same level as financial risk, with development over time and a basis for board discussion.",
-        },
-        {
-          title: "HR and People",
-          text: "Prioritisation across units, cause rather than symptom, and documentation of mapping, actions and effect along the way.",
-        },
-        {
-          title: "Leaders",
-          text: "A clear picture of their own area, with concrete choices of action and follow-up on whether the action landed.",
-        },
-        {
-          title: "Risk, compliance and HSE",
-          text: "A traceable basis for systematic work on the psychosocial working environment, ready for internal control and regulators.",
-        },
+        { title: "Detect earlier", text: "See strain and friction before the consequences become absence, lost expertise or weaker delivery." },
+        { title: "Reinforce what works", text: "Make strong working patterns visible and help more teams learn from them." },
+        { title: "Prioritise with direction", text: "Give leaders a clearer basis for deciding where attention matters first." },
+        { title: "Document the effect", text: "Follow development after an action and see whether it addressed the right issue." },
       ],
     },
     product: {
-      eyebrow: "Product view",
-      title: "How the system fits together",
-      lead: "A plain view of the flow through the platform. Product screenshots are published only once approved for external use.",
-      stages: [
-        "Collection in existing work tools",
-        "Aggregation and protection of the individual",
-        "Prioritisation per organisational area",
-        "Leadership action and follow-up",
-        "Documentation of effect",
+      eyebrow: "Decision view",
+      title: "From what is developing to what you do about it",
+      lead: "Not another set of disconnected measurements. One coherent view for seeing, prioritising and following up.",
+      flow: ["Signal", "Interpretation", "Risk", "Recommendation", "Leadership action", "Learning over time"],
+      insightTitle: "Ways of working are improving across more teams",
+      insightBody: "A positive pattern is stable enough to examine and reinforce.",
+      actionTitle: "Recommended priority",
+      actionBody: "Map what the strongest teams do differently before the next leadership meeting.",
+      example: "Fictional example data",
+    },
+    roles: {
+      eyebrow: "Value at every level",
+      title: "One reality. The right view for each role.",
+      items: [
+        { title: "Employee", text: "A private space for reflection and development. Individual responses are never shared." },
+        { title: "Leader", text: "A clear view of their area and a better basis for the next action." },
+        { title: "HR and People", text: "Priorities across the organisation, development over time and evidence of what works." },
+        { title: "Executive team and board", text: "Aggregated organisational insight that can be followed alongside other management information." },
       ],
-      note: "Aggregation happens before any leader sees the insight. Individual answers are never shared.",
     },
     trust: {
-      eyebrow: "Trust",
-      title: "Control is part of the architecture",
+      eyebrow: "Privacy and security",
+      title: "Insight without making people transparent",
+      lead: "Data is pseudonymised, individual responses are protected and access is role-based. Privacy is part of the architecture from the first signal.",
+      items: ["Pseudonymised data", "Aggregated insight", "Role-based access", "Clear ownership model"],
+      link: "Read about security and privacy",
+    },
+    faq: {
+      eyebrow: "In brief",
+      title: "What decision-makers ask first",
       items: [
-        "Privacy as architecture",
-        "Aggregated insight",
-        "Role-based access",
-        "Documented data processing",
+        { q: "How does QuestPulse differ from periodic measurement?", a: "Periodic measurement provides snapshots. QuestPulse provides a continuous view between measurement points and connects it to the actions taken." },
+        { q: "How is each individual protected?", a: "No one in the company sees what an individual writes. Insight is aggregated and protected by anonymity thresholds. This is built into the architecture." },
+        { q: "Do we need to replace our HR system?", a: "No. QuestPulse is not a standalone HR system. It is designed to work with established tools and processes." },
+        { q: "Where is data stored?", a: "Data is stored within the EEA with role-based access and documented data processing." },
       ],
-      link: "Go to the Trust Center",
     },
     cta: {
-      title: "How do you follow development in your organisation today?",
-      text: "We start with your decision needs, existing processes and requirements for privacy and security.",
-      button: "Request a strategic review",
+      eyebrow: "Next step",
+      title: "What could you see earlier with a better basis for decisions?",
+      text: "We start with your decision needs, current processes and requirements for privacy and security.",
+      button: "Book a discovery conversation",
+      email: "linda@dchub.no",
     },
   },
 };
+
+const valueIcons = [Eye, Sparkles, Target, TrendingUp];
+const roleIcons = [Users, Target, Layers3, BarChart3];
+
+function ProductPreview({ t }: { t: HomeCopy }) {
+  return (
+    <div className="qp-product-shell" aria-label={t.product.example}>
+      <div className="flex items-center justify-between border-b border-navy-foreground/10 px-4 py-3 sm:px-5">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-teal" />
+          <span className="text-xs font-semibold text-navy-foreground">QuestPulse</span>
+        </div>
+        <span className="text-[10px] font-bold tracking-widest text-navy-foreground/40 uppercase">{t.product.example}</span>
+      </div>
+      <div className="grid min-h-[360px] lg:grid-cols-[10rem_1fr]">
+        <aside className="hidden border-r border-navy-foreground/10 p-4 lg:block">
+          <div className="space-y-2">
+            {t.product.flow.map((item, index) => (
+              <div key={item} className={index === 1 ? "qp-preview-nav qp-preview-nav-active" : "qp-preview-nav"}>
+                <span>{String(index + 1).padStart(2, "0")}</span>{item}
+              </div>
+            ))}
+          </div>
+        </aside>
+        <div className="p-4 sm:p-6">
+          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-navy-foreground/10 pb-5">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.16em] text-teal uppercase">{t.product.eyebrow}</p>
+              <h3 className="mt-2 font-sans text-lg font-semibold text-navy-foreground">{t.product.insightTitle}</h3>
+            </div>
+            <span className="inline-flex items-center gap-1.5 rounded-sm bg-teal/15 px-2.5 py-1 text-[11px] font-semibold text-teal">
+              <TrendingUp className="size-3" /> {t.signals.at(1)?.status}
+            </span>
+          </div>
+          <div className="grid gap-4 py-5 md:grid-cols-[1.15fr_0.85fr]">
+            <div className="rounded-md border border-navy-foreground/10 bg-navy-foreground/[0.035] p-5">
+              <div className="flex h-32 items-end gap-2" aria-hidden="true">
+                {[38, 48, 44, 62, 58, 74, 82, 78].map((height, index) => (
+                  <span key={`${height}-${index}`} className="qp-preview-bar flex-1" style={{ height: `${height}%`, animationDelay: `${index * 80}ms` }} />
+                ))}
+              </div>
+              <div className="mt-4 flex justify-between text-[10px] text-navy-foreground/35">
+                <span>Uke 1</span><span>Uke 8</span>
+              </div>
+            </div>
+            <div className="rounded-md border border-teal/30 bg-teal/[0.07] p-5">
+              <div className="flex size-9 items-center justify-center rounded-md bg-teal/15 text-teal">
+                <Target className="size-4" />
+              </div>
+              <p className="mt-5 text-[10px] font-bold tracking-[0.14em] text-teal uppercase">{t.product.actionTitle}</p>
+              <p className="mt-2 text-sm leading-relaxed text-navy-foreground/75">{t.product.actionBody}</p>
+              <div className="mt-5 flex items-center gap-2 text-[11px] font-semibold text-navy-foreground/45">
+                <LockKeyhole className="size-3.5" /> {t.signals.at(1)?.privacy}
+              </div>
+            </div>
+          </div>
+          <p className="border-t border-navy-foreground/10 pt-4 text-xs leading-relaxed text-navy-foreground/50">{t.product.insightBody}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Landing({ locale, content }: { locale: Locale; content: SiteContent }) {
   const t = copy[locale];
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader locale={locale} content={content} altHref={locale === "no" ? "/en" : "/"} />
-
+      <SiteHeader locale={locale} content={content} altHref={locale === "no" ? "/en" : "/"} theme="dark" />
       <main>
-        {/* 1. Hero */}
         <section className="relative overflow-hidden bg-navy text-navy-foreground">
-          <QpWave
-            tone="dark"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full opacity-60"
-          />
-          <div className="relative mx-auto max-w-6xl px-5 py-24 lg:py-32">
-            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
-              {t.hero.eyebrow}
-            </p>
-            <h1 className="mt-6 max-w-4xl text-4xl leading-[1.06] font-bold text-navy-foreground sm:text-5xl lg:text-6xl">
-              {t.hero.title}
-            </h1>
-            <span className="qp-rule mt-8" />
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-navy-foreground/75">
-              {t.hero.lead}
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link to={pagePaths.contact[locale]}>{t.hero.cta1}</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-navy-foreground/30 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
-              >
-                <Link to={pagePaths.how[locale]}>{t.hero.cta2}</Link>
-              </Button>
+          <div className="qp-grid-bg absolute inset-0" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pt-20 pb-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center lg:px-8 lg:pt-28 lg:pb-20">
+            <div className="animate-fade-in">
+              <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-teal uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-teal" />{t.hero.eyebrow}
+              </p>
+              <h1 className="mt-6 max-w-2xl text-4xl leading-[1.05] font-semibold text-navy-foreground sm:text-5xl lg:text-6xl">
+                {t.hero.title}
+              </h1>
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-navy-foreground/68 sm:text-lg">{t.hero.lead}</p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Button asChild size="lg" className="h-12 px-6">
+                  <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">{t.hero.cta}<ArrowRight /></a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="h-12 border-navy-foreground/20 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground">
+                  <Link to={pagePaths.how[locale]}>{t.hero.secondary}</Link>
+                </Button>
+              </div>
+              <p className="mt-7 flex items-center gap-2 text-xs text-navy-foreground/45"><ShieldCheck className="size-4 text-teal" />{t.trust.items[0]} · {t.trust.items[3]}</p>
+            </div>
+            <div className="qp-hero-preview animate-scale-in"><ProductPreview t={t} /></div>
+          </div>
+          <div className="relative mx-auto grid max-w-7xl border-t border-navy-foreground/10 px-5 sm:grid-cols-3 lg:px-8">
+            {t.signals.map((signal) => (
+              <div key={signal.label} className="border-b border-navy-foreground/10 py-5 sm:border-r sm:border-b-0 sm:px-5 first:pl-0 last:border-r-0">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-[10px] font-bold tracking-[0.14em] text-navy-foreground/40 uppercase">{signal.label}</p>
+                  <span className="text-[10px] font-semibold text-teal">{signal.status}</span>
+                </div>
+                <p className="mt-2 text-sm text-navy-foreground/75">{signal.title}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="max-w-xl">
+              <p className="qp-eyebrow">{t.value.eyebrow}</p>
+              <h2 className="mt-5 text-3xl leading-tight sm:text-5xl">{t.value.title}</h2>
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{t.value.lead}</p>
+            </div>
+            <div className="grid border-t border-border sm:grid-cols-2">
+              {t.value.items.map((item, index) => {
+                const Icon = valueIcons[index] ?? Eye;
+                return (
+                  <article key={item.title} className="group border-b border-border py-7 sm:px-7 sm:odd:border-r">
+                    <div className="flex size-9 items-center justify-center rounded-md bg-secondary text-teal-deep transition-colors group-hover:bg-teal group-hover:text-primary-foreground"><Icon className="size-4" /></div>
+                    <h3 className="mt-5 font-sans text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* 2. Problemet */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="qp-eyebrow">{t.problem.eyebrow}</p>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.problem.title}</h2>
+        <section className="border-y border-border bg-card py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+              <div>
+                <p className="qp-eyebrow">{t.product.eyebrow}</p>
+                <h2 className="mt-5 max-w-2xl text-3xl leading-tight sm:text-5xl">{t.product.title}</h2>
+              </div>
+              <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">{t.product.lead}</p>
             </div>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:pt-12">
-              {t.problem.body}
-            </p>
-          </div>
-        </section>
-
-        {/* 3. Beslutningsflyt */}
-        <section className="border-y border-border bg-card">
-          <div className="mx-auto max-w-6xl px-5 py-24">
-            <div className="max-w-3xl">
-              <p className="qp-eyebrow">{t.flow.eyebrow}</p>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.flow.title}</h2>
-              <p className="mt-5 text-muted-foreground">{t.flow.lead}</p>
-            </div>
-            <ol className="mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
-              {t.flow.steps.map((step, index) => (
-                <li key={step} className="relative md:pr-6">
-                  <span
-                    aria-hidden
-                    className="absolute top-2 left-8 hidden h-px w-full bg-border md:block"
-                  />
-                  <span className="relative z-10 inline-flex h-4 w-4 items-center justify-center rounded-full border border-teal bg-card">
-                    <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-                  </span>
-                  <p className="mt-5 font-display text-sm text-teal-deep tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-2 text-base leading-snug font-bold text-navy">{step}</p>
+            <div className="mt-12"><ProductPreview t={t} /></div>
+            <ol className="mt-8 grid border-y border-border sm:grid-cols-3 lg:grid-cols-6">
+              {t.product.flow.map((step, index) => (
+                <li key={step} className="flex items-center gap-3 border-b border-border py-5 sm:border-r sm:border-b-0 sm:px-5 first:pl-0 last:border-r-0">
+                  <span className="font-display text-sm text-teal-deep">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="text-sm font-semibold text-navy">{step}</span>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        {/* 4. Bruksområder */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="max-w-3xl">
-            <p className="qp-eyebrow">{t.usecases.eyebrow}</p>
-            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.usecases.title}</h2>
-            <p className="mt-5 text-muted-foreground">{t.usecases.lead}</p>
-          </div>
-          <dl className="mt-14 border-t border-border">
-            {t.usecases.items.map((item, index) => (
-              <div
-                key={item.title}
-                className="grid gap-3 border-b border-border py-8 md:grid-cols-[4rem_1fr_1.4fr] md:gap-8"
-              >
-                <span className="font-display text-sm text-teal-deep tabular-nums">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <dt className="text-lg font-bold text-navy">{item.title}</dt>
-                <dd className="text-sm leading-relaxed text-muted-foreground">{item.text}</dd>
+        <section className="bg-navy py-24 text-navy-foreground lg:py-32">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <p className="text-xs font-bold tracking-[0.16em] text-teal uppercase">{t.roles.eyebrow}</p>
+            <div className="mt-5 grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+              <h2 className="max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">{t.roles.title}</h2>
+              <div className="border-t border-navy-foreground/15">
+                {t.roles.items.map((item, index) => {
+                  const Icon = roleIcons[index] ?? Users;
+                  return (
+                    <article key={item.title} className="grid gap-4 border-b border-navy-foreground/15 py-6 sm:grid-cols-[3rem_11rem_1fr] sm:items-start">
+                      <div className="flex size-9 items-center justify-center rounded-md bg-navy-foreground/[0.06] text-teal"><Icon className="size-4" /></div>
+                      <h3 className="font-sans text-base font-semibold text-navy-foreground">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-navy-foreground/60">{item.text}</p>
+                    </article>
+                  );
+                })}
               </div>
-            ))}
-          </dl>
-          <p className="mt-8">
-            <Link className="story-link text-sm font-semibold" to={pagePaths.usecases[locale]}>
-              {t.usecases.link}
-            </Link>
-          </p>
-        </section>
-
-        {/* 5. Verdi for lederroller */}
-        <section className="bg-navy py-24 text-navy-foreground">
-          <div className="mx-auto max-w-6xl px-5">
-            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
-              {t.roles.eyebrow}
-            </p>
-            <h2 className="mt-4 max-w-2xl text-3xl text-navy-foreground sm:text-4xl">
-              {t.roles.title}
-            </h2>
-            <div className="mt-14 grid gap-px overflow-hidden bg-navy-foreground/15 sm:grid-cols-2">
-              {t.roles.items.map((item) => (
-                <article key={item.title} className="bg-navy p-8">
-                  <h3 className="text-lg text-navy-foreground">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-navy-foreground/70">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
             </div>
-            <p className="mt-10">
-              <Link
-                className="text-sm font-semibold text-teal underline-offset-4 hover:underline"
-                to={pagePaths.hr[locale]}
-              >
-                {locale === "no" ? "Se innsikt per rolle" : "See insight per role"}
-              </Link>
-            </p>
           </div>
         </section>
 
-        {/* 6. Produktvisning */}
-        <section className="mx-auto max-w-6xl px-5 py-24">
-          <div className="max-w-3xl">
-            <p className="qp-eyebrow">{t.product.eyebrow}</p>
-            <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.product.title}</h2>
-            <p className="mt-5 text-muted-foreground">{t.product.lead}</p>
-          </div>
-          <div className="mt-14 border-t border-l border-border">
-            {t.product.stages.map((stage, index) => (
-              <div
-                key={stage}
-                className="flex items-baseline gap-6 border-r border-b border-border px-6 py-6"
-              >
-                <span className="font-display text-sm text-teal-deep tabular-nums">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-base text-navy">{stage}</span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-8 max-w-2xl border-l-2 border-teal pl-5 font-display text-lg text-navy">
-            {t.product.note}
-          </p>
-        </section>
-
-        {/* 8. Tillit */}
-        <section className="border-y border-border bg-card">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="qp-eyebrow">{t.trust.eyebrow}</p>
-              <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{t.trust.title}</h2>
-              <p className="mt-6">
-                <Link className="story-link text-sm font-semibold" to={pagePaths.security[locale]}>
-                  {t.trust.link}
-                </Link>
-              </p>
+              <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">{t.trust.title}</h2>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{t.trust.lead}</p>
+              <Link to={pagePaths.security[locale]} className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-deep hover:text-navy">{t.trust.link}<ChevronRight className="size-4" /></Link>
             </div>
-            <ul className="grid gap-px self-start bg-border sm:grid-cols-2">
+            <ul className="grid gap-px self-start overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
               {t.trust.items.map((item) => (
-                <li key={item} className="bg-card px-6 py-6 text-sm font-semibold text-navy">
-                  {item}
+                <li key={item} className="flex min-h-32 flex-col justify-between bg-card p-6">
+                  <ShieldCheck className="size-5 text-teal" />
+                  <span className="mt-8 text-sm font-semibold text-navy">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        {/* 9. Avsluttende CTA */}
-        <section id="kontakt" className="border-t border-border">
-          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-[0.85fr_1.15fr]">
+        <section className="border-y border-border bg-card">
+          <div className="mx-auto grid max-w-7xl gap-12 px-5 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+            <div><p className="qp-eyebrow">{t.faq.eyebrow}</p><h2 className="mt-5 text-3xl leading-tight sm:text-4xl">{t.faq.title}</h2></div>
+            <Accordion type="single" collapsible className="border-t border-border">
+              {t.faq.items.map((item, index) => (
+                <AccordionItem key={item.q} value={`faq-${index}`}>
+                  <AccordionTrigger className="text-left font-sans text-base font-semibold text-navy">{item.q}</AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">{item.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
+        <section id="kontakt" className="bg-navy py-24 text-navy-foreground lg:py-32">
+          <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
             <div>
-              <h2 className="text-3xl leading-tight sm:text-4xl">{t.cta.title}</h2>
-              <p className="mt-5 text-muted-foreground">{t.cta.text}</p>
-              <p className="mt-8 text-sm text-muted-foreground">
-                <a className="story-link" href="mailto:hei@questpulse.no">
-                  hei@questpulse.no
-                </a>
-                <br />
-                <a className="story-link" href="mailto:support@questpulse.no">
-                  support@questpulse.no
-                </a>
-                <br />
-                Digital Coach Hub AS
-              </p>
+              <p className="text-xs font-bold tracking-[0.16em] text-teal uppercase">{t.cta.eyebrow}</p>
+              <h2 className="mt-5 max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">{t.cta.title}</h2>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-navy-foreground/60">{t.cta.text}</p>
+              <Button asChild size="lg" className="mt-8 h-12 px-6"><a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">{t.cta.button}<ArrowRight /></a></Button>
+              <p className="mt-7 text-sm text-navy-foreground/50"><a href={`mailto:${t.cta.email}`} className="hover:text-navy-foreground">{t.cta.email}</a></p>
             </div>
-            <HubSpotShareForm
-              url={QP_FORM_SHARE_URL}
-              title={locale === "no" ? "Kontaktskjema" : "Contact form"}
-            />
+            <div className="rounded-md bg-background p-3 sm:p-5"><HubSpotShareForm url={QP_FORM_SHARE_URL} title={locale === "no" ? "Kontaktskjema" : "Contact form"} /></div>
           </div>
         </section>
       </main>
-
       <SiteFooter locale={locale} content={content} />
     </div>
   );

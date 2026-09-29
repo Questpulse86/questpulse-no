@@ -18,6 +18,26 @@
   ],
   "rewrites": [
     {
+      "source": "/dchub/:path*",
+      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "destination": "/:path*"
+    },
+    {
+      "source": "/dchub",
+      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "destination": "/"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "destination": "/sitemap.xml"
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "digitalcoachub.no" }],
       "destination": "/dchub"

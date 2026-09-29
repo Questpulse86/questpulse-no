@@ -1,3 +1,4 @@
+import { ContactForm } from "@/components/site/ContactForm";
 import { HubSpotShareForm, QP_FORM_SHARE_URL } from "@/components/site/HubSpotForm";
 import { RoleShowcase } from "@/components/site/RoleShowcase";
 import { StepFlow } from "@/components/site/StepFlow";
@@ -73,21 +74,21 @@ function Section({
             <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{section.title}</h2>
             {section.lead ? <p className="mt-5 text-muted-foreground">{section.lead}</p> : null}
             <p className="mt-8 text-sm text-muted-foreground">
-              <a className="story-link" href="mailto:hei@questpulse.no">
-                hei@questpulse.no
-              </a>
-              <br />
-              <a className="story-link" href="mailto:support@questpulse.no">
-                support@questpulse.no
+              <a className="story-link" href="mailto:linda@dchub.no">
+                linda@dchub.no
               </a>
               <br />
               Digital Coach Hub AS
             </p>
           </div>
-          <HubSpotShareForm
-            url={QP_FORM_SHARE_URL}
-            title={locale === "no" ? "Kontaktskjema" : "Contact form"}
-          />
+          {section.form === "direct" ? (
+            <ContactForm locale={locale} />
+          ) : (
+            <HubSpotShareForm
+              url={QP_FORM_SHARE_URL}
+              title={locale === "no" ? "Kontaktskjema" : "Contact form"}
+            />
+          )}
         </div>
       </section>
     );

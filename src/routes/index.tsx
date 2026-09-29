@@ -1,7 +1,27 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { DchubLandingPage, type DchubLandingContent } from "@/components/dchub/DchubLandingPage";
 import { Landing } from "@/components/site/Landing";
+import {
+  about,
+  closing,
+  dchubSite,
+  dchubUi,
+  faq,
+  hero,
+  navLinks,
+  outcomes,
+  process,
+  questpulseNote,
+  recognition,
+  resultsSection,
+  services,
+  servicesSection,
+  testimonials,
+} from "@/lib/dchub-content";
+import { cookieNotice } from "@/lib/dchub-privacy";
+import { isDchubHost, resolveHost } from "@/lib/host.functions";
 import { getSiteContent } from "@/lib/site.functions";
 
 const contentQuery = queryOptions({
@@ -9,36 +29,115 @@ const contentQuery = queryOptions({
   queryFn: () => getSiteContent({ data: { locale: "no" } }),
 });
 
+const dchubContent: DchubLandingContent = {
+  navLinks,
+  hero,
+  recognition,
+  outcomes,
+  servicesSection,
+  services,
+  process,
+  resultsSection,
+  testimonials,
+  about,
+  questpulseNote,
+  faq,
+  closing,
+  ui: dchubUi,
+  cookieNotice,
+};
+
+const dchTitle = "Businesscoach og ledercoach | Linda Karlsen | Digital Coach Hub";
+const dchDescription =
+  "Linda Karlsen tilbyr businesscoaching, ledercoaching, foredrag og workshops for gründere og ledere. 20 års ledererfaring. Askim og digitalt i hele Norge.";
+
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "QuestPulse | Løpende innsikt i organisasjonen" },
-      {
-        name: "description",
-        content:
-          "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
-      },
-      { property: "og:title", content: "QuestPulse | Løpende innsikt i organisasjonen" },
-      { property: "og:site_name", content: "QuestPulse" },
-      {
-        property: "og:description",
-        content: "People Intelligence for norske virksomheter. Se det tidligere. Handle bedre.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: "nb_NO" },
-      { property: "og:url", content: "https://questpulse.no/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://questpulse.no/" },
-      { rel: "alternate", hrefLang: "en", href: "/en" },
-    ],
-  }),
-  loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
+  loader: async ({ context }) => {
+    const host = await resolveHost();
+    if (isDchubHost(host)) return { dchub: true as const };
+    await context.queryClient.ensureQueryData(contentQuery);
+    return { dchub: false as const };
+  },
+  head: ({ loaderData }) =>
+    loaderData?.dchub
+      ? {
+          meta: [
+            { title: dchTitle },
+            { name: "description", content: dchDescription },
+            { name: "robots", content: "index, follow" },
+            { property: "og:site_name", content: "Digital Coach Hub" },
+            { property: "og:title", content: dchTitle },
+            { property: "og:description", content: dchDescription },
+            { property: "og:type", content: "website" },
+            { property: "og:locale", content: "nb_NO" },
+            { property: "og:url", content: `${dchubSite}/` },
+            { property: "og:image", content: `${dchubSite}/dch-og-image.jpg` },
+            { name: "twitter:card", content: "summary_large_image" },
+            { name: "twitter:image", content: `${dchubSite}/dch-og-image.jpg` },
+          ],
+          links: [{ rel: "canonical", href: `${dchubSite}/` }],
+        }
+      : {
+          meta: [
+            { title: "QuestPulse | People Intelligence for organisatorisk helse" },
+            {
+              name: "description",
+              content:
+                "People Intelligence som gir HR og ledelse løpende innsikt i organisatorisk helse og lederrisiko, slik at dere kan handle før belastning og friksjon eskalerer.",
+            },
+            { property: "og:title", content: "QuestPulse | People Intelligence for organisatorisk helse" },
+            { property: "og:site_name", content: "QuestPulse" },
+            {
+              property: "og:description",
+              content:
+                "Fra spredte signaler til felles beslutningsgrunnlag om organisatorisk helse og lederrisiko.",
+            },
+            { property: "og:type", content: "website" },
+            { property: "og:locale", content: "nb_NO" },
+            { property: "og:url", content: "https://questpulse.no/" },
+            { name: "twitter:card", content: "summary_large_image" },
+          ],
+          links: [
+            { rel: "canonical", href: "https://questpulse.no/" },
+            { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en" },
+            { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/" },
+          ],
+          scripts: [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                name: "QuestPulse",
+                applicationCategory: "BusinessApplication",
+                description:
+                  "People Intelligence for organisatorisk helse og lederrisiko. Løpende innsikt for HR, ledere og toppledelse.",
+                url: "https://questpulse.no/",
+                inLanguage: "nb-NO",
+                provider: { "@type": "Organization", name: "Digital Coach Hub AS", taxID: "936265634" },
+              }),
+            },
+          ],
+        },
   component: Index,
 });
 
 function Index() {
+  const { dchub } = Route.useLoaderData();
+  if (dchub) {
+    return (
+      <DchubLandingPage
+        content={dchubContent}
+        locale="no"
+        alternatePath="/en"
+        privacyPath="/personvern"
+      />
+    );
+  }
+  return <QuestPulseHome />;
+}
+
+function QuestPulseHome() {
   const { data } = useSuspenseQuery(contentQuery);
   return <Landing locale="no" content={data} />;
 }

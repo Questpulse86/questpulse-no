@@ -1,15 +1,16 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import { DemoConsole } from "@/components/demo/DemoConsole";
+import { HUBSPOT_BOOKING_URL } from "@/components/site/HubSpotForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
 import { getSiteContent } from "@/lib/site.functions";
 
-const title = "Interaktiv demo | QuestPulse People Risk Intelligence";
+const title = "Interaktiv produktvisning | QuestPulse People Intelligence";
 const description =
-  "Utforsk QuestPulse på fire nivåer: toppleder, avdelingsleder, teamleder og medarbeider. Interaktiv demo med fiktive eksempeldata.";
+  "Utforsk QuestPulse på fire nivåer: toppleder, avdelingsleder, teamleder og medarbeider. Interaktiv produktvisning med fiktive eksempeldata.";
 
 const contentQuery = queryOptions({
   queryKey: ["site-content", "no"],
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/demo")({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
@@ -44,7 +46,7 @@ function DemoPage() {
         <section className="border-b border-border bg-navy text-navy-foreground">
           <div className="mx-auto max-w-6xl px-5 py-16 lg:py-20">
             <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
-              Interaktiv demo
+              Interaktiv produktvisning
             </p>
             <h1 className="mt-4 max-w-3xl text-3xl leading-tight text-navy-foreground sm:text-4xl">
               Se hva hvert nivå faktisk får se
@@ -55,7 +57,7 @@ function DemoPage() {
               aggregerte tall, mens medarbeiderens rom er privat.
             </p>
             <p className="mt-6 inline-flex rounded-full border border-navy-foreground/25 px-3 py-1 text-[11px] font-semibold tracking-[0.12em] text-navy-foreground/70 uppercase">
-              Demo med fiktive eksempeldata
+              Fiktive eksempeldata
             </p>
           </div>
         </section>
@@ -63,8 +65,8 @@ function DemoPage() {
         <section className="mx-auto max-w-6xl px-5 py-14">
           <DemoConsole />
           <p className="mt-6 text-xs text-muted-foreground">
-            Alle tall, team og navn i demoen er konstruert for illustrasjon. Ingen ekte kundedata
-            eller personopplysninger vises.
+            Alle tall, team og navn i produktvisningen er konstruert for illustrasjon. Ingen ekte
+            kundedata eller personopplysninger vises.
           </p>
         </section>
 
@@ -72,14 +74,16 @@ function DemoPage() {
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-5 py-14">
             <div className="max-w-xl">
               <h2 className="text-2xl leading-tight sm:text-3xl">
-                Vil du se dette på egne data i en pilot?
+                Vil du vurdere dette for egen organisasjon?
               </h2>
               <p className="mt-3 text-muted-foreground">
                 Vi går gjennom oppsett, personvern og forventet effekt i en kartleggingssamtale.
               </p>
             </div>
             <Button asChild size="lg">
-              <Link to="/kontakt">Book kartleggingssamtale</Link>
+              <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                Book kartleggingssamtale
+              </a>
             </Button>
           </div>
         </section>

@@ -66,21 +66,21 @@ export const defaultContent: Record<Locale, SiteContent> = {
     brand: {
       name: "QuestPulse",
       category: "People Intelligence",
-      tagline: "Se det tidligere. Handle bedre.",
+      tagline: "Fra spredte signaler til felles beslutningsgrunnlag.",
     },
     nav: {
       how: "Slik fungerer det",
       forWho: "For HR og ledelse",
       security: "Sikkerhet",
       contact: "Kontakt",
-      cta: "Book en samtale",
+      cta: "Book kartleggingssamtale",
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Vi gir arbeidsgivere innsikt i tide",
-      short: "Se det tidligere. Handle bedre.",
-      lead: "QuestPulse gir HR og ledelsen løpende innsikt i hva som utvikler seg i organisasjonen, og gjør det lettere å prioritere riktige handlinger.",
-      cta1: "Book en samtale",
+      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
+      short: "Bedre beslutninger om folk og ledelse, mens det fortsatt er tid til å handle.",
+      lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
+      cta1: "Book kartleggingssamtale",
       cta2: "Slik fungerer det",
     },
     problem: {
@@ -166,28 +166,28 @@ export const defaultContent: Record<Locale, SiteContent> = {
     trust: {
       title: "Bygget for virksomheter med krav til sikkerhet og dokumentasjon",
       items: [
-        { title: "Azure Norway East", text: "Data lagret i Norge" },
+        { title: "Kontrollert databehandling", text: "Dokumentert dataflyt og tilgang" },
         { title: "GDPR artikkel 25", text: "Personvern som arkitektur" },
-        { title: "EU AI Act", text: "Bygget på prinsippene" },
+        { title: "EU-regelverk", text: "Bygget etter relevante prinsipper" },
         { title: "SSO", text: "Avklart tilgangsstyring" },
         { title: "Teams og Google Workspace", text: "Tilgang i kjente verktøy" },
       ],
     },
     market: {
-      eyebrow: "Bank og finans først",
-      title: "Vi beviser modellen der kravene er høyest",
-      lead: "Bank og finans er vårt første bevismarked: tydelige HR-funksjoner, høy bevissthet om sikkerhet og dokumentasjon, og reelle krav til kontroll. Det er ikke en permanent avgrensning av produktet.",
+      eyebrow: "Regulerte virksomheter",
+      title: "Bygget for miljøer der kravene til dokumentasjon er høye",
+      lead: "QuestPulse er utviklet for virksomheter som må kunne vise hvordan de følger utviklingen i organisasjonen, vurderer risiko og dokumenterer handlinger over tid.",
       points: [
         {
-          title: "Aktiv pilot",
-          text: "Piloten dokumenterer bruk, innsikt, handling og videre kjøp. Pilotkunder omtales aldri ved navn på våre offentlige flater.",
+          title: "Kontrollert evaluering",
+          text: "Evalueringsløp avklares med tydelige kriterier, personvernrammer og beslutningspunkter før oppstart.",
         },
         {
           title: "Compliance-drevet inngang",
           text: "Samtalen starter i en plikt virksomheten allerede har, ikke i et nytt HR-prosjekt.",
         },
         {
-          title: "Kartlegging før demo",
+          title: "Kartlegging før visning",
           text: "Første møte er en kartleggingssamtale om hvordan dere følger utviklingen i organisasjonen i dag.",
         },
       ],
@@ -205,7 +205,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send henvendelse",
       sending: "Sender ...",
       success: "Takk. Vi har mottatt henvendelsen og tar kontakt.",
-      error: "Noe gikk galt. Prøv igjen, eller send e-post til support@questpulse.no.",
+      error: "Noe gikk galt. Prøv igjen, eller send e-post til linda@dchub.no.",
       privacy:
         "Vi bruker opplysningene kun til å følge opp henvendelsen din. Ingen deling med tredjepart.",
     },
@@ -218,21 +218,21 @@ export const defaultContent: Record<Locale, SiteContent> = {
     brand: {
       name: "QuestPulse",
       category: "People Intelligence",
-      tagline: "See it earlier. Act better.",
+      tagline: "From scattered signals to a shared basis for decisions.",
     },
     nav: {
       how: "How it works",
       forWho: "For HR and leadership",
       security: "Security",
       contact: "Contact",
-      cta: "Book a conversation",
+      cta: "Book a discovery conversation",
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Insight into your organisation while there is still time to act",
+      title: "Detect organisational friction, strain and leadership challenges before they escalate.",
       short: "See it earlier. Act better.",
-      lead: "QuestPulse gives HR and leadership continuous insight into what is developing across the organisation, and makes it easier to prioritise the right actions.",
-      cta1: "Book a conversation",
+      lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared basis for decisions across HR, management and executive leadership.",
+      cta1: "Book a discovery conversation",
       cta2: "How it works",
     },
     problem: {
@@ -242,7 +242,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       items: [
         {
           title: "Insight arrives late",
-          text: "Traditional surveys give a snapshot. Long periods pass between an early signal and a decision.",
+          text: "Periodic measurements give a snapshot. Long periods pass between an early signal and a decision.",
         },
         {
           title: "What matters is hard to see",
@@ -274,13 +274,13 @@ export const defaultContent: Record<Locale, SiteContent> = {
       ],
     },
     compliance: {
-      eyebrow: "Norwegian Working Environment Act",
+      eyebrow: "Working Environment Regulations",
       title: "A risk management tool, not another HR initiative",
-      lead: "Norwegian law requires risk-based, continuous oversight of the psychosocial working environment. QuestPulse makes that duty easier to meet and to document.",
+      lead: "The Norwegian working environment framework requires systematic, risk-based follow-up of the psychosocial working environment. QuestPulse makes that work easier to structure and document.",
       points: [
         {
           title: "Continuous oversight",
-          text: "Risk-based follow-up of the working environment throughout the year, not only at the annual survey.",
+          text: "Risk-based follow-up of the working environment throughout the year, not only at fixed measurement points.",
         },
         {
           title: "Systematic HSE work",
@@ -307,7 +307,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
         },
         {
           role: "For HR",
-          text: "Better overview between the larger surveys, clearer prioritisation of effort and stronger support for managers.",
+          text: "Better overview between fixed measurement points, clearer prioritisation of effort and stronger support for managers.",
         },
         {
           role: "For leadership and the board",
@@ -318,28 +318,28 @@ export const defaultContent: Record<Locale, SiteContent> = {
     trust: {
       title: "Built for organisations with real security and documentation requirements",
       items: [
-        { title: "Azure Norway East", text: "Data hosted in Norway" },
+        { title: "Controlled data processing", text: "Documented data flow and access" },
         { title: "GDPR article 25", text: "Privacy by design" },
-        { title: "EU AI Act", text: "Built on the principles" },
+        { title: "EU regulation", text: "Built around relevant principles" },
         { title: "SSO", text: "Clear access control" },
         { title: "Teams and Google Workspace", text: "Access in familiar tools" },
       ],
     },
     market: {
-      eyebrow: "Banking and finance first",
-      title: "We prove the model where the requirements are highest",
-      lead: "Banking and finance is our first proof market: clear HR functions, high awareness of security and documentation, and real control requirements. It is not a permanent limitation of the product.",
+      eyebrow: "Regulated organisations",
+      title: "Built for environments with high documentation requirements",
+      lead: "QuestPulse is built for organisations that need to show how they follow organisational development, assess risk and document actions over time.",
       points: [
         {
-          title: "Active pilot",
-          text: "The pilot documents adoption, insight, action and continued purchase. Pilot customers are never named on public surfaces.",
+          title: "Controlled evaluation",
+          text: "Evaluation tracks are agreed with clear criteria, privacy safeguards and decision points before start.",
         },
         {
           title: "Compliance-led entry",
           text: "The conversation starts from a duty the organisation already has, not from a new HR project.",
         },
         {
-          title: "Discovery before demo",
+          title: "Discovery before product walkthrough",
           text: "The first meeting is a discovery conversation about how you follow organisational development today.",
         },
       ],
@@ -357,7 +357,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send enquiry",
       sending: "Sending ...",
       success: "Thank you. We have received your enquiry and will be in touch.",
-      error: "Something went wrong. Please try again, or email support@questpulse.no.",
+      error: "Something went wrong. Please try again, or email linda@dchub.no.",
       privacy: "We use your details only to follow up on your enquiry. No sharing with third parties.",
     },
     footer: {
@@ -369,17 +369,15 @@ export const defaultContent: Record<Locale, SiteContent> = {
 
 export const inquiryTypes: Record<Locale, { value: string; label: string }[]> = {
   no: [
-    { value: "demo", label: "Demo eller kartleggingssamtale" },
-    { value: "pilot", label: "Pilot" },
+    { value: "kartlegging", label: "Kartleggingssamtale" },
+    { value: "evaluering", label: "Enterprise-evaluering" },
     { value: "partner", label: "Partnerskap" },
-    { value: "investor", label: "Investor" },
     { value: "annet", label: "Annet" },
   ],
   en: [
-    { value: "demo", label: "Demo or discovery call" },
-    { value: "pilot", label: "Pilot" },
+    { value: "discovery", label: "Discovery conversation" },
+    { value: "evaluation", label: "Enterprise evaluation" },
     { value: "partner", label: "Partnership" },
-    { value: "investor", label: "Investor" },
     { value: "other", label: "Other" },
   ],
 };

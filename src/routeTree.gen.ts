@@ -18,17 +18,22 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-evaluering'
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
+import { Route as ForskningRouteImport } from './routes/forskning'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
 import { Route as PartnereRouteImport } from './routes/partnere'
+import { Route as PersonvernRouteImport } from './routes/personvern'
 import { Route as PilotRouteImport } from './routes/pilot'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SikkerhetOgPersonvernRouteImport } from './routes/sikkerhet-og-personvern'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SlikFungererDetRouteImport } from './routes/slik-fungerer-det'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as DchubEnRouteImport } from './routes/dchub_.en'
+import { Route as DchubPersonvernRouteImport } from './routes/dchub_.personvern'
 import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as EnBankingAndFinanceRouteImport } from './routes/en.banking-and-finance'
@@ -38,10 +43,12 @@ import { Route as EnHowItWorksRouteImport } from './routes/en.how-it-works'
 import { Route as EnHrAndLeadershipRouteImport } from './routes/en.hr-and-leadership'
 import { Route as EnPartnersRouteImport } from './routes/en.partners'
 import { Route as EnPilotRouteImport } from './routes/en.pilot'
+import { Route as EnResearchRouteImport } from './routes/en.research'
 import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-and-privacy'
 import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DchubEnPrivacyRouteImport } from './routes/dchub_.en_.privacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -87,6 +94,11 @@ const ForHrOgLedelseRoute = ForHrOgLedelseRouteImport.update({
   path: '/for-hr-og-ledelse',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForskningRoute = ForskningRouteImport.update({
+  id: '/forskning',
+  path: '/forskning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KontaktRoute = KontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
@@ -107,9 +119,19 @@ const PartnereRoute = PartnereRouteImport.update({
   path: '/partnere',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PersonvernRoute = PersonvernRouteImport.update({
+  id: '/personvern',
+  path: '/personvern',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PilotRoute = PilotRouteImport.update({
   id: '/pilot',
   path: '/pilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SikkerhetOgPersonvernRoute = SikkerhetOgPersonvernRouteImport.update({
@@ -143,6 +165,16 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const DchubEnRoute = DchubEnRouteImport.update({
+  id: '/dchub_/en',
+  path: '/dchub/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DchubPersonvernRoute = DchubPersonvernRouteImport.update({
+  id: '/dchub_/personvern',
+  path: '/dchub/personvern',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/en/',
@@ -189,6 +221,11 @@ const EnPilotRoute = EnPilotRouteImport.update({
   path: '/en/pilot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnResearchRoute = EnResearchRouteImport.update({
+  id: '/en/research',
+  path: '/en/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnSecurityAndPrivacyRoute = EnSecurityAndPrivacyRouteImport.update({
   id: '/en/security-and-privacy',
   path: '/en/security-and-privacy',
@@ -210,6 +247,11 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DchubEnPrivacyRoute = DchubEnPrivacyRouteImport.update({
+  id: '/dchub_/en_/privacy',
+  path: '/dchub/en/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -220,17 +262,22 @@ export interface FileRoutesByFullPath {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/en': typeof DchubEnRoute
+  '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -239,11 +286,13 @@ export interface FileRoutesByFullPath {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub/en/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -254,17 +303,22 @@ export interface FileRoutesByTo {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/dchub/en': typeof DchubEnRoute
+  '/dchub/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -273,11 +327,13 @@ export interface FileRoutesByTo {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub/en/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -290,17 +346,22 @@ export interface FileRoutesById {
   '/enterprise-evaluering': typeof EnterpriseEvalueringRoute
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
+  '/forskning': typeof ForskningRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
   '/partnere': typeof PartnereRoute
+  '/personvern': typeof PersonvernRoute
   '/pilot': typeof PilotRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sikkerhet-og-personvern': typeof SikkerhetOgPersonvernRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/slik-fungerer-det': typeof SlikFungererDetRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/dchub_/en': typeof DchubEnRoute
+  '/dchub_/personvern': typeof DchubPersonvernRoute
   '/en/about': typeof EnAboutRoute
   '/en/banking-and-finance': typeof EnBankingAndFinanceRoute
   '/en/contact': typeof EnContactRoute
@@ -309,11 +370,13 @@ export interface FileRoutesById {
   '/en/hr-and-leadership': typeof EnHrAndLeadershipRoute
   '/en/partners': typeof EnPartnersRoute
   '/en/pilot': typeof EnPilotRoute
+  '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/dchub_/en_/privacy': typeof DchubEnPrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -326,17 +389,22 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
+    | '/robots.txt'
     | '/sikkerhet-og-personvern'
     | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/en'
+    | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -345,11 +413,13 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub/en/privacy'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -360,17 +430,22 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
+    | '/robots.txt'
     | '/sikkerhet-og-personvern'
     | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/admin'
+    | '/dchub/en'
+    | '/dchub/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -379,11 +454,13 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub/en/privacy'
   id:
     | '__root__'
     | '/'
@@ -395,17 +472,22 @@ export interface FileRouteTypes {
     | '/enterprise-evaluering'
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
+    | '/forskning'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
     | '/partnere'
+    | '/personvern'
     | '/pilot'
+    | '/robots.txt'
     | '/sikkerhet-og-personvern'
     | '/sitemap.xml'
     | '/slik-fungerer-det'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/_authenticated/admin'
+    | '/dchub_/en'
+    | '/dchub_/personvern'
     | '/en/about'
     | '/en/banking-and-finance'
     | '/en/contact'
@@ -414,11 +496,13 @@ export interface FileRouteTypes {
     | '/en/hr-and-leadership'
     | '/en/partners'
     | '/en/pilot'
+    | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/dchub_/en_/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -431,16 +515,21 @@ export interface RootRouteChildren {
   EnterpriseEvalueringRoute: typeof EnterpriseEvalueringRoute
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
+  ForskningRoute: typeof ForskningRoute
   KontaktRoute: typeof KontaktRoute
   McpRoute: typeof McpRoute
   OmSelskapetRoute: typeof OmSelskapetRoute
   PartnereRoute: typeof PartnereRoute
+  PersonvernRoute: typeof PersonvernRoute
   PilotRoute: typeof PilotRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SikkerhetOgPersonvernRoute: typeof SikkerhetOgPersonvernRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SlikFungererDetRoute: typeof SlikFungererDetRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  DchubEnRoute: typeof DchubEnRoute
+  DchubPersonvernRoute: typeof DchubPersonvernRoute
   EnAboutRoute: typeof EnAboutRoute
   EnBankingAndFinanceRoute: typeof EnBankingAndFinanceRoute
   EnContactRoute: typeof EnContactRoute
@@ -449,11 +538,13 @@ export interface RootRouteChildren {
   EnHrAndLeadershipRoute: typeof EnHrAndLeadershipRoute
   EnPartnersRoute: typeof EnPartnersRoute
   EnPilotRoute: typeof EnPilotRoute
+  EnResearchRoute: typeof EnResearchRoute
   EnSecurityAndPrivacyRoute: typeof EnSecurityAndPrivacyRoute
   EnUseCasesRoute: typeof EnUseCasesRoute
   EnIndexRoute: typeof EnIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  DchubEnPrivacyRoute: typeof DchubEnPrivacyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -521,6 +612,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForHrOgLedelseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forskning': {
+      id: '/forskning'
+      path: '/forskning'
+      fullPath: '/forskning'
+      preLoaderRoute: typeof ForskningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kontakt': {
       id: '/kontakt'
       path: '/kontakt'
@@ -549,11 +647,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnereRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/personvern': {
+      id: '/personvern'
+      path: '/personvern'
+      fullPath: '/personvern'
+      preLoaderRoute: typeof PersonvernRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pilot': {
       id: '/pilot'
       path: '/pilot'
       fullPath: '/pilot'
       preLoaderRoute: typeof PilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sikkerhet-og-personvern': {
@@ -597,6 +709,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/dchub_/en': {
+      id: '/dchub_/en'
+      path: '/dchub/en'
+      fullPath: '/dchub/en'
+      preLoaderRoute: typeof DchubEnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dchub_/personvern': {
+      id: '/dchub_/personvern'
+      path: '/dchub/personvern'
+      fullPath: '/dchub/personvern'
+      preLoaderRoute: typeof DchubPersonvernRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/en/': {
       id: '/en/'
@@ -661,6 +787,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnPilotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/research': {
+      id: '/en/research'
+      path: '/en/research'
+      fullPath: '/en/research'
+      preLoaderRoute: typeof EnResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/security-and-privacy': {
       id: '/en/security-and-privacy'
       path: '/en/security-and-privacy'
@@ -689,6 +822,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dchub_/en_/privacy': {
+      id: '/dchub_/en_/privacy'
+      path: '/dchub/en/privacy'
+      fullPath: '/dchub/en/privacy'
+      preLoaderRoute: typeof DchubEnPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -713,17 +853,22 @@ const rootRouteChildren: RootRouteChildren = {
   EnterpriseEvalueringRoute: EnterpriseEvalueringRoute,
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
+  ForskningRoute: ForskningRoute,
   KontaktRoute: KontaktRoute,
   McpRoute: McpRoute,
   OmSelskapetRoute: OmSelskapetRoute,
   PartnereRoute: PartnereRoute,
+  PersonvernRoute: PersonvernRoute,
   PilotRoute: PilotRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SikkerhetOgPersonvernRoute: SikkerhetOgPersonvernRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SlikFungererDetRoute: SlikFungererDetRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  DchubEnRoute: DchubEnRoute,
+  DchubPersonvernRoute: DchubPersonvernRoute,
   EnAboutRoute: EnAboutRoute,
   EnBankingAndFinanceRoute: EnBankingAndFinanceRoute,
   EnContactRoute: EnContactRoute,
@@ -732,11 +877,13 @@ const rootRouteChildren: RootRouteChildren = {
   EnHrAndLeadershipRoute: EnHrAndLeadershipRoute,
   EnPartnersRoute: EnPartnersRoute,
   EnPilotRoute: EnPilotRoute,
+  EnResearchRoute: EnResearchRoute,
   EnSecurityAndPrivacyRoute: EnSecurityAndPrivacyRoute,
   EnUseCasesRoute: EnUseCasesRoute,
   EnIndexRoute: EnIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  DchubEnPrivacyRoute: DchubEnPrivacyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
