@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      customer_contacts: {
+        Row: {
+          company: string | null
+          created_at: string
+          created_by: string | null
+          email: string | null
+          email_error: string | null
+          email_sent: boolean
+          id: string
+          meeting_at: string | null
+          name: string
+          next_step: string | null
+          next_step_due: string | null
+          notes: string | null
+          phone: string | null
+          role: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          email_error?: string | null
+          email_sent?: boolean
+          id?: string
+          meeting_at?: string | null
+          name: string
+          next_step?: string | null
+          next_step_due?: string | null
+          notes?: string | null
+          phone?: string | null
+          role?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          email_error?: string | null
+          email_sent?: boolean
+          id?: string
+          meeting_at?: string | null
+          name?: string
+          next_step?: string | null
+          next_step_due?: string | null
+          notes?: string | null
+          phone?: string | null
+          role?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           company: string | null
