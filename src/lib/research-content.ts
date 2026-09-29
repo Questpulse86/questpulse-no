@@ -39,14 +39,14 @@ export const researchPaths = { no: "/forskning", en: "/en/research" } as const;
 export const researchContent: Record<Locale, ResearchContent> = {
   no: {
     meta: {
-      title: "Forskning | QuestPulse",
+      title: "Forskning på organisatorisk helse og lederrisiko | QuestPulse",
       description:
-        "Forskningen bak QuestPulse: hvorfor løpende signaler, teamdynamikk og lederhandling gir bedre beslutninger om mennesker og organisasjon.",
+        "Forskningen bak People Intelligence: studier om organisatorisk helse, lederrisiko, turnover og psykologisk trygghet, og hvorfor løpende signaler gir bedre beslutninger.",
     },
     hero: {
-      eyebrow: "Forskningsgrunnlag",
-      title: "Bygget på dokumentert kunnskap",
-      lead: "QuestPulse bygger på flere tiår med forskning om engasjement, teamdynamikk, ledelse og organisatorisk helse. Her er kildene vi hviler på, og hvorfor de støtter måten vi jobber på.",
+      eyebrow: "Forskning om People Intelligence",
+      title: "Forskning på organisatorisk helse og lederrisiko",
+      lead: "QuestPulse bygger på flere tiår med forskning om organisatorisk helse, teamdynamikk, lederrisiko og engasjement. Her er kildene vi hviler på, og hvorfor de støtter People Intelligence som arbeidsmåte.",
     },
     groups: [
       {
