@@ -13,7 +13,14 @@ export const Route = createFileRoute("/auth")({
   validateSearch: (search: Record<string, unknown>): { next?: string } => {
     const next = typeof search["next"] === "string" ? search["next"] : "";
     // Only same-origin relative paths are allowed as a return target.
-    return next.startsWith("/") && !next.startsWith("//") ? { next } : {};
+    // Reject protocol-relative (//), backslash variants (/\, \\) and encoded tricks.
+    const safe =
+      next.startsWith("/") &&
+      !next.startsWith("//") &&
+      !next.includes("\\") &&
+      !next.includes("%5c") &&
+      !next.includes("%5C");
+    return safe ? { next } : {};
   },
   head: () => ({
     meta: [
