@@ -79,18 +79,18 @@ export const Route = createFileRoute("/")({
         }
       : {
           meta: [
-            { title: "QuestPulse | People Intelligence" },
+            { title: "QuestPulse | People Intelligence for organisatorisk helse" },
             {
               name: "description",
               content:
-                "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
+                "People Intelligence som gir HR og ledelse løpende innsikt i organisatorisk helse og lederrisiko, slik at dere kan handle før belastning og friksjon eskalerer.",
             },
-            { property: "og:title", content: "QuestPulse | People Intelligence" },
+            { property: "og:title", content: "QuestPulse | People Intelligence for organisatorisk helse" },
             { property: "og:site_name", content: "QuestPulse" },
             {
               property: "og:description",
               content:
-                "Fra spredte signaler til felles beslutningsgrunnlag. People Intelligence for norske virksomheter.",
+                "Fra spredte signaler til felles beslutningsgrunnlag om organisatorisk helse og lederrisiko.",
             },
             { property: "og:type", content: "website" },
             { property: "og:locale", content: "nb_NO" },
@@ -99,7 +99,24 @@ export const Route = createFileRoute("/")({
           ],
           links: [
             { rel: "canonical", href: "https://questpulse.no/" },
-            { rel: "alternate", hrefLang: "en", href: "/en" },
+            { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en" },
+            { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/" },
+          ],
+          scripts: [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                name: "QuestPulse",
+                applicationCategory: "BusinessApplication",
+                description:
+                  "People Intelligence for organisatorisk helse og lederrisiko. Løpende innsikt for HR, ledere og toppledelse.",
+                url: "https://questpulse.no/",
+                inLanguage: "nb-NO",
+                provider: { "@type": "Organization", name: "Digital Coach Hub AS", taxID: "936265634" },
+              }),
+            },
           ],
         },
   component: Index,
