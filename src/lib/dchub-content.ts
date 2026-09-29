@@ -249,7 +249,8 @@ export const dchubUi = {
   processCta: "Book en gratis avklaringssamtale",
   faqEyebrow: "Ofte stilte spørsmål",
   faqTitle: "Det folk spør om før de booker",
-  bookingTitle: "Book en samtale med Linda Karlsen",
+  bookingLead:
+    "Velg et tidspunkt som passer deg i kalenderen min. Du får bekreftelse og lenke til samtalen på e-post med en gang.",
   contactHeading: "Eller send en melding",
   confidentialNote: "Konfidensielt. Alle henvendelser behandles med diskresjon.",
   footerDescription:

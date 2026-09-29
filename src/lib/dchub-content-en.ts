@@ -216,7 +216,8 @@ export const dchubUiEn = {
   processCta: "Book a complimentary clarification call",
   faqEyebrow: "Frequently asked questions",
   faqTitle: "What people ask before they book",
-  bookingTitle: "Book a conversation with Linda Karlsen",
+  bookingLead:
+    "Pick a time that suits you in my calendar. You will receive a confirmation and a link to the conversation by email right away.",
   contactHeading: "Or send a message",
   confidentialNote: "Confidential. Every enquiry is handled with discretion.",
   footerDescription:
