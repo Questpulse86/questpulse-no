@@ -58,7 +58,7 @@ const eyebrow =
   "inline-block text-[11px] font-bold tracking-[0.14em] text-dch-accent-strong uppercase";
 const h2 = "mt-4 font-display text-[clamp(26px,3.2vw,38px)] leading-[1.2] font-bold";
 
-/** Bevarer UTM-parametere fra landingen videre til HubSpot-bookingen. */
+/** Bevarer UTM-parametere fra landingen videre til Outlook-bookingen. */
 function useBookingUrl() {
   const [url, setUrl] = useState(BOOKING_URL);
 
@@ -69,7 +69,7 @@ function useBookingUrl() {
       if (/^(utm_|gclid|fbclid|hsa_)/i.test(key)) forwarded.append(key, value);
     });
     const query = forwarded.toString();
-    if (query) setUrl(`${BOOKING_URL}?${query}`);
+    if (query) setUrl(`${BOOKING_URL}&${query}`);
   }, []);
 
   return url;
@@ -469,14 +469,11 @@ export function DchubLandingPage({
               <BookButton className="mt-8">{closing.ctaPrimary}</BookButton>
             </Reveal>
 
-            <div className="mt-12 overflow-hidden rounded-[20px] border border-dch-line bg-white">
-              <iframe
-                src={`${BOOKING_URL}?embed=true`}
-                title={ui.bookingTitle}
-                loading="lazy"
-                className="w-full"
-                style={{ minHeight: 720 }}
-              />
+            <div className="mt-12 rounded-[20px] border border-dch-line bg-white p-8 text-center sm:p-12">
+              <p className="mx-auto max-w-[520px] text-[16px] leading-[1.8] text-dch-muted">
+                {ui.bookingLead}
+              </p>
+              <BookButton className="mt-6">{closing.ctaPrimary}</BookButton>
             </div>
 
             <div className="mt-16 grid gap-12 border-t border-dch-line pt-12 lg:grid-cols-[0.8fr_1.2fr]">
