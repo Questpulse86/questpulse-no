@@ -35,7 +35,10 @@ export function ContactsPanel() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim()) return toast.error("Navn må fylles ut.");
+    if (!form.name.trim()) {
+      toast.error("Navn må fylles ut.");
+      return;
+    }
     setBusy(true);
     try {
       if (editId) {
