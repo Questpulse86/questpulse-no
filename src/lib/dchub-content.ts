@@ -3,9 +3,9 @@
  * Holdes bevisst adskilt fra QuestPulse-innholdet i src/lib/site-content.ts
  * og src/lib/page-content.ts. Ingen deling av tekst mellom de to merkevarene.
  */
-import lindaPhoto from "@/assets/linda-karlsen.png.asset.json";
-import lindaPortrett from "@/assets/linda-portrett.jpg.asset.json";
-import coachingSamtale from "@/assets/coaching-samtale.jpg.asset.json";
+// Bildene ligger som vanlige filer i public/images/ slik at de virker
+// både på Lovable-hosting og på Vercel (CDN-pekere under /__l5e/ svarer
+// bare på Lovable-hosting).
 
 export const dchubSite = "https://digitalcoachub.no";
 
@@ -29,9 +29,9 @@ export const BOOKING_URL =
   "https://bookings.cloud.microsoft/bookwithme/user/cc226356590e46289f6c3f413fba80e1@dchub.no/meetingtype/1hEiDWXA3Ei2AL1TXNBOGA2?bookingcode=d78d6b13-e7bb-4f3f-aae3-8a576d2882f0&anonymous&ismsaljsauthenabled&ep=mlink";
 
 export const dchubImages = {
-  lindaHero: lindaPhoto.url,
-  lindaPortrett: lindaPortrett.url,
-  coachingSamtale: coachingSamtale.url,
+  lindaHero: "/images/linda-karlsen.png",
+  lindaPortrett: "/images/linda-portrett.jpg",
+  coachingSamtale: "/images/coaching-samtale.jpg",
 };
 
 export const navLinks = [
