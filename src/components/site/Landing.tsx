@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -499,16 +500,32 @@ const valueIcons = [Eye, Sparkles, Target, TrendingUp];
 const roleIcons = [Users, Target, Layers3, BarChart3];
 const rolloutIcons = [Check, ShieldCheck, Users, Sparkles];
 
-function ProductPreview({ t }: { t: HomeCopy }) {
+function HeroVisual({ t }: { t: HomeCopy }) {
   return (
     <figure
       className="overflow-hidden rounded-md border border-navy-foreground/15 bg-white shadow-[0_24px_70px_rgba(3,17,31,0.2)]"
       aria-label={t.visual.primaryAlt}
     >
       <img
-        src="/imagery/questpulse-team-insight.webp"
-        alt={t.visual.primaryAlt}
+        src="/imagery/questpulse-leadership-reflection.webp"
+        alt={t.visual.secondaryAlt}
         className="block aspect-[4/3] w-full object-cover"
+      />
+    </figure>
+  );
+}
+
+function ProductPreview({ t }: { t: HomeCopy }) {
+  return (
+    <figure
+      className="overflow-hidden rounded-md border border-border bg-white shadow-[0_20px_60px_rgba(3,17,31,0.1)]"
+      aria-label={t.product.example}
+    >
+      <img
+        src="/imagery/questpulse-decision-platform.webp"
+        alt={t.product.example}
+        className="block h-auto w-full"
+        loading="lazy"
       />
     </figure>
   );
@@ -516,6 +533,36 @@ function ProductPreview({ t }: { t: HomeCopy }) {
 
 export function Landing({ locale, content }: { locale: Locale; content: SiteContent }) {
   const t = copy[locale];
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("main > section"));
+    sections.slice(1).forEach((section) => {
+      section.dataset.qpReveal = "";
+    });
+
+    const items = Array.from(document.querySelectorAll<HTMLElement>("[data-qp-reveal]"));
+    root.classList.add("qp-motion-ready");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6%" },
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+      root.classList.remove("qp-motion-ready");
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -528,7 +575,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
       <main>
         <section className="relative overflow-hidden bg-navy text-navy-foreground">
           <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pt-20 pb-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center lg:px-8 lg:pt-28 lg:pb-20">
-            <div className="animate-fade-in">
+            <div data-qp-reveal="hero-copy">
               <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-teal uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-teal" />
                 {t.hero.eyebrow}
@@ -552,8 +599,8 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 {t.trust.items[0]} · {t.trust.items[3]}
               </p>
             </div>
-            <div className="qp-hero-preview animate-scale-in">
-              <ProductPreview t={t} />
+            <div className="qp-hero-preview" data-qp-reveal="hero-visual">
+              <HeroVisual t={t} />
             </div>
           </div>
           <div className="relative mx-auto grid max-w-7xl border-t border-navy-foreground/10 px-5 sm:grid-cols-3 lg:px-8">
@@ -710,20 +757,12 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               {t.visual.lead}
             </p>
           </div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="mt-12">
             <figure className="overflow-hidden rounded-md bg-secondary">
               <img
                 src="/imagery/questpulse-team-insight.webp"
                 alt={t.visual.primaryAlt}
-                className="h-full min-h-80 w-full object-cover"
-                loading="lazy"
-              />
-            </figure>
-            <figure className="overflow-hidden rounded-md bg-secondary">
-              <img
-                src="/imagery/questpulse-leadership-reflection.webp"
-                alt={t.visual.secondaryAlt}
-                className="h-full min-h-80 w-full object-cover"
+                className="h-auto min-h-80 w-full object-cover"
                 loading="lazy"
               />
             </figure>
