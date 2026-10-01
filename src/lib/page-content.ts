@@ -16,7 +16,6 @@ export type PageSection =
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
-
 export type PageItem = { title: string; text: string };
 
 export type PageData = {
@@ -71,7 +70,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     enterprise: "Enterprise-evaluering",
     contact: "Kontakt",
     security: "Trust Center",
-    partners: "Partnere",
+    partners: "Partnerøkosystem",
   },
   en: {
     about: "Company",
@@ -82,10 +81,9 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     enterprise: "Enterprise evaluation",
     contact: "Contact",
     security: "Trust Center",
-    partners: "Partners",
+    partners: "Partner ecosystem",
   },
 };
-
 
 export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
   no: {
@@ -488,59 +486,78 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
 
     partners: {
       meta: {
-        title: "Partnere | Samarbeid med QuestPulse",
+        title: "Partnerøkosystem | QuestPulse for BHT, rådgivning og HR",
         description:
-          "QuestPulse samarbeider med rådgivere, HR-miljøer og teknologipartnere som jobber tett på ledelse og arbeidsmiljø i norske virksomheter.",
+          "QuestPulse gir bedriftshelsetjenester, rådgivere og HR-miljøer et løpende innsiktsgrunnlag som styrker kundearbeidet fra signal til dokumentert effekt.",
       },
       hero: {
-        eyebrow: "Partnere",
-        title: "Vi bygger sammen med dem som står nærmest kunden",
-        lead: "Rådgivere, bedriftshelsetjenester, HR-miljøer og teknologipartnere gir QuestPulse rekkevidde, og kundene et bedre helhetlig løp.",
+        eyebrow: "Partnerøkosystem",
+        title: "Gjør faglig rådgivning sterkere med løpende organisatorisk innsikt",
+        lead: "QuestPulse gir bedriftshelsetjenester, organisasjonsutviklere, HR-rådgivere og undersøkelsesmiljøer et felles grunnlag for å oppdage, prioritere og følge opp det som utvikler seg hos kunden.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "Partnermodellen",
-          title: "Tre måter å samarbeide på",
+          eyebrow: "For hvem",
+          title: "Bygget for aktører som allerede har kundens tillit",
           items: [
             {
-              title: "Rådgivningspartner",
-              text: "Du bruker QuestPulse som innsiktsgrunnlag i eget arbeid med ledelse, arbeidsmiljø og omstilling hos kunden.",
+              title: "Bedriftshelsetjenester",
+              text: "Få et mer løpende grunnlag for forebyggende arbeidsmiljøarbeid, risikovurdering, tiltak og oppfølging – mellom de faste kartleggingene.",
             },
             {
-              title: "Gjenselgende partner",
-              text: "Du tar med QuestPulse i egen portefølje, med opplæring, salgsstøtte og avtalt fordeling.",
+              title: "Organisasjons- og lederutvikling",
+              text: "Knytt utviklingsarbeidet tettere til signalene fra organisasjonen, og følg om lederhandlingene faktisk gir ønsket effekt over tid.",
             },
             {
-              title: "Teknologipartner",
-              text: "Integrasjon mot HR-systemer, samarbeidsverktøy eller identitetsplattformer, med tydelige grensesnitt.",
+              title: "Medarbeiderundersøkelser og HR-rådgivning",
+              text: "Utvid verdien mellom målepunktene med kontinuerlig innsikt, bedre prioritering og dokumentasjon som holder i dialogen med kunden.",
             },
           ],
         },
         {
           kind: "dark",
-          eyebrow: "Hva vi ser etter",
-          title: "Partnere med reell nærhet til ledelsen",
+          eyebrow: "Verdien i samarbeidet",
+          title: "Partneren beholder relasjonen. Kunden får et sterkere løp.",
           items: [
             {
-              title: "Fagtyngde",
-              text: "Erfaring fra arbeidsmiljø, ledelse eller HMS, ikke bare formidling.",
+              title: "Et levende innsiktsgrunnlag",
+              text: "QuestPulse gir partneren et tryggere utgangspunkt for den faglige samtalen: hva utvikler seg, hvor bør innsatsen settes inn, og hva bør undersøkes nærmere?",
             },
             {
-              title: "Ryddighet",
-              text: "Klare rammer for personvern og konfidensialitet i egen praksis.",
+              title: "Mer treffsikker oppfølging",
+              text: "Partnerens egne tjenester – fra HMS-rådgivning til lederutvikling og omstillingsstøtte – kan settes inn med bedre timing og tydeligere hensikt.",
             },
             {
-              title: "Langsiktighet",
-              text: "Vilje til å bygge over tid, sammen med et produkt som fortsatt utvikles tett på kundene.",
+              title: "Dokumentert verdi over tid",
+              text: "Signal, tiltak og utvikling kan følges samlet. Det gjør det enklere å vise kunden hva som ble gjort, hvorfor og hva som skjedde videre.",
+            },
+          ],
+        },
+        {
+          kind: "register",
+          eyebrow: "Samarbeidsmodell",
+          title: "Tre tydelige måter å skape verdi sammen",
+          items: [
+            {
+              title: "1. Faglig rådgivningspartner",
+              text: "Du bruker QuestPulse som innsiktsgrunnlag i eget arbeid hos kunden. Vi avklarer rolle, personvern og hvordan innsikten skal omsettes til faglig oppfølging.",
+            },
+            {
+              title: "2. Kommersiell partner",
+              text: "Du tilbyr QuestPulse som del av din portefølje, med tydelig salgsmodell, opplæring og avtalte rammer for ansvar og inntektsdeling.",
+            },
+            {
+              title: "3. Teknologi- og integrasjonspartner",
+              text: "Vi utforsker integrasjon mot HR-systemer, samarbeidsverktøy eller identitetsplattformer når det gir en tryggere og mer sømløs kundeopplevelse.",
             },
           ],
         },
         {
           kind: "contact",
-          eyebrow: "Ta kontakt",
-          title: "Meld interesse som partner",
-          lead: "Velg Partnerskap i skjemaet og skriv kort om hvem dere jobber med i dag.",
+          eyebrow: "Utforsk samarbeid",
+          title: "La oss vurdere hvor QuestPulse kan styrke deres kundetilbud",
+          lead: "Fortell kort hvem dere hjelper i dag og hvilke tjenester dere leverer. Vi foreslår en konkret første samarbeidsmodell.",
         },
       ],
     },
@@ -1041,59 +1058,78 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
 
     partners: {
       meta: {
-        title: "Partners | Working with QuestPulse",
+        title: "Partner ecosystem | QuestPulse for advisory and occupational health",
         description:
-          "QuestPulse works with advisors, HR communities and technology partners close to leadership and working environment in Nordic organisations.",
+          "QuestPulse gives occupational health providers, advisors and HR partners a continuous insight foundation that strengthens client work from signal to documented effect.",
       },
       hero: {
-        eyebrow: "Partners",
-        title: "We build with those closest to the customer",
-        lead: "Advisors, occupational health services, HR communities and technology partners give QuestPulse reach, and customers a better end-to-end journey.",
+        eyebrow: "Partner ecosystem",
+        title: "Make expert advisory stronger with continuous organisational insight",
+        lead: "QuestPulse gives occupational health providers, organisation development specialists, HR advisors and survey partners a shared foundation for detecting, prioritising and following up what is developing for their clients.",
       },
       sections: [
         {
           kind: "cards",
-          eyebrow: "The partner model",
-          title: "Three ways to work together",
+          eyebrow: "Who it is for",
+          title: "Built for partners who already hold the client's trust",
           items: [
             {
-              title: "Advisory partner",
-              text: "You use QuestPulse as the insight base in your own work on leadership, working environment and change.",
+              title: "Occupational health providers",
+              text: "Gain a more continuous foundation for preventive working environment programmes, risk assessment, actions and follow-up between scheduled assessments.",
             },
             {
-              title: "Reselling partner",
-              text: "You bring QuestPulse into your own portfolio, with training, sales support and an agreed split.",
+              title: "Organisation and leadership development",
+              text: "Connect development work more closely to organisational signals and follow whether leadership actions create the intended effect over time.",
             },
             {
-              title: "Technology partner",
-              text: "Integration with HR systems, collaboration tools or identity platforms, with clear interfaces.",
+              title: "Employee listening and HR advisory",
+              text: "Extend value between measurement points with continuous insight, stronger prioritisation and documentation that supports client dialogue.",
             },
           ],
         },
         {
           kind: "dark",
-          eyebrow: "What we look for",
-          title: "Partners with real proximity to leadership",
+          eyebrow: "The partnership value",
+          title: "The partner keeps the relationship. The client gets a stronger journey.",
           items: [
             {
-              title: "Subject depth",
-              text: "Experience from working environment, leadership or HSE, not only delivery.",
+              title: "A living insight foundation",
+              text: "QuestPulse creates a safer starting point for the expert conversation: what is developing, where should attention go, and what deserves deeper investigation?",
             },
             {
-              title: "Rigour",
-              text: "Clear frameworks for privacy and confidentiality in your own practice.",
+              title: "More targeted follow-up",
+              text: "Your own services – from working environment advisory to leadership development and change support – can be introduced with clearer timing and purpose.",
             },
             {
-              title: "Long-term view",
-              text: "Willingness to build over time, together with a product still evolving close to its customers.",
+              title: "Documented value over time",
+              text: "Signal, action and development can be followed together, making it easier to show the client what happened, why it mattered and what followed.",
+            },
+          ],
+        },
+        {
+          kind: "register",
+          eyebrow: "Partnership model",
+          title: "Three clear ways to create value together",
+          items: [
+            {
+              title: "1. Expert advisory partner",
+              text: "You use QuestPulse as the insight foundation in your client work. Together we clarify role, privacy and how insight becomes meaningful expert follow-up.",
+            },
+            {
+              title: "2. Commercial partner",
+              text: "You offer QuestPulse as part of your portfolio, with a clear sales model, enablement and agreed boundaries for ownership and revenue sharing.",
+            },
+            {
+              title: "3. Technology and integration partner",
+              text: "We explore integrations with HR systems, collaboration tools or identity platforms where they create a safer, more seamless client experience.",
             },
           ],
         },
         {
           kind: "contact",
-          eyebrow: "Get in touch",
-          title: "Register partner interest",
-          lead: "Choose Partnership in the form and tell us briefly who you work with today.",
+          eyebrow: "Explore a partnership",
+          title: "Let us assess where QuestPulse can strengthen your client offering",
+          lead: "Tell us who you help today and what you deliver. We will propose a concrete first partnership model.",
         },
       ],
     },
@@ -1191,6 +1227,5 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
         },
       ],
     },
-
   },
 };

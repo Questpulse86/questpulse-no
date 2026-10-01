@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
 
 import { HUBSPOT_BOOKING_URL } from "@/components/site/HubSpotForm";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navKeys, navLabels, pagePaths } from "@/lib/page-content";
 import type { Locale, SiteContent } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
@@ -15,7 +17,12 @@ export function SiteHeader({
 }: {
   locale: Locale;
   content: SiteContent;
-  altHref: "/" | "/en" | (typeof pagePaths)[keyof typeof pagePaths][Locale] | "/forskning" | "/en/research";
+  altHref:
+    | "/"
+    | "/en"
+    | (typeof pagePaths)[keyof typeof pagePaths][Locale]
+    | "/forskning"
+    | "/en/research";
   theme?: "light" | "dark";
 }) {
   const other: Locale = locale === "no" ? "en" : "no";
@@ -28,7 +35,7 @@ export function SiteHeader({
         dark ? "border-navy-foreground/10 bg-navy/95" : "border-border bg-background/95",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link to={locale === "no" ? "/" : "/en"} className="inline-flex items-center">
           <Logo variant={dark ? "onDark" : "onLight"} width={148} />
         </Link>
@@ -55,7 +62,7 @@ export function SiteHeader({
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <Link
             to={altHref}
             className={cn(
@@ -72,6 +79,55 @@ export function SiteHeader({
               {content.nav.cta}
             </a>
           </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button
+                type="button"
+                aria-label={locale === "no" ? "Åpne meny" : "Open menu"}
+                className={cn(
+                  "inline-flex size-9 items-center justify-center rounded-md border lg:hidden",
+                  dark
+                    ? "border-navy-foreground/20 text-navy-foreground hover:bg-navy-foreground/10"
+                    : "border-border text-navy hover:bg-secondary",
+                )}
+              >
+                <Menu className="size-4" />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-[min(88vw,24rem)] border-0 bg-navy px-7 pt-16 text-navy-foreground"
+            >
+              <nav
+                aria-label={locale === "no" ? "Mobilmeny" : "Mobile navigation"}
+                className="flex flex-col"
+              >
+                {navKeys.map((key) => (
+                  <SheetClose asChild key={key}>
+                    <Link
+                      to={pagePaths[key][locale]}
+                      className="border-b border-navy-foreground/15 py-5 text-lg font-semibold text-navy-foreground transition-colors hover:text-teal"
+                    >
+                      {navLabels[locale][key]}
+                    </Link>
+                  </SheetClose>
+                ))}
+                <SheetClose asChild>
+                  <Link
+                    to={pagePaths.partners[locale]}
+                    className="border-b border-navy-foreground/15 py-5 text-lg font-semibold text-navy-foreground transition-colors hover:text-teal"
+                  >
+                    {navLabels[locale].partners}
+                  </Link>
+                </SheetClose>
+                <Button asChild className="mt-8 justify-center">
+                  <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                    {content.nav.cta}
+                  </a>
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>

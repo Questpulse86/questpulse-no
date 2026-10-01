@@ -79,18 +79,21 @@ export const Route = createFileRoute("/")({
         }
       : {
           meta: [
-            { title: "QuestPulse | People Intelligence for organisatorisk helse" },
+            { title: "QuestPulse | Organisatorisk risiko og People Intelligence" },
             {
               name: "description",
               content:
-                "People Intelligence som gir HR og ledelse løpende innsikt i organisatorisk helse og lederrisiko, slik at dere kan handle før belastning og friksjon eskalerer.",
+                "QuestPulse gir HR, ledere og toppledelse løpende, beskyttet innsikt i organisatorisk risiko – slik at dere kan prioritere riktige handlinger før belastning og friksjon eskalerer.",
             },
-            { property: "og:title", content: "QuestPulse | People Intelligence for organisatorisk helse" },
+            {
+              property: "og:title",
+              content: "QuestPulse | Organisatorisk risiko og People Intelligence",
+            },
             { property: "og:site_name", content: "QuestPulse" },
             {
               property: "og:description",
               content:
-                "Fra spredte signaler til felles beslutningsgrunnlag om organisatorisk helse og lederrisiko.",
+                "Fra løpende organisatoriske signaler til prioriterte lederhandlinger og dokumentert effekt.",
             },
             { property: "og:type", content: "website" },
             { property: "og:locale", content: "nb_NO" },
@@ -101,6 +104,7 @@ export const Route = createFileRoute("/")({
             { rel: "canonical", href: "https://questpulse.no/" },
             { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en" },
             { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/" },
+            { rel: "alternate", hrefLang: "x-default", href: "https://questpulse.no/en" },
           ],
           scripts: [
             {
@@ -114,7 +118,23 @@ export const Route = createFileRoute("/")({
                   "People Intelligence for organisatorisk helse og lederrisiko. Løpende innsikt for HR, ledere og toppledelse.",
                 url: "https://questpulse.no/",
                 inLanguage: "nb-NO",
-                provider: { "@type": "Organization", name: "Digital Coach Hub AS", taxID: "936265634" },
+                provider: {
+                  "@type": "Organization",
+                  name: "Digital Coach Hub AS",
+                  taxID: "936265634",
+                },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Digital Coach Hub AS",
+                brand: { "@type": "Brand", name: "QuestPulse" },
+                url: "https://questpulse.no/",
+                email: "linda@dchub.no",
+                areaServed: ["Norway", "Nordics", "Europe"],
               }),
             },
           ],

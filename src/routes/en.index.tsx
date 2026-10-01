@@ -12,17 +12,21 @@ const contentQuery = queryOptions({
 export const Route = createFileRoute("/en/")({
   head: () => ({
     meta: [
-      { title: "QuestPulse | People Intelligence" },
+      { title: "QuestPulse | Continuous organisational insight for leaders" },
       {
         name: "description",
         content:
-          "QuestPulse turns continuous signals from teams, leaders and business units into a shared basis for decisions across HR and leadership.",
+          "QuestPulse turns continuous organisational signals into protected, actionable insight for HR, leaders and executive teams – from early risk to documented effect.",
       },
-      { property: "og:title", content: "QuestPulse | People Intelligence" },
+      {
+        property: "og:title",
+        content: "QuestPulse | Continuous organisational insight for leaders",
+      },
       { property: "og:site_name", content: "QuestPulse" },
       {
         property: "og:description",
-        content: "From scattered signals to a shared basis for decisions. People Intelligence for Nordic organisations.",
+        content:
+          "From continuous organisational signals to prioritised leadership action and documented effect.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en" },
@@ -32,6 +36,7 @@ export const Route = createFileRoute("/en/")({
     links: [
       { rel: "canonical", href: "https://questpulse.no/en" },
       { rel: "alternate", hrefLang: "no", href: "/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://questpulse.no/en" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(contentQuery),
