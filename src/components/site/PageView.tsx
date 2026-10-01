@@ -69,7 +69,7 @@ function Section({
       <section className="border-y border-border bg-card">
         <div className="mx-auto max-w-6xl px-5 py-24">
           {header}
-          <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {section.items.map((item) => (
               <div key={item.alt} className="flex min-h-32 items-center justify-center bg-background p-7">
                 <img

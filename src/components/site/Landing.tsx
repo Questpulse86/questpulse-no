@@ -46,6 +46,13 @@ type HomeCopy = {
     actionBody: string;
     example: string;
   };
+  visual: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    primaryAlt: string;
+    secondaryAlt: string;
+  };
   roles: { eyebrow: string; title: string; items: { title: string; text: string }[] };
   trust: { eyebrow: string; title: string; lead: string; items: string[]; link: string };
   proof: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[]; link: string };
@@ -115,6 +122,13 @@ const copy: Record<Locale, HomeCopy> = {
       actionTitle: "Anbefalt prioritering",
       actionBody: "Kartlegg hva de beste teamene gjør annerledes før neste ledermøte.",
       example: "Fiktive eksempeldata",
+    },
+    visual: {
+      eyebrow: "Mennesker før målepunkter",
+      title: "Et bedre grunnlag for den faglige samtalen",
+      lead: "QuestPulse skal ikke redusere arbeidshverdagen til et tall. Målet er å gi ledere og HR kontekst nok til å stille bedre spørsmål, velge riktig oppfølging og lære av det som faktisk virker.",
+      primaryAlt: "Et team som reflekterer over et felles beslutningsgrunnlag",
+      secondaryAlt: "En leder som vurderer innsikt før neste handling",
     },
     roles: {
       eyebrow: "Verdi på hvert nivå",
@@ -259,6 +273,13 @@ const copy: Record<Locale, HomeCopy> = {
       actionTitle: "Recommended priority",
       actionBody: "Map what the strongest teams do differently before the next leadership meeting.",
       example: "Fictional example data",
+    },
+    visual: {
+      eyebrow: "People before measurement points",
+      title: "A stronger foundation for the professional conversation",
+      lead: "QuestPulse should not reduce working life to a number. The aim is to give leaders and HR enough context to ask better questions, choose the right follow-up and learn from what truly works.",
+      primaryAlt: "A team reflecting on a shared decision foundation",
+      secondaryAlt: "A leader considering insight before the next action",
     },
     roles: {
       eyebrow: "Value at every level",
@@ -541,6 +562,36 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="qp-eyebrow">{t.visual.eyebrow}</p>
+              <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">{t.visual.title}</h2>
+            </div>
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
+              {t.visual.lead}
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+            <figure className="overflow-hidden rounded-md bg-secondary">
+              <img
+                src="/imagery/questpulse-team-insight.webp"
+                alt={t.visual.primaryAlt}
+                className="h-full min-h-80 w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <figure className="overflow-hidden rounded-md bg-secondary">
+              <img
+                src="/imagery/questpulse-leadership-reflection.webp"
+                alt={t.visual.secondaryAlt}
+                className="h-full min-h-80 w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
           </div>
         </section>
 

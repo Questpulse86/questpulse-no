@@ -551,6 +551,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             { src: "/partners/innovasjon-norge.webp", alt: "Innovasjon Norge" },
             { src: "/partners/smart-innovation.webp", alt: "Smart Innovation Norway" },
             { src: "/partners/raeder-bing.webp", alt: "Ræder Bing" },
+            { src: "/partners/ostfold-fylkeskommune.webp", alt: "Østfold fylkeskommune" },
+            { src: "/partners/mh-tech.svg", alt: "MH Tech" },
           ],
         },
         {
@@ -1135,6 +1137,8 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             { src: "/partners/innovasjon-norge.webp", alt: "Innovation Norway" },
             { src: "/partners/smart-innovation.webp", alt: "Smart Innovation Norway" },
             { src: "/partners/raeder-bing.webp", alt: "Ræder Bing" },
+            { src: "/partners/ostfold-fylkeskommune.webp", alt: "Østfold County Municipality" },
+            { src: "/partners/mh-tech.svg", alt: "MH Tech" },
           ],
         },
         {
