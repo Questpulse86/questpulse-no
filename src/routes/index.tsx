@@ -83,7 +83,7 @@ export const Route = createFileRoute("/")({
             {
               name: "description",
               content:
-                "QuestPulse gir HR, ledere og toppledelse løpende, beskyttet innsikt i organisatorisk risiko – slik at dere kan prioritere riktige handlinger før belastning og friksjon eskalerer.",
+                "QuestPulse gir HR, ledere og toppledelse løpende, beskyttet innsikt i organisatorisk risiko, slik at dere kan prioritere riktige handlinger før belastning og friksjon eskalerer.",
             },
             {
               property: "og:title",

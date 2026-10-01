@@ -16,7 +16,7 @@ export const Route = createFileRoute("/en/")({
       {
         name: "description",
         content:
-          "QuestPulse turns continuous organisational signals into protected, actionable insight for HR, leaders and executive teams – from early risk to documented effect.",
+          "QuestPulse turns continuous organisational signals into protected, actionable insight for HR, leaders and executive teams, from early risk to documented effect.",
       },
       {
         property: "og:title",
