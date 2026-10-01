@@ -40,7 +40,8 @@ export type PageKey =
   | "enterprise"
   | "contact"
   | "security"
-  | "partners";
+  | "partners"
+  | "stories";
 
 export const pagePaths = {
   about: { no: "/om-selskapet", en: "/en/about" },
@@ -52,6 +53,7 @@ export const pagePaths = {
   contact: { no: "/kontakt", en: "/en/contact" },
   security: { no: "/sikkerhet-og-personvern", en: "/en/security-and-privacy" },
   partners: { no: "/partnere", en: "/en/partners" },
+  stories: { no: "/historier-fra-arbeidslivet", en: "/en/workplace-stories" },
 } as const;
 
 export const navKeys: PageKey[] = ["how", "usecases", "hr", "security", "partners"];
@@ -63,6 +65,7 @@ export const footerKeys: PageKey[] = [
   "enterprise",
   "security",
   "partners",
+  "stories",
   "about",
   "contact",
 ];
@@ -78,6 +81,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     contact: "Kontakt",
     security: "Trust Center",
     partners: "Partnerøkosystem",
+    stories: "Historier fra arbeidslivet",
   },
   en: {
     about: "Company",
@@ -89,6 +93,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     contact: "Contact",
     security: "Trust Center",
     partners: "Partner ecosystem",
+    stories: "Workplace stories",
   },
 };
 
@@ -579,6 +584,102 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "Utforsk samarbeid",
           title: "La oss vurdere hvor QuestPulse kan styrke deres kundetilbud",
           lead: "Fortell kort hvem dere hjelper i dag og hvilke tjenester dere leverer. Vi foreslår en konkret første samarbeidsmodell.",
+        },
+      ],
+    },
+    stories: {
+      meta: {
+        title: "Historier fra arbeidslivet | Tidlig innsikt og forebygging | QuestPulse",
+        description:
+          "Fiktive, gjenkjennelige historier som viser hvordan QuestPulse kan styrke samtalen mellom medarbeider, leder, HR og styre – før friksjon blir turnover, fravær eller tapt kapasitet.",
+      },
+      hero: {
+        eyebrow: "Historier fra arbeidslivet",
+        title: "Det som ikke blir sagt, er ofte det dyreste signalet",
+        lead: "QuestPulse gir ikke arbeidsgiver innsyn i menneskers private refleksjoner. Det gir hver rolle et tryggere grunnlag for den delen av oppfølgingen de faktisk har ansvar for – tidlig nok til å gjøre en forskjell.",
+      },
+      sections: [
+        {
+          kind: "prose",
+          eyebrow: "Fiktive, men gjenkjennelige situasjoner",
+          title: "Verdien oppstår mellom menneskene – ikke i et dashboard alene",
+          paragraphs: [
+            "Situasjonene under er fiktive sammensetninger. De beskriver hverdager mange kjenner igjen: en medarbeider som ikke vil belaste lederen sin, en mellomleder som mangler språk og struktur for oppfølging, og HR som får signalene først når saken allerede er blitt stor.",
+            "QuestPulse skal gjøre den menneskelige oppfølgingen bedre, ikke erstatte den. Medarbeideren får et trygt rom og hjelp til å sortere. Lederen får aggregert innsikt og strukturert lederstøtte. HR, CEO og styre får hvert sitt nivå av beslutningsgrunnlag – uten enkeltsvar, persondata eller innsyn i små grupper.",
+          ],
+        },
+        {
+          kind: "dark",
+          eyebrow: "Et nøkternt kostnadseksempel",
+          title: "Når én nøkkelperson forsvinner, er kostnaden større enn en rekrutteringsprosess",
+          lead: "Dette er et illustrativt scenario for finans- og forsikringsvirksomhet – ikke en påstand om en fast kostnad hos alle virksomheter.",
+          items: [
+            {
+              title: "1 008 480 kr i årslønn",
+              text: "SSBs gjennomsnittlige månedslønn i finansierings- og forsikringsvirksomhet var 84 040 kr i 2025. Tolv måneder gir en enkel årslønnsreferanse på 1 008 480 kr.",
+            },
+            {
+              title: "Ca. 504 000 kr i konservativt scenario",
+              text: "Bruker man 50 prosent av årslønn som en forsiktig modell for rekruttering, ledelsestid, tom stol, onboarding og tapt produktivitet, er kostnaden allerede over en halv million kroner.",
+            },
+            {
+              title: "Den reelle kostnaden kan bli langt høyere",
+              text: "For spesialist- og lederroller kommer relasjoner, kundekunnskap, feilprioriteringer og tid til full produktivitet i tillegg. Det er nettopp dette tidlig og trygg oppfølging skal bidra til å forebygge.",
+            },
+          ],
+        },
+        {
+          kind: "register",
+          eyebrow: "Fem historier",
+          title: "Hva kunne vært håndtert annerledes?",
+          lead: "QuestPulse lover ikke å forhindre alle oppsigelser eller løse komplekse menneskelige forhold. Det gir virksomheten en bedre mulighet til å oppdage mønstre, starte riktig samtale og følge tiltakene over tid.",
+          items: [
+            {
+              title: "1. «Jeg orker ikke å være den som klager.»",
+              text: "En erfaren medarbeider har gradvis mistet energi etter flere omorganiseringer, men vil ikke dele alt med nærmeste leder. I QuestPulse kan personen reflektere privat og få perspektiver på typiske arbeidslivsutfordringer. Hvis samme type belastning bygger seg opp i flere, ser lederen kun det aggregerte mønsteret og får støtte til en trygg, relevant oppfølging.",
+            },
+            {
+              title: "2. «Jeg ser at teamet mitt strever, men jeg vet ikke hvor jeg skal begynne.»",
+              text: "Mellomlederen har høyt tempo, få arenaer for refleksjon og ulike historier fra hvert enkelt teammedlem. QuestPulse gir ikke fasiten på personer, men viser hvilke felles mønstre som fortjener oppmerksomhet og hjelper lederen å velge én strukturert handling som kan følges opp.",
+            },
+            {
+              title: "3. «Nå kom resultatene – og nå må vi slukke brannen.»",
+              text: "HR får den årlige undersøkelsen etter at flere allerede har søkt seg bort eller blitt sykmeldt. Med løpende, beskyttet innsikt kan HR se utvikling på tvers, støtte rett leder tidligere og dokumentere om tiltakene faktisk endrer bildet. Målet er mindre reaktiv brannslukking og mer presis forebygging.",
+            },
+            {
+              title: "4. «Vi har tall på fravær og turnover, men ikke hva som bygger seg opp.»",
+              text: "CEO ser konsekvensene i nøkkeltallene, ofte for sent til å forstå hva som burde vært håndtert annerledes. QuestPulse gir et aggregert og beslutningsnært bilde av risiko, kapasitet og utvikling, slik at ledelsen kan prioritere tiltak før tap av kompetanse blir et resultatregnskapsspørsmål.",
+            },
+            {
+              title: "5. «Styret får status – men ikke en sammenhengende forebyggingssløyfe.»",
+              text: "Styret trenger ikke innsyn i ansatte. Det trenger en ansvarlig forståelse av utvikling, risiko, tiltak og effekt. QuestPulse kan gi styret overordnet, anonymisert innsikt som viser at virksomheten jobber systematisk med mennesker, arbeidsmiljø og verdiskaping gjennom hele året.",
+            },
+          ],
+        },
+        {
+          kind: "cards",
+          eyebrow: "Hva hver rolle får",
+          title: "Én struktur. Fem ulike verdier.",
+          items: [
+            {
+              title: "Medarbeider",
+              text: "Privat refleksjon, nyttige perspektiver og et tryggere sted å sette ord på arbeidslivets friksjon. Eget innhold deles aldri videre.",
+            },
+            {
+              title: "Leder og HR",
+              text: "Strukturert lederstøtte, aggregerte signaler og bedre prioritering. De kan handle på mønstre uten å be om eller se fortrolige refleksjoner.",
+            },
+            {
+              title: "CEO og styre",
+              text: "Forebyggende innsikt, dokumentert oppfølging og et felles styringsgrunnlag for å beskytte kapasitet, resultater og investeringer i mennesker.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Neste steg",
+          title: "Hvilken kostbar situasjon ønsker dere å oppdage tidligere?",
+          lead: "Vi kan starte med én konkret beslutning, ett ansvarsområde eller en avgrenset evaluering – og utforme et løp som er trygt for menneskene og nyttig for virksomheten.",
         },
       ],
     },
@@ -1165,6 +1266,102 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "Explore a partnership",
           title: "Let us assess where QuestPulse can strengthen your client offering",
           lead: "Tell us who you help today and what you deliver. We will propose a concrete first partnership model.",
+        },
+      ],
+    },
+    stories: {
+      meta: {
+        title: "Workplace stories | Early insight and prevention | QuestPulse",
+        description:
+          "Fictional, recognisable workplace stories showing how QuestPulse can strengthen the conversation between employee, manager, HR and board before friction becomes turnover, absence or lost capacity.",
+      },
+      hero: {
+        eyebrow: "Workplace stories",
+        title: "What is left unsaid is often the most expensive signal",
+        lead: "QuestPulse does not give employers access to private reflection. It gives each role a safer basis for the part of follow-up they are responsible for – early enough to make a difference.",
+      },
+      sections: [
+        {
+          kind: "prose",
+          eyebrow: "Fictional, yet recognisable situations",
+          title: "The value arises between people – not in a dashboard alone",
+          paragraphs: [
+            "The situations below are fictional composites. They describe working lives many recognise: an employee who does not want to burden their manager, a middle manager who lacks language and structure for follow-up, and HR who receives the signals only after the situation has become large.",
+            "QuestPulse is designed to improve human follow-up, not replace it. The employee gets a safe space and help sorting their perspective. The manager gets aggregated insight and structured leadership support. HR, CEO and board each get the appropriate decision foundation – without individual responses, personal data or insight into small groups.",
+          ],
+        },
+        {
+          kind: "dark",
+          eyebrow: "A pragmatic cost scenario",
+          title: "When a key person leaves, the cost is greater than a recruitment process",
+          lead: "This is an illustrative scenario for financial and insurance activities – not a claim of a fixed cost for every organisation.",
+          items: [
+            {
+              title: "NOK 1,008,480 in annual salary",
+              text: "Statistics Norway reported average monthly earnings of NOK 84,040 in financial and insurance activities in 2025. Twelve months provide a simple annual salary reference of NOK 1,008,480.",
+            },
+            {
+              title: "Approx. NOK 504,000 in a conservative scenario",
+              text: "Using 50 percent of annual salary as a cautious model for recruitment, leadership time, vacancy, onboarding and lost productivity already puts the cost above half a million NOK.",
+            },
+            {
+              title: "The real cost can be materially higher",
+              text: "For specialist and leadership roles, relationships, customer knowledge, prioritisation errors and time to full productivity add further cost. This is what earlier and safer follow-up is intended to help prevent.",
+            },
+          ],
+        },
+        {
+          kind: "register",
+          eyebrow: "Five stories",
+          title: "What could have been handled differently?",
+          lead: "QuestPulse does not promise to prevent every resignation or solve complex human situations. It creates a better opportunity to notice patterns, start the right conversation and follow actions over time.",
+          items: [
+            {
+              title: "1. “I do not want to be the one who complains.”",
+              text: "An experienced employee has gradually lost energy after several reorganisations, but does not want to share everything with their direct manager. In QuestPulse, the person can reflect privately and receive perspective on common work-life challenges. If similar strain builds across several people, the manager sees only the aggregated pattern and receives support for safe, relevant follow-up.",
+            },
+            {
+              title: "2. “I can see my team is struggling, but I do not know where to start.”",
+              text: "The middle manager has a high pace, few spaces for reflection and different stories from each team member. QuestPulse does not provide answers about individuals, but indicates which shared patterns deserve attention and helps the manager choose one structured action to follow up.",
+            },
+            {
+              title: "3. “The results are in – now we have to put out the fire.”",
+              text: "HR receives the annual survey after several people have already applied elsewhere or gone on sick leave. With continuous protected insight, HR can see development across the organisation, support the right leader earlier and document whether actions actually change the picture. The aim is less reactive firefighting and more precise prevention.",
+            },
+            {
+              title: "4. “We have absence and turnover figures, but not what is building up.”",
+              text: "The CEO sees the consequences in the KPIs, often too late to understand what could have been handled differently. QuestPulse provides an aggregated, decision-ready view of risk, capacity and development, enabling leaders to prioritise action before lost expertise becomes a P&L question.",
+            },
+            {
+              title: "5. “The board receives status – but not a coherent prevention loop.”",
+              text: "The board does not need insight into employees. It needs a responsible understanding of development, risk, action and effect. QuestPulse can give the board high-level, anonymised insight showing that the organisation works systematically with people, working environment and value creation throughout the year.",
+            },
+          ],
+        },
+        {
+          kind: "cards",
+          eyebrow: "What each role receives",
+          title: "One structure. Five different values.",
+          items: [
+            {
+              title: "Employee",
+              text: "Private reflection, useful perspective and a safer place to put words to work-life friction. Personal content is never shared onwards.",
+            },
+            {
+              title: "Manager and HR",
+              text: "Structured leadership support, aggregated signals and stronger prioritisation. They can act on patterns without requesting or seeing confidential reflections.",
+            },
+            {
+              title: "CEO and board",
+              text: "Preventive insight, documented follow-up and a shared decision foundation for protecting capacity, results and investments in people.",
+            },
+          ],
+        },
+        {
+          kind: "contact",
+          eyebrow: "Next step",
+          title: "Which costly situation do you want to detect earlier?",
+          lead: "We can start with one specific decision, one area of responsibility or a scoped evaluation – and design a journey that is safe for people and useful for the organisation.",
         },
       ],
     },
