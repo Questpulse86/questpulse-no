@@ -81,8 +81,8 @@ const copy: Record<Locale, HomeCopy> = {
   no: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "Se organisatorisk risiko tidligere – og handle før den eskalerer.",
-      lead: "QuestPulse gjør løpende signaler fra team, ledere og avdelinger om til beskyttet, handlingsklar innsikt for HR, ledere og toppledelse.",
+      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
+      lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
       cta: "Be om en strategisk gjennomgang",
       secondary: "Se hvordan det fungerer",
     },
@@ -109,7 +109,7 @@ const copy: Record<Locale, HomeCopy> = {
     value: {
       eyebrow: "Fra spredte signaler til felles beslutningsgrunnlag",
       title: "Mer enn en måling. Et beslutningsgrunnlag som utvikler seg med organisasjonen.",
-      lead: "De fleste virksomheter tar beslutninger om mennesker, ledelse og kapasitet på forsinkede signaler. QuestPulse gjør signalene handlingsbare tidligere.",
+      lead: "De fleste virksomheter tar beslutninger om mennesker, ledelse og kapasitet på forsinkede signaler. QuestPulse synliggjør hva som utvikler seg mellom målepunktene, mens det fortsatt er handlingsrom.",
       items: [
         {
           title: "Oppdag tidligere",
@@ -173,7 +173,7 @@ const copy: Record<Locale, HomeCopy> = {
     markets: {
       eyebrow: "For kunnskapsintensive virksomheter",
       title: "Bygget der menneskelig kapasitet er en strategisk faktor",
-      lead: "QuestPulse er relevant når kompetanse, samarbeid og ledelseskapasitet er tett knyttet til leveransen – på tvers av offentlig og privat sektor.",
+      lead: "QuestPulse er relevant når kompetanse, samarbeid og ledelseskapasitet er tett knyttet til leveransen, på tvers av offentlig og privat sektor.",
       items: [
         {
           title: "Rådgivning og profesjonelle tjenester",
@@ -181,7 +181,7 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Teknologi og produktmiljøer",
-          text: "Når endringstakt, prioriteringer og teamarbeid må fungere over tid – ikke bare ved neste release.",
+          text: "Når endringstakt, prioriteringer og teamarbeid må fungere over tid, ikke bare ved neste release.",
         },
         {
           title: "Industri og kompetansemiljøer",
@@ -204,11 +204,11 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Mellomleder",
-          text: "Aggregerte mønstre i eget ansvarsområde og et bedre grunnlag for den neste samtalen og handlingen – aldri individuelle svar.",
+          text: "Aggregerte mønstre i eget ansvarsområde og et bedre grunnlag for den neste samtalen og handlingen. Aldri individuelle svar.",
         },
         {
           title: "HR og People",
-          text: "Prioritering på tvers, støtte til lederne og dokumentasjon av hva som virker over tid – uten tilgang til personlige refleksjoner.",
+          text: "Prioritering på tvers, støtte til lederne og dokumentasjon av hva som virker over tid, uten tilgang til personlige refleksjoner.",
         },
         {
           title: "CEO og toppledelse",
@@ -216,7 +216,7 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Styre",
-          text: "Overordnet utvikling, risikoforståelse og dokumentert oppfølging – uten persondata, enkeltsvar eller innsyn i små grupper.",
+          text: "Overordnet utvikling, risikoforståelse og dokumentert oppfølging, uten persondata, enkeltsvar eller innsyn i små grupper.",
         },
       ],
     },
@@ -233,7 +233,7 @@ const copy: Record<Locale, HomeCopy> = {
       link: "Les om sikkerhet og personvern",
     },
     proof: {
-      eyebrow: "Et troverdig grunnlag – før kundecaser publiseres",
+      eyebrow: "Et troverdig grunnlag før kundecaser publiseres",
       title: "Bygget for en grundig enterprise-vurdering",
       lead: "Mens publiserbare resultater fra piloter og forskningsprosjekter modnes, viser vi det vi kan dokumentere nå: metode, styring og et klart avtaleverk.",
       items: [
@@ -285,8 +285,9 @@ const copy: Record<Locale, HomeCopy> = {
   en: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "See organisational risk earlier. Act before it escalates.",
-      lead: "QuestPulse turns continuous signals from teams, leaders and business units into protected, actionable insight for HR, leaders and executive teams.",
+      title:
+        "Discover organisational friction, strain and leadership challenges before they escalate.",
+      lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared decision foundation for HR, leaders and executive teams.",
       cta: "Request an executive briefing",
       secondary: "See how it works",
     },
@@ -313,7 +314,7 @@ const copy: Record<Locale, HomeCopy> = {
     value: {
       eyebrow: "From scattered signals to a shared basis for decisions",
       title: "More than measurement. A decision foundation that evolves with the organisation.",
-      lead: "Most organisations make decisions about people, leadership and capacity using delayed signals. QuestPulse makes those signals actionable earlier.",
+      lead: "Most organisations make decisions about people, leadership and capacity using delayed signals. QuestPulse makes what is developing visible between measurement points, while there is still room to act.",
       items: [
         {
           title: "Detect earlier",
@@ -384,7 +385,7 @@ const copy: Record<Locale, HomeCopy> = {
     markets: {
       eyebrow: "For knowledge-intensive organisations",
       title: "Built where human capacity is a strategic factor",
-      lead: "QuestPulse is relevant when expertise, collaboration and leadership capacity are closely connected to delivery – across private and public sector organisations.",
+      lead: "QuestPulse is relevant when expertise, collaboration and leadership capacity are closely connected to delivery, across private and public sector organisations.",
       items: [
         {
           title: "Advisory and professional services",
@@ -392,7 +393,7 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Technology and product organisations",
-          text: "When pace of change, priorities and teamwork need to work over time – not only until the next release.",
+          text: "When pace of change, priorities and teamwork need to work over time, not only until the next release.",
         },
         {
           title: "Industry and specialist environments",
@@ -415,11 +416,11 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Middle manager",
-          text: "Aggregated patterns in their area and a stronger basis for the next conversation and action – never individual responses.",
+          text: "Aggregated patterns in their area and a stronger basis for the next conversation and action. Never individual responses.",
         },
         {
           title: "HR and People",
-          text: "Priorities across the organisation, support for leaders and evidence of what works over time – without access to personal reflections.",
+          text: "Priorities across the organisation, support for leaders and evidence of what works over time, without access to personal reflections.",
         },
         {
           title: "CEO and executive team",
@@ -427,7 +428,7 @@ const copy: Record<Locale, HomeCopy> = {
         },
         {
           title: "Board",
-          text: "High-level development, risk understanding and documented follow-up – without personal data, individual responses or insight into small groups.",
+          text: "High-level development, risk understanding and documented follow-up, without personal data, individual responses or insight into small groups.",
         },
       ],
     },
@@ -444,7 +445,7 @@ const copy: Record<Locale, HomeCopy> = {
       link: "Read about security and privacy",
     },
     proof: {
-      eyebrow: "A credible foundation – before customer cases are published",
+      eyebrow: "A credible foundation before customer cases are published",
       title: "Built for a rigorous enterprise evaluation",
       lead: "While publishable results from pilots and research projects mature, we show what can be documented now: method, governance and a clear agreement framework.",
       items: [
@@ -546,14 +547,6 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                     {t.hero.cta}
                     <ArrowRight />
                   </a>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="h-12 border-navy-foreground/20 bg-transparent text-navy-foreground hover:bg-navy-foreground/10 hover:text-navy-foreground"
-                >
-                  <Link to={pagePaths.how[locale]}>{t.hero.secondary}</Link>
                 </Button>
               </div>
               <p className="mt-7 flex items-center gap-2 text-xs text-navy-foreground/45">
