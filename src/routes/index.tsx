@@ -133,7 +133,7 @@ export const Route = createFileRoute("/")({
                 name: "Digital Coach Hub AS",
                 brand: { "@type": "Brand", name: "QuestPulse" },
                 url: "https://questpulse.no/",
-                email: "linda@dchub.no",
+                email: "support@questpulse.no",
                 areaServed: ["Norway", "Nordics", "Europe"],
               }),
             },

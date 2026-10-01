@@ -12,7 +12,14 @@ export type PageSection =
       visual?: "flow";
       items: PageItem[];
     }
-  | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
+  | {
+      kind: "dark";
+      eyebrow?: string;
+      title: string;
+      lead?: string;
+      items: PageItem[];
+      tone?: "light";
+    }
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
   | {
       kind: "logos";
@@ -483,7 +490,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Kontaktpunkt for sikkerhet",
-              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til linda@dchub.no.",
+              text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
             },
           ],
         },
@@ -697,6 +704,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       sections: [
         {
           kind: "dark",
+          tone: "light",
           eyebrow: "Fra signal til handling",
           title: "Ikke flere løsrevne målinger. Ett beslutningsgrunnlag som kan følges opp.",
           lead: "Samme produktlogikk brukes i hvert bruksområde: signal, tolkning, risiko, anbefaling, lederhandling og læring over tid.",
@@ -1230,7 +1238,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Security contact point",
-              text: "Security enquiries, vulnerability reports and documentation requests go to linda@dchub.no.",
+              text: "Security enquiries, vulnerability reports and documentation requests go to support@questpulse.no.",
             },
           ],
         },
@@ -1444,6 +1452,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
       sections: [
         {
           kind: "dark",
+          tone: "light",
           eyebrow: "From signal to action",
           title:
             "Not another disconnected measurement. One decision foundation that can be followed up.",

@@ -81,7 +81,7 @@ const copy: Record<Locale, HomeCopy> = {
   no: {
     hero: {
       eyebrow: "People Intelligence",
-      title: "Oppdag organisatorisk friksjon, belastning og lederutfordringer før de eskalerer.",
+      title: "Se hva som utvikler seg i organisasjonen før konsekvensene blir tydelige.",
       lead: "QuestPulse samler løpende signaler fra team, ledere og avdelinger og gjør dem om til felles beslutningsgrunnlag for HR, ledere og toppledelse.",
       cta: "Be om en strategisk gjennomgang",
       secondary: "Se hvordan det fungerer",
@@ -279,14 +279,13 @@ const copy: Record<Locale, HomeCopy> = {
       title: "Hva ville dere sett tidligere med et bedre beslutningsgrunnlag?",
       text: "Vi starter med deres beslutningsbehov, eksisterende prosesser og krav til personvern og sikkerhet.",
       button: "Book kartleggingssamtale",
-      email: "linda@dchub.no",
+      email: "support@questpulse.no",
     },
   },
   en: {
     hero: {
       eyebrow: "People Intelligence",
-      title:
-        "Discover organisational friction, strain and leadership challenges before they escalate.",
+      title: "See what is developing in the organisation before the consequences become clear.",
       lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared decision foundation for HR, leaders and executive teams.",
       cta: "Request an executive briefing",
       secondary: "See how it works",
@@ -491,7 +490,7 @@ const copy: Record<Locale, HomeCopy> = {
       title: "What could you see earlier with a better basis for decisions?",
       text: "We start with your decision needs, current processes and requirements for privacy and security.",
       button: "Book a discovery conversation",
-      email: "linda@dchub.no",
+      email: "support@questpulse.no",
     },
   },
 };
@@ -503,13 +502,13 @@ const rolloutIcons = [Check, ShieldCheck, Users, Sparkles];
 function ProductPreview({ t }: { t: HomeCopy }) {
   return (
     <figure
-      className="overflow-hidden rounded-md border border-navy-foreground/10 bg-white shadow-[0_24px_70px_rgba(3,17,31,0.16)]"
-      aria-label={t.product.example}
+      className="overflow-hidden rounded-md border border-navy-foreground/15 bg-white shadow-[0_24px_70px_rgba(3,17,31,0.2)]"
+      aria-label={t.visual.primaryAlt}
     >
       <img
-        src="/imagery/questpulse-decision-platform.webp"
-        alt={t.product.example}
-        className="block h-auto w-full"
+        src="/imagery/questpulse-team-insight.webp"
+        alt={t.visual.primaryAlt}
+        className="block aspect-[4/3] w-full object-cover"
       />
     </figure>
   );
@@ -528,7 +527,6 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
       />
       <main>
         <section className="relative overflow-hidden bg-navy text-navy-foreground">
-          <div className="qp-grid-bg absolute inset-0" aria-hidden="true" />
           <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pt-20 pb-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center lg:px-8 lg:pt-28 lg:pb-20">
             <div className="animate-fade-in">
               <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-teal uppercase">

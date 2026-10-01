@@ -16,8 +16,8 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
             <br />
             Org.nr. 936 265 634
             <br />
-            <a className="text-navy hover:text-teal-deep" href="mailto:linda@dchub.no">
-              linda@dchub.no
+            <a className="text-navy hover:text-teal-deep" href="mailto:support@questpulse.no">
+              support@questpulse.no
             </a>
           </address>
         </div>

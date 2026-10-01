@@ -26,25 +26,62 @@ function Section({
   );
 
   if (section.kind === "dark") {
+    const light = section.tone === "light";
     return (
-      <section className="bg-navy py-24 text-navy-foreground">
+      <section
+        className={
+          light
+            ? "border-b border-border bg-card py-24 text-navy"
+            : "bg-navy py-24 text-navy-foreground"
+        }
+      >
         <div className="mx-auto max-w-6xl px-5">
           {section.eyebrow ? (
-            <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
+            <p className="text-xs font-bold tracking-[0.18em] text-teal-deep uppercase">
               {section.eyebrow}
             </p>
           ) : null}
-          <h2 className="mt-4 max-w-2xl text-3xl text-navy-foreground sm:text-4xl">
+          <h2
+            className={
+              light
+                ? "mt-4 max-w-2xl text-3xl text-navy sm:text-4xl"
+                : "mt-4 max-w-2xl text-3xl text-navy-foreground sm:text-4xl"
+            }
+          >
             {section.title}
           </h2>
           {section.lead ? (
-            <p className="mt-5 max-w-2xl text-navy-foreground/70">{section.lead}</p>
+            <p
+              className={
+                light
+                  ? "mt-5 max-w-2xl text-muted-foreground"
+                  : "mt-5 max-w-2xl text-navy-foreground/70"
+              }
+            >
+              {section.lead}
+            </p>
           ) : null}
-          <div className="mt-14 grid gap-px overflow-hidden rounded-md bg-navy-foreground/15 sm:grid-cols-2">
+          <div
+            className={
+              light
+                ? `mt-14 grid gap-px overflow-hidden rounded-md border border-border bg-border ${section.items.length === 3 ? "lg:grid-cols-3" : "sm:grid-cols-2"}`
+                : `mt-14 grid gap-px overflow-hidden rounded-md bg-navy-foreground/15 ${section.items.length === 3 ? "lg:grid-cols-3" : "sm:grid-cols-2"}`
+            }
+          >
             {section.items.map((item) => (
-              <article key={item.title} className="bg-navy p-8">
-                <h3 className="text-lg text-navy-foreground">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-navy-foreground/70">{item.text}</p>
+              <article key={item.title} className={light ? "bg-white p-8" : "bg-navy p-8"}>
+                <h3 className={light ? "text-lg text-navy" : "text-lg text-navy-foreground"}>
+                  {item.title}
+                </h3>
+                <p
+                  className={
+                    light
+                      ? "mt-3 text-sm leading-relaxed text-muted-foreground"
+                      : "mt-3 text-sm leading-relaxed text-navy-foreground/70"
+                  }
+                >
+                  {item.text}
+                </p>
               </article>
             ))}
           </div>
@@ -71,7 +108,10 @@ function Section({
           {header}
           <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {section.items.map((item) => (
-              <div key={item.alt} className="flex min-h-32 items-center justify-center bg-background p-7">
+              <div
+                key={item.alt}
+                className="flex min-h-32 items-center justify-center bg-background p-7"
+              >
                 <img
                   src={item.src}
                   alt={item.alt}
@@ -86,7 +126,6 @@ function Section({
   }
 
   if (section.kind === "contact") {
-
     return (
       <section id="kontakt" className="border-t border-border bg-card">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-[0.85fr_1.15fr]">
@@ -95,8 +134,8 @@ function Section({
             <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{section.title}</h2>
             {section.lead ? <p className="mt-5 text-muted-foreground">{section.lead}</p> : null}
             <p className="mt-8 text-sm text-muted-foreground">
-              <a className="story-link" href="mailto:linda@dchub.no">
-                linda@dchub.no
+              <a className="story-link" href="mailto:support@questpulse.no">
+                support@questpulse.no
               </a>
               <br />
               Digital Coach Hub AS
@@ -151,7 +190,6 @@ function Section({
       </section>
     );
   }
-
 
   if (section.kind === "steps") {
     return (
