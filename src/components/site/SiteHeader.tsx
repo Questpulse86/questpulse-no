@@ -112,14 +112,6 @@ export function SiteHeader({
                     </Link>
                   </SheetClose>
                 ))}
-                <SheetClose asChild>
-                  <Link
-                    to={pagePaths.partners[locale]}
-                    className="border-b border-navy-foreground/15 py-5 text-lg font-semibold text-navy-foreground transition-colors hover:text-teal"
-                  >
-                    {navLabels[locale].partners}
-                  </Link>
-                </SheetClose>
                 <Button asChild className="mt-8 justify-center">
                   <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
                     {content.nav.cta}

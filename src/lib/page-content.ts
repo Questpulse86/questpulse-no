@@ -47,7 +47,7 @@ export const pagePaths = {
   partners: { no: "/partnere", en: "/en/partners" },
 } as const;
 
-export const navKeys: PageKey[] = ["how", "usecases", "banking", "hr", "security", "about"];
+export const navKeys: PageKey[] = ["how", "usecases", "banking", "hr", "security", "partners"];
 export const footerKeys: PageKey[] = [
   "how",
   "usecases",
@@ -66,7 +66,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     how: "Plattformen",
     usecases: "Bruksområder",
     banking: "Finans",
-    hr: "Innsikt",
+    hr: "For HR og ledelse",
     enterprise: "Enterprise-evaluering",
     contact: "Kontakt",
     security: "Trust Center",
@@ -77,7 +77,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     how: "Platform",
     usecases: "Use cases",
     banking: "Finance",
-    hr: "Insight",
+    hr: "For HR & leadership",
     enterprise: "Enterprise evaluation",
     contact: "Contact",
     security: "Trust Center",
