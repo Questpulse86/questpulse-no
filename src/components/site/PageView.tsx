@@ -64,6 +64,27 @@ function Section({
     );
   }
 
+  if (section.kind === "logos") {
+    return (
+      <section className="border-y border-border bg-card">
+        <div className="mx-auto max-w-6xl px-5 py-24">
+          {header}
+          <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {section.items.map((item) => (
+              <div key={item.alt} className="flex min-h-32 items-center justify-center bg-background p-7">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="max-h-16 max-w-[10rem] object-contain grayscale opacity-80 transition-all hover:grayscale-0 hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (section.kind === "contact") {
 
     return (

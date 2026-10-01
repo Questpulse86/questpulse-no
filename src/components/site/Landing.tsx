@@ -48,6 +48,7 @@ type HomeCopy = {
   };
   roles: { eyebrow: string; title: string; items: { title: string; text: string }[] };
   trust: { eyebrow: string; title: string; lead: string; items: string[]; link: string };
+  proof: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[]; link: string };
   faq: { eyebrow: string; title: string; items: { q: string; a: string }[] };
   cta: { eyebrow: string; title: string; text: string; button: string; email: string };
 };
@@ -148,6 +149,17 @@ const copy: Record<Locale, HomeCopy> = {
         "Tydelig eierskapsmodell",
       ],
       link: "Les om sikkerhet og personvern",
+    },
+    proof: {
+      eyebrow: "Et troverdig grunnlag – før kundecaser publiseres",
+      title: "Bygget for en grundig enterprise-vurdering",
+      lead: "Mens publiserbare resultater fra piloter og forskningsprosjekter modnes, viser vi det vi kan dokumentere nå: metode, styring og et klart avtaleverk.",
+      items: [
+        { title: "Forskningsforankring", text: "Vi samler relevant arbeidslivs- og organisasjonsforskning, og publiserer nye funn når data og rettigheter tillater det." },
+        { title: "Avtaleverk klart", text: "SaaS-avtale, DPA og personverndokumentasjon er klare for innkjøp, sikkerhet og juridisk gjennomgang." },
+        { title: "Kontrollert evaluering", text: "En avgrenset evaluering med beslutningskriterier, avklart ansvar og dokumentert konklusjon." },
+      ],
+      link: "Se forskningsgrunnlaget",
     },
     faq: {
       eyebrow: "Kort fortalt",
@@ -281,6 +293,17 @@ const copy: Record<Locale, HomeCopy> = {
         "Clear ownership model",
       ],
       link: "Read about security and privacy",
+    },
+    proof: {
+      eyebrow: "A credible foundation – before customer cases are published",
+      title: "Built for a rigorous enterprise evaluation",
+      lead: "While publishable results from pilots and research projects mature, we show what can be documented now: method, governance and a clear agreement framework.",
+      items: [
+        { title: "Research foundation", text: "We collect relevant workplace and organisation research, and publish new findings when data and publication rights allow." },
+        { title: "Agreement framework ready", text: "The SaaS agreement, DPA and privacy documentation are ready for procurement, security and legal review." },
+        { title: "Controlled evaluation", text: "A scoped evaluation with decision criteria, clarified responsibilities and a documented conclusion." },
+      ],
+      link: "Explore the research foundation",
     },
     faq: {
       eyebrow: "In brief",
@@ -491,6 +514,32 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                   </article>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-border bg-card py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="qp-eyebrow">{t.proof.eyebrow}</p>
+                <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">{t.proof.title}</h2>
+              </div>
+              <div>
+                <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t.proof.lead}</p>
+                <Link to={locale === "no" ? "/forskning" : "/en/research"} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-teal-deep hover:text-navy">
+                  {t.proof.link}<ChevronRight className="size-4" />
+                </Link>
+              </div>
+            </div>
+            <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-3">
+              {t.proof.items.map((item, index) => (
+                <article key={item.title} className="bg-background p-7">
+                  <span className="font-display text-sm text-teal-deep">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-8 text-lg font-semibold text-navy">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>

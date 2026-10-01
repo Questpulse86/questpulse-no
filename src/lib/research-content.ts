@@ -119,6 +119,14 @@ export const researchContent: Record<Locale, ResearchContent> = {
               "Ledere forklarer minst 70 prosent av variasjonen i engasjement på tvers av team. Én av to ansatte har sluttet for å komme seg vekk fra lederen sin. Lederhandling er derfor konverteringspunktet.",
             url: "https://news.gallup.com/businessjournal/182792/managers-account-variance-employee-engagement.aspx",
           },
+          {
+            title: "AI feedback and workplace social support in enhancing occupational self-efficacy",
+            publisher: "Scientific Reports, Watanabe et al.",
+            year: "2025",
+            finding:
+              "En randomisert studie blant japanske kontorarbeidere fant at styrkebasert AI-tilbakemelding økte arbeidsrelatert mestringstro. For forbedringsorientert tilbakemelding var emosjonell støtte fra leder og kolleger avgjørende. Funnene understreker at teknologi må virke sammen med menneskelig støtte.",
+            url: "https://www.nature.com/articles/s41598-025-94985-0",
+          },
         ],
       },
       {
@@ -272,6 +280,14 @@ export const researchContent: Record<Locale, ResearchContent> = {
             finding:
               "Managers explain at least 70 percent of the variance in engagement across teams. One in two employees has left a job to get away from their manager. Leadership action is the conversion point.",
             url: "https://news.gallup.com/businessjournal/182792/managers-account-variance-employee-engagement.aspx",
+          },
+          {
+            title: "AI feedback and workplace social support in enhancing occupational self-efficacy",
+            publisher: "Scientific Reports, Watanabe et al.",
+            year: "2025",
+            finding:
+              "A randomised study among Japanese office workers found that strengths-focused AI feedback increased occupational self-efficacy. For improvement-focused feedback, emotional support from managers and colleagues was decisive. The findings underline that technology must work alongside human support.",
+            url: "https://www.nature.com/articles/s41598-025-94985-0",
           },
         ],
       },

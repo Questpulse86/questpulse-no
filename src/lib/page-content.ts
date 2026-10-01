@@ -14,6 +14,13 @@ export type PageSection =
     }
   | { kind: "dark"; eyebrow?: string; title: string; lead?: string; items: PageItem[] }
   | { kind: "contact"; eyebrow?: string; title: string; lead?: string; form?: "direct" }
+  | {
+      kind: "logos";
+      eyebrow?: string;
+      title: string;
+      lead?: string;
+      items: { src: string; alt: string }[];
+    }
   | { kind: "roles"; eyebrow?: string; title: string; lead?: string };
 
 export type PageItem = { title: string; text: string };
@@ -47,7 +54,7 @@ export const pagePaths = {
   partners: { no: "/partnere", en: "/en/partners" },
 } as const;
 
-export const navKeys: PageKey[] = ["how", "usecases", "banking", "hr", "security", "partners"];
+export const navKeys: PageKey[] = ["how", "usecases", "hr", "security", "partners"];
 export const footerKeys: PageKey[] = [
   "how",
   "usecases",
@@ -65,7 +72,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     about: "Selskapet",
     how: "Plattformen",
     usecases: "Bruksområder",
-    banking: "Finans",
+    banking: "Bank og finans",
     hr: "For HR og ledelse",
     enterprise: "Enterprise-evaluering",
     contact: "Kontakt",
@@ -76,7 +83,7 @@ export const navLabels: Record<Locale, Record<PageKey, string>> = {
     about: "Company",
     how: "Platform",
     usecases: "Use cases",
-    banking: "Finance",
+    banking: "Banking & finance",
     hr: "For HR & leadership",
     enterprise: "Enterprise evaluation",
     contact: "Contact",
@@ -151,7 +158,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           eyebrow: "Marked og kjøpere",
           title: "Bygget i norsk arbeidsliv først",
           paragraphs: [
-            "Vi bygger i norsk arbeidsliv først, med kunnskapsintensive virksomheter i bank, finans, rådgivning og industri som første marked. Korte beslutningsveier, høye krav til etterlevelse og sterk referanseverdi inn i Norden.",
+            "Vi bygger i norsk arbeidsliv først, med kunnskapsintensive virksomheter som første marked – fra rådgivning og teknologi til industri, offentlige virksomheter og regulerte bransjer. Korte beslutningsveier, høye krav til etterlevelse og sterk referanseverdi inn i Norden.",
             "Kjøperne er CEO og toppledelse som trenger tidlig varsling og bedre beslutningsgrunnlag, HR- og People-ledere som trenger oversikt og prioritering, og ledere som trenger å vite hva de skal gjøre på mandag.",
           ],
         },
@@ -467,7 +474,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Avtaler og dokumentasjon",
-              text: "Databehandleravtale, underleverandørvedlegg og sikkerhetsdokumentasjon deles på forespørsel som del av en anskaffelses- eller evalueringsprosess.",
+              text: "SaaS-avtale, databehandleravtale, personverndokumentasjon, underleverandørvedlegg og sikkerhetsdokumentasjon er klare for gjennomgang i anskaffelses- eller evalueringsprosessen. Avtaleverket er utarbeidet med juridisk bistand fra Ræder Bing.",
             },
             {
               title: "Kontaktpunkt for sikkerhet",
@@ -532,6 +539,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
               title: "Dokumentert verdi over tid",
               text: "Signal, tiltak og utvikling kan følges samlet. Det gjør det enklere å vise kunden hva som ble gjort, hvorfor og hva som skjedde videre.",
             },
+          ],
+        },
+        {
+          kind: "logos",
+          eyebrow: "Innovasjon og juridisk rammeverk",
+          title: "Utviklet med et økosystem rundt oss",
+          lead: "Logoene viser aktører i QuestPulse’ innovasjons- og juridiske økosystem. De er ikke kundereferanser eller produktgodkjenninger.",
+          items: [
+            { src: "/partners/microsoft-for-startups.webp", alt: "Microsoft for Startups" },
+            { src: "/partners/innovasjon-norge.webp", alt: "Innovasjon Norge" },
+            { src: "/partners/smart-innovation.webp", alt: "Smart Innovation Norway" },
+            { src: "/partners/raeder-bing.webp", alt: "Ræder Bing" },
           ],
         },
         {
@@ -1039,7 +1058,7 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             },
             {
               title: "Agreements and documentation",
-              text: "Data processing agreement, sub-processor annex and security documentation are shared on request as part of a procurement or evaluation process.",
+              text: "The SaaS agreement, data processing agreement, privacy documentation, sub-processor annex and security documentation are ready for review during procurement or evaluation. The agreement framework has been prepared with legal counsel from Ræder Bing.",
             },
             {
               title: "Security contact point",
@@ -1104,6 +1123,18 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
               title: "Documented value over time",
               text: "Signal, action and development can be followed together, making it easier to show the client what happened, why it mattered and what followed.",
             },
+          ],
+        },
+        {
+          kind: "logos",
+          eyebrow: "Innovation and legal framework",
+          title: "Developed with an ecosystem around us",
+          lead: "The logos represent organisations in QuestPulse' innovation and legal ecosystem. They are not customer references or product endorsements.",
+          items: [
+            { src: "/partners/microsoft-for-startups.webp", alt: "Microsoft for Startups" },
+            { src: "/partners/innovasjon-norge.webp", alt: "Innovation Norway" },
+            { src: "/partners/smart-innovation.webp", alt: "Smart Innovation Norway" },
+            { src: "/partners/raeder-bing.webp", alt: "Ræder Bing" },
           ],
         },
         {
