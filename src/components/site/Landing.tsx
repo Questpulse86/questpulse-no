@@ -6,7 +6,6 @@ import {
   ChevronRight,
   Eye,
   Layers3,
-  LockKeyhole,
   ShieldCheck,
   Sparkles,
   Target,
@@ -53,10 +52,27 @@ type HomeCopy = {
     primaryAlt: string;
     secondaryAlt: string;
   };
-  markets: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[] };
+  rollout: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    items: { title: string; text: string }[];
+  };
+  markets: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    items: { title: string; text: string }[];
+  };
   roles: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[] };
   trust: { eyebrow: string; title: string; lead: string; items: string[]; link: string };
-  proof: { eyebrow: string; title: string; lead: string; items: { title: string; text: string }[]; link: string };
+  proof: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    items: { title: string; text: string }[];
+    link: string;
+  };
   faq: { eyebrow: string; title: string; items: { q: string; a: string }[] };
   cta: { eyebrow: string; title: string; text: string; button: string; email: string };
 };
@@ -131,15 +147,50 @@ const copy: Record<Locale, HomeCopy> = {
       primaryAlt: "Et team som reflekterer over et felles beslutningsgrunnlag",
       secondaryAlt: "En leder som vurderer innsikt før neste handling",
     },
+    rollout: {
+      eyebrow: "Enkel innføring. Tydelig styring.",
+      title: "Bygget for arbeidsflaten dere allerede bruker",
+      lead: "QuestPulse kan rulles ut gjennom kommunikasjonsplattformen virksomheten allerede bruker, som Microsoft Teams eller Google Workspace. Omfang, ansvar og teknisk oppsett avklares tidlig, slik at oppstarten blir enkel uten et omfattende integrasjonsløp.",
+      items: [
+        {
+          title: "I arbeidsflaten dere kjenner",
+          text: "Gjør det enkelt å møte deltakere der samarbeidet allerede skjer, med et oppsett som tilpasses deres etablerte arbeidsmåte.",
+        },
+        {
+          title: "Én felles governance-modell",
+          text: "Virksomheten setter rammene: roller, tilgang, terskler og ansvar for oppfølging på tvers av organisasjonen.",
+        },
+        {
+          title: "Strukturert onboarding",
+          text: "Digital onboarding med tydelig kommunikasjon og et effektivt deltakerløp. Ved behov kan oppstarten kompletteres med fysiske samlinger.",
+        },
+        {
+          title: "Dedikert støtte når det trengs",
+          text: "Et kompetent QuestPulse-team støtter planlegging, oppstart og videre bruk, med rask veiledning før og underveis i innføringen.",
+        },
+      ],
+    },
     markets: {
       eyebrow: "For kunnskapsintensive virksomheter",
       title: "Bygget der menneskelig kapasitet er en strategisk faktor",
       lead: "QuestPulse er relevant når kompetanse, samarbeid og ledelseskapasitet er tett knyttet til leveransen – på tvers av offentlig og privat sektor.",
       items: [
-        { title: "Rådgivning og profesjonelle tjenester", text: "Når kvaliteten i leveransen avhenger av spesialistkompetanse, samspill og bærekraftig kapasitet." },
-        { title: "Teknologi og produktmiljøer", text: "Når endringstakt, prioriteringer og teamarbeid må fungere over tid – ikke bare ved neste release." },
-        { title: "Industri og kompetansemiljøer", text: "Når drift, prosjektarbeid og fagmiljøer krever tydeligere innsikt i hvor belastning og friksjon bygger seg opp." },
-        { title: "Offentlig og regulert virksomhet", text: "Når arbeidsmiljø, dokumentasjon og ansvarlig oppfølging må stå seg i møte med ansatte, ledelse og tilsyn." },
+        {
+          title: "Rådgivning og profesjonelle tjenester",
+          text: "Når kvaliteten i leveransen avhenger av spesialistkompetanse, samspill og bærekraftig kapasitet.",
+        },
+        {
+          title: "Teknologi og produktmiljøer",
+          text: "Når endringstakt, prioriteringer og teamarbeid må fungere over tid – ikke bare ved neste release.",
+        },
+        {
+          title: "Industri og kompetansemiljøer",
+          text: "Når drift, prosjektarbeid og fagmiljøer krever tydeligere innsikt i hvor belastning og friksjon bygger seg opp.",
+        },
+        {
+          title: "Offentlig og regulert virksomhet",
+          text: "Når arbeidsmiljø, dokumentasjon og ansvarlig oppfølging må stå seg i møte med ansatte, ledelse og tilsyn.",
+        },
       ],
     },
     roles: {
@@ -186,9 +237,18 @@ const copy: Record<Locale, HomeCopy> = {
       title: "Bygget for en grundig enterprise-vurdering",
       lead: "Mens publiserbare resultater fra piloter og forskningsprosjekter modnes, viser vi det vi kan dokumentere nå: metode, styring og et klart avtaleverk.",
       items: [
-        { title: "Forskningsforankring", text: "Vi samler relevant arbeidslivs- og organisasjonsforskning, og publiserer nye funn når data og rettigheter tillater det." },
-        { title: "Avtaleverk klart", text: "SaaS-avtale, DPA og personverndokumentasjon er klare for innkjøp, sikkerhet og juridisk gjennomgang." },
-        { title: "Kontrollert evaluering", text: "En avgrenset evaluering med beslutningskriterier, avklart ansvar og dokumentert konklusjon." },
+        {
+          title: "Forskningsforankring",
+          text: "Vi samler relevant arbeidslivs- og organisasjonsforskning, og publiserer nye funn når data og rettigheter tillater det.",
+        },
+        {
+          title: "Avtaleverk klart",
+          text: "SaaS-avtale, DPA og personverndokumentasjon er klare for innkjøp, sikkerhet og juridisk gjennomgang.",
+        },
+        {
+          title: "Kontrollert evaluering",
+          text: "En avgrenset evaluering med beslutningskriterier, avklart ansvar og dokumentert konklusjon.",
+        },
       ],
       link: "Se forskningsgrunnlaget",
     },
@@ -298,15 +358,50 @@ const copy: Record<Locale, HomeCopy> = {
       primaryAlt: "A team reflecting on a shared decision foundation",
       secondaryAlt: "A leader considering insight before the next action",
     },
+    rollout: {
+      eyebrow: "Simple rollout. Clear governance.",
+      title: "Built for the workplace you already use",
+      lead: "QuestPulse can be rolled out through the communication platform your organisation already uses, such as Microsoft Teams or Google Workspace. Scope, ownership and technical setup are clarified early, so getting started stays straightforward without a heavy integration programme.",
+      items: [
+        {
+          title: "In the workplace people know",
+          text: "Meet participants where collaboration already happens, with a setup adapted to the ways of working you have established.",
+        },
+        {
+          title: "One shared governance model",
+          text: "The organisation sets the operating framework: roles, access, thresholds and accountability for follow-up across the business.",
+        },
+        {
+          title: "Structured onboarding",
+          text: "Digital onboarding with clear communication and an efficient participant journey. Where useful, this can be complemented with in-person sessions.",
+        },
+        {
+          title: "Dedicated support when needed",
+          text: "A capable QuestPulse team supports planning, launch and continued use, with timely guidance before and throughout rollout.",
+        },
+      ],
+    },
     markets: {
       eyebrow: "For knowledge-intensive organisations",
       title: "Built where human capacity is a strategic factor",
       lead: "QuestPulse is relevant when expertise, collaboration and leadership capacity are closely connected to delivery – across private and public sector organisations.",
       items: [
-        { title: "Advisory and professional services", text: "When delivery quality depends on specialist expertise, collaboration and sustainable capacity." },
-        { title: "Technology and product organisations", text: "When pace of change, priorities and teamwork need to work over time – not only until the next release." },
-        { title: "Industry and specialist environments", text: "When operations, project work and expert communities need clearer insight into where strain and friction are building." },
-        { title: "Public and regulated organisations", text: "When working environment, documentation and responsible follow-up must stand up to scrutiny from employees, leaders and oversight bodies." },
+        {
+          title: "Advisory and professional services",
+          text: "When delivery quality depends on specialist expertise, collaboration and sustainable capacity.",
+        },
+        {
+          title: "Technology and product organisations",
+          text: "When pace of change, priorities and teamwork need to work over time – not only until the next release.",
+        },
+        {
+          title: "Industry and specialist environments",
+          text: "When operations, project work and expert communities need clearer insight into where strain and friction are building.",
+        },
+        {
+          title: "Public and regulated organisations",
+          text: "When working environment, documentation and responsible follow-up must stand up to scrutiny from employees, leaders and oversight bodies.",
+        },
       ],
     },
     roles: {
@@ -353,9 +448,18 @@ const copy: Record<Locale, HomeCopy> = {
       title: "Built for a rigorous enterprise evaluation",
       lead: "While publishable results from pilots and research projects mature, we show what can be documented now: method, governance and a clear agreement framework.",
       items: [
-        { title: "Research foundation", text: "We collect relevant workplace and organisation research, and publish new findings when data and publication rights allow." },
-        { title: "Agreement framework ready", text: "The SaaS agreement, DPA and privacy documentation are ready for procurement, security and legal review." },
-        { title: "Controlled evaluation", text: "A scoped evaluation with decision criteria, clarified responsibilities and a documented conclusion." },
+        {
+          title: "Research foundation",
+          text: "We collect relevant workplace and organisation research, and publish new findings when data and publication rights allow.",
+        },
+        {
+          title: "Agreement framework ready",
+          text: "The SaaS agreement, DPA and privacy documentation are ready for procurement, security and legal review.",
+        },
+        {
+          title: "Controlled evaluation",
+          text: "A scoped evaluation with decision criteria, clarified responsibilities and a documented conclusion.",
+        },
       ],
       link: "Explore the research foundation",
     },
@@ -393,84 +497,20 @@ const copy: Record<Locale, HomeCopy> = {
 
 const valueIcons = [Eye, Sparkles, Target, TrendingUp];
 const roleIcons = [Users, Target, Layers3, BarChart3];
+const rolloutIcons = [Check, ShieldCheck, Users, Sparkles];
 
 function ProductPreview({ t }: { t: HomeCopy }) {
   return (
-    <div className="qp-product-shell" aria-label={t.product.example}>
-      <div className="flex items-center justify-between border-b border-navy-foreground/10 px-4 py-3 sm:px-5">
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-teal" />
-          <span className="text-xs font-semibold text-navy-foreground">QuestPulse</span>
-        </div>
-        <span className="text-[10px] font-bold tracking-widest text-navy-foreground/40 uppercase">
-          {t.product.example}
-        </span>
-      </div>
-      <div className="grid min-h-[360px] lg:grid-cols-[10rem_1fr]">
-        <aside className="hidden border-r border-navy-foreground/10 p-4 lg:block">
-          <div className="space-y-2">
-            {t.product.flow.map((item, index) => (
-              <div
-                key={item}
-                className={index === 1 ? "qp-preview-nav qp-preview-nav-active" : "qp-preview-nav"}
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </aside>
-        <div className="p-4 sm:p-6">
-          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-navy-foreground/10 pb-5">
-            <div>
-              <p className="text-[10px] font-bold tracking-[0.16em] text-teal uppercase">
-                {t.product.eyebrow}
-              </p>
-              <h3 className="mt-2 font-sans text-lg font-semibold text-navy-foreground">
-                {t.product.insightTitle}
-              </h3>
-            </div>
-            <span className="inline-flex items-center gap-1.5 rounded-sm bg-teal/15 px-2.5 py-1 text-[11px] font-semibold text-teal">
-              <TrendingUp className="size-3" /> {t.signals.at(1)?.status}
-            </span>
-          </div>
-          <div className="grid gap-4 py-5 md:grid-cols-[1.15fr_0.85fr]">
-            <div className="rounded-md border border-navy-foreground/10 bg-navy-foreground/[0.035] p-5">
-              <div className="flex h-32 items-end gap-2" aria-hidden="true">
-                {[38, 48, 44, 62, 58, 74, 82, 78].map((height, index) => (
-                  <span
-                    key={`${height}-${index}`}
-                    className="qp-preview-bar flex-1"
-                    style={{ height: `${height}%`, animationDelay: `${index * 80}ms` }}
-                  />
-                ))}
-              </div>
-              <div className="mt-4 flex justify-between text-[10px] text-navy-foreground/35">
-                <span>Uke 1</span>
-                <span>Uke 8</span>
-              </div>
-            </div>
-            <div className="rounded-md border border-teal/30 bg-teal/[0.07] p-5">
-              <div className="flex size-9 items-center justify-center rounded-md bg-teal/15 text-teal">
-                <Target className="size-4" />
-              </div>
-              <p className="mt-5 text-[10px] font-bold tracking-[0.14em] text-teal uppercase">
-                {t.product.actionTitle}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-navy-foreground/75">
-                {t.product.actionBody}
-              </p>
-              <div className="mt-5 flex items-center gap-2 text-[11px] font-semibold text-navy-foreground/45">
-                <LockKeyhole className="size-3.5" /> {t.signals.at(1)?.privacy}
-              </div>
-            </div>
-          </div>
-          <p className="border-t border-navy-foreground/10 pt-4 text-xs leading-relaxed text-navy-foreground/50">
-            {t.product.insightBody}
-          </p>
-        </div>
-      </div>
-    </div>
+    <figure
+      className="overflow-hidden rounded-md border border-navy-foreground/10 bg-white shadow-[0_24px_70px_rgba(3,17,31,0.16)]"
+      aria-label={t.product.example}
+    >
+      <img
+        src="/imagery/questpulse-decision-platform.webp"
+        alt={t.product.example}
+        className="block h-auto w-full"
+      />
+    </figure>
   );
 }
 
@@ -577,19 +617,29 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
             <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
               <div>
                 <p className="qp-eyebrow">{t.proof.eyebrow}</p>
-                <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">{t.proof.title}</h2>
+                <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">
+                  {t.proof.title}
+                </h2>
               </div>
               <div>
-                <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">{t.proof.lead}</p>
-                <Link to={locale === "no" ? "/forskning" : "/en/research"} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-teal-deep hover:text-navy">
-                  {t.proof.link}<ChevronRight className="size-4" />
+                <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+                  {t.proof.lead}
+                </p>
+                <Link
+                  to={locale === "no" ? "/forskning" : "/en/research"}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-teal-deep hover:text-navy"
+                >
+                  {t.proof.link}
+                  <ChevronRight className="size-4" />
                 </Link>
               </div>
             </div>
             <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-3">
               {t.proof.items.map((item, index) => (
                 <article key={item.title} className="bg-background p-7">
-                  <span className="font-display text-sm text-teal-deep">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-sm text-teal-deep">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <h3 className="mt-8 text-lg font-semibold text-navy">{item.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </article>
@@ -598,20 +648,61 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
           </div>
         </section>
 
+        <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="qp-eyebrow">{t.rollout.eyebrow}</p>
+              <h2 className="mt-5 max-w-xl text-3xl leading-tight sm:text-5xl">
+                {t.rollout.title}
+              </h2>
+            </div>
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
+              {t.rollout.lead}
+            </p>
+          </div>
+          <div className="mt-12 grid border-t border-border sm:grid-cols-2">
+            {t.rollout.items.map((item, index) => {
+              const Icon = rolloutIcons[index] ?? Check;
+              return (
+                <article
+                  key={item.title}
+                  className="border-b border-border py-7 sm:px-7 sm:odd:border-r"
+                >
+                  <div className="flex size-9 items-center justify-center rounded-md bg-secondary text-teal-deep">
+                    <Icon className="size-4" />
+                  </div>
+                  <h3 className="mt-5 font-sans text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    {item.text}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
         <section className="bg-navy py-24 text-navy-foreground lg:py-32">
           <div className="mx-auto max-w-7xl px-5 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
               <div>
-                <p className="text-xs font-bold tracking-[0.16em] text-teal uppercase">{t.markets.eyebrow}</p>
-                <h2 className="mt-5 max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">{t.markets.title}</h2>
+                <p className="text-xs font-bold tracking-[0.16em] text-teal uppercase">
+                  {t.markets.eyebrow}
+                </p>
+                <h2 className="mt-5 max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">
+                  {t.markets.title}
+                </h2>
               </div>
-              <p className="max-w-xl text-lg leading-relaxed text-navy-foreground/65 lg:justify-self-end">{t.markets.lead}</p>
+              <p className="max-w-xl text-lg leading-relaxed text-navy-foreground/65 lg:justify-self-end">
+                {t.markets.lead}
+              </p>
             </div>
             <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-navy-foreground/15 bg-navy-foreground/15 md:grid-cols-2">
               {t.markets.items.map((item) => (
                 <article key={item.title} className="bg-navy p-7 sm:p-8">
                   <h3 className="text-lg font-semibold text-navy-foreground">{item.title}</h3>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-navy-foreground/60">{item.text}</p>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-navy-foreground/60">
+                    {item.text}
+                  </p>
                 </article>
               ))}
             </div>
@@ -690,7 +781,9 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 <h2 className="max-w-xl text-3xl leading-tight text-navy-foreground sm:text-5xl">
                   {t.roles.title}
                 </h2>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-foreground/60">{t.roles.lead}</p>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-navy-foreground/60">
+                  {t.roles.lead}
+                </p>
               </div>
               <div className="border-t border-navy-foreground/15">
                 {t.roles.items.map((item, index) => {
