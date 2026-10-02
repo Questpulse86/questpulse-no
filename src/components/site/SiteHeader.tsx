@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 
-import { HUBSPOT_BOOKING_URL } from "@/components/site/HubSpotForm";
+import { OUTLOOK_BOOKING_URL } from "@/lib/contact-channels";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -75,8 +75,8 @@ export function SiteHeader({
             {other === "no" ? "NO" : "EN"}
           </Link>
           <Button asChild size="sm">
-            <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
-              {content.nav.cta}
+            <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+              {locale === "no" ? "Book en samtale" : "Book a call"}
             </a>
           </Button>
           <Sheet>
@@ -113,8 +113,8 @@ export function SiteHeader({
                   </SheetClose>
                 ))}
                 <Button asChild className="mt-8 justify-center">
-                  <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
-                    {content.nav.cta}
+                  <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+                    {locale === "no" ? "Book en samtale" : "Book a call"}
                   </a>
                 </Button>
               </nav>

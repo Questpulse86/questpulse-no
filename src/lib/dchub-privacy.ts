@@ -47,7 +47,7 @@ export const privacyPage = {
       id: "databehandlere",
       title: "Hvem opplysningene deles med",
       paragraphs: [
-        "Vi bruker HubSpot som kundesystem for skjema, booking og e-postoppfølging, og Vercel for drift av nettsiden. Begge er databehandlere med databehandleravtale, og data behandles innenfor EU og EØS der det er mulig. Ved overføring utenfor EØS brukes EUs standard personvernbestemmelser.",
+        "Vi bruker Microsoft Bookings til møtebestilling, Microsoft Outlook til e-post og Vercel til drift av nettsiden. Booking åpnes hos Microsoft. De tidligere HubSpot-skjemaene er fjernet fra nettsiden.",
         "Opplysninger deles ikke med andre, og selges aldri videre.",
       ],
     },
@@ -76,13 +76,13 @@ export const privacyPage = {
         {
           name: "Analyse",
           purpose:
-            "Måler sidevisninger og hvilke sider som er nyttige, slik at innholdet kan forbedres. Settes av HubSpot.",
+            "Tidligere HubSpot-funksjon. Ikke aktiv i dette kontaktoppsettet.",
           duration: "Inntil 13 måneder",
         },
         {
           name: "Markedsføring",
           purpose:
-            "Gjenkjenner deg på tvers av besøk slik at oppfølging blir relevant. Settes av HubSpot.",
+            "Tidligere HubSpot-funksjon. Ikke aktiv i dette kontaktoppsettet.",
           duration: "Inntil 13 måneder",
         },
       ],

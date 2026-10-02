@@ -70,3 +70,13 @@ Telemetry loads only on allowlisted public questpulse.no pages. beforeSend reche
 No Speed Insights Plus upgrade or billing change was made. The dashboard previously showed basic setup enabled but no events. Real-user metrics can only be confirmed after production deployment and traffic; preview is deliberately excluded.
 
 Browser audit confirmed Pro, enabled system mitigations, no custom WAF rules, AI Bots Allow and Bot Protection Off. Billing displayed a USD 200 extra-usage budget with pause disabled; automatic investigations covered all projects. Owner subsequently reported completing the recommended cost/Agent changes; those new values have not been independently rechecked. Cost settings and high-risk actions remain owner-controlled.
+
+## Outlook CTA / monday migration, 2026-10-02
+
+Public contact widgets now use Outlook Bookings and explicit sales (hei@questpulse.no) / technical-legal (support@questpulse.no) email links in both languages. HubSpot embeds are removed from QuestPulse and DCH. The old public submitLead server function is removed; historical lead records and their schema are retained. No customer data was migrated or deleted. The old HubSpot modules are unused; existing deployment credentials must be revoked by the owner after the new release is live.
+
+A booking link still belongs to the existing personal Bookings calendar. Changing a website mailto does not change the booking owner, confirmation recipients or email forwarding. The mailbox and Bookings configuration must be verified before claiming hei@questpulse.no receives every booking.
+
+monday plugin discovery reports installed/enabled, but exposes no callable board or automation tools in this session. No monday pipeline has been created or activated. Intended pipeline: New enquiry, Meeting booked, Meeting completed, Qualified, Proposal, Won, Lost. Fields: name, work email, company, role, source, inquiry category, owner, next action/date, external booking ID, updated timestamp. Technical/legal enquiries stay outside the sales pipeline and go to support. Confirmed booking events, not button clicks, drive Meeting booked. Match by external booking ID; handle reschedules/cancellations without duplicates. Inbox intake should exclude auto replies and internal mail. Customer emails require verified mailbox integration; no automatic marketing sequence or bulk historical import.
+
+Acceptance before activation: synthetic inbound sales enquiry reaches hei and creates one lead; confirmed booking updates the same lead; reminder configured in Bookings; reschedule and cancel update correctly; technical/legal enquiry reaches support only; retries do not duplicate records; failed integrations are surfaced. No test emails or real bookings have been sent.

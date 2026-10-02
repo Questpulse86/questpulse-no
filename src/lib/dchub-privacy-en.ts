@@ -44,7 +44,7 @@ export const privacyPageEn = {
       id: "processors",
       title: "Who the information is shared with",
       paragraphs: [
-        "We use HubSpot as our customer system for forms, booking and email follow-up, and Vercel for website hosting. Both are processors with data processing agreements. Data is processed within the EU and EEA where possible. If data is transferred outside the EEA, the EU Standard Contractual Clauses are used.",
+        "We use Microsoft Bookings for appointments, Microsoft Outlook for email and Vercel for website hosting. Booking opens with Microsoft. The previous HubSpot forms have been removed from the website.",
         "Information is not shared with others, and it is never sold.",
       ],
     },
@@ -72,13 +72,13 @@ export const privacyPageEn = {
         {
           name: "Analytics",
           purpose:
-            "Measures page views and which pages are useful so the content can be improved. Set by HubSpot.",
+            "Previous HubSpot functionality. Not active in this contact setup.",
           duration: "Up to 13 months",
         },
         {
           name: "Marketing",
           purpose:
-            "Recognises you across visits so follow-up can be relevant. Set by HubSpot.",
+            "Previous HubSpot functionality. Not active in this contact setup.",
           duration: "Up to 13 months",
         },
       ],

@@ -14,11 +14,8 @@ import {
   Users,
 } from "lucide-react";
 
-import {
-  HUBSPOT_BOOKING_URL,
-  HubSpotShareForm,
-  QP_FORM_SHARE_URL,
-} from "@/components/site/HubSpotForm";
+import { OUTLOOK_BOOKING_URL } from "@/lib/contact-channels";
+import { ContactForm } from "@/components/site/ContactForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import {
@@ -280,7 +277,7 @@ const copy: Record<Locale, HomeCopy> = {
       title: "Hva ville dere sett tidligere med et bedre beslutningsgrunnlag?",
       text: "Vi starter med deres beslutningsbehov, eksisterende prosesser og krav til personvern og sikkerhet.",
       button: "Book kartleggingssamtale",
-      email: "support@questpulse.no",
+      email: "hei@questpulse.no",
     },
   },
   en: {
@@ -491,7 +488,7 @@ const copy: Record<Locale, HomeCopy> = {
       title: "What could you see earlier with a better basis for decisions?",
       text: "We start with your decision needs, current processes and requirements for privacy and security.",
       button: "Book a discovery conversation",
-      email: "support@questpulse.no",
+      email: "hei@questpulse.no",
     },
   },
 };
@@ -592,7 +589,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-12 px-6">
-                  <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                  <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
                     {t.hero.cta}
                     <ArrowRight />
                   </a>
@@ -903,7 +900,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 {t.cta.text}
               </p>
               <Button asChild size="lg" className="mt-8 h-12 px-6">
-                <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+                <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
                   {t.cta.button}
                   <ArrowRight />
                 </a>
@@ -915,10 +912,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               </p>
             </div>
             <div className="rounded-md bg-background p-3 sm:p-5">
-              <HubSpotShareForm
-                url={QP_FORM_SHARE_URL}
-                title={locale === "no" ? "Kontaktskjema" : "Contact form"}
-              />
+              <ContactForm locale={locale} />
             </div>
           </div>
         </section>

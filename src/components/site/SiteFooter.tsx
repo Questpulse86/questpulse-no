@@ -16,7 +16,8 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
             <br />
             Org.nr. 936 265 634
             <br />
-            <a className="text-navy hover:text-teal-deep" href="mailto:support@questpulse.no">
+            {locale === "no" ? "Salg: " : "Sales: "}<a className="text-navy hover:text-teal-deep" href="mailto:hei@questpulse.no">hei@questpulse.no</a><br />
+            {locale === "no" ? "Teknisk og juridisk: " : "Technical and legal: "}<a className="text-navy hover:text-teal-deep" href="mailto:support@questpulse.no">
               support@questpulse.no
             </a>
           </address>

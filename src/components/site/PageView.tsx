@@ -11,7 +11,9 @@ function Section({
   section,
   locale,
   content,
+  support = false,
 }: {
+  support?: boolean;
   section: PageSection;
   locale: Locale;
   content: SiteContent;
@@ -137,16 +139,16 @@ function Section({
           <div>
             {section.eyebrow ? <p className="qp-eyebrow">{section.eyebrow}</p> : null}
             <h2 className="mt-4 text-3xl leading-tight sm:text-5xl">{section.title}</h2>
-            {section.lead ? <p className="mt-5 text-muted-foreground">{section.lead}</p> : null}
+            <p className="mt-5 text-muted-foreground">{locale === "no" ? "Velg kontaktformen som passer henvendelsen din." : "Choose the contact option that suits your enquiry."}</p>
             <p className="mt-8 text-sm text-muted-foreground">
-              <a className="story-link" href="mailto:support@questpulse.no">
-                support@questpulse.no
+              <a className="story-link" href={`mailto:${support ? "support@questpulse.no" : "hei@questpulse.no"}`}>
+                {support ? "support@questpulse.no" : "hei@questpulse.no"}
               </a>
               <br />
               Digital Coach Hub AS
             </p>
           </div>
-          <ContactForm locale={locale} />
+          <ContactForm locale={locale} support={support} />
         </div>
       </section>
     );
@@ -268,7 +270,7 @@ export function PageView({
         </section>
 
         {page.sections.map((section) => (
-          <Section key={section.title} section={section} locale={locale} content={content} />
+          <Section key={section.title} section={section} locale={locale} content={content} support={pageKey === "security"} />
         ))}
       </main>
 
