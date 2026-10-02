@@ -75,3 +75,16 @@ test('locked dependency manifests match and Vercel security headers are present'
   const headers = config.headers.find((entry) => entry.source === '/:path*').headers;
   assert.ok(headers.some((h) => h.key === 'Content-Security-Policy' && h.value.includes("object-src 'none'")));
 });
+
+
+test('performance telemetry excludes private hosts/routes and strips URL secrets', async () => {
+  const { sanitizePerformanceEvent } = await import('../src/lib/performance-privacy.ts');
+  const event = (url) => sanitizePerformanceEvent({ type: 'vital', url, route: '/secret-route' });
+  assert.deepEqual(event('https://questpulse.no/en?email=private@example.invalid#token'),
+    { type: 'vital', url: 'https://questpulse.no/en', route: '/en' });
+  for (const url of ['https://questpulse.no/admin', 'https://questpulse.no/auth?token=secret',
+    'https://questpulse.no/demo', 'https://questpulse.no/_serverFn/private',
+    'https://questpulse.no/unknown/customer', 'https://digitalcoachub.no/',
+    'https://preview.vercel.app/', 'http://localhost/', 'https://questpulse.no:8443/',
+    'https://user:secret@questpulse.no/', 'invalid']) assert.equal(event(url), null);
+});

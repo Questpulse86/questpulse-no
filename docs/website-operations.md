@@ -60,3 +60,13 @@ Build on the existing Norwegian and English pages for leadership support, preven
 - get_project fails with an adapter argument error (idOrName missing). The connector exposes no firewall/Agent/billing configuration operations, and no authenticated CLI is available. Dashboard inspection is still required for those settings.
 - Removed full upstream CRM/mail error bodies and thrown error messages from CRM diagnostic storage/logging to avoid accidental personal-data disclosure. Status codes remain for troubleshooting.
 - No paid Agent review, firewall change, spend policy, production merge or customer-message test was performed.
+
+## Speed Insights consolidation, 2026-10-02
+
+PR #9 was reviewed but not merged: its old Bun lockfile conflicts with the current npm setup. Its React integration is adapted into PR #4 with @vercel/speed-insights pinned to 2.0.0 and the npm lock updated. Do not merge #9 separately.
+
+Telemetry loads only on allowlisted public questpulse.no pages. beforeSend rechecks the current page (the vendor script survives client-side navigation), drops unknown/private/preview/DCH URLs, removes query strings/fragments and resets route labels to the approved pathname. Debug output is disabled. Privacy filtering is covered by regression tests. No form fields or custom user identifiers are added. Public NO/EN security pages explain the measurement.
+
+No Speed Insights Plus upgrade or billing change was made. The dashboard previously showed basic setup enabled but no events. Real-user metrics can only be confirmed after production deployment and traffic; preview is deliberately excluded.
+
+Browser audit confirmed Pro, enabled system mitigations, no custom WAF rules, AI Bots Allow and Bot Protection Off. Billing displayed a USD 200 extra-usage budget with pause disabled; automatic investigations covered all projects. Owner subsequently reported completing the recommended cost/Agent changes; those new values have not been independently rechecked. Cost settings and high-risk actions remain owner-controlled.

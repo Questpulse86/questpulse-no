@@ -489,6 +489,10 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
               text: "SaaS-avtale, databehandleravtale, personverndokumentasjon, underleverandørvedlegg og sikkerhetsdokumentasjon er klare for gjennomgang i anskaffelses- eller evalueringsprosessen. Avtaleverket er utarbeidet med juridisk bistand fra Ræder Bing.",
             },
             {
+              title: "Hastighetsmåling på nettsiden",
+              text: "Vi bruker Vercel Speed Insights til å måle lastetid, respons og layoutstabilitet på offentlige QuestPulse-sider. URL-parametere og fragmenter fjernes før måledata sendes. Skjemainnhold sendes ikke av målingen, og innlogging, administrasjon og forhåndsvisninger er utelatt. Spørsmål kan sendes til support@questpulse.no.",
+            },
+            {
               title: "Kontaktpunkt for sikkerhet",
               text: "Sikkerhetshenvendelser, sårbarhetsvarsler og forespørsel om dokumentasjon sendes til support@questpulse.no.",
             },
@@ -1235,6 +1239,10 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
             {
               title: "Agreements and documentation",
               text: "The SaaS agreement, data processing agreement, privacy documentation, sub-processor annex and security documentation are ready for review during procurement or evaluation. The agreement framework has been prepared with legal counsel from Ræder Bing.",
+            },
+            {
+              title: "Website performance measurement",
+              text: "We use Vercel Speed Insights to measure loading speed, responsiveness and layout stability on public QuestPulse pages. URL query parameters and fragments are removed before measurements are sent. The measurement does not send form contents, and sign-in, administration and preview pages are excluded. Questions can be sent to support@questpulse.no.",
             },
             {
               title: "Security contact point",
