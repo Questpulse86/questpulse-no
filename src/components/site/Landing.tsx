@@ -129,8 +129,8 @@ const copy: Record<Locale, HomeCopy> = {
     },
     product: {
       eyebrow: "Beslutningsflaten",
-      title: "Fra det som utvikler seg, til det dere gjør med det",
-      lead: "Ikke flere løsrevne målinger. Ett sammenhengende bilde som gjør det mulig å se, prioritere og følge opp.",
+      title: "Gjør innsikt om til prioriterte handlinger",
+      lead: "QuestPulse samler signaler over tid og gir ledere et felles grunnlag for å se hva som haster, velge tiltak og følge opp effekten.",
       flow: ["Signal", "Tolkning", "Risiko", "Anbefaling", "Lederhandling", "Læring over tid"],
       insightTitle: "Arbeidsflyt fungerer bedre i flere team",
       insightBody: "Et positivt mønster er stabilt nok til å undersøkes og forsterkes.",
@@ -151,8 +151,8 @@ const copy: Record<Locale, HomeCopy> = {
       lead: "QuestPulse kan rulles ut gjennom kommunikasjonsplattformen virksomheten allerede bruker, som Microsoft Teams eller Google Workspace. Omfang, ansvar og teknisk oppsett avklares tidlig, slik at oppstarten blir enkel uten et omfattende integrasjonsløp.",
       items: [
         {
-          title: "I arbeidsflaten dere kjenner",
-          text: "Gjør det enkelt å møte deltakere der samarbeidet allerede skjer, med et oppsett som tilpasses deres etablerte arbeidsmåte.",
+          title: "Der samarbeidet skjer",
+          text: "QuestPulse blir tilgjengelig i Microsoft Teams eller Google Workspace, slik at deltakerne kan bruke løsningen uten å bytte arbeidsflate.",
         },
         {
           title: "Én felles governance-modell",
