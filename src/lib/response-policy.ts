@@ -45,7 +45,7 @@ export function applyResponsePolicy(request: Request, response: Response): Respo
   const privatePath =
     /^\/(?:en\/)?(?:admin|auth|demo)(?:\/|$)/.test(path) ||
     path.startsWith("/_serverFn") ||
-    path.startsWith("/api/");
+    path === "/api" || path.startsWith("/api/");
   if (!productionHosts.has(url.hostname) || privatePath || response.status >= 400) {
     headers.set("X-Robots-Tag", "noindex, nofollow");
   }
@@ -53,6 +53,11 @@ export function applyResponsePolicy(request: Request, response: Response): Respo
     request.headers.has("authorization") ||
     request.headers.has("cookie") ||
     headers.has("set-cookie");
+  const variesByVisitor = (headers.get("vary") ?? "")
+    .split(",")
+    .some((value) => value.trim() !== "" && value.trim().toLowerCase() !== "accept-encoding");
+  const originForbidsCaching = ["cache-control", "cdn-cache-control", "vercel-cdn-cache-control"]
+    .some((name) => /\b(private|no-store|no-cache)\b/i.test(headers.get(name) ?? ""));
   const isQuestPulse =
     url.hostname === "questpulse.no" ||
     url.hostname === "www.questpulse.no" ||
@@ -64,7 +69,8 @@ export function applyResponsePolicy(request: Request, response: Response): Respo
     !personalized &&
     request.method === "GET" &&
     response.status === 200 &&
-    !headers.get("vary")?.includes("*");
+    !variesByVisitor &&
+    !originForbidsCaching;
   if (cacheable) {
     headers.set("Cache-Control", "public, max-age=0, must-revalidate");
     headers.set("Vercel-CDN-Cache-Control", "public, s-maxage=60, stale-while-revalidate=60");
