@@ -79,8 +79,7 @@ async function sendBookingEmail(c: z.infer<typeof contactSchema>) {
     }),
   });
   if (!res.ok) {
-    const body = await res.text();
-    console.error(`Outlook sendMail failed [${res.status}]: ${body}`);
+    console.error(`Outlook sendMail failed [${res.status}]`);
     return `E-post feilet (${res.status})`;
   }
   return null;

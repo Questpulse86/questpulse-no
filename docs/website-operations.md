@@ -49,3 +49,14 @@ Build on the existing Norwegian and English pages for leadership support, preven
 - https://developers.google.com/search/docs/appearance/ai-features
 - https://developers.openai.com/api/docs/bots
 - https://openai.com/index/chatgpt-ads-expands-across-europe/
+
+## Connected-account verification, 2026-10-02 12:30 Europe/Oslo
+
+- Reconnection resolved team/project listing. Confirmed team quest-pulse and project questpulse-no. Pro activation is reported by the owner; billing settings are not independently verified.
+- Production 5xx log query for the previous 24 hours returned no records. This is not an uptime guarantee.
+- Preview f910d616 is READY in arn1. Authorized fetch returns HTTP 200 with nosniff, referrer policy, permissions policy and noindex. Authenticated preview responses correctly use private/no-store; anonymous CDN HIT cannot be proven through that session.
+- Public production homepage returned HTTP 200, approximately 0.70 seconds to first byte in one remote sample. This is not a mobile Core Web Vitals measurement. Production still lacks the new application security headers.
+- Preview authentication is enabled. Do not disable protection to run checks.
+- get_project fails with an adapter argument error (idOrName missing). The connector exposes no firewall/Agent/billing configuration operations, and no authenticated CLI is available. Dashboard inspection is still required for those settings.
+- Removed full upstream CRM/mail error bodies and thrown error messages from CRM diagnostic storage/logging to avoid accidental personal-data disclosure. Status codes remain for troubleshooting.
+- No paid Agent review, firewall change, spend policy, production merge or customer-message test was performed.
