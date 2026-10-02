@@ -25,6 +25,7 @@ import { isDchubHost, resolveHost } from "@/lib/host.functions";
 import { getSiteContent } from "@/lib/site.functions";
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" } }),
 });
@@ -79,17 +80,26 @@ export const Route = createFileRoute("/")({
         }
       : {
           meta: [
-            { title: "QuestPulse | Organisatorisk risiko og People Intelligence" },
+            { title: "QuestPulse | Lederstøtte og innsikt for HR" },
             {
               name: "description",
               content:
-                "QuestPulse gir HR, ledere og toppledelse løpende, beskyttet innsikt i organisatorisk risiko, slik at dere kan prioritere riktige handlinger før belastning og friksjon eskalerer.",
+                "Gi ansatte og ledere støtte i hverdagen. QuestPulse kombinerer privat refleksjon og samlet organisasjonsinnsikt for HR og ledelse i virksomheter med over 100 ansatte.",
             },
             {
               property: "og:title",
-              content: "QuestPulse | Organisatorisk risiko og People Intelligence",
+              content: "QuestPulse | Lederstøtte og innsikt for HR",
             },
             { property: "og:site_name", content: "QuestPulse" },
+            {
+              property: "og:image",
+              content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+            },
+            { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+            {
+              name: "twitter:image",
+              content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+            },
             {
               property: "og:description",
               content:

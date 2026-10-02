@@ -508,6 +508,10 @@ function HeroVisual({ t }: { t: HomeCopy }) {
     >
       <img
         src="/imagery/questpulse-leadership-reflection.webp"
+        fetchPriority="high"
+        loading="eager"
+        width={1200}
+        height={900}
         alt={t.visual.secondaryAlt}
         className="block aspect-[4/3] w-full object-cover"
       />

@@ -1,4 +1,5 @@
 import "./lib/error-capture";
+import { applyResponsePolicy } from "./lib/response-policy";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
@@ -57,23 +58,16 @@ export default {
       const response = await handler.fetch(request, env, ctx);
       const normalizedResponse = await normalizeCatastrophicSsrResponse(response);
 
-      if (host === "digitalcoachub.no") {
-        const headers = new Headers(normalizedResponse.headers);
-        headers.set("X-Robots-Tag", "index, follow");
-        return new Response(normalizedResponse.body, {
-          status: normalizedResponse.status,
-          statusText: normalizedResponse.statusText,
-          headers,
-        });
-      }
-
-      return normalizedResponse;
+      return applyResponsePolicy(request, normalizedResponse);
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return applyResponsePolicy(
+        request,
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };

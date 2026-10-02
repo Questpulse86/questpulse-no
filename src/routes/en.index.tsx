@@ -5,6 +5,7 @@ import { Landing } from "@/components/site/Landing";
 import { getSiteContent } from "@/lib/site.functions";
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "en"],
   queryFn: () => getSiteContent({ data: { locale: "en" } }),
 });
@@ -12,17 +13,26 @@ const contentQuery = queryOptions({
 export const Route = createFileRoute("/en/")({
   head: () => ({
     meta: [
-      { title: "QuestPulse | Continuous organisational insight for leaders" },
+      { title: "QuestPulse | Leadership support and people intelligence" },
       {
         name: "description",
         content:
-          "QuestPulse turns continuous organisational signals into protected, actionable insight for HR, leaders and executive teams, from early risk to documented effect.",
+          "Private reflection, leadership support and organisational insight for HR and executive teams. Built for knowledge organisations with 100 or more employees.",
       },
       {
         property: "og:title",
-        content: "QuestPulse | Continuous organisational insight for leaders",
+        content: "QuestPulse | Leadership support and people intelligence",
       },
       { property: "og:site_name", content: "QuestPulse" },
+      {
+        property: "og:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
+      { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+      {
+        name: "twitter:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
       {
         property: "og:description",
         content:
@@ -35,7 +45,8 @@ export const Route = createFileRoute("/en/")({
     ],
     links: [
       { rel: "canonical", href: "https://questpulse.no/en" },
-      { rel: "alternate", hrefLang: "no", href: "/" },
+      { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/" },
+      { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en" },
       { rel: "alternate", hrefLang: "x-default", href: "https://questpulse.no/en" },
     ],
   }),

@@ -3,49 +3,129 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.questpulse.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.questpulse.no"
+        }
+      ],
       "destination": "https://questpulse.no/:path*",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.digitalcoachub.no"
+        }
+      ],
       "destination": "https://digitalcoachub.no/:path*",
       "permanent": true
     },
-    { "source": "/pilot", "destination": "/enterprise-evaluering", "permanent": true },
-    { "source": "/en/pilot", "destination": "/en/enterprise-evaluation", "permanent": true }
+    {
+      "source": "/pilot",
+      "destination": "/enterprise-evaluering",
+      "permanent": true
+    },
+    {
+      "source": "/en/pilot",
+      "destination": "/en/enterprise-evaluation",
+      "permanent": true
+    }
   ],
   "rewrites": [
     {
       "source": "/dchub/:path*",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/:path*"
     },
     {
       "source": "/dchub",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/"
     },
     {
       "source": "/robots.txt",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/robots.txt"
     },
     {
       "source": "/sitemap.xml",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/sitemap.xml"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/dchub"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "digitalcoachub.no" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "digitalcoachub.no"
+        }
+      ],
       "destination": "/dchub/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "base-uri 'self'; object-src 'none'"
+        }
+      ]
+    },
+    {
+      "source": "/imagery/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
     }
   ]
 }

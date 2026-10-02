@@ -13,6 +13,7 @@ const description =
   "Utforsk QuestPulse på fire nivåer: toppleder, avdelingsleder, teamleder og medarbeider. Interaktiv produktvisning med fiktive eksempeldata.";
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
 });
@@ -24,6 +25,15 @@ export const Route = createFileRoute("/demo")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:site_name", content: "QuestPulse" },
+      {
+        property: "og:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
+      { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+      {
+        name: "twitter:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },

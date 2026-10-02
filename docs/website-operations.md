@@ -1,0 +1,51 @@
+# QuestPulse website operations
+
+## Release prepared 2026-10-02
+
+The enterprise refresh is in PR #4 (`enterprise-site-refresh`). The public domain was still serving the older homepage during this review. Main has since received Lovable and dependency updates; these are merged forward without rewriting history.
+
+### Performance
+
+- Cache only allowlisted public QuestPulse responses for 60 seconds at Vercel's CDN, with up to 60 seconds of stale revalidation.
+- Never cache admin, authentication, demo, API, mutations, responses with cookies, authenticated requests or errors.
+- Public CMS reads are shared per language for 60 seconds per server instance. Database queries abort after 1.5 seconds and fall back to last good or bundled copy. Brief failure cache prevents retry storms. This is not a distributed cache.
+- Browser public-content queries remain fresh for 60 seconds, avoiding an immediate repeat after hydration.
+- CMS changes can take several minutes to reach every CDN and browser cache. Redeployment invalidates the deployment cache. Private data is outside these caches.
+- Homepage hero is a 1200 x 900 WebP, explicitly prioritized with reserved dimensions. Other homepage photographs are already lazy-loaded WebP.
+
+### Discoverability
+
+- Page-specific titles/descriptions, canonical URLs, Norwegian/English alternates and social images.
+- Server-rendered page content and structured data remain available without JavaScript.
+- Correct document language on English routes; reciprocal homepage hreflang.
+- Sitemap URLs match canonical slash conventions and contain language alternates.
+- Search crawling is permitted, including OAI-SearchBot. Preview hosts and private/error routes return noindex headers. robots.txt is crawler guidance, not access control.
+
+### Security scope
+
+- Existing CSRF middleware and server-side admin authorization retained.
+- Add nosniff, referrer policy, disabled camera/microphone/geolocation, and minimal CSP restricting base URLs and plugins. This is deliberately not a complete script allowlist: it must preserve Lovable, form and OAuth functionality.
+- Preserve main's dependency patch (js-yaml 4.3.2).
+- No penetration test, database-policy audit or proof of product-level compliance is implied by these website changes.
+
+## Account tasks before production sign-off
+
+1. Restore Vercel connector access to team `quest-pulse`. On 2026-10-02, list_projects returned 403 and list_teams returned no accessible teams. Account plan, firewall, analytics, logs and production settings could not be verified.
+2. If still on Hobby, move this commercial site to an eligible plan. Hobby is restricted to personal, non-commercial use. Approve subscription cost before purchase; set a spending limit and alerts.
+3. Review the consolidated preview, merge PR #4, then verify questpulse.no, www redirect, English pages, sitemap, robots, cache HIT, and lead delivery. Test lead delivery only with explicit authorization for the resulting email/CRM record.
+4. Connect the verified domain in Google Search Console and Bing Webmaster Tools; submit https://questpulse.no/sitemap.xml. Requires account/DNS access. Inspect indexing and the actual search queries; track qualified enquiries rather than impressions alone.
+5. Enable real-user Core Web Vitals and availability monitoring in the authorized hosting account. Targets at mobile p75: LCP <=2.5s, INP <=200ms, CLS <=0.1. Raw curl timings are not Core Web Vitals or guaranteed visitor performance.
+6. Confirm production form abuse controls/rate limits, recovery access, MFA, environment secret scope and Supabase policies using authorized account access.
+7. ChatGPT organic visibility and paid ads are separate. Ads need an advertiser account, approved creative, conversion/privacy configuration and an explicit budget. No campaign or charge is authorized by SEO work alone. Ads do not influence organic ChatGPT answers.
+
+## Content priorities after launch
+
+Build on the existing Norwegian and English pages for leadership support, preventive HR, employee listening follow-up, organisational development and workplace dialogue. Use original research summaries with clear sources and dates, and add verified customer cases when permission and results are available. Do not invent outcomes, testimonials or search-volume estimates.
+
+## Official references
+
+- https://vercel.com/docs/plans/hobby
+- https://vercel.com/docs/caching/cache-control-headers
+- https://developers.google.com/search/docs/appearance/ai-features
+- https://developers.openai.com/api/docs/bots
+- https://openai.com/index/chatgpt-ads-expands-across-europe/

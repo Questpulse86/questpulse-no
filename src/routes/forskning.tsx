@@ -8,6 +8,7 @@ import { getSiteContent } from "@/lib/site.functions";
 const meta = researchContent["no"].meta;
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
 });
@@ -19,12 +20,25 @@ export const Route = createFileRoute("/forskning")({
       { name: "description", content: meta.description },
       { property: "og:title", content: meta.title },
       { property: "og:site_name", content: "QuestPulse" },
+      {
+        property: "og:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
+      { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+      {
+        name: "twitter:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
       { property: "og:description", content: meta.description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
       { property: "og:url", content: "https://questpulse.no/forskning" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "keywords", content: "People Intelligence, organisatorisk helse, lederrisiko, psykologisk trygghet, turnover, sykefravær, arbeidsmiljøloven" },
+      {
+        name: "keywords",
+        content:
+          "People Intelligence, organisatorisk helse, lederrisiko, psykologisk trygghet, turnover, sykefravær, arbeidsmiljøloven",
+      },
     ],
     links: [
       { rel: "canonical", href: "https://questpulse.no/forskning" },
@@ -44,17 +58,40 @@ export const Route = createFileRoute("/forskning")({
               description: meta.description,
               url: "https://questpulse.no/forskning",
               inLanguage: "nb-NO",
-              about: ["People Intelligence", "Organisatorisk helse", "Lederrisiko", "Psykologisk trygghet"],
-              publisher: { "@type": "Organization", name: "QuestPulse", url: "https://questpulse.no" },
+              about: [
+                "People Intelligence",
+                "Organisatorisk helse",
+                "Lederrisiko",
+                "Psykologisk trygghet",
+              ],
+              publisher: {
+                "@type": "Organization",
+                name: "QuestPulse",
+                url: "https://questpulse.no",
+              },
               hasPart: researchContent["no"].groups.flatMap((g) =>
-                g.sources.map((s) => ({ "@type": "ScholarlyArticle", headline: s.title, url: s.url })),
+                g.sources.map((s) => ({
+                  "@type": "ScholarlyArticle",
+                  headline: s.title,
+                  url: s.url,
+                })),
               ),
             },
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "QuestPulse", item: "https://questpulse.no/" },
-                { "@type": "ListItem", position: 2, name: "Forskning", item: "https://questpulse.no/forskning" },
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "QuestPulse",
+                  item: "https://questpulse.no/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Forskning",
+                  item: "https://questpulse.no/forskning",
+                },
               ],
             },
           ],

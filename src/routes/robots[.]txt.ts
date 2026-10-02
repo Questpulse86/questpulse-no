@@ -13,9 +13,26 @@ export const Route = createFileRoute("/robots.txt")({
           : `Disallow: /demo
 Disallow: /auth
 Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
 `;
 
-        const body = `User-agent: Googlebot
+        if (
+          !new Set([
+            "questpulse.no",
+            "www.questpulse.no",
+            "digitalcoachub.no",
+            "www.digitalcoachub.no",
+          ]).has(new URL(request.url).hostname)
+        ) {
+          return new Response("User-agent: *\nDisallow: /\n", {
+            headers: { "Content-Type": "text/plain; charset=utf-8" },
+          });
+        }
+        const body = `User-agent: OAI-SearchBot
+Allow: /
+${disallow}
+User-agent: Googlebot
 Allow: /
 ${disallow}
 User-agent: Bingbot
