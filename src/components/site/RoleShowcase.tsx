@@ -173,7 +173,14 @@ function HrScene() {
     <svg viewBox="0 0 320 200" className="h-full w-full" role="presentation">
       {rows.map((row) => (
         <g key={row} className="qp-scene-row" style={{ animationDelay: `${row * 0.12}s` }}>
-          <rect x="24" y={26 + row * 42} width="272" height="30" rx="6" className="qp-scene-panel" />
+          <rect
+            x="24"
+            y={26 + row * 42}
+            width="272"
+            height="30"
+            rx="6"
+            className="qp-scene-panel"
+          />
           <rect
             x="24"
             y={26 + row * 42}
@@ -231,7 +238,7 @@ export function RoleShowcase({
       <div className="mx-auto max-w-6xl px-5 py-24">
         <div className="max-w-3xl">
           {eyebrow ? <p className="qp-eyebrow">{eyebrow}</p> : null}
-          <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{title}</h2>
+          <h2 className="mt-4 text-3xl leading-tight sm:text-5xl">{title}</h2>
           {lead ? <p className="mt-5 text-lg text-muted-foreground">{lead}</p> : null}
         </div>
 
@@ -250,7 +257,7 @@ export function RoleShowcase({
                 aria-selected={selected}
                 onClick={() => setRole(key)}
                 className={[
-                  "-mb-px border-b-2 px-4 py-3 text-sm font-bold transition-colors",
+                  "-mb-px border-b-2 px-4 py-3 font-sans text-sm font-semibold transition-colors",
                   selected
                     ? "border-teal text-navy"
                     : "border-transparent text-muted-foreground hover:text-navy",
@@ -264,7 +271,7 @@ export function RoleShowcase({
 
         <div key={role} className="qp-scene-enter mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <h3 className="text-2xl font-bold">{active.title}</h3>
+            <h3 className="font-sans text-2xl font-semibold">{active.title}</h3>
             <p className="mt-4 leading-relaxed text-muted-foreground">{active.lead}</p>
             <ul className="mt-7 space-y-3">
               {active.points.map((point, index) => (
