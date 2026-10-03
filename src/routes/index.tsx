@@ -25,6 +25,7 @@ import { isDchubHost, resolveHost } from "@/lib/host.functions";
 import { getSiteContent } from "@/lib/site.functions";
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" } }),
 });
@@ -79,18 +80,30 @@ export const Route = createFileRoute("/")({
         }
       : {
           meta: [
-            { title: "QuestPulse | People Intelligence for organisatorisk helse" },
+            { title: "QuestPulse | Lederstøtte og innsikt for HR" },
             {
               name: "description",
               content:
-                "People Intelligence som gir HR og ledelse løpende innsikt i organisatorisk helse og lederrisiko, slik at dere kan handle før belastning og friksjon eskalerer.",
+                "Gi ansatte og ledere støtte i hverdagen. QuestPulse kombinerer privat refleksjon og samlet organisasjonsinnsikt for HR og ledelse i virksomheter med over 100 ansatte.",
             },
-            { property: "og:title", content: "QuestPulse | People Intelligence for organisatorisk helse" },
+            {
+              property: "og:title",
+              content: "QuestPulse | Lederstøtte og innsikt for HR",
+            },
             { property: "og:site_name", content: "QuestPulse" },
+            {
+              property: "og:image",
+              content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+            },
+            { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+            {
+              name: "twitter:image",
+              content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+            },
             {
               property: "og:description",
               content:
-                "Fra spredte signaler til felles beslutningsgrunnlag om organisatorisk helse og lederrisiko.",
+                "Fra løpende organisatoriske signaler til prioriterte lederhandlinger og dokumentert effekt.",
             },
             { property: "og:type", content: "website" },
             { property: "og:locale", content: "nb_NO" },
@@ -101,6 +114,7 @@ export const Route = createFileRoute("/")({
             { rel: "canonical", href: "https://questpulse.no/" },
             { rel: "alternate", hrefLang: "en", href: "https://questpulse.no/en" },
             { rel: "alternate", hrefLang: "nb", href: "https://questpulse.no/" },
+            { rel: "alternate", hrefLang: "x-default", href: "https://questpulse.no/en" },
           ],
           scripts: [
             {
@@ -114,7 +128,23 @@ export const Route = createFileRoute("/")({
                   "People Intelligence for organisatorisk helse og lederrisiko. Løpende innsikt for HR, ledere og toppledelse.",
                 url: "https://questpulse.no/",
                 inLanguage: "nb-NO",
-                provider: { "@type": "Organization", name: "Digital Coach Hub AS", taxID: "936265634" },
+                provider: {
+                  "@type": "Organization",
+                  name: "Digital Coach Hub AS",
+                  taxID: "936265634",
+                },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Digital Coach Hub AS",
+                brand: { "@type": "Brand", name: "QuestPulse" },
+                url: "https://questpulse.no/",
+                email: "support@questpulse.no",
+                areaServed: ["Norway", "Nordics", "Europe"],
               }),
             },
           ],

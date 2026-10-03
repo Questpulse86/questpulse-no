@@ -2,7 +2,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { DemoConsole } from "@/components/demo/DemoConsole";
-import { HUBSPOT_BOOKING_URL } from "@/components/site/HubSpotForm";
+import { BOOKING_URL } from "@/lib/contact-channels";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ const description =
   "Utforsk QuestPulse på fire nivåer: toppleder, avdelingsleder, teamleder og medarbeider. Interaktiv produktvisning med fiktive eksempeldata.";
 
 const contentQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["site-content", "no"],
   queryFn: () => getSiteContent({ data: { locale: "no" as const } }),
 });
@@ -24,6 +25,15 @@ export const Route = createFileRoute("/demo")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:site_name", content: "QuestPulse" },
+      {
+        property: "og:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
+      { property: "og:image:alt", content: "QuestPulse: reflection and dialogue at work" },
+      {
+        name: "twitter:image",
+        content: "https://questpulse.no/imagery/questpulse-leadership-reflection.webp",
+      },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nb_NO" },
@@ -81,7 +91,7 @@ function DemoPage() {
               </p>
             </div>
             <Button asChild size="lg">
-              <a href={HUBSPOT_BOOKING_URL} target="_blank" rel="noreferrer">
+              <a href={BOOKING_URL} target="_blank" rel="noreferrer">
                 Book kartleggingssamtale
               </a>
             </Button>

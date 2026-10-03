@@ -2,9 +2,9 @@
 import { dchubBrand } from "@/lib/dchub-content";
 
 export const privacyMetaEn = {
-  version: "1.0",
-  updated: "10 September 2026",
-  updatedIso: "2026-09-10",
+  version: "1.1",
+  updated: "3 October 2026",
+  updatedIso: "2026-10-03",
 };
 
 export const privacyPageEn = {
@@ -23,12 +23,12 @@ export const privacyPageEn = {
       id: "data-collected",
       title: "What information is collected",
       list: [
-        "Contact form: name, email address, optional phone number, organisation and the content of your message.",
+        "Email enquiry: name, email address and the content of your message.",
         "Booking: name, email address and selected meeting time.",
         "Website use: technical information such as browser type, page views, referral source and anonymised IP address if you consent to analytics.",
       ],
       paragraphs: [
-        "The website does not store enquiries in its own database. Forms and booking go directly to our customer system.",
+        "The website does not store enquiries in its own database. Email is sent directly to us, and booking opens with Microsoft.",
       ],
     },
     {
@@ -44,7 +44,7 @@ export const privacyPageEn = {
       id: "processors",
       title: "Who the information is shared with",
       paragraphs: [
-        "We use HubSpot as our customer system for forms, booking and email follow-up, and Vercel for website hosting. Both are processors with data processing agreements. Data is processed within the EU and EEA where possible. If data is transferred outside the EEA, the EU Standard Contractual Clauses are used.",
+        "We use Microsoft Bookings for appointments, Microsoft Outlook for email and Vercel for website hosting. Booking opens with Microsoft. The previous HubSpot forms have been removed from the website.",
         "Information is not shared with others, and it is never sold.",
       ],
     },
@@ -66,19 +66,19 @@ export const privacyPageEn = {
       table: [
         {
           name: "Necessary",
-          purpose: "Ensures that forms, booking and your cookie choice work and are remembered.",
+          purpose: "Ensures that booking and your cookie choice work and are remembered.",
           duration: "The session or up to 12 months",
         },
         {
           name: "Analytics",
           purpose:
-            "Measures page views and which pages are useful so the content can be improved. Set by HubSpot.",
+            "Previous HubSpot functionality. Not active in this contact setup.",
           duration: "Up to 13 months",
         },
         {
           name: "Marketing",
           purpose:
-            "Recognises you across visits so follow-up can be relevant. Set by HubSpot.",
+            "Previous HubSpot functionality. Not active in this contact setup.",
           duration: "Up to 13 months",
         },
       ],

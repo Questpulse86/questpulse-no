@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { CookieNotice } from "@/components/dchub/CookieNotice";
 import { Reveal } from "@/components/dchub/Reveal";
-import { DCH_FORM_ID, HubSpotForm } from "@/components/site/HubSpotForm";
+import { DchubContactCard } from "@/components/dchub/DchubContactCard";
 import {
   BOOKING_URL,
   about as noAbout,
@@ -499,7 +499,7 @@ export function DchubLandingPage({
                 </p>
                 <p className="mt-6 text-xs text-dch-muted">{ui.confidentialNote}</p>
               </div>
-              <HubSpotForm formId={DCH_FORM_ID} />
+              <DchubContactCard locale={locale} />
             </div>
           </div>
         </section>

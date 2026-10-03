@@ -79,12 +79,11 @@ async function createContactNote(
       }),
     });
     if (response.ok) return null;
-    const body = await response.text();
-    console.error(`HubSpot note failed [${response.status}]: ${body}`);
-    return `HubSpot note ${response.status}: ${body.slice(0, 400)}`;
+    console.error(`HubSpot note failed [${response.status}]`);
+    return `HubSpot note ${response.status}`;
   } catch (error) {
-    console.error("HubSpot note threw", error);
-    return error instanceof Error ? error.message : "Ukjent feil";
+    console.error("HubSpot note request failed");
+    return "HubSpot request failed";
   }
 }
 
@@ -134,19 +133,18 @@ export async function syncLeadToHubspot(
           const noteError = await createContactNote(headers, existingId, lead);
           return { synced: true, error: noteError };
         }
-        const updateBody = await update.text();
-        console.error(`HubSpot update failed [${update.status}]: ${updateBody}`);
+        console.error(`HubSpot update failed [${update.status}]`);
         return {
           synced: false,
-          error: `HubSpot ${update.status}: ${updateBody.slice(0, 400)}`,
+          error: `HubSpot ${update.status}`,
         };
       }
     }
 
-    console.error(`HubSpot sync failed [${response.status}]: ${body}`);
-    return { synced: false, error: `HubSpot ${response.status}: ${body.slice(0, 400)}` };
+    console.error(`HubSpot sync failed [${response.status}]`);
+    return { synced: false, error: `HubSpot ${response.status}` };
   } catch (error) {
-    console.error("HubSpot sync threw", error);
-    return { synced: false, error: error instanceof Error ? error.message : "Ukjent feil" };
+    console.error("HubSpot sync request failed");
+    return { synced: false, error: "HubSpot request failed" };
   }
 }

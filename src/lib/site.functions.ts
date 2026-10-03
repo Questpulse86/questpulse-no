@@ -2,61 +2,13 @@ import { createServerFn } from "@tanstack/react-start";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { defaultContent, mergeContent, type Locale, type SiteContent } from "@/lib/site-content";
-import { contentSaveSchema, leadSchema, localeSchema } from "@/lib/site-schemas";
+import { contentSaveSchema, localeSchema } from "@/lib/site-schemas";
 
 export const getSiteContent = createServerFn({ method: "GET" })
   .inputValidator((input: { locale: Locale }) => ({ locale: localeSchema.parse(input.locale) }))
   .handler(async ({ data }): Promise<SiteContent> => {
-    try {
-      const { createPublicClient } = await import("@/lib/supabase-public.server");
-      const supabase = createPublicClient();
-      const { data: row, error } = await supabase
-        .from("site_content")
-        .select("data")
-        .eq("locale", data.locale)
-        .maybeSingle();
-
-      if (error) {
-        console.error("Public site content lookup failed", error);
-        return defaultContent[data.locale];
-      }
-
-      return mergeContent(data.locale, row?.data ?? null);
-    } catch (error) {
-      console.error("Public site content fallback used", error);
-      return defaultContent[data.locale];
-    }
-  });
-
-export const submitLead = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => leadSchema.parse(input))
-  .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { syncLeadToHubspot } = await import("@/lib/hubspot.server");
-
-    const hubspot = await syncLeadToHubspot({
-      name: data.name,
-      email: data.email,
-      company: data.company,
-      role: data.role,
-      inquiryType: data.inquiryType,
-      message: data.message,
-    });
-
-    const { error } = await supabaseAdmin.from("leads").insert({
-      name: data.name,
-      email: data.email,
-      company: data.company || null,
-      role: data.role || null,
-      inquiry_type: data.inquiryType,
-      message: data.message || null,
-      locale: data.locale,
-      hubspot_synced: hubspot.synced,
-      hubspot_error: hubspot.error,
-    });
-    if (error) throw new Error("Kunne ikke lagre henvendelsen");
-
-    return { ok: true as const, hubspotSynced: hubspot.synced };
+    const { readPublicContent } = await import("@/lib/public-content.server");
+    return readPublicContent(data.locale);
   });
 
 export const getAdminOverview = createServerFn({ method: "GET" })
@@ -89,7 +41,6 @@ export const getAdminOverview = createServerFn({ method: "GET" })
       leads: leads ?? [],
       audit: audit ?? [],
     };
-
   });
 
 export type SecurityStatus = {
@@ -114,9 +65,11 @@ export const getSecurityStatus = createServerFn({ method: "GET" })
     });
     if (!isAdmin) throw new Error("Forbidden");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await (supabaseAdmin.rpc as unknown as (
-      fn: string,
-    ) => Promise<{ data: unknown; error: { message: string } | null }>)("security_status");
+    const { data, error } = await (
+      supabaseAdmin.rpc as unknown as (
+        fn: string,
+      ) => Promise<{ data: unknown; error: { message: string } | null }>
+    )("security_status");
     if (error) throw new Error(error.message);
     return data as SecurityStatus;
   });
@@ -125,7 +78,8 @@ export const analyzeSecurityIncident = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { description: string }) => {
     const d = String(input?.description ?? "").trim();
-    if (d.length < 20 || d.length > 5000) throw new Error("Beskrivelsen må være mellom 20 og 5000 tegn.");
+    if (d.length < 20 || d.length > 5000)
+      throw new Error("Beskrivelsen må være mellom 20 og 5000 tegn.");
     return { description: d };
   })
   .handler(async ({ data, context }) => {
@@ -151,10 +105,9 @@ export const saveSiteContent = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin
       .from("site_content")
-      .upsert(
-        { locale: data.locale, data: data.data as never },
-        { onConflict: "locale" },
-      );
+      .upsert({ locale: data.locale, data: data.data as never }, { onConflict: "locale" });
     if (error) throw new Error(error.message);
+    const { invalidatePublicContent } = await import("@/lib/public-content.server");
+    invalidatePublicContent(data.locale);
     return { ok: true as const };
   });

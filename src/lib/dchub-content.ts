@@ -260,6 +260,6 @@ export const dchubUi = {
   footerContactTitle: "Kontakt",
   orgNumberLabel: "Org.nr.",
   privacyLink: "Personvern og informasjonskapsler",
-  questPulseFooter: `QuestPulse leveres av ${dchubBrand.legalName}`,
+  questPulseFooter: "QuestPulse for virksomheter",
   mobileCta: "Book en gratis samtale",
 };

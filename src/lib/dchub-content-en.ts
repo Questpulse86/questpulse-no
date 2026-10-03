@@ -227,6 +227,6 @@ export const dchubUiEn = {
   footerContactTitle: "Contact",
   orgNumberLabel: "Company reg. no.",
   privacyLink: "Privacy and cookies",
-  questPulseFooter: `QuestPulse is delivered by ${dchubBrand.legalName}`,
+  questPulseFooter: "QuestPulse for organisations",
   mobileCta: "Book a complimentary call",
 };

@@ -41,3 +41,6 @@ dist-ssr
 *.pem
 *.key
 .secrets
+
+# Local deployment output and project identifiers
+.vercel/

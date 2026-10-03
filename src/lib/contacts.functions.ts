@@ -2,7 +2,15 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-export const CONTACT_STATUSES = ["booket", "gjennomført", "oppfølging", "tilbud", "vunnet", "tapt", "avlyst"] as const;
+export const CONTACT_STATUSES = [
+  "booket",
+  "gjennomført",
+  "oppfølging",
+  "tilbud",
+  "vunnet",
+  "tapt",
+  "avlyst",
+] as const;
 
 const contactSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -22,19 +30,34 @@ async function assertAdmin(supabase: any, userId: string) {
   if (!data) throw new Error("Forbidden");
 }
 
-const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+const esc = (s: string) =>
+  s.replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
+  );
 
 async function sendBookingEmail(c: z.infer<typeof contactSchema>) {
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const outlookKey = process.env["MICROSOFT_OUTLOOK_API_KEY"];
   if (!lovableKey || !outlookKey) return "Outlook er ikke koblet til";
   const when = c.meeting_at
-    ? new Date(c.meeting_at).toLocaleString("nb-NO", { timeZone: "Europe/Oslo", dateStyle: "full", timeStyle: "short" })
+    ? new Date(c.meeting_at).toLocaleString("nb-NO", {
+        timeZone: "Europe/Oslo",
+        dateStyle: "full",
+        timeStyle: "short",
+      })
     : "Ikke satt";
   const rows: [string, string | undefined][] = [
-    ["Navn", c.name], ["E-post", c.email], ["Telefon", c.phone], ["Virksomhet", c.company],
-    ["Rolle", c.role], ["Tidspunkt", when], ["Status", c.status], ["Neste trinn", c.next_step],
-    ["Frist neste trinn", c.next_step_due], ["Notater", c.notes],
+    ["Navn", c.name],
+    ["E-post", c.email],
+    ["Telefon", c.phone],
+    ["Virksomhet", c.company],
+    ["Rolle", c.role],
+    ["Tidspunkt", when],
+    ["Status", c.status],
+    ["Neste trinn", c.next_step],
+    ["Frist neste trinn", c.next_step_due],
+    ["Notater", c.notes],
   ];
   const html = `<h2>Kartleggingssamtale</h2><table cellpadding="6">${rows
     .filter(([, v]) => v)
@@ -42,18 +65,21 @@ async function sendBookingEmail(c: z.infer<typeof contactSchema>) {
     .join("")}</table>`;
   const res = await fetch("https://connector-gateway.lovable.dev/microsoft_outlook/me/sendMail", {
     method: "POST",
-    headers: { Authorization: `Bearer ${lovableKey}`, "X-Connection-Api-Key": outlookKey, "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${lovableKey}`,
+      "X-Connection-Api-Key": outlookKey,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       message: {
         subject: `Kartleggingssamtale: ${c.name}${c.company ? `, ${c.company}` : ""} (${when})`,
         body: { contentType: "HTML", content: html },
-        toRecipients: [{ emailAddress: { address: "linda@dchub.no" } }],
+        toRecipients: [{ emailAddress: { address: "support@questpulse.no" } }],
       },
     }),
   });
   if (!res.ok) {
-    const body = await res.text();
-    console.error(`Outlook sendMail failed [${res.status}]: ${body}`);
+    console.error(`Outlook sendMail failed [${res.status}]`);
     return `E-post feilet (${res.status})`;
   }
   return null;
@@ -71,7 +97,9 @@ export const listContacts = createServerFn({ method: "GET" })
   .handler(async ({ context }) => {
     await assertAdmin(context.supabase, context.userId);
     const { data, error } = await (context.supabase as any)
-      .from("customer_contacts").select("*").order("meeting_at", { ascending: false, nullsFirst: false });
+      .from("customer_contacts")
+      .select("*")
+      .order("meeting_at", { ascending: false, nullsFirst: false });
     if (error) throw new Error(error.message);
     return data as any[];
   });
@@ -84,7 +112,10 @@ export const createContact = createServerFn({ method: "POST" })
     const { sendEmail, ...c } = data;
     const emailError = sendEmail ? await sendBookingEmail(c) : null;
     const { error } = await (context.supabase as any).from("customer_contacts").insert({
-      ...clean(c), created_by: context.userId, email_sent: sendEmail && !emailError, email_error: emailError,
+      ...clean(c),
+      created_by: context.userId,
+      email_sent: sendEmail && !emailError,
+      email_error: emailError,
     });
     if (error) throw new Error(error.message);
     return { emailError };
@@ -96,7 +127,10 @@ export const updateContact = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
     const { id, ...c } = data;
-    const { error } = await (context.supabase as any).from("customer_contacts").update(clean(c)).eq("id", id);
+    const { error } = await (context.supabase as any)
+      .from("customer_contacts")
+      .update(clean(c))
+      .eq("id", id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
@@ -106,7 +140,10 @@ export const deleteContact = createServerFn({ method: "POST" })
   .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
-    const { error } = await (context.supabase as any).from("customer_contacts").delete().eq("id", data.id);
+    const { error } = await (context.supabase as any)
+      .from("customer_contacts")
+      .delete()
+      .eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });

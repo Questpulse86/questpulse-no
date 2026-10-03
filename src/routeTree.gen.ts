@@ -19,6 +19,7 @@ import { Route as EnterpriseEvalueringRouteImport } from './routes/enterprise-ev
 import { Route as ForBankOgFinansRouteImport } from './routes/for-bank-og-finans'
 import { Route as ForHrOgLedelseRouteImport } from './routes/for-hr-og-ledelse'
 import { Route as ForskningRouteImport } from './routes/forskning'
+import { Route as HistorierFraArbeidslivetRouteImport } from './routes/historier-fra-arbeidslivet'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OmSelskapetRouteImport } from './routes/om-selskapet'
@@ -46,6 +47,7 @@ import { Route as EnPilotRouteImport } from './routes/en.pilot'
 import { Route as EnResearchRouteImport } from './routes/en.research'
 import { Route as EnSecurityAndPrivacyRouteImport } from './routes/en.security-and-privacy'
 import { Route as EnUseCasesRouteImport } from './routes/en.use-cases'
+import { Route as EnWorkplaceStoriesRouteImport } from './routes/en.workplace-stories'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as DchubEnPrivacyRouteImport } from './routes/dchub_.en_.privacy'
@@ -99,6 +101,12 @@ const ForskningRoute = ForskningRouteImport.update({
   path: '/forskning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistorierFraArbeidslivetRoute =
+  HistorierFraArbeidslivetRouteImport.update({
+    id: '/historier-fra-arbeidslivet',
+    path: '/historier-fra-arbeidslivet',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const KontaktRoute = KontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
@@ -236,6 +244,11 @@ const EnUseCasesRoute = EnUseCasesRouteImport.update({
   path: '/en/use-cases',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnWorkplaceStoriesRoute = EnWorkplaceStoriesRouteImport.update({
+  id: '/en/workplace-stories',
+  path: '/en/workplace-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
@@ -263,6 +276,7 @@ export interface FileRoutesByFullPath {
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/forskning': typeof ForskningRoute
+  '/historier-fra-arbeidslivet': typeof HistorierFraArbeidslivetRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -289,6 +303,7 @@ export interface FileRoutesByFullPath {
   '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
+  '/en/workplace-stories': typeof EnWorkplaceStoriesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -304,6 +319,7 @@ export interface FileRoutesByTo {
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/forskning': typeof ForskningRoute
+  '/historier-fra-arbeidslivet': typeof HistorierFraArbeidslivetRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -330,6 +346,7 @@ export interface FileRoutesByTo {
   '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
+  '/en/workplace-stories': typeof EnWorkplaceStoriesRoute
   '/en': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -347,6 +364,7 @@ export interface FileRoutesById {
   '/for-bank-og-finans': typeof ForBankOgFinansRoute
   '/for-hr-og-ledelse': typeof ForHrOgLedelseRoute
   '/forskning': typeof ForskningRoute
+  '/historier-fra-arbeidslivet': typeof HistorierFraArbeidslivetRoute
   '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/om-selskapet': typeof OmSelskapetRoute
@@ -373,6 +391,7 @@ export interface FileRoutesById {
   '/en/research': typeof EnResearchRoute
   '/en/security-and-privacy': typeof EnSecurityAndPrivacyRoute
   '/en/use-cases': typeof EnUseCasesRoute
+  '/en/workplace-stories': typeof EnWorkplaceStoriesRoute
   '/en/': typeof EnIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -390,6 +409,7 @@ export interface FileRouteTypes {
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/forskning'
+    | '/historier-fra-arbeidslivet'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -416,6 +436,7 @@ export interface FileRouteTypes {
     | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
+    | '/en/workplace-stories'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -431,6 +452,7 @@ export interface FileRouteTypes {
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/forskning'
+    | '/historier-fra-arbeidslivet'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -457,6 +479,7 @@ export interface FileRouteTypes {
     | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
+    | '/en/workplace-stories'
     | '/en'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -473,6 +496,7 @@ export interface FileRouteTypes {
     | '/for-bank-og-finans'
     | '/for-hr-og-ledelse'
     | '/forskning'
+    | '/historier-fra-arbeidslivet'
     | '/kontakt'
     | '/mcp'
     | '/om-selskapet'
@@ -499,6 +523,7 @@ export interface FileRouteTypes {
     | '/en/research'
     | '/en/security-and-privacy'
     | '/en/use-cases'
+    | '/en/workplace-stories'
     | '/en/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -516,6 +541,7 @@ export interface RootRouteChildren {
   ForBankOgFinansRoute: typeof ForBankOgFinansRoute
   ForHrOgLedelseRoute: typeof ForHrOgLedelseRoute
   ForskningRoute: typeof ForskningRoute
+  HistorierFraArbeidslivetRoute: typeof HistorierFraArbeidslivetRoute
   KontaktRoute: typeof KontaktRoute
   McpRoute: typeof McpRoute
   OmSelskapetRoute: typeof OmSelskapetRoute
@@ -541,6 +567,7 @@ export interface RootRouteChildren {
   EnResearchRoute: typeof EnResearchRoute
   EnSecurityAndPrivacyRoute: typeof EnSecurityAndPrivacyRoute
   EnUseCasesRoute: typeof EnUseCasesRoute
+  EnWorkplaceStoriesRoute: typeof EnWorkplaceStoriesRoute
   EnIndexRoute: typeof EnIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -617,6 +644,13 @@ declare module '@tanstack/react-router' {
       path: '/forskning'
       fullPath: '/forskning'
       preLoaderRoute: typeof ForskningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historier-fra-arbeidslivet': {
+      id: '/historier-fra-arbeidslivet'
+      path: '/historier-fra-arbeidslivet'
+      fullPath: '/historier-fra-arbeidslivet'
+      preLoaderRoute: typeof HistorierFraArbeidslivetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -808,6 +842,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnUseCasesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/workplace-stories': {
+      id: '/en/workplace-stories'
+      path: '/en/workplace-stories'
+      fullPath: '/en/workplace-stories'
+      preLoaderRoute: typeof EnWorkplaceStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.lovable/oauth/consent': {
       id: '/.lovable/oauth/consent'
       path: '/.lovable/oauth/consent'
@@ -854,6 +895,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForBankOgFinansRoute: ForBankOgFinansRoute,
   ForHrOgLedelseRoute: ForHrOgLedelseRoute,
   ForskningRoute: ForskningRoute,
+  HistorierFraArbeidslivetRoute: HistorierFraArbeidslivetRoute,
   KontaktRoute: KontaktRoute,
   McpRoute: McpRoute,
   OmSelskapetRoute: OmSelskapetRoute,
@@ -880,6 +922,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnResearchRoute: EnResearchRoute,
   EnSecurityAndPrivacyRoute: EnSecurityAndPrivacyRoute,
   EnUseCasesRoute: EnUseCasesRoute,
+  EnWorkplaceStoriesRoute: EnWorkplaceStoriesRoute,
   EnIndexRoute: EnIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,

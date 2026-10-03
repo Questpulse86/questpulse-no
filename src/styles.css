@@ -91,7 +91,6 @@
   --dch-line: #e2ded7;
   --dch-muted: #55606d;
 
-
   --background: oklch(0.9722 0.0034 247.86);
   --foreground: oklch(0.3535 0.0312 237.98);
   --card: oklch(1 0 0);
@@ -484,7 +483,6 @@
   opacity: 1;
 }
 
-
 .qp-flow-on .qp-flow-zone,
 .qp-flow-on .qp-flow-zone-late {
   animation: qp-flow-zone-in 0.6s ease-out both;
@@ -533,28 +531,53 @@
 }
 
 @keyframes qp-demo-fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes qp-demo-scale-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.animate-fade-in { animation: qp-demo-fade-in 0.35s ease both; }
-.animate-scale-in { animation: qp-demo-scale-in 0.3s ease both; }
+.animate-fade-in {
+  animation: qp-demo-fade-in 0.35s ease both;
+}
+.animate-scale-in {
+  animation: qp-demo-scale-in 0.3s ease both;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in,
-  .animate-scale-in { animation: none; }
+  .animate-scale-in {
+    animation: none;
+  }
 }
 
 /* QuestPulse-forside: mørk beslutningsflate */
 .qp-grid-bg {
   background-image:
-    linear-gradient(color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--navy-foreground) 4%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black, transparent 86%);
 }
@@ -578,7 +601,31 @@
   z-index: -1;
   content: "";
   border-radius: calc(var(--radius) + 2px);
-  background: linear-gradient(135deg, color-mix(in oklab, var(--teal) 60%, transparent), transparent 42%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--teal) 60%, transparent),
+    transparent 42%
+  );
+}
+
+/* Rolig innrullingsbevegelse på forsiden. Kun store innholdsflater beveger seg. */
+@media (prefers-reduced-motion: no-preference) {
+  .qp-motion-ready [data-qp-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 580ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 580ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .qp-motion-ready [data-qp-reveal="hero-visual"] {
+    transition-delay: 100ms;
+  }
+
+  .qp-motion-ready [data-qp-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .qp-preview-nav {
@@ -604,8 +651,14 @@
 }
 
 @keyframes qp-preview-rise {
-  from { transform: scaleY(0.15); opacity: 0.25; }
-  to { transform: scaleY(1); opacity: 1; }
+  from {
+    transform: scaleY(0.15);
+    opacity: 0.25;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 .qp-preview-bar {
@@ -617,5 +670,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .qp-preview-bar { animation: none; }
+  .qp-preview-bar {
+    animation: none;
+  }
 }

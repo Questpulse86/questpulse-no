@@ -73,7 +73,7 @@ export const defaultContent: Record<Locale, SiteContent> = {
       forWho: "For HR og ledelse",
       security: "Sikkerhet",
       contact: "Kontakt",
-      cta: "Book kartleggingssamtale",
+      cta: "Be om strategisk gjennomgang",
     },
     hero: {
       eyebrow: "People Intelligence",
@@ -205,12 +205,12 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send henvendelse",
       sending: "Sender ...",
       success: "Takk. Vi har mottatt henvendelsen og tar kontakt.",
-      error: "Noe gikk galt. Prøv igjen, eller send e-post til linda@dchub.no.",
+      error: "Noe gikk galt. Prøv igjen, eller send e-post til support@questpulse.no.",
       privacy:
         "Vi bruker opplysningene kun til å følge opp henvendelsen din. Ingen deling med tredjepart.",
     },
     footer: {
-      text: "QuestPulse er utviklet av Digital Coach Hub AS. People Intelligence for norske virksomheter.",
+      text: "QuestPulse er utviklet av Digital Coach Hub AS. People Intelligence for virksomheter med komplekse krav til mennesker, ledelse og dokumentasjon.",
       rights: "Alle rettigheter forbeholdt.",
     },
   },
@@ -225,11 +225,12 @@ export const defaultContent: Record<Locale, SiteContent> = {
       forWho: "For HR and leadership",
       security: "Security",
       contact: "Contact",
-      cta: "Book a discovery conversation",
+      cta: "Request an executive briefing",
     },
     hero: {
       eyebrow: "People Intelligence",
-      title: "Detect organisational friction, strain and leadership challenges before they escalate.",
+      title:
+        "Detect organisational friction, strain and leadership challenges before they escalate.",
       short: "See it earlier. Act better.",
       lead: "QuestPulse brings together continuous signals from teams, leaders and business units, turning them into a shared basis for decisions across HR, management and executive leadership.",
       cta1: "Book a discovery conversation",
@@ -237,7 +238,8 @@ export const defaultContent: Record<Locale, SiteContent> = {
     },
     problem: {
       eyebrow: "The starting point",
-      title: "Leaders know a lot about customers and finance, and far too little about the organisation",
+      title:
+        "Leaders know a lot about customers and finance, and far too little about the organisation",
       lead: "By the time the problem is visible through resignations, conflict, absence or weaker delivery, the organisation has usually lost both time and options.",
       items: [
         {
@@ -357,11 +359,12 @@ export const defaultContent: Record<Locale, SiteContent> = {
       submit: "Send enquiry",
       sending: "Sending ...",
       success: "Thank you. We have received your enquiry and will be in touch.",
-      error: "Something went wrong. Please try again, or email linda@dchub.no.",
-      privacy: "We use your details only to follow up on your enquiry. No sharing with third parties.",
+      error: "Something went wrong. Please try again, or email support@questpulse.no.",
+      privacy:
+        "We use your details only to follow up on your enquiry. No sharing with third parties.",
     },
     footer: {
-      text: "QuestPulse is built by Digital Coach Hub AS. People Intelligence for Nordic organisations.",
+      text: "QuestPulse is built by Digital Coach Hub AS. People Intelligence for organisations with complex people, leadership and governance requirements.",
       rights: "All rights reserved.",
     },
   },

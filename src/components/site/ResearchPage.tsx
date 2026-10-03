@@ -25,7 +25,7 @@ export function ResearchPage({ locale, content }: { locale: Locale; content: Sit
             <p className="text-xs font-bold tracking-[0.18em] text-teal uppercase">
               {page.hero.eyebrow}
             </p>
-            <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] font-bold text-navy-foreground sm:text-5xl">
+            <h1 className="mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold text-navy-foreground sm:text-5xl lg:text-6xl">
               {page.hero.title}
             </h1>
             <span className="qp-rule mt-7" />
@@ -41,7 +41,7 @@ export function ResearchPage({ locale, content }: { locale: Locale; content: Sit
             <div className="mx-auto max-w-6xl px-5 py-24">
               <div className="max-w-3xl">
                 <p className="qp-eyebrow">{group.eyebrow}</p>
-                <h2 className="mt-4 text-3xl leading-tight sm:text-4xl">{group.title}</h2>
+                <h2 className="mt-4 text-3xl leading-tight sm:text-5xl">{group.title}</h2>
                 <p className="mt-5 text-lg text-muted-foreground">{group.lead}</p>
               </div>
               <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -53,7 +53,7 @@ export function ResearchPage({ locale, content }: { locale: Locale; content: Sit
                     <p className="text-xs font-bold tracking-[0.14em] text-teal-deep uppercase">
                       {source.publisher} · {source.year}
                     </p>
-                    <h3 className="mt-3 text-lg font-bold">{source.title}</h3>
+                    <h3 className="mt-3 font-sans text-lg font-semibold">{source.title}</h3>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                       {source.finding}
                     </p>
@@ -104,7 +104,7 @@ export function ResearchPage({ locale, content }: { locale: Locale; content: Sit
 
         <section className="mx-auto max-w-6xl px-5 py-24">
           <div className="max-w-3xl">
-            <h2 className="text-3xl leading-tight sm:text-4xl">{page.closing.title}</h2>
+            <h2 className="text-3xl leading-tight sm:text-5xl">{page.closing.title}</h2>
             <p className="mt-5 leading-relaxed text-muted-foreground">{page.closing.text}</p>
             <Link
               to={pagePaths.contact[locale]}

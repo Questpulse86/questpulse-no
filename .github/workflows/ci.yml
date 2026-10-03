@@ -20,11 +20,19 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
-      - run: bun run build
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Security regression checks
+        run: node --test tests/security.test.mjs
+      - name: Known dependency vulnerabilities (high and critical)
+        run: npm audit --audit-level=high
+      - name: Build the Vercel deployment
+        run: npm run build
+        env:
+          NITRO_PRESET: vercel
