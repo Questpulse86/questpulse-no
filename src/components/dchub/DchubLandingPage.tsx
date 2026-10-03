@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { CookieNotice } from "@/components/dchub/CookieNotice";
 import { Reveal } from "@/components/dchub/Reveal";
-import { ContactForm } from "@/components/site/ContactForm";
+import { DchubContactCard } from "@/components/dchub/DchubContactCard";
 import {
   BOOKING_URL,
   about as noAbout,
@@ -499,7 +499,7 @@ export function DchubLandingPage({
                 </p>
                 <p className="mt-6 text-xs text-dch-muted">{ui.confidentialNote}</p>
               </div>
-              <ContactForm locale={locale} />
+              <DchubContactCard locale={locale} />
             </div>
           </div>
         </section>
