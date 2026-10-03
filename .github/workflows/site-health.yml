@@ -1,0 +1,68 @@
+name: Site health monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Hver morgen 08:15 norsk sommertid (06:15 UTC).
+    - cron: "15 6 * * *"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    name: SEO, språk og sporing
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://questpulse.no' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Kjør nettstedskontroll
+        id: audit
+        run: |
+          python scripts/site_health.py --url "$SITE_URL" --output-dir site-health-report
+          echo "issue_count=$(python -c "import json; print(json.load(open('site-health-report/report.json'))['issue_count'])")" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+
+      - name: Last opp rapport
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-health-report-${{ github.run_number }}
+          path: site-health-report/
+
+      - name: Opprett sak ved avvik
+        if: steps.audit.outputs.issue_count != '0'
+        uses: actions/github-script@v7
+        env:
+          REPORT: site-health-report/report.md
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync(process.env.REPORT, 'utf8');
+            const title = 'Nettstedskontroll: avvik oppdaget';
+            const { owner, repo } = context.repo;
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open', labels: 'site-health', per_page: 100,
+            });
+            const duplicate = existing.find(issue => issue.title === title);
+            if (!duplicate) {
+              await github.rest.issues.create({
+                owner, repo, title, body,
+                labels: ['site-health', 'automated-report'],
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: duplicate.number, body,
+              });
+            }
+
+      - name: Skriv kontrollresultat
+        if: always()
+        run: cat site-health-report/report.md >> "$GITHUB_STEP_SUMMARY"
