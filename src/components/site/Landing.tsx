@@ -14,7 +14,7 @@ import {
   Users,
 } from "lucide-react";
 
-import { OUTLOOK_BOOKING_URL } from "@/lib/contact-channels";
+import { BOOKING_URL } from "@/lib/contact-channels";
 import { ContactForm } from "@/components/site/ContactForm";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -589,7 +589,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className="h-12 px-6">
-                  <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+                  <a href={BOOKING_URL} target="_blank" rel="noreferrer">
                     {t.hero.cta}
                     <ArrowRight />
                   </a>
@@ -900,7 +900,7 @@ export function Landing({ locale, content }: { locale: Locale; content: SiteCont
                 {t.cta.text}
               </p>
               <Button asChild size="lg" className="mt-8 h-12 px-6">
-                <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+                <a href={BOOKING_URL} target="_blank" rel="noreferrer">
                   {t.cta.button}
                   <ArrowRight />
                 </a>
