@@ -5,9 +5,9 @@
 import { dchubBrand } from "@/lib/dchub-content";
 
 export const privacyMeta = {
-  version: "1.0",
-  updated: "10. september 2026",
-  updatedIso: "2026-09-10",
+  version: "1.1",
+  updated: "3. oktober 2026",
+  updatedIso: "2026-10-03",
 };
 
 export const privacyPage = {
@@ -26,12 +26,12 @@ export const privacyPage = {
       id: "hva-samles-inn",
       title: "Hvilke opplysninger samles inn",
       list: [
-        "Kontaktskjema: navn, e-postadresse, eventuelt telefonnummer, virksomhet og innholdet i meldingen din.",
+        "E-posthenvendelse: navn, e-postadresse og innholdet i meldingen din.",
         "Booking av samtale: navn, e-postadresse og valgt tidspunkt.",
         "Bruk av nettsiden: teknisk informasjon som nettlesertype, sidevisninger, henvisningskilde og anonymisert IP-adresse, dersom du samtykker til analyse.",
       ],
       paragraphs: [
-        "Nettsiden lagrer ingen henvendelser i egen database. Skjema og booking går direkte til kundesystemet vårt.",
+        "Nettsiden lagrer ikke henvendelser i egen database. E-post sendes direkte til oss, og booking åpnes hos Microsoft.",
       ],
     },
     {
@@ -70,7 +70,7 @@ export const privacyPage = {
         {
           name: "Nødvendige",
           purpose:
-            "Sikrer at skjema, booking og valget ditt om informasjonskapsler fungerer og huskes.",
+            "Sikrer at booking og valget ditt om informasjonskapsler fungerer og huskes.",
           duration: "Økten eller inntil 12 måneder",
         },
         {
