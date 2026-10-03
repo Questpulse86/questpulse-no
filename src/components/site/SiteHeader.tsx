@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 
-import { OUTLOOK_BOOKING_URL } from "@/lib/contact-channels";
+import { BOOKING_URL } from "@/lib/contact-channels";
 import { Logo } from "@/components/site/Logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -75,7 +75,7 @@ export function SiteHeader({
             {other === "no" ? "NO" : "EN"}
           </Link>
           <Button asChild size="sm">
-            <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+            <a href={BOOKING_URL} target="_blank" rel="noreferrer">
               {locale === "no" ? "Book en samtale" : "Book a call"}
             </a>
           </Button>
@@ -113,7 +113,7 @@ export function SiteHeader({
                   </SheetClose>
                 ))}
                 <Button asChild className="mt-8 justify-center">
-                  <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+                  <a href={BOOKING_URL} target="_blank" rel="noreferrer">
                     {locale === "no" ? "Book en samtale" : "Book a call"}
                   </a>
                 </Button>
