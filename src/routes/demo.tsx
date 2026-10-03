@@ -2,7 +2,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { DemoConsole } from "@/components/demo/DemoConsole";
-import { OUTLOOK_BOOKING_URL } from "@/lib/contact-channels";
+import { BOOKING_URL } from "@/lib/contact-channels";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Button } from "@/components/ui/button";
@@ -91,7 +91,7 @@ function DemoPage() {
               </p>
             </div>
             <Button asChild size="lg">
-              <a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noreferrer">
+              <a href={BOOKING_URL} target="_blank" rel="noreferrer">
                 Book kartleggingssamtale
               </a>
             </Button>
