@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { OUTLOOK_BOOKING_URL, SALES_EMAIL, SUPPORT_EMAIL } from '@/lib/contact-channels';
+import { BOOKING_URL, SALES_EMAIL, SUPPORT_EMAIL } from '@/lib/contact-channels';
 import type { Locale } from '@/lib/site-content';
 
-/** Interim contact journey: Microsoft handles booking, email handles other enquiries. */
+/** Interim contact journey: Calendly handles booking, email handles other enquiries. */
 export function ContactForm({ locale, className, support = false }: { locale: Locale; className?: string; support?: boolean }) {
   const no = locale === 'no';
   return (
@@ -20,11 +20,11 @@ export function ContactForm({ locale, className, support = false }: { locale: Lo
           <>
             <ol className="my-6 grid gap-3 text-sm leading-relaxed">
               <li>{no ? '1. Velg en ledig tid i bookingkalenderen.' : '1. Choose an available time in the booking calendar.'}</li>
-              <li>{no ? '2. Fullfør bookingen hos Microsoft.' : '2. Complete your booking with Microsoft.'}</li>
+              <li>{no ? '2. Fullfør bookingen og motta Teams-lenken på e-post.' : '2. Complete the booking and receive the Teams link by email.'}</li>
               <li>{no ? '3. Se bekreftelsen på e-post for møtedetaljer.' : '3. Check your email confirmation for meeting details.'}</li>
             </ol>
-            <Button asChild size="lg" className="h-auto min-h-12 whitespace-normal"><a href={OUTLOOK_BOOKING_URL} target="_blank" rel="noopener noreferrer">{no ? 'Book en uforpliktende samtale' : 'Book an introductory call'}</a></Button>
-            <p className="mt-3 text-xs text-muted-foreground">{no ? 'Microsoft Bookings åpnes i en ny fane. Møtet er bestilt når du har fått bekreftelsen.' : 'Microsoft Bookings opens in a new tab. Your meeting is booked once you receive confirmation.'}</p>
+            <Button asChild size="lg" className="h-auto min-h-12 whitespace-normal"><a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">{no ? 'Book en uforpliktende samtale' : 'Book an introductory call'}</a></Button>
+            <p className="mt-3 text-xs text-muted-foreground">{no ? 'Bookingkalenderen åpnes i en ny fane. Møtet er bestilt når du har fått bekreftelsen.' : 'The booking calendar opens in a new tab. Your meeting is booked once you receive confirmation.'}</p>
           </>
         )}
         <div className="mt-7 space-y-3 border-t border-border pt-5 text-sm">
