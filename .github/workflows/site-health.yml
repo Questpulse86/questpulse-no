@@ -27,9 +27,12 @@ jobs:
       - name: Kjør nettstedskontroll
         id: audit
         run: |
+          set +e
           python scripts/site_health.py --url "$SITE_URL" --output-dir site-health-report
-          echo "issue_count=$(python -c "import json; print(json.load(open('site-health-report/report.json'))['issue_count'])")" >> "$GITHUB_OUTPUT"
-        continue-on-error: true
+          audit_exit=$?
+          echo "issue_count=$(python -c 'import json; print(json.load(open("site-health-report/report.json"))["issue_count"])')" >> "$GITHUB_OUTPUT"
+          echo "audit_exit=$audit_exit" >> "$GITHUB_OUTPUT"
+          exit 0
 
       - name: Last opp rapport
         uses: actions/upload-artifact@v4
@@ -49,14 +52,11 @@ jobs:
             const title = 'Nettstedskontroll: avvik oppdaget';
             const { owner, repo } = context.repo;
             const { data: existing } = await github.rest.issues.listForRepo({
-              owner, repo, state: 'open', labels: 'site-health', per_page: 100,
+              owner, repo, state: 'open', per_page: 100,
             });
             const duplicate = existing.find(issue => issue.title === title);
             if (!duplicate) {
-              await github.rest.issues.create({
-                owner, repo, title, body,
-                labels: ['site-health', 'automated-report'],
-              });
+              await github.rest.issues.create({ owner, repo, title, body });
             } else {
               await github.rest.issues.createComment({
                 owner, repo, issue_number: duplicate.number, body,
