@@ -413,15 +413,15 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Salg og pilot",
-              text: "linda@dchub.no. Velg Kartleggingssamtale i skjemaet for raskest oppfølging.",
+              text: "hei@questpulse.no. Book en kartleggingssamtale for å avklare behov og neste steg.",
             },
             {
               title: "Partnerskap",
-              text: "Velg Partnerskap i skjemaet. Vi tar kontakt for en avklaringssamtale.",
+              text: "hei@questpulse.no. Ta kontakt for en avklaringssamtale om samarbeid.",
             },
             {
               title: "Personvern",
-              text: "Spørsmål om behandling av personopplysninger og tekniske forhold rettes til linda@dchub.no.",
+              text: "Spørsmål om behandling av personopplysninger, sikkerhet og tekniske forhold rettes til support@questpulse.no.",
             },
           ],
         },
@@ -1165,15 +1165,15 @@ export const pageContent: Record<Locale, Record<PageKey, PageData>> = {
           items: [
             {
               title: "Sales and pilot",
-              text: "linda@dchub.no. Choose Discovery conversation in the form for the fastest response.",
+              text: "hei@questpulse.no. Book a discovery conversation to clarify your needs and next step.",
             },
             {
               title: "Partnerships",
-              text: "Choose Partnership in the form. We will get in touch for an initial conversation.",
+              text: "hei@questpulse.no. Get in touch for an initial conversation about partnership.",
             },
             {
               title: "Privacy",
-              text: "Questions about personal data processing and technical matters go to linda@dchub.no.",
+              text: "Questions about personal data processing, security and technical matters go to support@questpulse.no.",
             },
           ],
         },
